@@ -107,3 +107,10 @@ sudo yum-builddep -y PyYAML-3.11.spec
 rpmbuild -bb PyYAML-3.11.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python-PyYAML-debuginfo-3.11-1.el7.x86_64.rpm
 ```
+
+boto3
+```
+pyp2rpm boto3 -t epel7 -b2 -p2 -v 1.4.5 > boto3-1.4.5.spec
+sudo yum-builddep -y boto3-1.4.5.spec 
+rpmbuild -bb boto3-1.4.5.spec 
+```
