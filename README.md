@@ -235,16 +235,6 @@ rpmbuild -bb jsonschema-2.6.0.spec
 ```
 
 
-confluent-kafka
-```
-pyp2rpm confluent-kafka -t epel7 -b2 -p2 -v 0.11.5 > confluent-kafka-0.11.5.spec
-sudo yum-builddep -y confluent-kafka-0.11.5.spec 
-rpmbuild -bb confluent-kafka-0.11.5.spec 
-Error: Пакет python2-avro не найден
-Error: Пакет python2-fastavro не найден
-Error: Пакет python2-flake8 не найден
-```
-
 honcho
 ```
 pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
