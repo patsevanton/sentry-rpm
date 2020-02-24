@@ -11,7 +11,7 @@ URL:            https://sentry.io
 Source0:        https://files.pythonhosted.org/packages/source/s/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Source0:        sentry-cron.service
 Source1:        sentry-web.service
-Source2:        sentry-cron.service
+Source2:        sentry-worker.service
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
