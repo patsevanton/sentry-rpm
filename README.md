@@ -89,4 +89,5 @@ progressbar2
 pyp2rpm progressbar2 -t epel7 -b2 -p2 -v 3.10.1 > progressbar2-3.10.1.spec
 sudo yum-builddep -y progressbar2-3.10.1.spec 
 rpmbuild -bb progressbar2-3.10.1.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-progressbar2-3.10.1-1.el7.noarch.rpm
 ```
