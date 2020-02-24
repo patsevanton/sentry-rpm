@@ -78,6 +78,10 @@ cd sentry-rpm
 ```
 На целевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
 
+```
+sudo yum install RPMS/noarch/python2-sentry-9.1.2-1.el7.noarch.rpm
+```
+
 Пакуем зависимости в rpm
 ```
 sudo yum install -y epel-release rpmdevtools mc
