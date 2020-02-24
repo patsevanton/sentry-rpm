@@ -266,6 +266,13 @@ rpmbuild -bb colorama-0.4.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-colorama-0.4.3-1.el7.noarch.rpm
 ```
 
+more-itertools
+```
+pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 > more-itertools-5.0.0.spec
+sudo yum-builddep -y more-itertools-5.0.0.spec 
+rpmbuild -bb more-itertools-5.0.0.spec 
+```
+
 Need requirements:
 
 pytest
