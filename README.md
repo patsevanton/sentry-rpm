@@ -629,51 +629,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
 
 Failed RPM build errors:
 
-ipaddress
-```
-pyp2rpm ipaddress -t epel7 -b2 -p2 -v 1.0.16 > ipaddress-1.0.16.spec
-sudo yum-builddep -y ipaddress-1.0.16.spec 
-rpmbuild -bb ipaddress-1.0.16.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-ipaddress-1.0.16-1.el7.x86_64/usr/lib/python2.7/site-packages/ipaddress
-```
-
-six
-```
-pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
-sudo yum-builddep -y six-1.10.0.spec 
-rpmbuild -bb six-1.10.0.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-six-1.10.0-1.el7.x86_64/usr/lib/python2.7/site-packages/six
-```
-
-
-croniter
-```
-pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
-sudo yum-builddep -y croniter-0.3.31.spec 
-rpmbuild -bb croniter-0.3.31.spec 
-RPM build errors:
-    File not found by glob: /home/centos/rpmbuild/BUILDROOT/python-croniter-0.3.31-1.el7.x86_64/usr/lib/python2.7/site-packages/croniter.py*
-```
-
-ordereddict
-```
-pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
-sudo yum-builddep -y ordereddict-1.1.spec 
-rpmbuild -bb ordereddict-1.1.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-ordereddict-1.1-1.el7.x86_64/usr/lib/python2.7/site-packages/ordereddict
-```
-
-memcached
-```
-pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
-sudo yum-builddep -y python-memcached-1.59.spec 
-rpmbuild -bb python-memcached-1.59.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-memcached-1.59-1.el7.x86_64/usr/lib/python2.7/site-packages/python-memcached
-```
 
 cssutils
 ```
@@ -684,15 +639,6 @@ FAILED (failures=3)
 ошибка: Неверный код возврата из /var/tmp/rpm-tmp.wDbJ8G (%check)
 ```
 
-
-mmh3
-```
-pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
-sudo yum-builddep -y mmh3-2.3.1.spec 
-rpmbuild -bb mmh3-2.3.1.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-mmh3-2.3.1-1.el7.x86_64/usr/lib64/python2.7/site-packages/mmh3
-```
 
 uWSGI
 ```
@@ -721,15 +667,6 @@ rpmbuild -bb psycopg2-binary-2.7.7.spec
 Error: pg_config executable not found.
 ```
 
-mistune
-```
-pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
-sudo yum-builddep -y mistune-0.8.4.spec 
-rpmbuild -bb mistune-0.8.4.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-mistune-0.8.4-1.el7.x86_64/usr/lib/python2.7/site-packages/mistune
-```
-
 email-reply-parser
 ```
 pyp2rpm email-reply-parser -t epel7 -b2 -p2 -v 0.2.0 > email-reply-parser-0.2.0.spec
@@ -745,34 +682,6 @@ sudo yum-builddep -y redis-2.10.5.spec
 rpmbuild -bb redis-2.10.5.spec 
 >           raise ConnectionError(self._error_message(e))
 E           ConnectionError: Error 111 connecting to 127.0.0.1:6379. Connection refused.
-```
-
-BeautifulSoup
-```
-pyp2rpm BeautifulSoup -t epel7 -b2 -p2 -v 3.2.2 > BeautifulSoup-3.2.2.spec
-sudo yum-builddep -y BeautifulSoup-3.2.2.spec 
-rpmbuild -bb BeautifulSoup-3.2.2.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-BeautifulSoup-3.2.2-1.el7.x86_64/usr/lib/python2.7/site-packages/BeautifulSoup
-```
-
-setproctitle
-```
-pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
-sudo yum-builddep -y setproctitle-1.1.10.spec 
-rpmbuild -bb setproctitle-1.1.10.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-setproctitle-1.1.10-1.el7.x86_64/usr/lib64/python2.7/site-packages/setproctitle
-```
-
-
-strict-rfc3339
-```
-pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
-sudo yum-builddep -y strict-rfc3339-0.7.spec 
-rpmbuild -bb strict-rfc3339-0.7.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-strict-rfc3339-0.7-1.el7.x86_64/usr/lib/python2.7/site-packages/strict-rfc3339
 ```
 
 sentry-sdk
@@ -811,7 +720,6 @@ rpmbuild -bb python-openid-2.2.5.spec
 error: invalid command 'test'
 ```
 
-
 functools32
 ```
 pyp2rpm functools32 -t epel7 -b2 -p2 -v 3.2.3-2 > functools32-3.2.3-2.spec
@@ -820,7 +728,6 @@ rpmbuild -bb functools32-3.2.3-2.spec
 ошибка: line 5: Illegal char '-' in: Version:        3.2.3-2
 Bad spec: functools32-3.2.3-2.spec
 ```
-
 
 selenium
 ```
@@ -831,7 +738,6 @@ RPM build errors:
     Arch dependent binaries in noarch package
 ```
 
-
 requests-oauthlib
 ```
 pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.spec
@@ -839,6 +745,8 @@ sudo yum-builddep -y requests-oauthlib-0.3.3.spec
 rpmbuild -bb requests-oauthlib-0.3.3.spec 
 ImportError: No module named tests
 ```
+
+Error File not found:
 
 certifi
 ```
@@ -848,7 +756,6 @@ rpmbuild -bb certifi-2016.9.26.spec
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-certifi-2016.9.26-1.el7.x86_64/usr/lib/python2.7/site-packages/certifi-2016.9.26-py2.7.egg-info
 ```
-
 
 wincertstore
 ```
@@ -867,4 +774,95 @@ rpmbuild -bb pycparser-2.19.spec
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-pycparser-2.19-1.el7.x86_64/usr/lib64/python2.7/site-packages/pycparser
     File not found: /home/centos/rpmbuild/BUILDROOT/python-pycparser-2.19-1.el7.x86_64/usr/lib64/python2.7/site-packages/pycparser-2.19-py2.7.egg-info
+```
+
+ipaddress
+```
+pyp2rpm ipaddress -t epel7 -b2 -p2 -v 1.0.16 > ipaddress-1.0.16.spec
+sudo yum-builddep -y ipaddress-1.0.16.spec 
+rpmbuild -bb ipaddress-1.0.16.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-ipaddress-1.0.16-1.el7.x86_64/usr/lib/python2.7/site-packages/ipaddress
+```
+
+six
+```
+pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
+sudo yum-builddep -y six-1.10.0.spec 
+rpmbuild -bb six-1.10.0.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-six-1.10.0-1.el7.x86_64/usr/lib/python2.7/site-packages/six
+```
+
+croniter
+```
+pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
+sudo yum-builddep -y croniter-0.3.31.spec 
+rpmbuild -bb croniter-0.3.31.spec 
+RPM build errors:
+    File not found by glob: /home/centos/rpmbuild/BUILDROOT/python-croniter-0.3.31-1.el7.x86_64/usr/lib/python2.7/site-packages/croniter.py*
+```
+
+ordereddict
+```
+pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
+sudo yum-builddep -y ordereddict-1.1.spec 
+rpmbuild -bb ordereddict-1.1.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-ordereddict-1.1-1.el7.x86_64/usr/lib/python2.7/site-packages/ordereddict
+```
+
+memcached
+```
+pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
+sudo yum-builddep -y python-memcached-1.59.spec 
+rpmbuild -bb python-memcached-1.59.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-memcached-1.59-1.el7.x86_64/usr/lib/python2.7/site-packages/python-memcached
+```
+
+mmh3
+```
+pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
+sudo yum-builddep -y mmh3-2.3.1.spec 
+rpmbuild -bb mmh3-2.3.1.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-mmh3-2.3.1-1.el7.x86_64/usr/lib64/python2.7/site-packages/mmh3
+```
+
+mistune
+```
+pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
+sudo yum-builddep -y mistune-0.8.4.spec 
+rpmbuild -bb mistune-0.8.4.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-mistune-0.8.4-1.el7.x86_64/usr/lib/python2.7/site-packages/mistune
+```
+
+BeautifulSoup
+```
+pyp2rpm BeautifulSoup -t epel7 -b2 -p2 -v 3.2.2 > BeautifulSoup-3.2.2.spec
+sudo yum-builddep -y BeautifulSoup-3.2.2.spec 
+rpmbuild -bb BeautifulSoup-3.2.2.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-BeautifulSoup-3.2.2-1.el7.x86_64/usr/lib/python2.7/site-packages/BeautifulSoup
+```
+
+setproctitle
+```
+pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
+sudo yum-builddep -y setproctitle-1.1.10.spec 
+rpmbuild -bb setproctitle-1.1.10.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-setproctitle-1.1.10-1.el7.x86_64/usr/lib64/python2.7/site-packages/setproctitle
+```
+
+
+strict-rfc3339
+```
+pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
+sudo yum-builddep -y strict-rfc3339-0.7.spec 
+rpmbuild -bb strict-rfc3339-0.7.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-strict-rfc3339-0.7-1.el7.x86_64/usr/lib/python2.7/site-packages/strict-rfc3339
 ```
