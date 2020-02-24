@@ -250,6 +250,13 @@ rpmbuild -bb statsd-3.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
 ```
 
+pytest
+```
+pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 > pytest-3.5.1.spec
+sudo yum-builddep -y pytest-3.5.1.spec 
+rpmbuild -bb pytest-3.5.1.spec 
+```
+
 Need requirements:
 
 semaphore
