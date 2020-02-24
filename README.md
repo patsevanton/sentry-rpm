@@ -234,14 +234,13 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
-functools32
+percy
 ```
-pyp2rpm functools32 -t epel7 -b2 -p2 -v 3.2.3-2 > functools32-3.2.3-2.spec
-sudo yum-builddep -y functools32-3.2.3-2.spec 
-rpmbuild -bb functools32-3.2.3-2.spec 
-ошибка: line 5: Illegal char '-' in: Version:        3.2.3-2
-Bad spec: functools32-3.2.3-2.spec
+pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
+sudo yum-builddep -y percy-2.0.2.spec 
+rpmbuild -bb percy-2.0.2.spec 
 ```
+
 
 Need requirements:
 
@@ -688,4 +687,14 @@ pyp2rpm python-openid -t epel7 -b2 -p2 -v 2.2.5 > python-openid-2.2.5.spec
 sudo yum-builddep -y python-openid-2.2.5.spec 
 rpmbuild -bb python-openid-2.2.5.spec 
 error: invalid command 'test'
+```
+
+
+functools32
+```
+pyp2rpm functools32 -t epel7 -b2 -p2 -v 3.2.3-2 > functools32-3.2.3-2.spec
+sudo yum-builddep -y functools32-3.2.3-2.spec 
+rpmbuild -bb functools32-3.2.3-2.spec 
+ошибка: line 5: Illegal char '-' in: Version:        3.2.3-2
+Bad spec: functools32-3.2.3-2.spec
 ```
