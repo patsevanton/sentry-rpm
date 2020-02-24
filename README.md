@@ -194,8 +194,18 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
-
 Need requirements:
+
+PyJWT
+```
+pyp2rpm PyJWT -t epel7 -b2 -p2 -v 1.5.3 > PyJWT-1.5.3.spec
+sudo yum-builddep -y PyJWT-1.5.3.spec 
+rpmbuild -bb PyJWT-1.5.3.spec 
+Error: Пакет python2-flake8 не найден
+Error: Пакет python2-flake8-import-order не найден
+Error: Пакет python2-pep8-naming не найден
+Error: Пакет python2-pytest > 3 не найден
+```
 
 python-u2flib-server
 ```
