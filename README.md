@@ -395,6 +395,8 @@ ipaddress
 pyp2rpm ipaddress -t epel7 -b2 -p2 -v 1.0.16 > ipaddress-1.0.16.spec
 sudo yum-builddep -y ipaddress-1.0.16.spec 
 rpmbuild -bb ipaddress-1.0.16.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-ipaddress-1.0.16-1.el7.x86_64/usr/lib/python2.7/site-packages/ipaddress
 ```
 
 six
@@ -402,6 +404,8 @@ six
 pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
 sudo yum-builddep -y six-1.10.0.spec 
 rpmbuild -bb six-1.10.0.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-six-1.10.0-1.el7.x86_64/usr/lib/python2.7/site-packages/six
 ```
 
 
@@ -410,6 +414,8 @@ croniter
 pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
 sudo yum-builddep -y croniter-0.3.31.spec 
 rpmbuild -bb croniter-0.3.31.spec 
+RPM build errors:
+    File not found by glob: /home/centos/rpmbuild/BUILDROOT/python-croniter-0.3.31-1.el7.x86_64/usr/lib/python2.7/site-packages/croniter.py*
 ```
 
 ordereddict
@@ -417,6 +423,8 @@ ordereddict
 pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
 sudo yum-builddep -y ordereddict-1.1.spec 
 rpmbuild -bb ordereddict-1.1.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-ordereddict-1.1-1.el7.x86_64/usr/lib/python2.7/site-packages/ordereddict
 ```
 
 memcached
@@ -437,13 +445,6 @@ FAILED (failures=3)
 ошибка: Неверный код возврата из /var/tmp/rpm-tmp.wDbJ8G (%check)
 ```
 
-cqlsh
-```
-pyp2rpm cqlsh -t epel7 -b2 -p2 -v 5.0.4 > cqlsh-5.0.4.spec
-sudo yum-builddep -y cqlsh-5.0.4.spec 
-rpmbuild -bb cqlsh-5.0.4.spec 
-error: invalid command 'test'
-```
 
 mmh3
 ```
