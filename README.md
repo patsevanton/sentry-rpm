@@ -283,6 +283,14 @@ rpmbuild -bb more-itertools-5.0.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-more-itertools-5.0.0-1.el7.noarch.rpm
 ```
 
+Pillow
+```
+pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > Pillow-4.2.1.spec
+sudo yum-builddep -y Pillow-4.2.1.spec 
+rpmbuild -bb Pillow-4.2.1.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
+```
+
 Need requirements:
 
 setuptools-scm
@@ -688,14 +696,7 @@ error: Installed (but unpackaged) file(s) found:
    /usr/share/man/man1/qr.1.gz
 ```
 
-Pillow
-```
-pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > Pillow-4.2.1.spec
-sudo yum-builddep -y Pillow-4.2.1.spec 
-rpmbuild -bb Pillow-4.2.1.spec 
-    import sphinx_rtd_theme
-ImportError: No module named sphinx_rtd_theme
-```
+
 
 psycopg2-binary
 ```
