@@ -292,6 +292,15 @@ rpmbuild -bb strict-rfc3339-0.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
 ```
 
+setproctitle
+```
+pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
+sudo yum-builddep -y setproctitle-1.1.10.spec 
+Change string to "%{python2_sitearch}/%{pypi_name}.so"
+rpmbuild -bb setproctitle-1.1.10.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-setproctitle-1.1.10-1.el7.x86_64.rpm
+```
+
 Conflict:
 
 pycparser
@@ -863,14 +872,6 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-BeautifulSoup-3.2.2-1.el7.x86_64/usr/lib/python2.7/site-packages/BeautifulSoup
 ```
 
-setproctitle
-```
-pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
-sudo yum-builddep -y setproctitle-1.1.10.spec 
-rpmbuild -bb setproctitle-1.1.10.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-setproctitle-1.1.10-1.el7.x86_64/usr/lib64/python2.7/site-packages/setproctitle
-```
 
 
 
