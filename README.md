@@ -1,3 +1,5 @@
+Подготовка
+```
 sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git
 sudo yum install -y python-devel gcc gcc-c++ zlib-devel libjpeg-devel 
@@ -7,8 +9,9 @@ sudo yum install -y nodejs
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 sudo yum install -y yarn
 pip3 install --user pyp2rpm
+```
 
-############ Install sentry by pip on Centos 7
+############ Install sentry by pip on Centos 7. неактуально
 #pip install --upgrade pip
 #pip install requests==2.20.1 -U --ignore-installed
 #pip install PyYAML==3.11 -U --ignore-installed
