@@ -226,14 +226,20 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
+Need requirements:
+
 urllib3
 ```
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 > urllib3-1.24.2.spec
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
+Error: Пакет python2-PySocks < 2.0 не найден
+Error: Пакет python2-PySocks >= 1.5.6 не найден
+Error: Пакет python2-ipaddress не найден
+Error: Пакет python2-pyOpenSSL >= 0.14 не найден
 ```
 
-Need requirements:
+
 
 cffi
 ```
