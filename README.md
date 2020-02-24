@@ -212,6 +212,16 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-html-1.9.0-1.el7.noarc
 
 Need requirements:
 
+oauth2
+```
+pyp2rpm oauth2 -t epel7 -b2 -p2 -v 1.9.0.post1 > oauth2-1.9.0.post1.spec
+sudo yum-builddep -y oauth2-1.9.0.post1.spec 
+rpmbuild -bb oauth2-1.9.0.post1.spec 
+ошибка: Неудовлетворенные зависимости сборки:
+	python2-coverage нужен для python-oauth2-1.9.0.post1-1.el7.noarch
+	python2-httplib2 нужен для python-oauth2-1.9.0.post1-1.el7.noarch
+```
+
 kombu
 ```
 pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 > kombu-3.0.35.spec
