@@ -186,6 +186,13 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noa
 
 Need requirements:
 
+lxml
+```
+pyp2rpm lxml -t epel7 -b2 -p2 -v 4.5.0 > lxml-4.5.0.spec
+sudo yum-builddep -y lxml-4.5.0.spec 
+rpmbuild -bb lxml-4.5.0.spec 
+```
+
 flake8
 ```
 pyp2rpm flake8 -t epel7 -b2 -p2 -v 3.5.0 > flake8-3.5.0.spec
