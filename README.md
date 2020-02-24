@@ -58,6 +58,10 @@ cd sentry
 git checkout releases/9.1.x
 ```
 
+Или просто скачиваем репозиторий
+
+git clone https://github.com/patsevanton/sentry-rpm.git
+
 Запускаем ./build.sh
 
 На целевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
