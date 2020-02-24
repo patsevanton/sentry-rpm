@@ -769,13 +769,6 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-certifi-2016.9.26-1.el7.x86_64/usr/lib/python2.7/site-packages/certifi-2016.9.26-py2.7.egg-info
 ```
 
-certifi
-```
-pyp2rpm certifi -t epel7 -b2 -p2 -v 2019.9.11 > certifi-2019.9.11.spec
-sudo yum-builddep -y certifi-2019.9.11.spec 
-rpmbuild -bb certifi-2019.9.11.spec 
-```
-
 wincertstore
 ```
 pyp2rpm wincertstore -t epel7 -b2 -p2 -v 0.2 > wincertstore-0.2.spec
@@ -784,8 +777,6 @@ rpmbuild -bb wincertstore-0.2.spec
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-wincertstore-0.2-1.el7.x86_64/usr/lib/python2.7/site-packages/wincertstore
 ```
-
-
 
 ipaddress
 ```
