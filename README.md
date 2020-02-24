@@ -242,6 +242,13 @@ rpmbuild -bb django-sudo-2.1.0.spec
 Error: Пакет python2-flake8 не найден
 ```
 
+selenium
+```
+pyp2rpm selenium -t epel7 -b2 -p2 -v 3.141.0 > selenium-3.141.0.spec
+sudo yum-builddep -y selenium-3.141.0.spec 
+rpmbuild -bb selenium-3.141.0.spec 
+```
+
 Need requirements:
 
 python-dateutil
