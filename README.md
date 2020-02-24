@@ -2,7 +2,7 @@
 ```
 sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git
-sudo yum install -y python-devel gcc gcc-c++ zlib-devel libjpeg-devel 
+sudo yum install -y python-devel gcc gcc-c++ zlib-devel libjpeg-devel python2-sphinx_rtd_theme
 sudo yum install -y python34 python3-pip 
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install -y nodejs
