@@ -156,7 +156,12 @@ rpmbuild -bb parsimonious-0.8.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
 
-
+confluent-kafka
+```
+pyp2rpm confluent-kafka -t epel7 -b2 -p2 -v 0.11.5 > confluent-kafka-0.11.5.spec
+sudo yum-builddep -y confluent-kafka-0.11.5.spec 
+rpmbuild -bb confluent-kafka-0.11.5.spec 
+```
 
 
 Need requirements:
