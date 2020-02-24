@@ -124,6 +124,13 @@ rpmbuild -bb djangorestframework-2.4.8.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.el7.noarch.rpm
 ```
 
+enum34
+```
+pyp2rpm enum34 -t epel7 -b2 -p2 -v 1.1.8 > enum34-1.1.8.spec
+sudo yum-builddep -y enum34-1.1.8.spec 
+rpmbuild -bb enum34-1.1.8.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-enum34-1.1.8-1.el7.noarch.rpm
+```
 
 Need requirements:
 
