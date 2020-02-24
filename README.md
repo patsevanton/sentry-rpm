@@ -210,6 +210,14 @@ rpmbuild -bb pytest-html-1.9.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-html-1.9.0-1.el7.noarch.rpm
 ```
 
+redis-py-cluster
+```
+pyp2rpm redis-py-cluster -t epel7 -b2 -p2 -v 1.3.4 > redis-py-cluster-1.3.4.spec
+sudo yum-builddep -y redis-py-cluster-1.3.4.spec 
+rpmbuild -bb redis-py-cluster-1.3.4.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
+```
+
 Need requirements:
 
 oauth2
