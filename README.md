@@ -328,6 +328,16 @@ rpmbuild -bb mmh3-2.3.1.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-mmh3-2.3.1-1.el7.x86_64.rpm
 ```
 
+memcached
+```
+pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
+sudo yum-builddep -y python-memcached-1.59.spec 
+Commented "%{python2_sitelib}/%{pypi_name}"
+rpmbuild -bb python-memcached-1.59.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-memcached-1.59-1.el7.noarch.rpm
+```
+
+
 Conflict:
 
 pycparser
@@ -863,12 +873,4 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-ordereddict-1.1-1.el7.x86_64/usr/lib/python2.7/site-packages/ordereddict
 ```
 
-memcached
-```
-pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
-sudo yum-builddep -y python-memcached-1.59.spec 
-rpmbuild -bb python-memcached-1.59.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-memcached-1.59-1.el7.x86_64/usr/lib/python2.7/site-packages/python-memcached
-```
 
