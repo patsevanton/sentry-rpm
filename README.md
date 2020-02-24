@@ -196,6 +196,10 @@ lxml
 pyp2rpm lxml -t epel7 -b2 -p2 -v 4.5.0 > lxml-4.5.0.spec
 sudo yum-builddep -y lxml-4.5.0.spec 
 rpmbuild -bb lxml-4.5.0.spec 
+Error: Пакет python2-BeautifulSoup4 не найден
+Error: Пакет python2-Cython >= 0.29.7 не найден
+Error: Пакет python2-cssselect >= 0.7 не найден
+Error: Пакет python2-html5lib не найден
 ```
 
 flake8
@@ -203,6 +207,9 @@ flake8
 pyp2rpm flake8 -t epel7 -b2 -p2 -v 3.5.0 > flake8-3.5.0.spec
 sudo yum-builddep flake8-3.5.0.spec
 rpmbuild -bb flake8-3.5.0.spec
+Error: Пакет python2-mock >= 2.0.0 не найден
+Error: Пакет python2-pycodestyle < 2.4.0 не найден
+Error: Пакет python2-setuptools >= 30 не найден
 ```
 
 toronado
