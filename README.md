@@ -194,6 +194,15 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
+qrcode
+```
+pyp2rpm qrcode -t epel7 -b2 -p2 -v 5.3 > qrcode-5.3.spec
+sudo yum-builddep -y qrcode-5.3.spec 
+rpmbuild -bb qrcode-5.3.spec 
+error: Installed (but unpackaged) file(s) found:
+   /usr/share/man/man1/qr.1.gz
+```
+
 
 
 Need requirements:
@@ -392,4 +401,22 @@ pyp2rpm uWSGI -t epel7 -b2 -p2 -v 2.0.18 > uWSGI-2.0.18.spec
 sudo yum-builddep -y uWSGI-2.0.18.spec 
 rpmbuild -bb uWSGI-2.0.18.spec 
 ERROR   0001: file '/usr/bin/uwsgi' contains a standard rpath '/usr/lib64' in [/usr/lib64]
+```
+
+qrcode
+```
+pyp2rpm qrcode -t epel7 -b2 -p2 -v 5.3 > qrcode-5.3.spec
+sudo yum-builddep -y qrcode-5.3.spec 
+rpmbuild -bb qrcode-5.3.spec 
+error: Installed (but unpackaged) file(s) found:
+   /usr/share/man/man1/qr.1.gz
+```
+
+Pillow
+```
+pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > Pillow-4.2.1.spec
+sudo yum-builddep -y Pillow-4.2.1.spec 
+rpmbuild -bb Pillow-4.2.1.spec 
+    import sphinx_rtd_theme
+ImportError: No module named sphinx_rtd_theme
 ```
