@@ -210,6 +210,12 @@ rpmbuild -bb redis-py-cluster-1.3.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
+requests
+```
+pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
+sudo yum-builddep -y requests-2.20.1.spec 
+rpmbuild -bb requests-2.20.1.spec 
+```
 
 
 Need requirements:
