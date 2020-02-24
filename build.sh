@@ -12,5 +12,5 @@ done
 
 mkdir -p ./{RPMS,SRPMS,BUILD,SOURCES,SPECS}
 cp sentry-cron.service  sentry-web.service  sentry-worker.service SOURCES
-spectool -g -C SOURCES wal-g-rpm.spec
-rpmbuild --quiet --define "_topdir `pwd`" -bb wal-g-rpm.spec
+spectool -g -C SOURCES sentry-9.1.2.spec
+rpmbuild --quiet --define "_topdir `pwd`" -bb sentry-9.1.2.spec
