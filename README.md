@@ -157,6 +157,14 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noar
 ```
 
 
+ipaddress
+```
+pyp2rpm ipaddress -t epel7 -b2 -p2 -v 1.0.16 > ipaddress-1.0.16.spec
+sudo yum-builddep -y ipaddress-1.0.16.spec 
+rpmbuild -bb ipaddress-1.0.16.spec 
+sudo yum install -y ~/rpmbuild/RPMS/
+```
+
 Need requirements:
 
 honcho
