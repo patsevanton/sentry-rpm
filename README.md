@@ -242,14 +242,15 @@ rpmbuild -bb django-picklefield-0.3.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-django-picklefield-0.3.2-1.el7.noarch.rpm
 ```
 
+Need requirements:
+
 semaphore
 ```
 pyp2rpm semaphore -t epel7 -b2 -p2 -v 0.4.65 > semaphore-0.4.65.spec
 sudo yum-builddep -y semaphore-0.4.65.spec 
 rpmbuild -bb semaphore-0.4.65.spec 
+Error: Пакет python2-milksnake >= 0.1.2 не найден
 ```
-
-Need requirements:
 
 python-dateutil
 ```
