@@ -51,13 +51,14 @@ BuildRequires:  yarn
 
 sudo yum-builddep -y sentry-9.1.2.spec
 
-
+Секция %prep
 ```
 git clone https://github.com/getsentry/sentry.git
 cd sentry
 git checkout releases/9.1.x
-./build.sh
 ```
+
+Запускаем ./build.sh
 
 На целевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
 
