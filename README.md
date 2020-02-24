@@ -51,11 +51,22 @@ BuildRequires:  yarn
 
 sudo yum-builddep -y sentry-9.1.2.spec
 
-Секция %prep
+Секция %prep %build %install
 ```
+%prep
 git clone https://github.com/getsentry/sentry.git
 cd sentry
 git checkout releases/9.1.x
+# Remove bundled egg-info
+#rm -rf %{pypi_name}.egg-info
+
+%build
+cd sentry
+%{__python2} setup.py build
+
+%install
+cd sentry
+%{__python2} setup.py install --skip-build --root %{buildroot}
 ```
 
 Или просто скачиваем репозиторий
