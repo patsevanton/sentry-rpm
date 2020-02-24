@@ -240,6 +240,7 @@ django-picklefield
 pyp2rpm django-picklefield -t epel7 -b2 -p2 -v 0.3.2 > django-picklefield-0.3.2.spec
 sudo yum-builddep -y django-picklefield-0.3.2.spec 
 rpmbuild -bb django-picklefield-0.3.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-django-picklefield-0.3.2-1.el7.noarch.rpm
 ```
 
 Need requirements:
