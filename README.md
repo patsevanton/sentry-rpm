@@ -109,8 +109,11 @@ sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-PyYAML-3.11-1.el7.x86_64.rpm
 ```
 
 
-
-
+```
+pyp2rpm django-templatetag-sugar -t epel7 -b2 -p2 -v 1.0 > django-templatetag-sugar-1.0.spec
+sudo yum-builddep -y django-templatetag-sugar-1.0.spec 
+rpmbuild -bb django-templatetag-sugar-1.0.spec 
+```
 
 
 
