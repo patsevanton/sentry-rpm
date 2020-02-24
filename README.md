@@ -239,6 +239,7 @@ Django
 pyp2rpm Django -t epel7 -b2 -p2 -v 1.6.11 > Django-1.6.11.spec
 sudo yum-builddep -y Django-1.6.11.spec 
 rpmbuild -bb Django-1.6.11.spec 
+error: invalid command 'test'
 ```
 
 
