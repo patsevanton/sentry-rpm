@@ -153,6 +153,7 @@ parsimonious
 pyp2rpm parsimonious -t epel7 -b2 -p2 -v 0.8.0 > parsimonious-0.8.0.spec
 sudo yum-builddep -y parsimonious-0.8.0.spec 
 rpmbuild -bb parsimonious-0.8.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
 
 
