@@ -68,17 +68,14 @@ cd sentry
 cd sentry
 %{__python2} setup.py install --skip-build --root %{buildroot}
 ```
-
 Из полученного файла убираем опциональные зависимости. Их можно найти в файле requirements-optional.txt
 
-Или просто скачиваем репозиторий
-
+Это все исправил в репозитории sentry-rpm
+```
 git clone https://github.com/patsevanton/sentry-rpm.git
-
 cd sentry-rpm
-
-Запускаем ./build.sh
-
+./build.sh
+```
 На целевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
 
 Пакуем зависимости в rpm
