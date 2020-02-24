@@ -282,14 +282,16 @@ rpmbuild -bb Pillow-4.2.1.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 ```
 
+Need requirements:
+
 milksnake
 ```
 pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
 sudo yum-builddep -y milksnake-0.1.5.spec 
 rpmbuild -bb milksnake-0.1.5.spec 
+Ошибка: Пакет: python2-milksnake-0.1.5-1.el7.noarch (/python2-milksnake-0.1.5-1.el7.noarch)
+            Необходимо: python2-cffi >= 1.6.0
 ```
-
-Need requirements:
 
 setuptools
 ```
