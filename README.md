@@ -223,6 +223,7 @@ rb
 pyp2rpm rb -t epel7 -b2 -p2 -v 1.7 > rb-1.7.spec
 sudo yum-builddep -y rb-1.7.spec 
 rpmbuild -bb rb-1.7.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
 
