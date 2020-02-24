@@ -73,6 +73,8 @@ cd sentry
 
 git clone https://github.com/patsevanton/sentry-rpm.git
 
+cd sentry-rpm
+
 Запускаем ./build.sh
 
 На целевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
