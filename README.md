@@ -266,6 +266,15 @@ rpmbuild -bb colorama-0.4.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-colorama-0.4.3-1.el7.noarch.rpm
 ```
 
+py
+```
+pyp2rpm py -t epel7 -b2 -p2 -v 1.8.1 > py-1.8.1.spec
+sudo yum-builddep -y py-1.8.1.spec 
+rpmbuild -bb py-1.8.1.spec 
+```
+
+Need requirements:
+
 more-itertools
 ```
 pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 > more-itertools-5.0.0.spec
@@ -274,8 +283,6 @@ rpmbuild -bb more-itertools-5.0.0.spec
     import sphinx_rtd_theme
 ImportError: No module named sphinx_rtd_theme
 ```
-
-Need requirements:
 
 pytest
 ```
