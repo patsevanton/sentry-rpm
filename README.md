@@ -239,6 +239,8 @@ functools32
 pyp2rpm functools32 -t epel7 -b2 -p2 -v 3.2.3-2 > functools32-3.2.3-2.spec
 sudo yum-builddep -y functools32-3.2.3-2.spec 
 rpmbuild -bb functools32-3.2.3-2.spec 
+ошибка: line 5: Illegal char '-' in: Version:        3.2.3-2
+Bad spec: functools32-3.2.3-2.spec
 ```
 
 Need requirements:
