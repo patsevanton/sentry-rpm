@@ -279,7 +279,7 @@ Pillow
 pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > Pillow-4.2.1.spec
 sudo yum-builddep -y Pillow-4.2.1.spec 
 rpmbuild -bb Pillow-4.2.1.spec 
-sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
+Conflict python-pillow-2.0.0-19.gitd1c6db8.el7.x86_64
 ```
 
 chardet
@@ -287,6 +287,7 @@ chardet
 pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.4 > chardet-3.0.4.spec
 sudo yum-builddep -y chardet-3.0.4.spec 
 rpmbuild -bb chardet-3.0.4.spec 
+Conflict python-chardet-2.2.1-3.el7.noarch
 ```
 
 Need requirements:
