@@ -156,7 +156,12 @@ rpmbuild -bb parsimonious-0.8.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
 
-
+six
+```
+pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
+sudo yum-builddep -y six-1.10.0.spec 
+rpmbuild -bb six-1.10.0.spec 
+```
 
 
 Need requirements:
