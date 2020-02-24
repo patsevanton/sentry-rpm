@@ -271,6 +271,8 @@ more-itertools
 pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 > more-itertools-5.0.0.spec
 sudo yum-builddep -y more-itertools-5.0.0.spec 
 rpmbuild -bb more-itertools-5.0.0.spec 
+    import sphinx_rtd_theme
+ImportError: No module named sphinx_rtd_theme
 ```
 
 Need requirements:
