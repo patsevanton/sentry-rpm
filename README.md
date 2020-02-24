@@ -296,6 +296,7 @@ certifi
 pyp2rpm certifi -t epel7 -b2 -p2 -v 2019.11.28 > certifi-2019.11.28.spec
 sudo yum-builddep -y certifi-2019.11.28.spec 
 rpmbuild -bb certifi-2019.11.28.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2019.11.28-1.el7.noarch.rpm
 ```
 
 Need requirements:
