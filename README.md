@@ -207,6 +207,7 @@ pytest-html
 pyp2rpm pytest-html -t epel7 -b2 -p2 -v 1.9.0 > pytest-html-1.9.0.spec
 sudo yum-builddep -y pytest-html-1.9.0.spec 
 rpmbuild -bb pytest-html-1.9.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-html-1.9.0-1.el7.noarch.rpm
 ```
 
 Need requirements:
