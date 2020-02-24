@@ -239,6 +239,7 @@ django-sudo
 pyp2rpm django-sudo -t epel7 -b2 -p2 -v 2.1.0 > django-sudo-2.1.0.spec
 sudo yum-builddep -y django-sudo-2.1.0.spec 
 rpmbuild -bb django-sudo-2.1.0.spec 
+Error: Пакет python2-flake8 не найден
 ```
 
 Need requirements:
