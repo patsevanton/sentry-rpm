@@ -282,6 +282,7 @@ pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
 sudo yum-builddep -y pycparser-2.19.spec 
 Add %global python2_sitearch /usr/lib/python2.7/site-packages
 rpmbuild -bb pycparser-2.19.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-pycparser-2.19-1.el7.x86_64.rpm
 Conflict python-pycparser-2.14-1.el7.noarch
 ```
 
