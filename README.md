@@ -121,6 +121,7 @@ djangorestframework
 pyp2rpm djangorestframework -t epel7 -b2 -p2 -v 2.4.8 > djangorestframework-2.4.8.spec
 sudo yum-builddep -y djangorestframework-2.4.8.spec 
 rpmbuild -bb djangorestframework-2.4.8.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.el7.noarch.rpm
 ```
 
 
