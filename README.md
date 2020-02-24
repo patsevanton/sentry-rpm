@@ -226,6 +226,13 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
+cffi
+```
+pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
+sudo yum-builddep -y cffi-1.14.0.spec 
+rpmbuild -bb cffi-1.14.0.spec 
+```
+
 
 Need requirements:
 
