@@ -164,6 +164,12 @@ rpmbuild -bb pytest-django-2.9.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
 ```
 
+croniter
+```
+pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
+sudo yum-builddep -y croniter-0.3.31.spec 
+rpmbuild -bb croniter-0.3.31.spec 
+```
 
 Need requirements:
 
