@@ -190,12 +190,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noa
 
 Need requirements:
 
-ordereddict
-```
-pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
-sudo yum-builddep -y ordereddict-1.1.spec 
-rpmbuild -bb ordereddict-1.1.spec 
-```
 
 lxml
 ```
@@ -305,4 +299,11 @@ croniter
 pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
 sudo yum-builddep -y croniter-0.3.31.spec 
 rpmbuild -bb croniter-0.3.31.spec 
+```
+
+ordereddict
+```
+pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
+sudo yum-builddep -y ordereddict-1.1.spec 
+rpmbuild -bb ordereddict-1.1.spec 
 ```
