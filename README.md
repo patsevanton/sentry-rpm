@@ -186,14 +186,6 @@ rpmbuild -bb pytest-django-2.9.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
 ```
 
-sqlparse
-```
-pyp2rpm sqlparse -t epel7 -b2 -p2 -v 0.2.4 > sqlparse-0.2.4.spec
-sudo yum-builddep -y sqlparse-0.2.4.spec 
-rpmbuild -bb sqlparse-0.2.4.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
-```
-
 querystring-parser
 ```
 pyp2rpm querystring-parser -t epel7 -b2 -p2 -v 1.2.4 > querystring-parser-1.2.4.spec
@@ -222,13 +214,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.
 
 Need requirements:
 
-pytest-cov
-```
-pyp2rpm pytest-cov -t epel7 -b2 -p2 -v 2.5.1 > pytest-cov-2.5.1.spec
-sudo yum-builddep -y pytest-cov-2.5.1.spec 
-rpmbuild -bb pytest-cov-2.5.1.spec 
-Error: Пакет python2-coverage >= 3.7.1 не найден
-```
 
 oauth2
 ```
@@ -309,13 +294,6 @@ rpmbuild -bb mock-2.0.0.spec
 	python2-setuptools >= 17.1 нужен для python-mock-2.0.0-1.el7.noarch
 ```
 
-casscache
-```
-pyp2rpm casscache -t epel7 -b2 -p2 -v 0.1.1 > casscache-0.1.1.spec
-sudo yum-builddep -y casscache-0.1.1.spec 
-rpmbuild -bb casscache-0.1.1.spec 
-ImportError: No module named test_casscache
-```
 
 lxml
 ```
@@ -525,13 +503,3 @@ rpmbuild -bb email-reply-parser-0.2.0.spec
 AttributeError: 'module' object has no attribute 'test_support'
 ```
 
-betamax
-```
-pyp2rpm betamax -t epel7 -b2 -p2 -v 0.8.1 > betamax-0.8.1.spec
-sudo yum-builddep -y betamax-0.8.1.spec 
-rpmbuild -bb betamax-0.8.1.spec 
-Exception occurred:
-  File "/usr/lib/python2.7/site-packages/sphinx/ext/intersphinx.py", line 181, in load_mappings
-    app.info('loading intersphinx inventory from %s...' % inv)
-TypeError: not all arguments converted during string formatting
-```
