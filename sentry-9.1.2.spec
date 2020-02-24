@@ -35,26 +35,19 @@ Requires:       python2-PyJWT < 1.6.0
 Requires:       python2-PyJWT >= 1.5.0
 Requires:       python2-PyYAML < 3.12
 Requires:       python2-PyYAML >= 3.11
-Requires:       python2-betamax < 0.9.0
-Requires:       python2-betamax >= 0.8.1
-Requires:       python2-blist
 Requires:       python2-boto3 < 1.4.6
 Requires:       python2-boto3 >= 1.4.1
 Requires:       python2-botocore < 1.5.71
-Requires:       python2-cassandra-driver <= 3.5.0
-Requires:       python2-casscache
 Requires:       python2-celery < 3.1.19
 Requires:       python2-celery >= 3.1.8
 Requires:       python2-cffi < 2.0
 Requires:       python2-cffi >= 1.11.5
 Requires:       python2-click < 7.0
 Requires:       python2-click >= 5.0
-Requires:       python2-cqlsh
 Requires:       python2-croniter < 0.4.0
 Requires:       python2-croniter >= 0.3.26
 Requires:       python2-cssutils < 0.10.0
 Requires:       python2-cssutils >= 0.9.9
-Requires:       python2-datadog
 Requires:       python2-dateutil < 3.0.0
 Requires:       python2-dateutil >= 2.0.0
 Requires:       python2-django-crispy-forms < 1.5.0
@@ -72,8 +65,6 @@ Requires:       python2-email-reply-parser < 0.3.0
 Requires:       python2-email-reply-parser >= 0.2.0
 Requires:       python2-enum34 < 1.2.0
 Requires:       python2-enum34 >= 1.1.6
-Requires:       python2-exam >= 0.5.1
-Requires:       python2-freezegun = 0.3.11
 Requires:       python2-functools32 < 3.3
 Requires:       python2-functools32 >= 3.2.3
 Requires:       python2-futures < 4.0.0
@@ -111,15 +102,10 @@ Requires:       python2-psycopg2-binary < 2.8.0
 Requires:       python2-psycopg2-binary >= 2.6.0
 Requires:       python2-pytest < 3.6.0
 Requires:       python2-pytest >= 3.5.0
-Requires:       python2-pytest-cov < 2.6.0
-Requires:       python2-pytest-cov >= 2.5.1
 Requires:       python2-pytest-django < 2.10.0
 Requires:       python2-pytest-django >= 2.9.1
 Requires:       python2-pytest-html < 1.10.0
 Requires:       python2-pytest-html >= 1.9.0
-Requires:       python2-pytest-timeout = 1.2.1
-Requires:       python2-pytest-xdist < 1.19.0
-Requires:       python2-pytest-xdist >= 1.18.0
 Requires:       python2-qrcode < 6.0.0
 Requires:       python2-qrcode >= 5.2.2
 Requires:       python2-querystring-parser < 2.0.0
@@ -132,8 +118,6 @@ Requires:       python2-redis-py-cluster = 1.3.4
 Requires:       python2-requests < 2.21.0
 Requires:       python2-requests >= 2.20.0
 Requires:       python2-requests-oauthlib = 0.3.3
-Requires:       python2-responses < 0.9.0
-Requires:       python2-responses >= 0.8.1
 Requires:       python2-selenium = 3.141.0
 Requires:       python2-semaphore < 0.5.0
 Requires:       python2-semaphore >= 0.4.21
@@ -145,9 +129,6 @@ Requires:       python2-simplejson < 3.9.0
 Requires:       python2-simplejson >= 3.2.0
 Requires:       python2-six < 1.11.0
 Requires:       python2-six >= 1.10.0
-Requires:       python2-sqlparse < 0.2.0
-Requires:       python2-sqlparse = 0.2.4
-Requires:       python2-sqlparse >= 0.1.16
 Requires:       python2-statsd < 3.2.0
 Requires:       python2-statsd >= 3.1.0
 Requires:       python2-strict-rfc3339 >= 0.7
