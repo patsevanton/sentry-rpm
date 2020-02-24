@@ -210,6 +210,17 @@ rpmbuild -bb redis-py-cluster-1.3.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
+
+simplejson
+```
+pyp2rpm simplejson -t epel7 -b2 -p2 -v 3.8.2 > simplejson-3.8.2.spec
+sudo yum-builddep -y simplejson-3.8.2.spec 
+rpmbuild -bb simplejson-3.8.2.spec 
+```
+
+
+Need requirements:
+
 requests
 ```
 pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
@@ -226,10 +237,6 @@ Error: Пакет python2-pytest-mock не найден
 Error: Пакет python2-urllib3 >= 1.21.1 не найден
 Error: Пакет python2-win-inet-pton не найден
 ```
-
-
-Need requirements:
-
 
 oauth2
 ```
