@@ -242,14 +242,15 @@ rpmbuild -bb django-sudo-2.1.0.spec
 Error: Пакет python2-flake8 не найден
 ```
 
+Need requirements:
+
 python-dateutil
 ```
 pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 > python-dateutil-2.8.1.spec
 sudo yum-builddep -y python-dateutil-2.8.1.spec 
 rpmbuild -bb python-dateutil-2.8.1.spec 
+Error: Пакет python2-setuptools-scm не найден
 ```
-
-Need requirements:
 
 percy
 ```
