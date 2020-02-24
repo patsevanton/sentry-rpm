@@ -194,6 +194,16 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
+querystring-parser
+```
+pyp2rpm querystring-parser -t epel7 -b2 -p2 -v 1.2.4 > querystring-parser-1.2.4.spec
+sudo yum-builddep -y querystring-parser-1.2.4.spec 
+rpmbuild -bb querystring-parser-1.2.4.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el7.noarch.rpm
+```
+
+
+
 Need requirements:
 
 kombu
