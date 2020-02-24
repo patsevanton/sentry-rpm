@@ -194,14 +194,6 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
-qrcode
-```
-pyp2rpm qrcode -t epel7 -b2 -p2 -v 5.3 > qrcode-5.3.spec
-sudo yum-builddep -y qrcode-5.3.spec 
-rpmbuild -bb qrcode-5.3.spec 
-error: Installed (but unpackaged) file(s) found:
-   /usr/share/man/man1/qr.1.gz
-```
 
 
 
@@ -419,4 +411,12 @@ sudo yum-builddep -y Pillow-4.2.1.spec
 rpmbuild -bb Pillow-4.2.1.spec 
     import sphinx_rtd_theme
 ImportError: No module named sphinx_rtd_theme
+```
+
+psycopg2-binary
+```
+pyp2rpm psycopg2-binary -t epel7 -b2 -p2 -v 2.7.7 > psycopg2-binary-2.7.7.spec
+sudo yum-builddep -y psycopg2-binary-2.7.7.spec 
+rpmbuild -bb psycopg2-binary-2.7.7.spec 
+Error: pg_config executable not found.
 ```
