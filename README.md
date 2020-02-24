@@ -177,6 +177,12 @@ pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
 sudo yum-builddep -y honcho-1.0.1.spec 
 rpmbuild -bb honcho-1.0.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
+Ошибка: Пакет: python2-honcho-1.0.1-1.el7.noarch (/python2-honcho-1.0.1-1.el7.noarch)
+            Необходимо: python2-argparse
+Ошибка: Пакет: python2-honcho-1.0.1-1.el7.noarch (/python2-honcho-1.0.1-1.el7.noarch)
+            Необходимо: python2-colorama
+Ошибка: Пакет: python2-honcho-1.0.1-1.el7.noarch (/python2-honcho-1.0.1-1.el7.noarch)
+            Необходимо: python2-ordereddict
 ```
 
 botocore
@@ -184,6 +190,9 @@ botocore
 pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 > botocore-1.5.70.spec
 sudo yum-builddep -y botocore-1.5.70.spec 
 rpmbuild -bb botocore-1.5.70.spec 
+Error: Пакет python2-dateutil >= 2.1 не найден
+Error: Пакет python2-ordereddict = 1.1 не найден
+Error: Пакет python2-simplejson = 3.3.0 не найден
 ```
 
 boto3
@@ -192,6 +201,22 @@ pyp2rpm boto3 -t epel7 -b2 -p2 -v 1.4.5 > boto3-1.4.5.spec
 sudo yum-builddep -y boto3-1.4.5.spec 
 rpmbuild -bb boto3-1.4.5.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
+Ошибка: Пакет: python2-boto3-1.4.5-1.el7.noarch (/python2-boto3-1.4.5-1.el7.noarch)
+            Необходимо: python2-s3transfer < 0.2.0
+            Доступно: python2-s3transfer-0.1.10-1.el7.noarch (epel)
+                python2-s3transfer = 0.1.10-1.el7
+Ошибка: Пакет: python2-boto3-1.4.5-1.el7.noarch (/python2-boto3-1.4.5-1.el7.noarch)
+            Необходимо: python2-botocore < 1.6.0
+            Доступно: python2-botocore-1.6.0-1.el7.noarch (epel)
+                python2-botocore = 1.6.0-1.el7
+Ошибка: Пакет: python2-boto3-1.4.5-1.el7.noarch (/python2-boto3-1.4.5-1.el7.noarch)
+            Необходимо: python2-s3transfer >= 0.1.10
+            Доступно: python2-s3transfer-0.1.10-1.el7.noarch (epel)
+                python2-s3transfer = 0.1.10-1.el7
+Ошибка: Пакет: python2-boto3-1.4.5-1.el7.noarch (/python2-boto3-1.4.5-1.el7.noarch)
+            Необходимо: python2-botocore < 1.6.0
+            Установка: python2-botocore-1.6.0-1.el7.noarch (epel)
+                python2-botocore = 1.6.0-1.el7
 ```
 
 Failed RPM build errors File not found:
