@@ -224,6 +224,8 @@ BeautifulSoup
 pyp2rpm BeautifulSoup -t epel7 -b2 -p2 -v 3.2.2 > BeautifulSoup-3.2.2.spec
 sudo yum-builddep -y BeautifulSoup-3.2.2.spec 
 rpmbuild -bb BeautifulSoup-3.2.2.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-BeautifulSoup-3.2.2-1.el7.x86_64/usr/lib/python2.7/site-packages/BeautifulSoup
 ```
 
 
