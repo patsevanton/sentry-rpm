@@ -266,6 +266,13 @@ rpmbuild -bb colorama-0.4.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-colorama-0.4.3-1.el7.noarch.rpm
 ```
 
+setuptools
+```
+pyp2rpm setuptools -t epel7 -b2 -p2 -v 17.1 > setuptools-17.1.spec
+sudo yum-builddep -y setuptools-17.1.spec 
+rpmbuild -bb setuptools-17.1.spec 
+```
+
 Need requirements:
 
 setuptools-scm
