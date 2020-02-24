@@ -161,7 +161,7 @@ pytest-django
 pyp2rpm pytest-django -t epel7 -b2 -p2 -v 2.9.1 > pytest-django-2.9.1.spec
 sudo yum-builddep -y pytest-django-2.9.1.spec 
 rpmbuild -bb pytest-django-2.9.1.spec 
-sudo yum install -y ~/rpmbuild/RPMS/
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
 ```
 
 
