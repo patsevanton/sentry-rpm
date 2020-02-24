@@ -226,6 +226,12 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
+urllib3
+```
+pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 > urllib3-1.24.2.spec
+sudo yum-builddep -y urllib3-1.24.2.spec 
+rpmbuild -bb urllib3-1.24.2.spec 
+```
 
 Need requirements:
 
