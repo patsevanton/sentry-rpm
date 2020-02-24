@@ -153,6 +153,7 @@ honcho
 pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
 sudo yum-builddep -y honcho-1.0.1.spec 
 rpmbuild -bb honcho-1.0.1.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
 ```
 
 Need requirements:
