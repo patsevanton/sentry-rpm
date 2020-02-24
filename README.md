@@ -869,9 +869,3 @@ sudo yum-builddep -y requests-oauthlib-0.3.3.spec
 rpmbuild -bb requests-oauthlib-0.3.3.spec 
 ImportError: No module named tests
 ```
-
-Error File not found:
-
-
-
-
