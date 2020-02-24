@@ -234,12 +234,7 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
-python-openi
-```
-pyp2rpm python-openid -t epel7 -b2 -p2 -v 2.2.5 > python-openid-2.2.5.spec
-sudo yum-builddep -y python-openid-2.2.5.spec 
-rpmbuild -bb python-openid-2.2.5.spec 
-```
+
 
 
 
@@ -647,7 +642,6 @@ Compiling /home/centos/rpmbuild/BUILDROOT/python-sentry-sdk-0.14.1-1.el7.x86_64/
 SyntaxError: invalid syntax
 ```
 
-
 Django
 ```
 pyp2rpm Django -t epel7 -b2 -p2 -v 1.6.11 > Django-1.6.11.spec
@@ -656,3 +650,10 @@ rpmbuild -bb Django-1.6.11.spec
 error: invalid command 'test'
 ```
 
+python-openid
+```
+pyp2rpm python-openid -t epel7 -b2 -p2 -v 2.2.5 > python-openid-2.2.5.spec
+sudo yum-builddep -y python-openid-2.2.5.spec 
+rpmbuild -bb python-openid-2.2.5.spec 
+error: invalid command 'test'
+```
