@@ -283,6 +283,14 @@ rpmbuild -bb certifi-2016.9.26.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2016.9.26-1.el7.noarch.rpm
 ```
 
+strict-rfc3339
+```
+pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
+sudo yum-builddep -y strict-rfc3339-0.7.spec 
+Commented #%{python2_sitelib}/%{pypi_name}
+rpmbuild -bb strict-rfc3339-0.7.spec 
+```
+
 Conflict:
 
 pycparser
@@ -864,11 +872,4 @@ RPM build errors:
 ```
 
 
-strict-rfc3339
-```
-pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
-sudo yum-builddep -y strict-rfc3339-0.7.spec 
-rpmbuild -bb strict-rfc3339-0.7.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-strict-rfc3339-0.7-1.el7.x86_64/usr/lib/python2.7/site-packages/strict-rfc3339
-```
+
