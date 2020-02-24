@@ -69,6 +69,8 @@ cd sentry
 %{__python2} setup.py install --skip-build --root %{buildroot}
 ```
 
+Из полученного файла убираем опциональные зависимости. Их можно найти в файле requirements-optional.txt
+
 Или просто скачиваем репозиторий
 
 git clone https://github.com/patsevanton/sentry-rpm.git
