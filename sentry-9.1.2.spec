@@ -190,6 +190,7 @@ git checkout releases/9.1.x
 #rm -rf %{pypi_name}.egg-info
 
 %build
+cd sentry
 %{__python2} setup.py build
 
 %install
