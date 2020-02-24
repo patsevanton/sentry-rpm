@@ -234,12 +234,7 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
-sentry-sdk
-```
-pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
-sudo yum-builddep -y sentry-sdk-0.14.1.spec 
-rpmbuild -bb sentry-sdk-0.14.1.spec 
-```
+
 
 Need requirements:
 
@@ -624,4 +619,16 @@ sudo yum-builddep -y strict-rfc3339-0.7.spec
 rpmbuild -bb strict-rfc3339-0.7.spec 
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-strict-rfc3339-0.7-1.el7.x86_64/usr/lib/python2.7/site-packages/strict-rfc3339
+```
+
+sentry-sdk
+```
+pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
+sudo yum-builddep -y sentry-sdk-0.14.1.spec 
+rpmbuild -bb sentry-sdk-0.14.1.spec 
+Compiling /home/centos/rpmbuild/BUILDROOT/python-sentry-sdk-0.14.1-1.el7.x86_64/usr/lib/python2.7/site-packages/sentry_sdk/integrations/aiohttp.py ...
+  File "/usr/lib/python2.7/site-packages/sentry_sdk/integrations/aiohttp.py", line 58
+    async def sentry_app_handle(self, request, *args, **kwargs):
+            ^
+SyntaxError: invalid syntax
 ```
