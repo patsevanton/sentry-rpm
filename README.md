@@ -271,6 +271,16 @@ setuptools
 pyp2rpm setuptools -t epel7 -b2 -p2 -v 30.0.0 > setuptools-30.0.0.spec
 sudo yum-builddep -y setuptools-30.0.0.spec 
 rpmbuild -bb setuptools-30.0.0.spec 
+Error: Пакет python2-certifi = 2016.9.26 не найден
+Error: Пакет python2-wincertstore = 0.2 не найден
+```
+
+certifi
+```
+pyp2rpm certifi -t epel7 -b2 -p2 -v 2016.9.26 > certifi-2016.9.26.spec
+sudo yum-builddep -y certifi-2016.9.26.spec 
+rpmbuild -bb certifi-2016.9.26.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2016.9.26-1.el7.noarch.rpm
 ```
 
 more-itertools
@@ -289,13 +299,7 @@ rpmbuild -bb Pillow-4.2.1.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 ```
 
-certifi
-```
-pyp2rpm certifi -t epel7 -b2 -p2 -v 2019.11.28 > certifi-2019.11.28.spec
-sudo yum-builddep -y certifi-2019.11.28.spec 
-rpmbuild -bb certifi-2019.11.28.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2019.11.28-1.el7.noarch.rpm
-```
+
 
 Need requirements:
 
