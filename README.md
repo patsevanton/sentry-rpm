@@ -105,7 +105,7 @@ PyYAML
 pyp2rpm PyYAML -t epel7 -b2 -p2 -v 3.11 > PyYAML-3.11.spec
 sudo yum-builddep -y PyYAML-3.11.spec 
 rpmbuild -bb PyYAML-3.11.spec
-sudo yum install -y ~/rpmbuild/RPMS/x86_64/python-PyYAML-debuginfo-3.11-1.el7.x86_64.rpm
+sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-PyYAML-3.11-1.el7.x86_64.rpm
 ```
 
 boto3
