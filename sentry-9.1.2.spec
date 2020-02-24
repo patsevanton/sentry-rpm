@@ -198,7 +198,7 @@ cd sentry
 %{__python2} setup.py install --skip-build --root %{buildroot}
 
 %files -n python2-%{pypi_name}
-%doc src/sentry/pipeline/README.md src/sentry/logging/README.rst src/sentry/nodestore/README.rst README.rst
+#%doc src/sentry/pipeline/README.md src/sentry/logging/README.rst src/sentry/nodestore/README.rst README.rst
 %{_bindir}/sentry
 %{python2_sitelib}/bitfield
 %{python2_sitelib}/debug_toolbar
