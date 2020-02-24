@@ -218,14 +218,15 @@ rpmbuild -bb redis-py-cluster-1.3.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
+Need requirements:
+
 pytest-cov
 ```
 pyp2rpm pytest-cov -t epel7 -b2 -p2 -v 2.5.1 > pytest-cov-2.5.1.spec
 sudo yum-builddep -y pytest-cov-2.5.1.spec 
 rpmbuild -bb pytest-cov-2.5.1.spec 
+Error: Пакет python2-coverage >= 3.7.1 не найден
 ```
-
-Need requirements:
 
 oauth2
 ```
