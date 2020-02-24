@@ -91,3 +91,10 @@ sudo yum-builddep -y progressbar2-3.10.1.spec
 rpmbuild -bb progressbar2-3.10.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-progressbar2-3.10.1-1.el7.noarch.rpm
 ```
+
+petname
+```
+pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
+sudo yum-builddep -y petname-2.0.spec 
+rpmbuild -bb petname-2.0.spec 
+```
