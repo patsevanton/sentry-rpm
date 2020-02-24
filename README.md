@@ -194,14 +194,23 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
+memcached
+```
+pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
+sudo yum-builddep -y python-memcached-1.59.spec 
+rpmbuild -bb python-memcached-1.59.spec 
+```
+
+Need requirements:
+
 mock
 ```
 pyp2rpm mock -t epel7 -b2 -p2 -v 2.0.0 > mock-2.0.0.spec
 sudo yum-builddep -y mock-2.0.0.spec 
 rpmbuild -bb mock-2.0.0.spec 
+	python2-pbr >= 1.3 нужен для python-mock-2.0.0-1.el7.noarch
+	python2-setuptools >= 17.1 нужен для python-mock-2.0.0-1.el7.noarch
 ```
-
-Need requirements:
 
 casscache
 ```
