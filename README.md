@@ -114,10 +114,7 @@ sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-PyYAML-3.11-1.el7.x86_64.rpm
 
 
 
-
-
-
-
+Need requirements:
 
 botocore
 ```
