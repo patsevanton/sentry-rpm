@@ -242,12 +242,6 @@ rpmbuild -bb django-sudo-2.1.0.spec
 Error: Пакет python2-flake8 не найден
 ```
 
-selenium
-```
-pyp2rpm selenium -t epel7 -b2 -p2 -v 3.141.0 > selenium-3.141.0.spec
-sudo yum-builddep -y selenium-3.141.0.spec 
-rpmbuild -bb selenium-3.141.0.spec 
-```
 
 Need requirements:
 
@@ -721,3 +715,15 @@ rpmbuild -bb functools32-3.2.3-2.spec
 ошибка: line 5: Illegal char '-' in: Version:        3.2.3-2
 Bad spec: functools32-3.2.3-2.spec
 ```
+
+
+selenium
+```
+pyp2rpm selenium -t epel7 -b2 -p2 -v 3.141.0 > selenium-3.141.0.spec
+sudo yum-builddep -y selenium-3.141.0.spec 
+rpmbuild -bb selenium-3.141.0.spec 
+RPM build errors:
+    Arch dependent binaries in noarch package
+```
+
+
