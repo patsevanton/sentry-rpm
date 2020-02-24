@@ -169,6 +169,11 @@ toronado
 pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
 sudo yum-builddep -y toronado-0.0.11.spec 
 rpmbuild -bb toronado-0.0.11.spec 
+Error: Пакет python2-cssselect не найден
+Error: Пакет python2-cssutils не найден
+Error: Пакет python2-exam не найден
+Error: Пакет python2-flake8 не найден
+Error: Пакет python2-lxml не найден
 ```
 
 
