@@ -195,14 +195,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.r
 ```
 
 
-cqlsh
-```
-pyp2rpm cqlsh -t epel7 -b2 -p2 -v 5.0.4 > cqlsh-5.0.4.spec
-sudo yum-builddep -y cqlsh-5.0.4.spec 
-rpmbuild -bb cqlsh-5.0.4.spec 
-error: invalid command 'test'
-```
-
 Need requirements:
 
 loremipsum
@@ -323,7 +315,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
                 python2-botocore = 1.6.0-1.el7
 ```
 
-Failed RPM build errors File not found:
+Failed RPM build errors:
 
 ipaddress
 ```
@@ -368,4 +360,20 @@ sudo yum-builddep -y cssutils-0.9.10.spec
 rpmbuild -bb cssutils-0.9.10.spec 
 FAILED (failures=3)
 ошибка: Неверный код возврата из /var/tmp/rpm-tmp.wDbJ8G (%check)
+```
+
+cqlsh
+```
+pyp2rpm cqlsh -t epel7 -b2 -p2 -v 5.0.4 > cqlsh-5.0.4.spec
+sudo yum-builddep -y cqlsh-5.0.4.spec 
+rpmbuild -bb cqlsh-5.0.4.spec 
+error: invalid command 'test'
+```
+
+
+mmh3
+```
+pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
+sudo yum-builddep -y mmh3-2.3.1.spec 
+rpmbuild -bb mmh3-2.3.1.spec 
 ```
