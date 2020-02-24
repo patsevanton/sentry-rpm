@@ -234,6 +234,13 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
+django-sudo
+```
+pyp2rpm django-sudo -t epel7 -b2 -p2 -v 2.1.0 > django-sudo-2.1.0.spec
+sudo yum-builddep -y django-sudo-2.1.0.spec 
+rpmbuild -bb django-sudo-2.1.0.spec 
+```
+
 Need requirements:
 
 percy
