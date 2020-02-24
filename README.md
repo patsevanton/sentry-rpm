@@ -218,12 +218,7 @@ rpmbuild -bb redis-py-cluster-1.3.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
-betamax
-```
-pyp2rpm betamax -t epel7 -b2 -p2 -v 0.8.1 > betamax-0.8.1.spec
-sudo yum-builddep -y betamax-0.8.1.spec 
-rpmbuild -bb betamax-0.8.1.spec 
-```
+
 
 Need requirements:
 
@@ -528,4 +523,15 @@ pyp2rpm email-reply-parser -t epel7 -b2 -p2 -v 0.2.0 > email-reply-parser-0.2.0.
 sudo yum-builddep -y email-reply-parser-0.2.0.spec 
 rpmbuild -bb email-reply-parser-0.2.0.spec 
 AttributeError: 'module' object has no attribute 'test_support'
+```
+
+betamax
+```
+pyp2rpm betamax -t epel7 -b2 -p2 -v 0.8.1 > betamax-0.8.1.spec
+sudo yum-builddep -y betamax-0.8.1.spec 
+rpmbuild -bb betamax-0.8.1.spec 
+Exception occurred:
+  File "/usr/lib/python2.7/site-packages/sphinx/ext/intersphinx.py", line 181, in load_mappings
+    app.info('loading intersphinx inventory from %s...' % inv)
+TypeError: not all arguments converted during string formatting
 ```
