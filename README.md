@@ -194,6 +194,8 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
+
+
 Need requirements:
 
 PyJWT
@@ -446,4 +448,12 @@ sudo yum-builddep -y mistune-0.8.4.spec
 rpmbuild -bb mistune-0.8.4.spec 
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-mistune-0.8.4-1.el7.x86_64/usr/lib/python2.7/site-packages/mistune
+```
+
+email-reply-parser
+```
+pyp2rpm email-reply-parser -t epel7 -b2 -p2 -v 0.2.0 > email-reply-parser-0.2.0.spec
+sudo yum-builddep -y email-reply-parser-0.2.0.spec 
+rpmbuild -bb email-reply-parser-0.2.0.spec 
+AttributeError: 'module' object has no attribute 'test_support'
 ```
