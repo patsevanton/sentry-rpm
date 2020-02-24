@@ -428,6 +428,8 @@ memcached
 pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
 sudo yum-builddep -y python-memcached-1.59.spec 
 rpmbuild -bb python-memcached-1.59.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-memcached-1.59-1.el7.x86_64/usr/lib/python2.7/site-packages/python-memcached
 ```
 
 cssutils
