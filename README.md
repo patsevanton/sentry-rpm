@@ -59,6 +59,7 @@ git checkout releases/9.1.x
 ```
 
 На целевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
+
 Пакуем зависимости в rpm
 ```
 sudo yum install -y epel-release rpmdevtools mc
