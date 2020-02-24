@@ -374,6 +374,13 @@ rpmbuild -bb cffi-1.14.0.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-cffi-1.14.0-1.el7.x86_64.rpm
 ```
 
+milksnake
+```
+pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
+sudo yum-builddep -y milksnake-0.1.5.spec 
+rpmbuild -bb milksnake-0.1.5.spec 
+```
+
 Conflict:
 
 ipaddress
@@ -422,18 +429,9 @@ rpmbuild -bb chardet-3.0.4.spec
 Conflict python-chardet-2.2.1-3.el7.noarch
 ```
 
-
-
 Need requirements:
 
-milksnake
-```
-pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
-sudo yum-builddep -y milksnake-0.1.5.spec 
-rpmbuild -bb milksnake-0.1.5.spec 
-Ошибка: Пакет: python2-milksnake-0.1.5-1.el7.noarch (/python2-milksnake-0.1.5-1.el7.noarch)
-            Необходимо: python2-cffi >= 1.6.0
-```
+
 
 setuptools
 ```
