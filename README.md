@@ -194,12 +194,7 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
-cssutils
-```
-pyp2rpm cssutils -t epel7 -b2 -p2 -v 0.9.10 > cssutils-0.9.10.spec
-sudo yum-builddep -y cssutils-0.9.10.spec 
-rpmbuild -bb cssutils-0.9.10.spec 
-```
+
 
 Need requirements:
 
@@ -357,4 +352,13 @@ memcached
 pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
 sudo yum-builddep -y python-memcached-1.59.spec 
 rpmbuild -bb python-memcached-1.59.spec 
+```
+
+cssutils
+```
+pyp2rpm cssutils -t epel7 -b2 -p2 -v 0.9.10 > cssutils-0.9.10.spec
+sudo yum-builddep -y cssutils-0.9.10.spec 
+rpmbuild -bb cssutils-0.9.10.spec 
+FAILED (failures=3)
+ошибка: Неверный код возврата из /var/tmp/rpm-tmp.wDbJ8G (%check)
 ```
