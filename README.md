@@ -310,6 +310,15 @@ rpmbuild -bb BeautifulSoup-3.2.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-BeautifulSoup-3.2.2-1.el7.noarch.rpm
 ```
 
+mistune
+```
+pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
+sudo yum-builddep -y mistune-0.8.4.spec 
+Commented "%{python2_sitelib}/%{pypi_name}"
+rpmbuild -bb mistune-0.8.4.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-mistune-0.8.4-1.el7.noarch.rpm
+```
+
 Conflict:
 
 pycparser
@@ -863,13 +872,6 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-mmh3-2.3.1-1.el7.x86_64/usr/lib64/python2.7/site-packages/mmh3
 ```
 
-mistune
-```
-pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
-sudo yum-builddep -y mistune-0.8.4.spec 
-rpmbuild -bb mistune-0.8.4.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-mistune-0.8.4-1.el7.x86_64/usr/lib/python2.7/site-packages/mistune
-```
+
 
 
