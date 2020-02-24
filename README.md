@@ -108,7 +108,7 @@ rpmbuild -bb PyYAML-3.11.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-PyYAML-3.11-1.el7.x86_64.rpm
 ```
 
-
+django-templatetag-sugar
 ```
 pyp2rpm django-templatetag-sugar -t epel7 -b2 -p2 -v 1.0 > django-templatetag-sugar-1.0.spec
 sudo yum-builddep -y django-templatetag-sugar-1.0.spec 
@@ -116,6 +116,12 @@ rpmbuild -bb django-templatetag-sugar-1.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-templatetag-sugar-1.0-1.el7.noarch.rpm
 ```
 
+djangorestframework
+```
+pyp2rpm djangorestframework -t epel7 -b2 -p2 -v 2.4.8 > djangorestframework-2.4.8.spec
+sudo yum-builddep -y djangorestframework-2.4.8.spec 
+rpmbuild -bb djangorestframework-2.4.8.spec
+```
 
 
 Need requirements:
