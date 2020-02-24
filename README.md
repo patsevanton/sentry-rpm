@@ -226,15 +226,17 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
+
+Need requirements:
+
 cffi
 ```
 pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
 sudo yum-builddep -y cffi-1.14.0.spec 
 rpmbuild -bb cffi-1.14.0.spec 
+ошибка: Неудовлетворенные зависимости сборки:
+	python2-pycparser нужен для python-cffi-1.14.0-1.el7.x86_64
 ```
-
-
-Need requirements:
 
 django-crispy-forms
 ```
