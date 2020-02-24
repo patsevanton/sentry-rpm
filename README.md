@@ -194,6 +194,13 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
+casscache
+```
+pyp2rpm casscache -t epel7 -b2 -p2 -v 0.1.1 > casscache-0.1.1.spec
+sudo yum-builddep -y casscache-0.1.1.spec 
+rpmbuild -bb casscache-0.1.1.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-casscache-0.1.1.el7.noarch.rpm
+```
 
 Need requirements:
 
