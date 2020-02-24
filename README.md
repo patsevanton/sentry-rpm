@@ -266,17 +266,6 @@ rpmbuild -bb colorama-0.4.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-colorama-0.4.3-1.el7.noarch.rpm
 ```
 
-setuptools
-```
-pyp2rpm setuptools -t epel7 -b2 -p2 -v 30.0.0 > setuptools-30.0.0.spec
-sudo yum-builddep -y setuptools-30.0.0.spec 
-rpmbuild -bb setuptools-30.0.0.spec 
-Error: Пакет python2-certifi = 2016.9.26 не найден
-Error: Пакет python2-wincertstore = 0.2 не найден
-```
-
-
-
 more-itertools
 ```
 pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 > more-itertools-5.0.0.spec
@@ -293,9 +282,23 @@ rpmbuild -bb Pillow-4.2.1.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 ```
 
-
+wincertstore
+```
+pyp2rpm wincertstore -t epel7 -b2 -p2 -v 0.2 > wincertstore-0.2.spec
+sudo yum-builddep -y wincertstore-0.2.spec 
+rpmbuild -bb wincertstore-0.2.spec 
+```
 
 Need requirements:
+
+setuptools
+```
+pyp2rpm setuptools -t epel7 -b2 -p2 -v 30.0.0 > setuptools-30.0.0.spec
+sudo yum-builddep -y setuptools-30.0.0.spec 
+rpmbuild -bb setuptools-30.0.0.spec 
+Error: Пакет python2-certifi = 2016.9.26 не найден
+Error: Пакет python2-wincertstore = 0.2 не найден
+```
 
 setuptools-scm
 ```
