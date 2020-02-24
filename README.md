@@ -274,6 +274,16 @@ rpmbuild -bb more-itertools-5.0.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-more-itertools-5.0.0-1.el7.noarch.rpm
 ```
 
+pycparser
+```
+pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
+sudo yum-builddep -y pycparser-2.19.spec 
+Add %global python2_sitearch /usr/lib/python2.7/site-packages
+rpmbuild -bb pycparser-2.19.spec 
+```
+
+Conflict:
+
 Pillow
 ```
 pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > Pillow-4.2.1.spec
@@ -766,13 +776,7 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-wincertstore-0.2-1.el7.x86_64/usr/lib/python2.7/site-packages/wincertstore
 ```
 
-pycparser
-```
-pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
-sudo yum-builddep -y pycparser-2.19.spec 
-Add %global python2_sitearch /usr/lib/python2.7/site-packages
-rpmbuild -bb pycparser-2.19.spec 
-```
+
 
 ipaddress
 ```
