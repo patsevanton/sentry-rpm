@@ -219,6 +219,13 @@ rpmbuild -bb simplejson-3.8.2.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-simplejson-3.8.2-1.el7.x86_64.rpm
 ```
 
+BeautifulSoup
+```
+pyp2rpm BeautifulSoup -t epel7 -b2 -p2 -v 3.2.2 > BeautifulSoup-3.2.2.spec
+sudo yum-builddep -y BeautifulSoup-3.2.2.spec 
+rpmbuild -bb BeautifulSoup-3.2.2.spec 
+```
+
 
 Need requirements:
 
