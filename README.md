@@ -231,6 +231,7 @@ ua-parser
 pyp2rpm ua-parser -t epel7 -b2 -p2 -v 0.7.3 > ua-parser-0.7.3.spec
 sudo yum-builddep -y ua-parser-0.7.3.spec 
 rpmbuild -bb ua-parser-0.7.3.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
 Need requirements:
