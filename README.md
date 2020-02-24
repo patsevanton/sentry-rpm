@@ -68,7 +68,7 @@ cd sentry
 cd sentry
 %{__python2} setup.py install --skip-build --root %{buildroot}
 ```
-Из полученного файла убираем опциональные зависимости. Их можно найти в файле requirements-optional.txt
+Из полученного файла убираем опциональные зависимости, зависимости для разработки (dev) и тестирования (test). Их можно найти в файлах requirements-optional.txt, requirements-dev.txt, requirements-test.txt
 
 Это все исправил в репозитории sentry-rpm
 ```
