@@ -164,6 +164,12 @@ rpmbuild -bb pytest-django-2.9.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
 ```
 
+toronado
+```
+pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
+sudo yum-builddep -y toronado-0.0.11.spec 
+rpmbuild -bb toronado-0.0.11.spec 
+```
 
 
 Need requirements:
