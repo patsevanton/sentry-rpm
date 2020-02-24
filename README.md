@@ -215,6 +215,16 @@ requests
 pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
 sudo yum-builddep -y requests-2.20.1.spec 
 rpmbuild -bb requests-2.20.1.spec 
+Error: Пакет python2-PySocks >= 1.5.6 не найден
+Error: Пакет python2-chardet < 3.1.0 не найден
+Error: Пакет python2-chardet >= 3.0.2 не найден
+Error: Пакет python2-idna >= 2.5 не найден
+Error: Пакет python2-pyOpenSSL >= 0.14 не найден
+Error: Пакет python2-pytest >= 2.8.0 не найден
+Error: Пакет python2-pytest-httpbin = 0.0.7 не найден
+Error: Пакет python2-pytest-mock не найден
+Error: Пакет python2-urllib3 >= 1.21.1 не найден
+Error: Пакет python2-win-inet-pton не найден
 ```
 
 
