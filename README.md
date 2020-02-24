@@ -76,6 +76,14 @@ rpmbuild -bb msgpack-0.6.2.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-msgpack-0.6.2-1.el7.x86_64.rpm
 ```
 
+utils
+```
+pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
+sudo yum-builddep -y python-utils-2.3.0.spec 
+rpmbuild -bb python-utils-2.3.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
+```
+
 progressbar2
 ```
 pyp2rpm progressbar2 -t epel7 -b2 -p2 -v 3.10.1 > progressbar2-3.10.1.spec
