@@ -346,6 +346,15 @@ rpmbuild -bb ordereddict-1.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ordereddict-1.1-1.el7.noarch.rpm
 ```
 
+croniter
+```
+pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
+sudo yum-builddep -y croniter-0.3.31.spec 
+Commented "%{python2_sitelib}/%{pypi_name}.py*"
+rpmbuild -bb croniter-0.3.31.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-croniter-0.3.31-1.el7.noarch.rpm
+```
+
 Conflict:
 
 pycparser
@@ -862,16 +871,4 @@ rpmbuild -bb six-1.10.0.spec
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-six-1.10.0-1.el7.x86_64/usr/lib/python2.7/site-packages/six
 ```
-
-croniter
-```
-pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
-sudo yum-builddep -y croniter-0.3.31.spec 
-rpmbuild -bb croniter-0.3.31.spec 
-RPM build errors:
-    File not found by glob: /home/centos/rpmbuild/BUILDROOT/python-croniter-0.3.31-1.el7.x86_64/usr/lib/python2.7/site-packages/croniter.py*
-```
-
-
-
 
