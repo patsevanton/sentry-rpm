@@ -275,13 +275,7 @@ Error: Пакет python2-certifi = 2016.9.26 не найден
 Error: Пакет python2-wincertstore = 0.2 не найден
 ```
 
-certifi
-```
-pyp2rpm certifi -t epel7 -b2 -p2 -v 2016.9.26 > certifi-2016.9.26.spec
-sudo yum-builddep -y certifi-2016.9.26.spec 
-rpmbuild -bb certifi-2016.9.26.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2016.9.26-1.el7.noarch.rpm
-```
+
 
 more-itertools
 ```
@@ -833,4 +827,13 @@ pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.sp
 sudo yum-builddep -y requests-oauthlib-0.3.3.spec 
 rpmbuild -bb requests-oauthlib-0.3.3.spec 
 ImportError: No module named tests
+```
+
+certifi
+```
+pyp2rpm certifi -t epel7 -b2 -p2 -v 2016.9.26 > certifi-2016.9.26.spec
+sudo yum-builddep -y certifi-2016.9.26.spec 
+rpmbuild -bb certifi-2016.9.26.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-certifi-2016.9.26-1.el7.x86_64/usr/lib/python2.7/site-packages/certifi-2016.9.26-py2.7.egg-info
 ```
