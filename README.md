@@ -315,9 +315,9 @@ rpmbuild -bb milksnake-0.1.5.spec
 
 setuptools
 ```
-pyp2rpm setuptools -t epel7 -b2 -p2 -v 45.2.0 > setuptools-45.2.0.spec
-sudo yum-builddep -y setuptools-45.2.0.spec 
-rpmbuild -bb setuptools-45.2.0.spec 
+pyp2rpm setuptools -t epel7 -b2 -p2 -v 30.1.0 > setuptools-30.1.0.spec
+sudo yum-builddep -y setuptools-30.1.0.spec 
+rpmbuild -bb setuptools-30.1.0.spec 
 Error: Пакет python2-certifi = 2016.9.26 не найден
 Error: Пакет python2-wincertstore = 0.2 не найден
 ```
