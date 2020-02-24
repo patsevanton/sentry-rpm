@@ -194,9 +194,30 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
-
-
 Need requirements:
+
+kombu
+```
+pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 > kombu-3.0.35.spec
+sudo yum-builddep -y kombu-3.0.35.spec 
+rpmbuild -bb kombu-3.0.35.spec 
+Error: Пакет python2-PyYAML >= 3.10 не найден
+Error: Пакет python2-amqp < 2.0 не найден
+Error: Пакет python2-anyjson >= 0.3.3 не найден
+Error: Пакет python2-beanstalkc не найден
+Error: Пакет python2-couchdb не найден
+Error: Пакет python2-importlib не найден
+Error: Пакет python2-kazoo >= 1.3.1 не найден
+Error: Пакет python2-librabbitmq >= 1.6.1 не найден
+Error: Пакет python2-ordereddict не найден
+Error: Пакет python2-pymongo >= 2.6.2 не найден
+Error: Пакет python2-pyro4 не найден
+Error: Пакет python2-pyzmq >= 13.1.0 не найден
+Error: Пакет python2-qpid-tools >= 0.26 не найден
+Error: Пакет python2-softlayer-messaging >= 1.0.3 не найден
+Error: Пакет python2-sqlalchemy не найден
+Error: Пакет python2-unittest2 >= 0.5.0 не найден
+```
 
 PyJWT
 ```
