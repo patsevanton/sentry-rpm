@@ -42,7 +42,7 @@ pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
 < BuildRequires:  python2-setuptools
 ```
 
-Оставляем только 1 BuildRequires
+Итоговый BuildRequires
 ```
 BuildRequires:  python2-devel
 BuildRequires:  nodejs
