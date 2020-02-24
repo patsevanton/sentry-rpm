@@ -337,6 +337,14 @@ rpmbuild -bb python-memcached-1.59.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-memcached-1.59-1.el7.noarch.rpm
 ```
 
+ordereddict
+```
+pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
+sudo yum-builddep -y ordereddict-1.1.spec 
+Commented "%{python2_sitelib}/%{pypi_name}"
+rpmbuild -bb ordereddict-1.1.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-ordereddict-1.1-1.el7.noarch.rpm
+```
 
 Conflict:
 
@@ -864,13 +872,6 @@ RPM build errors:
     File not found by glob: /home/centos/rpmbuild/BUILDROOT/python-croniter-0.3.31-1.el7.x86_64/usr/lib/python2.7/site-packages/croniter.py*
 ```
 
-ordereddict
-```
-pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
-sudo yum-builddep -y ordereddict-1.1.spec 
-rpmbuild -bb ordereddict-1.1.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-ordereddict-1.1-1.el7.x86_64/usr/lib/python2.7/site-packages/ordereddict
-```
+
 
 
