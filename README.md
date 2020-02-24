@@ -99,3 +99,10 @@ sudo yum-builddep -y petname-2.0.spec
 rpmbuild -bb petname-2.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 ```
+
+PyYAML
+```
+pyp2rpm PyYAML -t epel7 -b2 -p2 -v 3.11 > PyYAML-3.11.spec
+sudo yum-builddep -y PyYAML-3.11.spec 
+rpmbuild -bb PyYAML-3.11.spec
+```
