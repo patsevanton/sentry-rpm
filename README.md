@@ -195,9 +195,17 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.r
 ```
 
 
-
-
 Need requirements:
+
+python-u2flib-server
+```
+pyp2rpm python-u2flib-server -t epel7 -b2 -p2 -v 4.0.1 > python-u2flib-server-4.0.1.spec
+sudo yum-builddep -y python-u2flib-server-4.0.1.spec 
+rpmbuild -bb python-u2flib-server-4.0.1.spec 
+Error: Пакет python2-WebOb не найден
+Error: Пакет python2-argparse не найден
+Error: Пакет python2-yubiauth не найден
+```
 
 django-jsonfield
 ```
