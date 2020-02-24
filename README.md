@@ -132,6 +132,13 @@ rpmbuild -bb enum34-1.1.8.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-enum34-1.1.8-1.el7.noarch.rpm
 ```
 
+futures
+```
+pyp2rpm futures -t epel7 -b2 -p2 -v 3.3.0 > futures-3.3.0.spec
+sudo yum-builddep -y futures-3.3.0.spec 
+rpmbuild -bb futures-3.3.0.spec 
+```
+
 Need requirements:
 
 botocore
