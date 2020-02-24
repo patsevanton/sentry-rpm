@@ -271,6 +271,8 @@ setuptools
 pyp2rpm setuptools -t epel7 -b2 -p2 -v 17.1 > setuptools-17.1.spec
 sudo yum-builddep -y setuptools-17.1.spec 
 rpmbuild -bb setuptools-17.1.spec 
+rror: Пакет python2-certifi = 1.0.1 не найден
+Error: Пакет python2-wincertstore = 0.2 не найден
 ```
 
 Need requirements:
