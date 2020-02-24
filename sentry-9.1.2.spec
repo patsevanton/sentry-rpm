@@ -183,7 +183,6 @@ JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
 git clone https://github.com/getsentry/sentry.git
 cd sentry
 git checkout releases/9.1.x
