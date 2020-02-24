@@ -108,6 +108,17 @@ rpmbuild -bb PyYAML-3.11.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-PyYAML-3.11-1.el7.x86_64.rpm
 ```
 
+
+
+
+
+
+
+
+
+
+
+
 botocore
 ```
 pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 > botocore-1.5.70.spec
