@@ -282,6 +282,12 @@ rpmbuild -bb Pillow-4.2.1.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 ```
 
+chardet
+```
+pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.4 > chardet-3.0.4.spec
+sudo yum-builddep -y chardet-3.0.4.spec 
+rpmbuild -bb chardet-3.0.4.spec 
+```
 
 Need requirements:
 
