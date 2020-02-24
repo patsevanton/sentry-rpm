@@ -242,12 +242,7 @@ rpmbuild -bb django-picklefield-0.3.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-django-picklefield-0.3.2-1.el7.noarch.rpm
 ```
 
-requests-oauthlib
-```
-pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.spec
-sudo yum-builddep -y requests-oauthlib-0.3.3.spec 
-rpmbuild -bb requests-oauthlib-0.3.3.spec 
-```
+
 
 Need requirements:
 
@@ -749,3 +744,10 @@ RPM build errors:
 ```
 
 
+requests-oauthlib
+```
+pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.spec
+sudo yum-builddep -y requests-oauthlib-0.3.3.spec 
+rpmbuild -bb requests-oauthlib-0.3.3.spec 
+ImportError: No module named tests
+```
