@@ -355,6 +355,16 @@ rpmbuild -bb croniter-0.3.31.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-croniter-0.3.31-1.el7.noarch.rpm
 ```
 
+six
+```
+pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
+sudo yum-builddep -y six-1.10.0.spec 
+Commented "%{python2_sitelib}/%{pypi_name}"
+rpmbuild -bb six-1.10.0.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-six-1.10.0-1.el7.noarch.rpm
+Conflict python-six-1.9.0-2.el7.noarch
+```
+
 Conflict:
 
 pycparser
@@ -863,12 +873,4 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-ipaddress-1.0.16-1.el7.x86_64/usr/lib/python2.7/site-packages/ipaddress
 ```
 
-six
-```
-pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
-sudo yum-builddep -y six-1.10.0.spec 
-rpmbuild -bb six-1.10.0.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-six-1.10.0-1.el7.x86_64/usr/lib/python2.7/site-packages/six
-```
 
