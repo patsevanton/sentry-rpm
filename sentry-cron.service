@@ -1,0 +1,11 @@
+[Unit]
+Description=Sentry Beat Service
+After=network.target
+
+[Service]
+Type=simple
+User=sentry
+Group=sentry
+WorkingDirectory=/www/sentry
+Environment=SENTRY_CONF=/etc/sentry
+ExecStart=/www/sentry/bin/sentry celery beat
