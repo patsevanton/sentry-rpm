@@ -67,3 +67,11 @@ sudo yum install -y python-devel gcc gcc-c++ zlib-devel libjpeg-devel
 sudo yum install -y python34 python3-pip 
 pip3 install --user pyp2rpm
 ```
+
+msgpack
+```
+pyp2rpm msgpack -t epel7 -b2 -p2 -v 0.6.2 > msgpack-0.6.2.spec
+sudo yum-builddep -y msgpack-0.6.2.spec 
+rpmbuild -bb msgpack-0.6.2.spec 
+sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-msgpack-0.6.2-1.el7.x86_64.rpm
+```
