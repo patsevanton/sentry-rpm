@@ -420,3 +420,12 @@ sudo yum-builddep -y psycopg2-binary-2.7.7.spec
 rpmbuild -bb psycopg2-binary-2.7.7.spec 
 Error: pg_config executable not found.
 ```
+
+mistune
+```
+pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
+sudo yum-builddep -y mistune-0.8.4.spec 
+rpmbuild -bb mistune-0.8.4.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-mistune-0.8.4-1.el7.x86_64/usr/lib/python2.7/site-packages/mistune
+```
