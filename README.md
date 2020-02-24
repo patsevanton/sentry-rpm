@@ -226,6 +226,13 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
+ua-parser
+```
+pyp2rpm ua-parser -t epel7 -b2 -p2 -v 0.7.3 > ua-parser-0.7.3.spec
+sudo yum-builddep -y ua-parser-0.7.3.spec 
+rpmbuild -bb ua-parser-0.7.3.spec 
+```
+
 Need requirements:
 
 
