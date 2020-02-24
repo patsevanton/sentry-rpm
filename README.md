@@ -219,12 +219,7 @@ rpmbuild -bb simplejson-3.8.2.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-simplejson-3.8.2-1.el7.x86_64.rpm
 ```
 
-setproctitle
-```
-pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
-sudo yum-builddep -y setproctitle-1.1.10.spec 
-rpmbuild -bb setproctitle-1.1.10.spec 
-```
+
 
 
 Need requirements:
@@ -563,3 +558,13 @@ rpmbuild -bb BeautifulSoup-3.2.2.spec
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-BeautifulSoup-3.2.2-1.el7.x86_64/usr/lib/python2.7/site-packages/BeautifulSoup
 ```
+
+setproctitle
+```
+pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
+sudo yum-builddep -y setproctitle-1.1.10.spec 
+rpmbuild -bb setproctitle-1.1.10.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-setproctitle-1.1.10-1.el7.x86_64/usr/lib64/python2.7/site-packages/setproctitle
+```
+
