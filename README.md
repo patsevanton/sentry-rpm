@@ -186,6 +186,13 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noa
 
 Need requirements:
 
+flake8
+```
+pyp2rpm flake8 -t epel7 -b2 -p2 -v 3.5.0 > flake8-3.5.0.spec
+sudo yum-builddep flake8-3.5.0.spec
+rpmbuild -bb flake8-3.5.0.spec
+```
+
 toronado
 ```
 pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
