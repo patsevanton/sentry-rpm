@@ -364,6 +364,16 @@ rpmbuild -bb wincertstore-0.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-wincertstore-0.2-1.el7.noarch.rpm
 ```
 
+cffi
+```
+pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
+sudo yum-builddep -y cffi-1.14.0.spec 
+sudo yum install -y libffi-devel
+Add string "%{python2_sitearch}/_cffi_backend.so"
+rpmbuild -bb cffi-1.14.0.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-cffi-1.14.0-1.el7.x86_64.rpm
+```
+
 Conflict:
 
 ipaddress
@@ -543,14 +553,7 @@ Error: Пакет python2-ipaddress не найден
 Error: Пакет python2-pyOpenSSL >= 0.14 не найден
 ```
 
-cffi
-```
-pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
-sudo yum-builddep -y cffi-1.14.0.spec 
-rpmbuild -bb cffi-1.14.0.spec 
-ошибка: Неудовлетворенные зависимости сборки:
-	python2-pycparser нужен для python-cffi-1.14.0-1.el7.x86_64
-```
+
 
 django-crispy-forms
 ```
