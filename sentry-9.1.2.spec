@@ -15,7 +15,7 @@ Source2:        sentry-worker.service
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  nodejs
+BuildRequires:  nodejs >= 8
 BuildRequires:  yarn
 
 %description
@@ -185,8 +185,11 @@ JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
+git clone https://github.com/getsentry/sentry.git
+cd sentry
+git checkout releases/9.1.x
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+#rm -rf %{pypi_name}.egg-info
 
 %build
 %{__python2} setup.py build
