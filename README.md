@@ -228,6 +228,12 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-BeautifulSoup-3.2.2-1.el7.x86_64/usr/lib/python2.7/site-packages/BeautifulSoup
 ```
 
+django-crispy-forms
+```
+pyp2rpm django-crispy-forms -t epel7 -b2 -p2 -v 1.4.0 > django-crispy-forms-1.4.0.spec
+sudo yum-builddep -y django-crispy-forms-1.4.0.spec 
+rpmbuild -bb django-crispy-forms-1.4.0.spec 
+```
 
 
 Need requirements:
