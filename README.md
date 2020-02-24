@@ -355,6 +355,15 @@ rpmbuild -bb croniter-0.3.31.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-croniter-0.3.31-1.el7.noarch.rpm
 ```
 
+wincertstore
+```
+pyp2rpm wincertstore -t epel7 -b2 -p2 -v 0.2 > wincertstore-0.2.spec
+sudo yum-builddep -y wincertstore-0.2.spec 
+Commented "%{python2_sitelib}/%{pypi_name}"
+rpmbuild -bb wincertstore-0.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-wincertstore-0.2-1.el7.noarch.rpm
+```
+
 Conflict:
 
 ipaddress
@@ -863,16 +872,6 @@ ImportError: No module named tests
 
 Error File not found:
 
-
-
-wincertstore
-```
-pyp2rpm wincertstore -t epel7 -b2 -p2 -v 0.2 > wincertstore-0.2.spec
-sudo yum-builddep -y wincertstore-0.2.spec 
-rpmbuild -bb wincertstore-0.2.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-wincertstore-0.2-1.el7.x86_64/usr/lib/python2.7/site-packages/wincertstore
-```
 
 
 
