@@ -186,6 +186,13 @@ rpmbuild -bb pytest-django-2.9.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
 ```
 
+sqlparse
+```
+pyp2rpm sqlparse -t epel7 -b2 -p2 -v 0.1.19 > sqlparse-0.1.19.spec
+sudo yum-builddep -y sqlparse-0.1.19.spec 
+rpmbuild -bb sqlparse-0.1.19.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.1.19-1.el7.noarch.rpm
+```
 
 
 Need requirements:
