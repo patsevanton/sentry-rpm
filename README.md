@@ -234,7 +234,11 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
-
+```
+pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 > celery-3.1.18.spec
+sudo yum-builddep -y celery-3.1.18.spec 
+rpmbuild -bb celery-3.1.18.spec 
+```
 
 
 
