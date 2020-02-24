@@ -194,12 +194,7 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
-memcached
-```
-pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
-sudo yum-builddep -y python-memcached-1.59.spec 
-rpmbuild -bb python-memcached-1.59.spec 
-```
+
 
 Need requirements:
 
@@ -342,4 +337,11 @@ ordereddict
 pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
 sudo yum-builddep -y ordereddict-1.1.spec 
 rpmbuild -bb ordereddict-1.1.spec 
+```
+
+memcached
+```
+pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
+sudo yum-builddep -y python-memcached-1.59.spec 
+rpmbuild -bb python-memcached-1.59.spec 
 ```
