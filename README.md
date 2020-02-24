@@ -234,13 +234,6 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
-django-sudo
-```
-pyp2rpm django-sudo -t epel7 -b2 -p2 -v 2.1.0 > django-sudo-2.1.0.spec
-sudo yum-builddep -y django-sudo-2.1.0.spec 
-rpmbuild -bb django-sudo-2.1.0.spec 
-Error: Пакет python2-flake8 не найден
-```
 
 django-picklefield
 ```
@@ -702,6 +695,14 @@ pyp2rpm Django -t epel7 -b2 -p2 -v 1.6.11 > Django-1.6.11.spec
 sudo yum-builddep -y Django-1.6.11.spec 
 rpmbuild -bb Django-1.6.11.spec 
 error: invalid command 'test'
+```
+
+django-sudo
+```
+pyp2rpm django-sudo -t epel7 -b2 -p2 -v 2.1.0 > django-sudo-2.1.0.spec
+sudo yum-builddep -y django-sudo-2.1.0.spec 
+rpmbuild -bb django-sudo-2.1.0.spec 
+Error: Пакет python2-flake8 не найден
 ```
 
 python-openid
