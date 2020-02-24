@@ -234,15 +234,15 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
+Need requirements:
+
 percy
 ```
 pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
 sudo yum-builddep -y percy-2.0.2.spec 
 rpmbuild -bb percy-2.0.2.spec 
+Error: Пакет python2-requests >= 2.14.0 не найден
 ```
-
-
-Need requirements:
 
 celery
 ```
