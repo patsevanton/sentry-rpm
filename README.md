@@ -319,6 +319,15 @@ rpmbuild -bb mistune-0.8.4.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-mistune-0.8.4-1.el7.noarch.rpm
 ```
 
+mmh3
+```
+pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
+sudo yum-builddep -y mmh3-2.3.1.spec 
+Change string to "%{python2_sitearch}/%{pypi_name}.so"
+rpmbuild -bb mmh3-2.3.1.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-mmh3-2.3.1-1.el7.x86_64.rpm
+```
+
 Conflict:
 
 pycparser
@@ -862,16 +871,4 @@ rpmbuild -bb python-memcached-1.59.spec
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-memcached-1.59-1.el7.x86_64/usr/lib/python2.7/site-packages/python-memcached
 ```
-
-mmh3
-```
-pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
-sudo yum-builddep -y mmh3-2.3.1.spec 
-rpmbuild -bb mmh3-2.3.1.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-mmh3-2.3.1-1.el7.x86_64/usr/lib64/python2.7/site-packages/mmh3
-```
-
-
-
 
