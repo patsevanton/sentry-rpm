@@ -35,7 +35,6 @@ Requires:       python2-PyJWT < 1.6.0
 Requires:       python2-PyJWT >= 1.5.0
 Requires:       python2-PyYAML < 3.12
 Requires:       python2-PyYAML >= 3.11
-Requires:       python2-batching-kafka-consumer = 0.0.3
 Requires:       python2-betamax < 0.9.0
 Requires:       python2-betamax >= 0.8.1
 Requires:       python2-blist
@@ -50,7 +49,6 @@ Requires:       python2-cffi < 2.0
 Requires:       python2-cffi >= 1.11.5
 Requires:       python2-click < 7.0
 Requires:       python2-click >= 5.0
-Requires:       python2-confluent-kafka = 0.11.5
 Requires:       python2-cqlsh
 Requires:       python2-croniter < 0.4.0
 Requires:       python2-croniter >= 0.3.26
@@ -80,12 +78,6 @@ Requires:       python2-functools32 < 3.3
 Requires:       python2-functools32 >= 3.2.3
 Requires:       python2-futures < 4.0.0
 Requires:       python2-futures >= 3.2.0
-Requires:       python2-google-cloud-bigtable < 0.33.0
-Requires:       python2-google-cloud-bigtable >= 0.32.1
-Requires:       python2-google-cloud-pubsub < 0.36.0
-Requires:       python2-google-cloud-pubsub >= 0.35.4
-Requires:       python2-google-cloud-storage < 1.14
-Requires:       python2-google-cloud-storage >= 1.13.2
 Requires:       python2-hiredis < 0.2.0
 Requires:       python2-hiredis >= 0.1.0
 Requires:       python2-honcho < 1.1.0
@@ -97,7 +89,6 @@ Requires:       python2-kombu = 3.0.35
 Requires:       python2-loremipsum < 1.1.0
 Requires:       python2-loremipsum >= 1.0.5
 Requires:       python2-lxml >= 3.4.1
-Requires:       python2-maxminddb = 1.4.1
 Requires:       python2-memcached < 2.0.0
 Requires:       python2-memcached >= 1.53
 Requires:       python2-mistune < 0.9
@@ -143,8 +134,6 @@ Requires:       python2-requests >= 2.20.0
 Requires:       python2-requests-oauthlib = 0.3.3
 Requires:       python2-responses < 0.9.0
 Requires:       python2-responses >= 0.8.1
-Requires:       python2-saml < 1.5
-Requires:       python2-saml >= 1.4.0
 Requires:       python2-selenium = 3.141.0
 Requires:       python2-semaphore < 0.5.0
 Requires:       python2-semaphore >= 0.4.21
