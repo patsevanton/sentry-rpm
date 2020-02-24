@@ -228,12 +228,7 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-BeautifulSoup-3.2.2-1.el7.x86_64/usr/lib/python2.7/site-packages/BeautifulSoup
 ```
 
-redis
-```
-pyp2rpm redis -t epel7 -b2 -p2 -v 2.10.5 > redis-2.10.5.spec
-sudo yum-builddep -y redis-2.10.5.spec 
-rpmbuild -bb redis-2.10.5.spec 
-```
+
 
 Need requirements:
 
@@ -545,3 +540,11 @@ rpmbuild -bb email-reply-parser-0.2.0.spec
 AttributeError: 'module' object has no attribute 'test_support'
 ```
 
+redis
+```
+pyp2rpm redis -t epel7 -b2 -p2 -v 2.10.5 > redis-2.10.5.spec
+sudo yum-builddep -y redis-2.10.5.spec 
+rpmbuild -bb redis-2.10.5.spec 
+>           raise ConnectionError(self._error_message(e))
+E           ConnectionError: Error 111 connecting to 127.0.0.1:6379. Connection refused.
+```
