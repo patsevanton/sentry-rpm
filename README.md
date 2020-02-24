@@ -164,6 +164,12 @@ rpmbuild -bb pytest-django-2.9.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
 ```
 
+jsonschema
+```
+pyp2rpm jsonschema -t epel7 -b2 -p2 -v 2.6.0 > jsonschema-2.6.0.spec
+sudo yum-builddep -y jsonschema-2.6.0.spec 
+rpmbuild -bb jsonschema-2.6.0.spec 
+```
 
 Need requirements:
 
