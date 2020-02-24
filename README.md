@@ -266,14 +266,16 @@ rpmbuild -bb colorama-0.4.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-colorama-0.4.3-1.el7.noarch.rpm
 ```
 
+Need requirements:
+
 py
 ```
 pyp2rpm py -t epel7 -b2 -p2 -v 1.8.1 > py-1.8.1.spec
 sudo yum-builddep -y py-1.8.1.spec 
 rpmbuild -bb py-1.8.1.spec 
+Error: Пакет python2-setuptools-scm не найден
 ```
 
-Need requirements:
 
 more-itertools
 ```
