@@ -275,6 +275,14 @@ rror: Пакет python2-certifi = 1.0.1 не найден
 Error: Пакет python2-wincertstore = 0.2 не найден
 ```
 
+more-itertools
+```
+pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 > more-itertools-5.0.0.spec
+sudo yum-builddep -y more-itertools-5.0.0.spec 
+rpmbuild -bb more-itertools-5.0.0.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-more-itertools-5.0.0-1.el7.noarch.rpm
+```
+
 Need requirements:
 
 setuptools-scm
@@ -294,14 +302,7 @@ Error: Пакет python2-setuptools-scm не найден
 ```
 
 
-more-itertools
-```
-pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 > more-itertools-5.0.0.spec
-sudo yum-builddep -y more-itertools-5.0.0.spec 
-rpmbuild -bb more-itertools-5.0.0.spec 
-    import sphinx_rtd_theme
-ImportError: No module named sphinx_rtd_theme
-```
+
 
 pytest
 ```
