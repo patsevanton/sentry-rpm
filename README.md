@@ -148,6 +148,10 @@ rpmbuild -bb hiredis-0.1.6.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-hiredis-0.1.6-1.el7.x86_64.rpm
 ```
 
+
+
+Need requirements:
+
 honcho
 ```
 pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
@@ -155,8 +159,6 @@ sudo yum-builddep -y honcho-1.0.1.spec
 rpmbuild -bb honcho-1.0.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
 ```
-
-Need requirements:
 
 botocore
 ```
