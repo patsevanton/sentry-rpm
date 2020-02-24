@@ -202,7 +202,12 @@ rpmbuild -bb querystring-parser-1.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el7.noarch.rpm
 ```
 
-
+pytest-html
+```
+pyp2rpm pytest-html -t epel7 -b2 -p2 -v 1.9.0 > pytest-html-1.9.0.spec
+sudo yum-builddep -y pytest-html-1.9.0.spec 
+rpmbuild -bb pytest-html-1.9.0.spec 
+```
 
 Need requirements:
 
