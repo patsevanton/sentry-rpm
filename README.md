@@ -226,6 +226,12 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
+symbolic
+```
+pyp2rpm symbolic -t epel7 -b2 -p2 -v 6.1.4 > symbolic-6.1.4.spec
+sudo yum-builddep -y symbolic-6.1.4.spec 
+rpmbuild -bb symbolic-6.1.4.spec 
+```
 
 Need requirements:
 
