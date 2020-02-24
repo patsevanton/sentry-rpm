@@ -148,6 +148,12 @@ rpmbuild -bb hiredis-0.1.6.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-hiredis-0.1.6-1.el7.x86_64.rpm
 ```
 
+parsimonious
+```
+pyp2rpm parsimonious -t epel7 -b2 -p2 -v 0.8.0 > parsimonious-0.8.0.spec
+sudo yum-builddep -y parsimonious-0.8.0.spec 
+rpmbuild -bb parsimonious-0.8.0.spec 
+```
 
 
 Need requirements:
