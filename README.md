@@ -195,6 +195,13 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.r
 ```
 
 
+cqlsh
+```
+pyp2rpm cqlsh -t epel7 -b2 -p2 -v 5.0.4 > cqlsh-5.0.4.spec
+sudo yum-builddep -y cqlsh-5.0.4.spec 
+rpmbuild -bb cqlsh-5.0.4.spec 
+error: invalid command 'test'
+```
 
 Need requirements:
 
