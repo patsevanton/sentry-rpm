@@ -282,6 +282,13 @@ rpmbuild -bb Pillow-4.2.1.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 ```
 
+pycparser
+```
+pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
+sudo yum-builddep -y pycparser-2.19.spec 
+rpmbuild -bb pycparser-2.19.spec 
+```
+
 Need requirements:
 
 milksnake
