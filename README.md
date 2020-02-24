@@ -194,8 +194,12 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
-
-
+cssutils
+```
+pyp2rpm cssutils -t epel7 -b2 -p2 -v 0.9.10 > cssutils-0.9.10.spec
+sudo yum-builddep -y cssutils-0.9.10.spec 
+rpmbuild -bb cssutils-0.9.10.spec 
+```
 
 Need requirements:
 
