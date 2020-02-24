@@ -355,6 +355,18 @@ rpmbuild -bb croniter-0.3.31.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-croniter-0.3.31-1.el7.noarch.rpm
 ```
 
+Conflict:
+
+ipaddress
+```
+pyp2rpm ipaddress -t epel7 -b2 -p2 -v 1.0.16 > ipaddress-1.0.16.spec
+sudo yum-builddep -y ipaddress-1.0.16.spec 
+Commented "%{python2_sitelib}/%{pypi_name}"
+rpmbuild -bb ipaddress-1.0.16.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-ipaddress-1.0.16-1.el7.noarch.rpm
+python-ipaddress-1.0.16-2.el7.noarch
+```
+
 six
 ```
 pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
@@ -364,8 +376,6 @@ rpmbuild -bb six-1.10.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-six-1.10.0-1.el7.noarch.rpm
 Conflict python-six-1.9.0-2.el7.noarch
 ```
-
-Conflict:
 
 pycparser
 ```
@@ -864,13 +874,5 @@ RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-wincertstore-0.2-1.el7.x86_64/usr/lib/python2.7/site-packages/wincertstore
 ```
 
-ipaddress
-```
-pyp2rpm ipaddress -t epel7 -b2 -p2 -v 1.0.16 > ipaddress-1.0.16.spec
-sudo yum-builddep -y ipaddress-1.0.16.spec 
-rpmbuild -bb ipaddress-1.0.16.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-ipaddress-1.0.16-1.el7.x86_64/usr/lib/python2.7/site-packages/ipaddress
-```
 
 
