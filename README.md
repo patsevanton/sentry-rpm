@@ -11,7 +11,7 @@ sudo yum install -y yarn
 pip3 install --user pyp2rpm
 ```
 
-############ Install sentry by pip on Centos 7. неактуально
+############ Install sentry by pip on Centos 7. Неактуально
 ```
 #pip install --upgrade pip
 #pip install requests==2.20.1 -U --ignore-installed
@@ -21,6 +21,7 @@ pip3 install --user pyp2rpm
 ######### 
 
 pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
+
 Удаляем из sentry-9.1.2.spec
 ```
 < BuildConflicts: python2-configparser = 3.5.2
