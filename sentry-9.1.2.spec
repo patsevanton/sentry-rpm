@@ -194,6 +194,7 @@ cd sentry
 %{__python2} setup.py build
 
 %install
+cd sentry
 %{__python2} setup.py install --skip-build --root %{buildroot}
 
 %files -n python2-%{pypi_name}
