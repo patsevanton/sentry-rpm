@@ -195,6 +195,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.r
 ```
 
 
+
 Need requirements:
 
 django-jsonfield
@@ -378,10 +379,17 @@ rpmbuild -bb cqlsh-5.0.4.spec
 error: invalid command 'test'
 ```
 
-
 mmh3
 ```
 pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
 sudo yum-builddep -y mmh3-2.3.1.spec 
 rpmbuild -bb mmh3-2.3.1.spec 
+```
+
+uWSGI
+```
+pyp2rpm uWSGI -t epel7 -b2 -p2 -v 2.0.18 > uWSGI-2.0.18.spec
+sudo yum-builddep -y uWSGI-2.0.18.spec 
+rpmbuild -bb uWSGI-2.0.18.spec 
+ERROR   0001: file '/usr/bin/uwsgi' contains a standard rpath '/usr/lib64' in [/usr/lib64]
 ```
