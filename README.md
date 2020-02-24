@@ -234,6 +234,12 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
+functools32
+```
+pyp2rpm functools32 -t epel7 -b2 -p2 -v 3.2.3-2 > functools32-3.2.3-2.spec
+sudo yum-builddep -y functools32-3.2.3-2.spec 
+rpmbuild -bb functools32-3.2.3-2.spec 
+```
 
 Need requirements:
 
