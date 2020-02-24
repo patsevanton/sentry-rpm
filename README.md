@@ -215,7 +215,8 @@ simplejson
 ```
 pyp2rpm simplejson -t epel7 -b2 -p2 -v 3.8.2 > simplejson-3.8.2.spec
 sudo yum-builddep -y simplejson-3.8.2.spec 
-rpmbuild -bb simplejson-3.8.2.spec 
+rpmbuild -bb simplejson-3.8.2.spec
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-simplejson-3.8.2-1.el7.x86_64.rpm
 ```
 
 
