@@ -186,7 +186,6 @@ JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 git clone https://github.com/getsentry/sentry.git
 cd sentry
 git checkout releases/9.1.x
-ls *.egg-info
 # Remove bundled egg-info
 #rm -rf %{pypi_name}.egg-info
 
