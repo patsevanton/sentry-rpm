@@ -113,4 +113,5 @@ boto3
 pyp2rpm boto3 -t epel7 -b2 -p2 -v 1.4.5 > boto3-1.4.5.spec
 sudo yum-builddep -y boto3-1.4.5.spec 
 rpmbuild -bb boto3-1.4.5.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
 ```
