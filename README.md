@@ -140,6 +140,13 @@ rpmbuild -bb futures-3.3.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
 ```
 
+hiredis
+```
+pyp2rpm hiredis -t epel7 -b2 -p2 -v 0.1.6 > hiredis-0.1.6.spec
+sudo yum-builddep -y hiredis-0.1.6.spec 
+rpmbuild -bb hiredis-0.1.6.spec
+```
+
 Need requirements:
 
 botocore
