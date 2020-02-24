@@ -258,6 +258,14 @@ rpmbuild -bb pluggy-0.6.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-pluggy-0.6.0-1.el7.noarch.rpm
 ```
 
+colorama
+```
+pyp2rpm colorama -t epel7 -b2 -p2 -v 0.4.3 > colorama-0.4.3.spec
+sudo yum-builddep -y colorama-0.4.3.spec 
+rpmbuild -bb colorama-0.4.3.spec 
+sudo yum install -y rpmbuild/RPMS/
+```
+
 Need requirements:
 
 pytest
