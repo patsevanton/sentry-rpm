@@ -194,6 +194,13 @@ rpmbuild -bb sqlparse-0.2.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sqlparse-0.2.4-1.el7.noarch.rpm
 ```
 
+loremipsum
+```
+pyp2rpm loremipsum -t epel7 -b2 -p2 -v 1.0.5 > loremipsum-1.0.5.spec
+sudo yum-builddep -y loremipsum-1.0.5.spec 
+rpmbuild -bb loremipsum-1.0.5.spec 
+
+```
 
 
 Need requirements:
