@@ -282,15 +282,6 @@ rpmbuild -bb Pillow-4.2.1.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 ```
 
-pycparser
-```
-pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
-sudo yum-builddep -y pycparser-2.19.spec 
-rpmbuild -bb pycparser-2.19.spec 
-RPM build errors:
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-pycparser-2.19-1.el7.x86_64/usr/lib64/python2.7/site-packages/pycparser
-    File not found: /home/centos/rpmbuild/BUILDROOT/python-pycparser-2.19-1.el7.x86_64/usr/lib64/python2.7/site-packages/pycparser-2.19-py2.7.egg-info
-```
 
 Need requirements:
 
@@ -859,4 +850,14 @@ sudo yum-builddep -y wincertstore-0.2.spec
 rpmbuild -bb wincertstore-0.2.spec 
 RPM build errors:
     File not found: /home/centos/rpmbuild/BUILDROOT/python-wincertstore-0.2-1.el7.x86_64/usr/lib/python2.7/site-packages/wincertstore
+```
+
+pycparser
+```
+pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
+sudo yum-builddep -y pycparser-2.19.spec 
+rpmbuild -bb pycparser-2.19.spec 
+RPM build errors:
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-pycparser-2.19-1.el7.x86_64/usr/lib64/python2.7/site-packages/pycparser
+    File not found: /home/centos/rpmbuild/BUILDROOT/python-pycparser-2.19-1.el7.x86_64/usr/lib64/python2.7/site-packages/pycparser-2.19-py2.7.egg-info
 ```
