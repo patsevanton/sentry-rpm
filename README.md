@@ -242,15 +242,15 @@ rpmbuild -bb Django-1.6.11.spec
 error: invalid command 'test'
 ```
 
+Need requirements:
+
 structlog
 ```
 pyp2rpm structlog -t epel7 -b2 -p2 -v 16.1.0 > structlog-16.1.0.spec
 sudo yum-builddep -y structlog-16.1.0.spec 
 rpmbuild -bb structlog-16.1.0.spec 
+Error: Пакет python2-colorama не найден
 ```
-
-Need requirements:
-
 
 symbolic
 ```
