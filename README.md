@@ -189,14 +189,6 @@ rpmbuild -bb pytest-django-2.9.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
 ```
 
-querystring-parser
-```
-pyp2rpm querystring-parser -t epel7 -b2 -p2 -v 1.2.4 > querystring-parser-1.2.4.spec
-sudo yum-builddep -y querystring-parser-1.2.4.spec 
-rpmbuild -bb querystring-parser-1.2.4.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el7.noarch.rpm
-```
-
 pytest-html
 ```
 pyp2rpm pytest-html -t epel7 -b2 -p2 -v 1.9.0 > pytest-html-1.9.0.spec
@@ -384,7 +376,7 @@ sudo yum-builddep -y milksnake-0.1.5.spec
 rpmbuild -bb milksnake-0.1.5.spec 
 ```
 
-### Зависимости от зависимостей Sentry
+### Зависимости от зависимостей Sentry, которые собираются.
 
 utils
 ```
@@ -392,6 +384,14 @@ pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
 sudo yum-builddep -y python-utils-2.3.0.spec 
 rpmbuild -bb python-utils-2.3.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
+```
+
+querystring-parser
+```
+pyp2rpm querystring-parser -t epel7 -b2 -p2 -v 1.2.4 > querystring-parser-1.2.4.spec
+sudo yum-builddep -y querystring-parser-1.2.4.spec 
+rpmbuild -bb querystring-parser-1.2.4.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el7.noarch.rpm
 ```
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
