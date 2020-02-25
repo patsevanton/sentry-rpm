@@ -11,12 +11,14 @@ sudo yum install -y yarn
 pip3 install --user pyp2rpm
 ```
 
-### Неактуально. Установка sentry через pip на Centos 7. 
+### Установка sentry через pip на Centos 7 для проверки списка зависимостей. Выполнять на другой машине.
 ```
-#pip install --upgrade pip
-#pip install requests==2.20.1 -U --ignore-installed
-#pip install PyYAML==3.11 -U --ignore-installed
-#pip install sentry==9.1.2
+sudo yum install -y epel-release mc
+sudo yum install -y python2-pip
+pip install --upgrade pip
+pip install requests==2.20.1 -U --ignore-installed
+pip install PyYAML==3.11 -U --ignore-installed
+pip install sentry==9.1.2
 ```
 
 ### Формирование sentry-9.1.2.spec
