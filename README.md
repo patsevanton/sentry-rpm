@@ -403,6 +403,7 @@ ipaddress
 pyp2rpm ipaddress -t epel7 -b2 -p2 -v 1.0.16 > ipaddress-1.0.16.spec
 sudo yum-builddep -y ipaddress-1.0.16.spec
 sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i ipaddress-1.0.16.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i ipaddress-1.0.16.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i ipaddress-1.0.16.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i ipaddress-1.0.16.spec
 rpmbuild -bb ipaddress-1.0.16.spec 
