@@ -305,7 +305,10 @@ croniter
 ```
 pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
 sudo yum-builddep -y croniter-0.3.31.spec 
-Commented "%{python2_sitelib}/%{pypi_name}.py*"
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i croniter-0.3.31.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i croniter-0.3.31.spec
 rpmbuild -bb croniter-0.3.31.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-croniter-0.3.31-1.el7.noarch.rpm
 ```
@@ -316,6 +319,8 @@ pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
 sudo yum-builddep -y cffi-1.14.0.spec 
 sudo yum install -y libffi-devel
 Add string "%{python2_sitearch}/_cffi_backend.so"
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
 rpmbuild -bb cffi-1.14.0.spec 
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-cffi-1.14.0-1.el7.x86_64.rpm
 ```
