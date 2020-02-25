@@ -99,7 +99,8 @@ sudo yum install -y python34 python3-pip
 pip3 install --user pyp2rpm
 ```
 
-### Прямые зависимости от Sentry
+### Прямые зависимости от Sentry (то что указано в https://github.com/getsentry/sentry/blob/releases/9.1.x/requirements-base.txt)
+
 msgpack
 ```
 pyp2rpm msgpack -t epel7 -b2 -p2 -v 0.6.2 > msgpack-0.6.2.spec
