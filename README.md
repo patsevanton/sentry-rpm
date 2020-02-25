@@ -407,8 +407,7 @@ sed -e '/%description -n python2-%{pypi_name}/,+1d' -i ipaddress-1.0.16.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i ipaddress-1.0.16.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i ipaddress-1.0.16.spec
 rpmbuild -bb ipaddress-1.0.16.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-ipaddress-1.0.16-1.el7.noarch.rpm
-python-ipaddress-1.0.16-2.el7.noarch
+В системе есть python-ipaddress-1.0.16-2.el7
 ```
 
 six
@@ -420,8 +419,7 @@ sed -e '/%description -n python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i six-1.10.0.spec
 rpmbuild -bb six-1.10.0.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-six-1.10.0-1.el7.noarch.rpm
-Conflict python-six-1.9.0-2.el7.noarch
+sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
 ```
 
 pycparser
