@@ -99,7 +99,7 @@ sudo yum install -y python34 python3-pip
 pip3 install --user pyp2rpm
 ```
 
-### Прямые зависимости от Sentry (то что указано в https://github.com/getsentry/sentry/blob/releases/9.1.x/requirements-base.txt)
+### Прямые зависимости от Sentry (то что указано в https://github.com/getsentry/sentry/blob/releases/9.1.x/requirements-base.txt), которые собираются и не выдают ошибок.
 
 msgpack
 ```
