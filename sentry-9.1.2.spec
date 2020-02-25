@@ -44,12 +44,12 @@ Requires:       python-cffi < 2.0
 Requires:       python-cffi >= 1.11.5
 Requires:       python2-click < 7.0
 Requires:       python2-click >= 5.0
-Requires:       python2-croniter < 0.4.0
-Requires:       python2-croniter >= 0.3.26
+Requires:       python-croniter < 0.4.0
+Requires:       python-croniter >= 0.3.26
 Requires:       python2-cssutils < 0.10.0
 Requires:       python2-cssutils >= 0.9.9
-Requires:       python2-dateutil < 3.0.0
-Requires:       python2-dateutil >= 2.0.0
+Requires:       python2-dateutil < 3.0.0 - доступны оба python2-dateutil и python-dateutil
+Requires:       python2-dateutil >= 2.0.0 - доступны оба python2-dateutil и python-dateutil
 Requires:       python2-django-crispy-forms < 1.5.0
 Requires:       python2-django-crispy-forms >= 1.4.0
 Requires:       python2-django-jsonfield < 0.9.14
@@ -63,8 +63,8 @@ Requires:       python2-djangorestframework < 2.5.0
 Requires:       python2-djangorestframework >= 2.4.8
 Requires:       python2-email-reply-parser < 0.3.0
 Requires:       python2-email-reply-parser >= 0.2.0
-Requires:       python2-enum34 < 1.2.0
-Requires:       python2-enum34 >= 1.1.6
+Requires:       python2-enum34 < 1.2.0 - доступны оба python2-enum34 и python-enum34
+Requires:       python2-enum34 >= 1.1.6 - доступны оба python2-enum34 и python-enum34
 Requires:       python2-functools32 < 3.3
 Requires:       python2-functools32 >= 3.2.3
 Requires:       python2-futures < 4.0.0
@@ -73,25 +73,25 @@ Requires:       python2-hiredis < 0.2.0
 Requires:       python2-hiredis >= 0.1.0
 Requires:       python2-honcho < 1.1.0
 Requires:       python2-honcho >= 1.0.0
-Requires:       python2-ipaddress < 1.1.0
-Requires:       python2-ipaddress >= 1.0.16
+Requires:       python-ipaddress < 1.1.0
+Requires:       python-ipaddress >= 1.0.16
 Requires:       python2-jsonschema = 2.6.0
 Requires:       python2-kombu = 3.0.35
 Requires:       python2-loremipsum < 1.1.0
 Requires:       python2-loremipsum >= 1.0.5
-Requires:       python2-lxml >= 3.4.1
-Requires:       python2-memcached < 2.0.0
-Requires:       python2-memcached >= 1.53
-Requires:       python2-mistune < 0.9
-Requires:       python2-mistune > 0.7
+Requires:       python-lxml >= 3.4.1
+Requires:       python-memcached < 2.0.0
+Requires:       python-memcached >= 1.53
+Requires:       python-mistune < 0.9
+Requires:       python-mistune > 0.7
 Requires:       python2-mmh3 < 2.4
 Requires:       python2-mmh3 >= 2.3.1
 Requires:       python2-mock = 2.0.0
 Requires:       python2-msgpack < 0.5.0
 Requires:       python2-msgpack < 0.7.0
 Requires:       python2-msgpack >= 0.6.1
-Requires:       python2-oauth2 >= 1.5.167
-Requires:       python2-openid >= 2.2
+Requires:       python-oauth2 >= 1.5.167
+Requires:       python-openid >= 2.2
 Requires:       python2-parsimonious = 0.8.0
 Requires:       python2-percy >= 1.1.2
 Requires:       python2-petname < 2.1
