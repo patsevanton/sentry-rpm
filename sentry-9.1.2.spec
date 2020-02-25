@@ -106,8 +106,8 @@ Requires:       python2-pytest-django < 2.10.0
 Requires:       python2-pytest-django >= 2.9.1
 Requires:       python2-pytest-html < 1.10.0
 Requires:       python2-pytest-html >= 1.9.0
-Requires:       python2-qrcode < 6.0.0
-Requires:       python2-qrcode >= 5.2.2
+Requires:       python-qrcode < 6.0.0
+Requires:       python-qrcode >= 5.2.2
 Requires:       python2-querystring-parser < 2.0.0
 Requires:       python2-querystring-parser >= 1.2.3
 Requires:       python2-rb < 2.0.0
@@ -115,20 +115,20 @@ Requires:       python2-rb >= 1.7.0
 Requires:       python2-redis < 2.10.6
 Requires:       python2-redis >= 2.10.3
 Requires:       python2-redis-py-cluster = 1.3.4
-Requires:       python2-requests < 2.21.0
-Requires:       python2-requests >= 2.20.0
+Requires:       python2-requests < 2.21.0 - доступны оба python2-requests и python-requests
+Requires:       python2-requests >= 2.20.0 - доступны оба python2-requests и python-requests
 Requires:       python2-requests-oauthlib = 0.3.3
 Requires:       python2-selenium = 3.141.0
 Requires:       python2-semaphore < 0.5.0
 Requires:       python2-semaphore >= 0.4.21
 Requires:       python2-sentry-sdk >= 0.7.0
-Requires:       python2-setproctitle < 1.2.0
-Requires:       python2-setproctitle >= 1.1.7
-Requires:       python2-setuptools
+Requires:       python-setproctitle < 1.2.0
+Requires:       python-setproctitle >= 1.1.7
+Requires:       python-setuptools
 Requires:       python2-simplejson < 3.9.0
 Requires:       python2-simplejson >= 3.2.0
-Requires:       python2-six < 1.11.0
-Requires:       python2-six >= 1.10.0
+Requires:       python2-six < 1.11.0 ??
+Requires:       python2-six >= 1.10.0 ??
 Requires:       python2-statsd < 3.2.0
 Requires:       python2-statsd >= 3.1.0
 Requires:       python2-strict-rfc3339 >= 0.7
@@ -142,7 +142,7 @@ Requires:       python2-u2flib-server >= 4.0.1
 Requires:       python2-ua-parser < 0.8.0
 Requires:       python2-ua-parser >= 0.6.1
 Requires:       python2-unidiff >= 0.5.4
-Requires:       python2-urllib3 = 1.24.2
+Requires:       python-urllib3 = 1.24.2
 Requires:       python2-uwsgi < 2.1.0
 Requires:       python2-uwsgi > 2.0.0
 %description -n python2-%{pypi_name}
