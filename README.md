@@ -308,15 +308,6 @@ rpmbuild -bb croniter-0.3.31.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-croniter-0.3.31-1.el7.noarch.rpm
 ```
 
-wincertstore
-```
-pyp2rpm wincertstore -t epel7 -b2 -p2 -v 0.2 > wincertstore-0.2.spec
-sudo yum-builddep -y wincertstore-0.2.spec 
-Commented "%{python2_sitelib}/%{pypi_name}"
-rpmbuild -bb wincertstore-0.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-wincertstore-0.2-1.el7.noarch.rpm
-```
-
 cffi
 ```
 pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
@@ -392,6 +383,15 @@ sudo yum-builddep -y ordereddict-1.1.spec
 Commented "%{python2_sitelib}/%{pypi_name}"
 rpmbuild -bb ordereddict-1.1.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ordereddict-1.1-1.el7.noarch.rpm
+```
+
+wincertstore
+```
+pyp2rpm wincertstore -t epel7 -b2 -p2 -v 0.2 > wincertstore-0.2.spec
+sudo yum-builddep -y wincertstore-0.2.spec 
+Commented "%{python2_sitelib}/%{pypi_name}"
+rpmbuild -bb wincertstore-0.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-wincertstore-0.2-1.el7.noarch.rpm
 ```
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
