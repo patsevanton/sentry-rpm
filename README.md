@@ -109,13 +109,7 @@ rpmbuild -bb msgpack-0.6.2.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-msgpack-0.6.2-1.el7.x86_64.rpm
 ```
 
-utils
-```
-pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
-sudo yum-builddep -y python-utils-2.3.0.spec 
-rpmbuild -bb python-utils-2.3.0.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
-```
+
 
 progressbar2
 ```
@@ -394,7 +388,15 @@ rpmbuild -bb milksnake-0.1.5.spec
 
 ### Зависимости от зависимостей Sentry
 
-Conflict:
+utils
+```
+pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
+sudo yum-builddep -y python-utils-2.3.0.spec 
+rpmbuild -bb python-utils-2.3.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
+```
+
+### Пакеты, которые конфликтуют с уже установленными пакетами
 
 ipaddress
 ```
@@ -442,9 +444,7 @@ rpmbuild -bb chardet-3.0.4.spec
 Conflict python-chardet-2.2.1-3.el7.noarch
 ```
 
-Need requirements:
-
-
+### Пакеты для которых нет зависимостей в системных репозиториях
 
 setuptools
 ```
@@ -470,7 +470,6 @@ sudo yum-builddep -y py-1.8.1.spec
 rpmbuild -bb py-1.8.1.spec 
 Error: Пакет python2-setuptools-scm не найден
 ```
-
 
 pytest
 ```
@@ -563,8 +562,6 @@ Error: Пакет python2-PySocks >= 1.5.6 не найден
 Error: Пакет python2-ipaddress не найден
 Error: Пакет python2-pyOpenSSL >= 0.14 не найден
 ```
-
-
 
 django-crispy-forms
 ```
@@ -765,7 +762,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
                 python2-botocore = 1.6.0-1.el7
 ```
 
-Failed RPM build errors:
+### Пакеты, которые при сборке выдают ошибку
 
 
 cssutils
@@ -776,7 +773,6 @@ rpmbuild -bb cssutils-0.9.10.spec
 FAILED (failures=3)
 ошибка: Неверный код возврата из /var/tmp/rpm-tmp.wDbJ8G (%check)
 ```
-
 
 uWSGI
 ```
@@ -794,8 +790,6 @@ rpmbuild -bb qrcode-5.3.spec
 error: Installed (but unpackaged) file(s) found:
    /usr/share/man/man1/qr.1.gz
 ```
-
-
 
 psycopg2-binary
 ```
