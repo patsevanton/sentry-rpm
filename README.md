@@ -427,31 +427,36 @@ pycparser
 pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
 sudo yum-builddep -y pycparser-2.19.spec 
 Add %global python2_sitearch /usr/lib/python2.7/site-packages
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pycparser-2.19.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pycparser-2.19.spec
 rpmbuild -bb pycparser-2.19.spec 
-sudo yum install -y rpmbuild/RPMS/x86_64/python2-pycparser-2.19-1.el7.x86_64.rpm
-Conflict python-pycparser-2.14-1.el7.noarch
+??
 ```
 
 Pillow
 ```
-pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > Pillow-4.2.1.spec
-sudo yum-builddep -y Pillow-4.2.1.spec 
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i Pillow-4.2.1.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i Pillow-4.2.1.spec
-rpmbuild -bb Pillow-4.2.1.spec 
-Conflict python-pillow-2.0.0-19.gitd1c6db8.el7.x86_64
+pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > pillow-4.2.1.spec
+sudo yum-builddep -y pillow-4.2.1.spec 
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pillow-4.2.1.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pillow-4.2.1.spec
+rpmbuild -bb pillow-4.2.1.spec 
+???
 ```
 
 chardet
 ```
 pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.4 > chardet-3.0.4.spec
 sudo yum-builddep -y chardet-3.0.4.spec 
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i chardet-3.0.4.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.4.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.4.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i chardet-3.0.4.spec
 rpmbuild -bb chardet-3.0.4.spec 
-Conflict python-chardet-2.2.1-3.el7.noarch
+??
 ```
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
