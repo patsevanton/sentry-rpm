@@ -1,4 +1,4 @@
-Подготовка
+## Подготовка
 ```
 sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git
@@ -20,7 +20,10 @@ pip3 install --user pyp2rpm
 ```
 ######### 
 
+### Формирование sentry-9.1.2.spec
+```
 pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
+```
 
 Удаляем из sentry-9.1.2.spec
 ```
@@ -49,8 +52,6 @@ BuildRequires:  nodejs
 BuildRequires:  yarn
 ```
 
-sudo yum-builddep -y sentry-9.1.2.spec
-
 Секция %prep %build %install
 ```
 %prep
@@ -70,19 +71,28 @@ cd sentry
 ```
 Из полученного файла убираем опциональные зависимости, зависимости для разработки (dev) и тестирования (test). Их можно найти в файлах requirements-optional.txt, requirements-dev.txt, requirements-test.txt
 
+### Сборка sentry-rpm без выше указанных процедур
 Это все исправил в репозитории sentry-rpm
 ```
 git clone https://github.com/patsevanton/sentry-rpm.git
 cd sentry-rpm
 ./build.sh
 ```
-На целевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
+
+### Установка зависимостей для сборки sentry-9.1.2.spec (то что указано в BuildRequires)
+```
+sudo yum-builddep -y sentry-9.1.2.spec
+```
+
+### Попытка установки python2-sentry-9.1.2-1.el7.noarch.rpm
+Нацелевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
 
 ```
 sudo yum install RPMS/noarch/python2-sentry-9.1.2-1.el7.noarch.rpm
 ```
 
-Пакуем зависимости в rpm
+## Пакуем зависимости в rpm
+### Подготовка 
 ```
 sudo yum install -y epel-release rpmdevtools mc
 sudo yum install -y python-devel gcc gcc-c++ zlib-devel libjpeg-devel 
@@ -90,6 +100,7 @@ sudo yum install -y python34 python3-pip
 pip3 install --user pyp2rpm
 ```
 
+### Прямые зависимости от Sentry
 msgpack
 ```
 pyp2rpm msgpack -t epel7 -b2 -p2 -v 0.6.2 > msgpack-0.6.2.spec
