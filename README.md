@@ -11,14 +11,13 @@ sudo yum install -y yarn
 pip3 install --user pyp2rpm
 ```
 
-############ Install sentry by pip on Centos 7. Неактуально
+### Неактуально. Установка sentry через pip на Centos 7. 
 ```
 #pip install --upgrade pip
 #pip install requests==2.20.1 -U --ignore-installed
 #pip install PyYAML==3.11 -U --ignore-installed
 #pip install sentry==9.1.2
 ```
-######### 
 
 ### Формирование sentry-9.1.2.spec
 ```
