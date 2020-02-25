@@ -26,13 +26,13 @@ JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 %package -n     python2-%{pypi_name}
 Summary:        A realtime logging and aggregation server
 
-Requires:       python2-BeautifulSoup >= 3.2.1
+Requires:       python-BeautifulSoup >= 3.2.1
 Requires:       python2-Django < 1.7
 Requires:       python2-Django >= 1.6.11
-Requires:       python2-Pillow <= 4.2.1
-Requires:       python2-Pillow >= 3.2.0
-Requires:       python2-PyJWT < 1.6.0
-Requires:       python2-PyJWT >= 1.5.0
+Requires:       python-pillow <= 4.2.1
+Requires:       python-pillow >= 3.2.0
+Requires:       python2-PyJWT < 1.6.0 - python-jwt
+Requires:       python2-PyJWT >= 1.5.0 - python-jwt
 Requires:       python2-PyYAML < 3.12
 Requires:       python2-PyYAML >= 3.11
 Requires:       python2-boto3 < 1.4.6
