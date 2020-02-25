@@ -391,6 +391,8 @@ sudo yum-builddep -y milksnake-0.1.5.spec
 rpmbuild -bb milksnake-0.1.5.spec 
 ```
 
+### Зависимости от зависимостей Sentry
+
 Conflict:
 
 ipaddress
