@@ -413,6 +413,7 @@ six
 pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
 sudo yum-builddep -y six-1.10.0.spec 
 Commented "%{python2_sitelib}/%{pypi_name}"
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
 rpmbuild -bb six-1.10.0.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-six-1.10.0-1.el7.noarch.rpm
 Conflict python-six-1.9.0-2.el7.noarch
