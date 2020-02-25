@@ -415,6 +415,8 @@ six
 ```
 pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
 sudo yum-builddep -y six-1.10.0.spec 
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i six-1.10.0.spec
 rpmbuild -bb six-1.10.0.spec 
