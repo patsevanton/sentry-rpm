@@ -245,13 +245,7 @@ rpmbuild -bb statsd-3.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
 ```
 
-pluggy
-```
-pyp2rpm pluggy -t epel7 -b2 -p2 -v 0.6.0 > pluggy-0.6.0.spec
-sudo yum-builddep -y pluggy-0.6.0.spec 
-rpmbuild -bb pluggy-0.6.0.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-pluggy-0.6.0-1.el7.noarch.rpm
-```
+
 
 colorama
 ```
@@ -392,6 +386,14 @@ pyp2rpm querystring-parser -t epel7 -b2 -p2 -v 1.2.4 > querystring-parser-1.2.4.
 sudo yum-builddep -y querystring-parser-1.2.4.spec 
 rpmbuild -bb querystring-parser-1.2.4.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el7.noarch.rpm
+```
+
+pluggy
+```
+pyp2rpm pluggy -t epel7 -b2 -p2 -v 0.6.0 > pluggy-0.6.0.spec
+sudo yum-builddep -y pluggy-0.6.0.spec 
+rpmbuild -bb pluggy-0.6.0.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-pluggy-0.6.0-1.el7.noarch.rpm
 ```
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
