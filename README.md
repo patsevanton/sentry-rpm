@@ -15,8 +15,8 @@ pip3 install --user pyp2rpm
 ```
 sudo yum install -y epel-release mc
 sudo yum install -y python2-pip
-sudo pip install --upgrade pip
 sudo pip install requests==2.20.1 -U --ignore-installed
+sudo pip install --upgrade pip
 sudo pip install PyYAML==3.11 -U --ignore-installed
 sudo pip install sentry==9.1.2
 ```
