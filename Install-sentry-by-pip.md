@@ -12,7 +12,8 @@ Successfully installed pip-20.0.2
 
 sudo pip install --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org PyYAML==3.11 -U --ignore-installed
 Successfully installed PyYAML-3.11
-
+```
+Установка sentry==9.1.2
 ```
 sudo pip install --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org sentry==9.1.2
 
