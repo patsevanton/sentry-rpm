@@ -1,8 +1,9 @@
-# Установка sentry через pip на Centos 7 для проверки списка зависимостей.
+# Установка sentry через pip на Centos 7 для проверки списка зависимостей в vagrant
 
 ```
 sudo yum install -y epel-release mc gcc gcc-c++ python-devel
 sudo yum install -y python2-pip ca-certificates
+reboot
 sudo pip install requests==2.20.1 -U --ignore-installed
 Successfully installed certifi-2019.11.28 chardet-2.2.1 idna-2.7 requests-2.20.1 urllib3-1.24.3
 
