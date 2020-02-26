@@ -14,4 +14,5 @@ sudo pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org P
 Successfully installed PyYAML-3.11
 
 sudo pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org sentry==9.1.2
+sudo pip install --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org sentry==9.1.2
 ```
