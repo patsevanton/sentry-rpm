@@ -400,6 +400,7 @@ pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libjpeg-devel' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  zlib-devel' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i pillow-4.2.1.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python2-sphinx_rtd_theme' -i pillow-4.2.1.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pillow-4.2.1.spec
