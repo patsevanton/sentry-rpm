@@ -290,6 +290,9 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python2-mmh3-2.3.1-1.el7.x86_64.rpm
 python-memcached
 ```
 pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i python-memcached-1.59.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i python-memcached-1.59.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i python-memcached-1.59.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i python-memcached-1.59.spec
 sudo yum-builddep -y python-memcached-1.59.spec 
 rpmbuild -bb python-memcached-1.59.spec 
