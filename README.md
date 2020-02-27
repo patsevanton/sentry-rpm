@@ -387,7 +387,7 @@ sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pycparser-2.19.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pycparser-2.19.spec
 rpmbuild -bb pycparser-2.19.spec 
-??
+sudo yum install -y rpmbuild/RPMS/x86_64/python-pycparser-2.19-1.el7.x86_64.rpm
 ```
 
 Pillow
