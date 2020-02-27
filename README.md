@@ -274,8 +274,9 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-mistune-0.8.4-1.el7.noarch.rpm
 mmh3
 ```
 pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
-sudo yum-builddep -y mmh3-2.3.1.spec 
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc-c++' -i hiredis-0.1.6.spec
 sed 's/%{python2_sitearch}\/%{pypi_name}$/%{python2_sitearch}\/%{pypi_name}.so/g' -i mmh3-2.3.1.spec
+sudo yum-builddep -y mmh3-2.3.1.spec 
 rpmbuild -bb mmh3-2.3.1.spec 
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-mmh3-2.3.1-1.el7.x86_64.rpm
 ```
