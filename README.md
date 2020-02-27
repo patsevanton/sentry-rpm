@@ -249,6 +249,7 @@ setproctitle
 ```
 pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
 sudo yum-builddep -y setproctitle-1.1.10.spec 
+sed 's/%{python2_sitearch}\/%{pypi_name}$/%{python2_sitearch}\/%{pypi_name}.so/g' -i setproctitle-1.1.10.spec
 Change string to "%{python2_sitearch}/%{pypi_name}.so"
 rpmbuild -bb setproctitle-1.1.10.spec 
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-setproctitle-1.1.10-1.el7.x86_64.rpm
