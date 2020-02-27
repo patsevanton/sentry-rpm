@@ -463,10 +463,10 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-py-1.5.1-1.el7.noarch.rpm
 
 sphinxcontrib-trio
 ```
-pyp2rpm sphinxcontrib-trio -t epel7 -b2 -p2 -v 1.1.0 > sphinxcontrib-trio-1.1.0.spec
-sudo yum-builddep -y sphinxcontrib-trio-1.1.0.spec 
-rpmbuild -bb sphinxcontrib-trio-1.1.0.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-sphinxcontrib-trio-1.1.0-1.el7.noarch.rpm
+pyp2rpm sphinxcontrib-trio -t epel7 -b2 -p2 -v 1.0.2 > sphinxcontrib-trio-1.0.2.spec
+sudo yum-builddep -y sphinxcontrib-trio-1.0.2.spec 
+rpmbuild -bb sphinxcontrib-trio-1.0.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-sphinxcontrib-trio-1.0.2-1.el7.noarch.rpm
 ```
 
 pytest
