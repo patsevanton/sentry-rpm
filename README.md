@@ -1,8 +1,8 @@
 ## Подготовка
 ```
+Добавить в нужные пакеты зависимости gcc gcc-c++ python-devel zlib-devel libjpeg-devel python2-sphinx_rtd_theme
 sudo setenforce 0
-sudo yum install -y epel-release rpmdevtools mc git gcc gcc-c++ python-devel
-sudo yum install -y zlib-devel libjpeg-devel python2-sphinx_rtd_theme
+sudo yum install -y epel-release rpmdevtools mc git 
 sudo yum install -y python34 python3-pip 
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install -y nodejs
