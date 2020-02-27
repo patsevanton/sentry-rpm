@@ -231,6 +231,7 @@ statsd
 pyp2rpm statsd -t epel7 -b2 -p2 -v 3.1 > statsd-3.1.spec
 sudo yum-builddep -y statsd-3.1.spec 
 rpmbuild -bb statsd-3.1.spec 
+ImportError: No module named mock
 sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
 ```
 
