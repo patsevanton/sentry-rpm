@@ -268,6 +268,10 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-BeautifulSoup-3.2.2-1.el7.noarc
 mistune
 ```
 pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i mistune-0.8.4.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
 sudo yum-builddep -y mistune-0.8.4.spec 
 rpmbuild -bb mistune-0.8.4.spec 
