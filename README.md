@@ -119,6 +119,7 @@ sed s/python-%{pypi_name}/%{pypi_name}/g -i PyYAML-3.11.spec
 sudo yum-builddep -y PyYAML-3.11.spec 
 rpmbuild -bb PyYAML-3.11.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/PyYAML-3.11-1.el7.x86_64.rpm
+https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
 ```
 
 django-templatetag-sugar
@@ -297,6 +298,7 @@ sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i python-memcached-1.59.spec
 sudo yum-builddep -y python-memcached-1.59.spec 
 rpmbuild -bb python-memcached-1.59.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-memcached-1.59-1.el7.noarch.rpm
+https://cbs.centos.org/kojifiles/packages/python-memcached/1.58/1.el7/noarch/python-memcached-1.58-1.el7.noarch.rpm
 ```
 
 croniter
@@ -328,8 +330,6 @@ sudo yum-builddep -y progressbar2-3.10.1.spec
 rpmbuild -bb progressbar2-3.10.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-progressbar2-3.10.1-1.el7.noarch.rpm
 ```
-
-
 
 querystring-parser
 ```
@@ -407,7 +407,7 @@ sed 's/%global pypi_name Pillow/%global pypi_name pillow/g' -i pillow-4.2.1.spec
 sudo yum-builddep -y pillow-4.2.1.spec 
 rpmbuild -bb pillow-4.2.1.spec 
 ошибка: Файл /home/centos/rpmbuild/SOURCES/pillow-4.2.1.tar.gz: Нет такого файла или каталога
-sudo yum install -y rpmbuild/RPMS/x86_64/python-Pillow-4.2.1-1.el7.x86_64.rpm - заменить на python-pillow
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-pillow/4.0.0/2.el7/x86_64/python2-pillow-4.0.0-2.el7.x86_64.rpm
 ```
 
 chardet
