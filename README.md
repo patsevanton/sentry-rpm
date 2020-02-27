@@ -441,7 +441,7 @@ sed  '/%{python2_sitearch}\/%{pypi_name}$/a %{python2_sitearch}\/_cffi_backend.s
 Add string "%{python2_sitearch}/_cffi_backend.so"
 sudo yum-builddep -y cffi-1.14.0.spec 
 rpmbuild -bb cffi-1.14.0.spec 
-sudo yum install -y rpmbuild/RPMS/x86_64/python2-cffi-1.14.0-1.el7.x86_64.rpm
+sudo yum install -y rpmbuild/RPMS/x86_64/python-cffi-1.14.0-1.el7.x86_64.rpm
 ```
 
 milksnake
