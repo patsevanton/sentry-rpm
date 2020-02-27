@@ -286,7 +286,6 @@ python-memcached
 pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
 sudo yum-builddep -y python-memcached-1.59.spec 
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i python-memcached-1.59.spec
-Commented "%{python2_sitelib}/%{pypi_name}"
 rpmbuild -bb python-memcached-1.59.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-memcached-1.59-1.el7.noarch.rpm
 ```
@@ -300,7 +299,9 @@ sed -e '/%description -n python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i croniter-0.3.31.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i croniter-0.3.31.spec
 rpmbuild -bb croniter-0.3.31.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-croniter-0.3.31-1.el7.noarch.rpm
+Ошибки сборки пакетов:
+    Файл не найден: /home/centos/rpmbuild/BUILDROOT/python-croniter-0.3.31-1.el7.x86_64/usr/lib/python2.7/site-packages/croniter.py*
+sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 ```
 
 cffi
