@@ -459,7 +459,7 @@ pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 > py-1.5.1.spec
 sed '/setuptools-scm/d' -i py-1.5.1.spec
 sudo yum-builddep -y py-1.5.1.spec 
 rpmbuild -bb py-1.5.1.spec 
-setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<12)
+sudo yum install -y rpmbuild/RPMS/noarch/python2-py-1.5.1-1.el7.noarch.rpm
 ```
 
 pytest
