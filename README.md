@@ -1,6 +1,6 @@
 ## Подготовка
 ```
-Добавить в нужные пакеты зависимости gcc-c++ python-devel zlib-devel libjpeg-devel python2-sphinx_rtd_theme
+Добавить в нужные пакеты зависимости gcc-c++ python-devel zlib-devel libjpeg-devel
 sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git 
 sudo yum install -y python34 python3-pip 
@@ -256,6 +256,9 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python2-setproctitle-1.1.10-1.el7.x86_6
 BeautifulSoup
 ```
 pyp2rpm BeautifulSoup -t epel7 -b2 -p2 -v 3.2.2 > BeautifulSoup-3.2.2.spec
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i BeautifulSoup-3.2.2.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i BeautifulSoup-3.2.2.spec
 sudo yum-builddep -y BeautifulSoup-3.2.2.spec 
 rpmbuild -bb BeautifulSoup-3.2.2.spec 
