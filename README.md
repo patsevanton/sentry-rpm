@@ -432,10 +432,10 @@ cffi
 ```
 pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i cffi-1.14.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i cffi-1.14.0.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
 Add string "%{python2_sitearch}/_cffi_backend.so"
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i hiredis-0.1.6.spec
 sudo yum-builddep -y cffi-1.14.0.spec 
 rpmbuild -bb cffi-1.14.0.spec 
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-cffi-1.14.0-1.el7.x86_64.rpm
