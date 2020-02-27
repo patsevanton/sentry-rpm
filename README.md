@@ -341,6 +341,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-pluggy-0.6.0-1.el7.noarch.rpm
 more-itertools
 ```
 pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 > more-itertools-5.0.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python2-sphinx_rtd_theme' -i mmh3-2.3.1.spec
 sudo yum-builddep -y more-itertools-5.0.0.spec 
 rpmbuild -bb more-itertools-5.0.0.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-more-itertools-5.0.0-1.el7.noarch.rpm
