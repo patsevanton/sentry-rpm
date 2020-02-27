@@ -367,17 +367,6 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2016.9.26-1.el7.noarch.
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
 
-ipaddress
-```
-pyp2rpm ipaddress -t epel7 -b2 -p2 -v 1.0.16 > ipaddress-1.0.16.spec
-sudo yum-builddep -y ipaddress-1.0.16.spec
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i ipaddress-1.0.16.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i ipaddress-1.0.16.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i ipaddress-1.0.16.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i ipaddress-1.0.16.spec
-rpmbuild -bb ipaddress-1.0.16.spec 
-В системе есть python-ipaddress-1.0.16-2.el7
-```
 
 six
 ```
@@ -418,19 +407,19 @@ rpmbuild -bb pillow-4.2.1.spec
 
 chardet
 ```
-pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.4 > chardet-3.0.4.spec
-sudo yum-builddep -y chardet-3.0.4.spec 
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i chardet-3.0.4.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.4.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.4.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i chardet-3.0.4.spec
-rpmbuild -bb chardet-3.0.4.spec 
+pyp2rpm chardet -t epel7 -b2 -p2 -v 2.2.1 > chardet-2.2.1.spec
+sudo yum-builddep -y chardet-2.2.1.spec 
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-2.2.1.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i chardet-2.2.1.spec
+rpmbuild -bb chardet-2.2.1.spec 
 ??
 ```
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
 
-setuptools
+setuptools - удалить
 ```
 pyp2rpm setuptools -t epel7 -b2 -p2 -v 30.1.0 > setuptools-30.1.0.spec
 Удалить wincertstore из зависимостей
@@ -440,7 +429,7 @@ Error: Пакет python2-certifi = 2016.9.26 не найден
 Error: Пакет python2-wincertstore = 0.2 не найден
 ```
 
-setuptools-scm
+setuptools-scm - удалить
 ```
 pyp2rpm setuptools-scm -t epel7 -b2 -p2 -v 3.5.0 > setuptools-scm-3.5.0.spec
 sudo yum-builddep -y setuptools-scm-3.5.0.spec 
@@ -451,6 +440,7 @@ setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<1
 py
 ```
 pyp2rpm py -t epel7 -b2 -p2 -v 1.8.1 > py-1.8.1.spec
+удалить setuptools-scm из зависимостей
 sudo yum-builddep -y py-1.8.1.spec 
 rpmbuild -bb py-1.8.1.spec 
 Error: Пакет python2-setuptools-scm не найден
@@ -460,6 +450,7 @@ pytest
 ```
 pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 > pytest-3.5.1.spec
 Удалить colorama из зависимостей
+Удалить setuptools-scm из зависимостей
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
 Error: Пакет python2-colorama не найден
@@ -482,6 +473,7 @@ Error: Пакет python2-milksnake >= 0.1.2 не найден
 python-dateutil
 ```
 pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 > python-dateutil-2.8.1.spec
+Удалить setuptools-scm из зависимостей
 sudo yum-builddep -y python-dateutil-2.8.1.spec 
 rpmbuild -bb python-dateutil-2.8.1.spec 
 Error: Пакет python2-setuptools-scm не найден
@@ -498,6 +490,21 @@ Error: Пакет python2-requests >= 2.14.0 не найден
 celery
 ```
 pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 > celery-3.1.18.spec
+Удалить beanstalkc из зависимостей
+Удалить couchbase из зависимостей
+Удалить couchdb из зависимостей
+Удалить gevent из зависимостей
+Удалить kazoo из зависимостей
+Удалить librabbitmq из зависимостей
+Удалить pycassa из зависимостей
+Удалить pylibmc из зависимостей
+Удалить pymongo из зависимостей
+Удалить pyro4 из зависимостей
+Удалить pyzmq из зависимостей
+Удалить softlayer-messaging из зависимостей
+Удалить sqlalchemy из зависимостей
+Удалить threadpool из зависимостей
+Удалить unittest2 из зависимостей
 sudo yum-builddep -y celery-3.1.18.spec 
 rpmbuild -bb celery-3.1.18.spec 
 Error: Пакет python2-PyYAML >= 3.10 не найден
@@ -519,12 +526,12 @@ Error: Пакет python2-softlayer-messaging >= 1.0.3 не найден
 Error: Пакет python2-sqlalchemy не найден
 Error: Пакет python2-threadpool не найден
 Error: Пакет python2-unittest2 >= 0.5.1 не найден
-
 ```
 
 structlog
 ```
 pyp2rpm structlog -t epel7 -b2 -p2 -v 16.1.0 > structlog-16.1.0.spec
+Удалить colorama из зависимостей
 sudo yum-builddep -y structlog-16.1.0.spec 
 rpmbuild -bb structlog-16.1.0.spec 
 Error: Пакет python2-colorama не найден
@@ -541,6 +548,7 @@ Error: Пакет python2-milksnake >= 0.1.2 не найден
 urllib3
 ```
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 > urllib3-1.24.2.spec
+Удалить PySocks из зависимостей
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
 Error: Пакет python2-PySocks < 2.0 не найден
@@ -561,6 +569,9 @@ Error: Пакет python2-Django >= 1.3 не найден
 requests
 ```
 pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
+Удалить PySocks из зависимостей
+Удалить pytest-mock из зависимостей
+Удалить win-inet-pton из зависимостей
 sudo yum-builddep -y requests-2.20.1.spec 
 rpmbuild -bb requests-2.20.1.spec 
 Error: Пакет python2-PySocks >= 1.5.6 не найден
@@ -578,6 +589,7 @@ Error: Пакет python2-win-inet-pton не найден
 oauth2
 ```
 pyp2rpm oauth2 -t epel7 -b2 -p2 -v 1.9.0.post1 > oauth2-1.9.0.post1.spec
+Удалить coverage из зависимостей
 sudo yum-builddep -y oauth2-1.9.0.post1.spec 
 rpmbuild -bb oauth2-1.9.0.post1.spec 
 ошибка: Неудовлетворенные зависимости сборки:
@@ -589,6 +601,17 @@ kombu
 ```
 pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 > kombu-3.0.35.spec
 Удалить ordereddict из зависимостей
+Удалить beanstalkc из зависимостей
+Удалить couchdb из зависимостей
+Удалить importlib из зависимостей
+Удалить librabbitmq из зависимостей
+Удалить pymongo из зависимостей
+Удалить pyro4 из зависимостей
+Удалить pyzmq из зависимостей
+Удалить qpid-tools из зависимостей
+Удалить softlayer-messaging из зависимостей
+Удалить sqlalchemy из зависимостей
+Удалить unittest2 из зависимостей
 sudo yum-builddep -y kombu-3.0.35.spec 
 rpmbuild -bb kombu-3.0.35.spec 
 Error: Пакет python2-PyYAML >= 3.10 не найден
