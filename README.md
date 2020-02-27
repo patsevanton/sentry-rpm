@@ -239,6 +239,7 @@ strict-rfc3339
 ```
 pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
 sudo yum-builddep -y strict-rfc3339-0.7.spec 
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i strict-rfc3339-0.7.spec
 Commented #%{python2_sitelib}/%{pypi_name}
 rpmbuild -bb strict-rfc3339-0.7.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
@@ -257,6 +258,7 @@ BeautifulSoup
 ```
 pyp2rpm BeautifulSoup -t epel7 -b2 -p2 -v 3.2.2 > BeautifulSoup-3.2.2.spec
 sudo yum-builddep -y BeautifulSoup-3.2.2.spec 
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i BeautifulSoup-3.2.2.spec
 Commented "%{python2_sitelib}/%{pypi_name}"
 rpmbuild -bb BeautifulSoup-3.2.2.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-BeautifulSoup-3.2.2-1.el7.noarch.rpm
@@ -266,6 +268,7 @@ mistune
 ```
 pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
 sudo yum-builddep -y mistune-0.8.4.spec 
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
 Commented "%{python2_sitelib}/%{pypi_name}"
 rpmbuild -bb mistune-0.8.4.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-mistune-0.8.4-1.el7.noarch.rpm
@@ -284,6 +287,7 @@ python-memcached
 ```
 pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
 sudo yum-builddep -y python-memcached-1.59.spec 
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i python-memcached-1.59.spec
 Commented "%{python2_sitelib}/%{pypi_name}"
 rpmbuild -bb python-memcached-1.59.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-memcached-1.59-1.el7.noarch.rpm
