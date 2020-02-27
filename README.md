@@ -1,6 +1,6 @@
 ## Подготовка
 ```
-Добавить в нужные пакеты зависимости gcc-c++ python-devel zlib-devel libjpeg-devel
+Добавить в нужные пакеты зависимости python-devel
 sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git 
 sudo yum install -y python34 python3-pip 
