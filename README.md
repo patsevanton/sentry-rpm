@@ -363,6 +363,7 @@ sudo yum-builddep -y certifi-2016.9.26.spec
 Change string "%{python2_sitelib}/%{pypi_name}-2016.09.26-py%{python2_version}.egg-info"
 rpmbuild -bb certifi-2016.9.26.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2016.9.26-1.el7.noarch.rpm
+python2-certifi.noarch 2018.10.15-5.el7 epel
 ```
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
