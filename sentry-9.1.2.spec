@@ -33,8 +33,8 @@ Requires:       python-pillow <= 4.2.1
 Requires:       python-pillow >= 3.2.0
 Requires:       python2-PyJWT < 1.6.0 - python-jwt
 Requires:       python2-PyJWT >= 1.5.0 - python-jwt
-Requires:       python2-PyYAML < 3.12
-Requires:       python2-PyYAML >= 3.11
+Requires:       PyYAML < 3.12
+Requires:       PyYAML >= 3.11
 Requires:       python-boto3 < 1.4.6
 Requires:       python-boto3 >= 1.4.1
 Requires:       python2-botocore < 1.5.71
