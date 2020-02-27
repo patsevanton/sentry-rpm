@@ -407,7 +407,6 @@ sed 's/%global pypi_name Pillow/%global pypi_name pillow/g' -i pillow-4.2.1.spec
 sudo yum-builddep -y pillow-4.2.1.spec 
 rpmbuild -bb pillow-4.2.1.spec 
 ошибка: Файл /home/centos/rpmbuild/SOURCES/pillow-4.2.1.tar.gz: Нет такого файла или каталога
-sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-pillow/4.0.0/2.el7/x86_64/python2-pillow-4.0.0-2.el7.x86_64.rpm
 ```
 
 chardet
