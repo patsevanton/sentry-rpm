@@ -459,13 +459,14 @@ pyp2rpm py -t epel7 -b2 -p2 -v 1.8.1 > py-1.8.1.spec
 sed '/setuptools-scm/d' -i py-1.8.1.spec
 sudo yum-builddep -y py-1.8.1.spec 
 rpmbuild -bb py-1.8.1.spec 
-Error: Пакет python2-setuptools-scm не найден
+setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<12)
 ```
 
 pytest
 ```
 pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 > pytest-3.5.1.spec
-Удалить colorama из зависимостей
+sed '/colorama/d' -i pytest-3.5.1.spec
+sed '/setuptools-scm/d' -i pytest-3.5.1.spec
 Удалить setuptools-scm из зависимостей
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
