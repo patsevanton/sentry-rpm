@@ -449,12 +449,13 @@ milksnake
 pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
 sudo yum-builddep -y milksnake-0.1.5.spec 
 rpmbuild -bb milksnake-0.1.5.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-milksnake-0.1.5-1.el7.noarch.rpm
 ```
 
 py
 ```
 pyp2rpm py -t epel7 -b2 -p2 -v 1.8.1 > py-1.8.1.spec
-удалить setuptools-scm из зависимостей
+sed '/setuptools-scm/d' -i py-1.8.1.spec
 sudo yum-builddep -y py-1.8.1.spec 
 rpmbuild -bb py-1.8.1.spec 
 Error: Пакет python2-setuptools-scm не найден
