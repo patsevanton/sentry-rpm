@@ -297,10 +297,8 @@ sudo yum-builddep -y croniter-0.3.31.spec
 sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i croniter-0.3.31.spec
-sed "/%{python2_sitelib}\/%{pypi_name}.py*$/d" -i croniter-0.3.31.spec
+sed "/%{python2_sitelib}\/%{pypi_name}.py\*$/d" -i croniter-0.3.31.spec
 rpmbuild -bb croniter-0.3.31.spec 
-Ошибки сборки пакетов:
-    Файл не найден: /home/centos/rpmbuild/BUILDROOT/python-croniter-0.3.31-1.el7.x86_64/usr/lib/python2.7/site-packages/croniter.py*
 sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 ```
 
