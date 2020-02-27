@@ -305,7 +305,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 cffi
 ```
 pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i mmh3-2.3.1.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i cffi-1.14.0.spec
 sudo yum-builddep -y cffi-1.14.0.spec 
 Add string "%{python2_sitearch}/_cffi_backend.so"
 sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
