@@ -1,6 +1,6 @@
 ## Подготовка
 ```
-Добавить в нужные пакеты зависимости gcc gcc-c++ python-devel zlib-devel libjpeg-devel python2-sphinx_rtd_theme
+Добавить в нужные пакеты зависимости gcc-c++ python-devel zlib-devel libjpeg-devel python2-sphinx_rtd_theme
 sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git 
 sudo yum install -y python34 python3-pip 
@@ -156,6 +156,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rp
 hiredis
 ```
 pyp2rpm hiredis -t epel7 -b2 -p2 -v 0.1.6 > hiredis-0.1.6.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i hiredis-0.1.6.spec
 sudo yum-builddep -y hiredis-0.1.6.spec 
 rpmbuild -bb hiredis-0.1.6.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-hiredis-0.1.6-1.el7.x86_64.rpm
