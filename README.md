@@ -635,6 +635,9 @@ Error: Пакет python2-unittest2 >= 0.5.0 не найден
 PyJWT
 ```
 pyp2rpm PyJWT -t epel7 -b2 -p2 -v 1.5.3 > PyJWT-1.5.3.spec
+Удалить flake8 из зависимостей
+Удалить flake8-import-order из зависимостей
+Удалить pep8-naming из зависимостей
 sudo yum-builddep -y PyJWT-1.5.3.spec 
 rpmbuild -bb PyJWT-1.5.3.spec 
 Error: Пакет python2-flake8 не найден
@@ -646,6 +649,9 @@ Error: Пакет python2-pytest > 3 не найден
 python-u2flib-server
 ```
 pyp2rpm python-u2flib-server -t epel7 -b2 -p2 -v 4.0.1 > python-u2flib-server-4.0.1.spec
+Удалить WebOb из зависимостей
+Удалить argparse из зависимостей
+Удалить yubiauth из зависимостей
 sudo yum-builddep -y python-u2flib-server-4.0.1.spec 
 rpmbuild -bb python-u2flib-server-4.0.1.spec 
 Error: Пакет python2-WebOb не найден
@@ -672,6 +678,7 @@ ImportError: No module named tests
 mock
 ```
 pyp2rpm mock -t epel7 -b2 -p2 -v 2.0.0 > mock-2.0.0.spec
+Удалить setuptools из зависимостей
 sudo yum-builddep -y mock-2.0.0.spec 
 rpmbuild -bb mock-2.0.0.spec 
 	python2-pbr >= 1.3 нужен для python-mock-2.0.0-1.el7.noarch
@@ -682,6 +689,9 @@ rpmbuild -bb mock-2.0.0.spec
 lxml
 ```
 pyp2rpm lxml -t epel7 -b2 -p2 -v 4.5.0 > lxml-4.5.0.spec
+Удалить BeautifulSoup4 из зависимостей
+Удалить Cython из зависимостей
+Удалить html5lib из зависимостей
 sudo yum-builddep -y lxml-4.5.0.spec 
 rpmbuild -bb lxml-4.5.0.spec 
 Error: Пакет python2-BeautifulSoup4 не найден
@@ -690,19 +700,10 @@ Error: Пакет python2-cssselect >= 0.7 не найден
 Error: Пакет python2-html5lib не найден
 ```
 
-flake8
-```
-pyp2rpm flake8 -t epel7 -b2 -p2 -v 3.5.0 > flake8-3.5.0.spec
-sudo yum-builddep flake8-3.5.0.spec
-rpmbuild -bb flake8-3.5.0.spec
-Error: Пакет python2-mock >= 2.0.0 не найден
-Error: Пакет python2-pycodestyle < 2.4.0 не найден
-Error: Пакет python2-setuptools >= 30 не найден
-```
-
 toronado
 ```
 pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
+Удалить flake8 из зависимостей
 sudo yum-builddep -y toronado-0.0.11.spec 
 rpmbuild -bb toronado-0.0.11.spec 
 Error: Пакет python2-cssselect не найден
@@ -715,6 +716,8 @@ Error: Пакет python2-lxml не найден
 jsonschema
 ```
 pyp2rpm jsonschema -t epel7 -b2 -p2 -v 2.6.0 > jsonschema-2.6.0.spec
+Удалить rfc3987 из зависимостей
+Удалить webcolors из зависимостей
 sudo yum-builddep -y jsonschema-2.6.0.spec 
 rpmbuild -bb jsonschema-2.6.0.spec 
 	python2-functools32 нужен для python-jsonschema-2.6.0-1.el7.noarch
@@ -723,10 +726,12 @@ rpmbuild -bb jsonschema-2.6.0.spec
 	python2-webcolors нужен для python-jsonschema-2.6.0-1.el7.noarch
 ```
 
-
 honcho
 ```
 pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
+Удалить argparse из зависимостей
+Удалить colorama из зависимостей
+Удалить ordereddict из зависимостей
 sudo yum-builddep -y honcho-1.0.1.spec 
 rpmbuild -bb honcho-1.0.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
@@ -741,6 +746,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
 botocore
 ```
 pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 > botocore-1.5.70.spec
+Удалить ordereddict из зависимостей
 sudo yum-builddep -y botocore-1.5.70.spec 
 rpmbuild -bb botocore-1.5.70.spec 
 Error: Пакет python2-dateutil >= 2.1 не найден
