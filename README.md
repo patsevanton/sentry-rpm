@@ -302,20 +302,6 @@ rpmbuild -bb croniter-0.3.31.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 ```
 
-cffi
-```
-pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i cffi-1.14.0.spec
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
-Add string "%{python2_sitearch}/_cffi_backend.so"
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i hiredis-0.1.6.spec
-sudo yum-builddep -y cffi-1.14.0.spec 
-rpmbuild -bb cffi-1.14.0.spec 
-sudo yum install -y rpmbuild/RPMS/x86_64/python2-cffi-1.14.0-1.el7.x86_64.rpm
-```
-
-
 ### Зависимости от зависимостей Sentry, которые собираются.
 
 progressbar2
@@ -395,6 +381,7 @@ pycparser
 pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
 sudo yum-builddep -y pycparser-2.19.spec 
 Add %global python2_sitearch /usr/lib/python2.7/site-packages
+sed  '/%global pypi_name pycparser/a %global python2_sitearch /usr/lib/python2.7/site-packages' -i mmh3-2.3.1.spec
 sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pycparser-2.19.spec
@@ -429,22 +416,18 @@ rpmbuild -bb chardet-2.2.1.spec
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
 
-setuptools - удалить
-```
-pyp2rpm setuptools -t epel7 -b2 -p2 -v 30.1.0 > setuptools-30.1.0.spec
-Удалить wincertstore из зависимостей
-sudo yum-builddep -y setuptools-30.1.0.spec 
-rpmbuild -bb setuptools-30.1.0.spec 
-Error: Пакет python2-certifi = 2016.9.26 не найден
-Error: Пакет python2-wincertstore = 0.2 не найден
-```
 
-setuptools-scm - удалить
+cffi
 ```
-pyp2rpm setuptools-scm -t epel7 -b2 -p2 -v 3.5.0 > setuptools-scm-3.5.0.spec
-sudo yum-builddep -y setuptools-scm-3.5.0.spec 
-rpmbuild -bb setuptools-scm-3.5.0.spec
-setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<12)
+pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i cffi-1.14.0.spec
+sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
+Add string "%{python2_sitearch}/_cffi_backend.so"
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i hiredis-0.1.6.spec
+sudo yum-builddep -y cffi-1.14.0.spec 
+rpmbuild -bb cffi-1.14.0.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-cffi-1.14.0-1.el7.x86_64.rpm
 ```
 
 py
