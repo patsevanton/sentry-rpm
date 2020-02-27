@@ -399,7 +399,6 @@ Pillow
 pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libjpeg-devel' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  zlib-devel' -i pillow-4.2.1.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python2-sphinx_rtd_theme' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python-nose' -i pillow-4.2.1.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
@@ -470,7 +469,8 @@ sed '/setuptools-scm/d' -i pytest-3.5.1.spec
 sed s/python2-six/python-six/g -i pytest-3.5.1.spec
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
-setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<12
+sudo yum install https://cbs.centos.org/kojifiles/packages/python-setuptools/18.0.1/2.el7/noarch/python-setuptools-18.0.1-2.el7.noarch.rpm
+No module named sphinxcontrib_trio
 ```
 
 semaphore
