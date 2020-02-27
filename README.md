@@ -470,10 +470,7 @@ sed '/setuptools-scm/d' -i pytest-3.5.1.spec
 sed s/python2-six/python-six/g -i pytest-3.5.1.spec
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
-Error: Пакет python2-pluggy < 0.7 не найден
-Error: Пакет python2-pluggy >= 0.5 не найден
-Error: Пакет python2-py >= 1.5.0 не найден
-Error: Пакет python2-six >= 1.10.0 не найден
+setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<12
 ```
 
 semaphore
