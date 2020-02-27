@@ -381,7 +381,7 @@ pycparser
 pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
 sudo yum-builddep -y pycparser-2.19.spec 
 Add %global python2_sitearch /usr/lib/python2.7/site-packages
-sed  '/%global pypi_name pycparser/a %global python2_sitearch /usr/lib/python2.7/site-packages' -i mmh3-2.3.1.spec
+sed  '/%global pypi_name pycparser/a %global python2_sitearch /usr/lib/python2.7/site-packages' -i pycparser-2.19.spec
 sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pycparser-2.19.spec
