@@ -320,12 +320,7 @@ rpmbuild -bb progressbar2-3.10.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-progressbar2-3.10.1-1.el7.noarch.rpm
 ```
 
-milksnake
-```
-pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
-sudo yum-builddep -y milksnake-0.1.5.spec 
-rpmbuild -bb milksnake-0.1.5.spec 
-```
+
 
 querystring-parser
 ```
@@ -427,6 +422,13 @@ sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i hiredis-0.1.
 sudo yum-builddep -y cffi-1.14.0.spec 
 rpmbuild -bb cffi-1.14.0.spec 
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-cffi-1.14.0-1.el7.x86_64.rpm
+```
+
+milksnake
+```
+pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
+sudo yum-builddep -y milksnake-0.1.5.spec 
+rpmbuild -bb milksnake-0.1.5.spec 
 ```
 
 py
