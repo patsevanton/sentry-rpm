@@ -356,7 +356,7 @@ rpmbuild -bb more-itertools-5.0.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-more-itertools-5.0.0-1.el7.noarch.rpm
 ```
 
-certifi
+certifi - воможно удалить 
 ```
 pyp2rpm certifi -t epel7 -b2 -p2 -v 2016.9.26 > certifi-2016.9.26.spec
 sudo yum-builddep -y certifi-2016.9.26.spec 
@@ -397,6 +397,8 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python-pycparser-2.19-1.el7.x86_64.rpm
 Pillow
 ```
 pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > pillow-4.2.1.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libjpeg-devel' -i more-itertools-5.0.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  zlib-devel' -i more-itertools-5.0.0.spec
 sudo yum-builddep -y pillow-4.2.1.spec 
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
