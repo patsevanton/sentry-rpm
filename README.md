@@ -406,6 +406,7 @@ sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pillow-4.2.1.spec
 sed 's/%global pypi_name Pillow/%global pypi_name pillow/g' -i pillow-4.2.1.spec
 sudo yum-builddep -y pillow-4.2.1.spec 
 rpmbuild -bb pillow-4.2.1.spec 
+ошибка: Файл /home/centos/rpmbuild/SOURCES/pillow-4.2.1.tar.gz: Нет такого файла или каталога
 sudo yum install -y rpmbuild/RPMS/x86_64/python-Pillow-4.2.1-1.el7.x86_64.rpm - заменить на python-pillow
 ```
 
