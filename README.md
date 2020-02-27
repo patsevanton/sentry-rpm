@@ -403,7 +403,7 @@ sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pillow-4.2.1.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pillow-4.2.1.spec
-sed s/%global pypi_name Pillow/%global pypi_name pillow/g -i pillow-4.2.1.spec
+sed 's/%global pypi_name Pillow/%global pypi_name pillow/g' -i pillow-4.2.1.spec
 sudo yum-builddep -y pillow-4.2.1.spec 
 rpmbuild -bb pillow-4.2.1.spec 
 sudo yum install -y rpmbuild/RPMS/x86_64/python-Pillow-4.2.1-1.el7.x86_64.rpm - заменить на python-pillow
