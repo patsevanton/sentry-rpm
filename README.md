@@ -304,13 +304,20 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 
 ### Зависимости от зависимостей Sentry, которые собираются.
 
+utils
+```
+pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
+sudo yum-builddep -y python-utils-2.3.0.spec 
+rpmbuild -bb python-utils-2.3.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
+```
+
 progressbar2
 ```
 pyp2rpm progressbar2 -t epel7 -b2 -p2 -v 3.10.1 > progressbar2-3.10.1.spec
 sudo yum-builddep -y progressbar2-3.10.1.spec 
 rpmbuild -bb progressbar2-3.10.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-progressbar2-3.10.1-1.el7.noarch.rpm
-Необходимо: python2-utils >= 2.0.0
 ```
 
 milksnake
@@ -318,14 +325,6 @@ milksnake
 pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
 sudo yum-builddep -y milksnake-0.1.5.spec 
 rpmbuild -bb milksnake-0.1.5.spec 
-```
-
-utils
-```
-pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
-sudo yum-builddep -y python-utils-2.3.0.spec 
-rpmbuild -bb python-utils-2.3.0.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
 ```
 
 querystring-parser
