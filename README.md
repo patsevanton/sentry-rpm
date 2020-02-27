@@ -437,6 +437,7 @@ sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i cffi-1.14.0.spec
 sed s/python2-pycparser/python-pycparser/g -i cffi-1.14.0.spec
+sed  '/%{python2_sitearch}\/%{pypi_name}$/a %{python2_sitearch}\/_cffi_backend.so' -i cffi-1.14.0.spec
 Add string "%{python2_sitearch}/_cffi_backend.so"
 sudo yum-builddep -y cffi-1.14.0.spec 
 rpmbuild -bb cffi-1.14.0.spec 
