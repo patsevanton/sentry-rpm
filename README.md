@@ -468,7 +468,6 @@ pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 > pytest-3.5.1.spec
 sed '/colorama/d' -i pytest-3.5.1.spec
 sed '/setuptools-scm/d' -i pytest-3.5.1.spec
 sed s/python2-six/python-six/g -i pytest-3.5.1.spec
-Удалить setuptools-scm из зависимостей
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
 Error: Пакет python2-pluggy < 0.7 не найден
@@ -488,7 +487,7 @@ Error: Пакет python2-milksnake >= 0.1.2 не найден
 python-dateutil
 ```
 pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 > python-dateutil-2.8.1.spec
-Удалить setuptools-scm из зависимостей
+sed '/setuptools-scm/d' -i python-dateutil-2.8.1.spec
 sudo yum-builddep -y python-dateutil-2.8.1.spec 
 rpmbuild -bb python-dateutil-2.8.1.spec 
 Error: Пакет python2-setuptools-scm не найден
@@ -505,6 +504,7 @@ Error: Пакет python2-requests >= 2.14.0 не найден
 celery
 ```
 pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 > celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
 Удалить beanstalkc из зависимостей
 Удалить couchbase из зависимостей
 Удалить couchdb из зависимостей
