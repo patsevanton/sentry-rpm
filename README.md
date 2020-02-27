@@ -455,10 +455,10 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-milksnake-0.1.5-1.el7.noarch.rp
 
 py
 ```
-pyp2rpm py -t epel7 -b2 -p2 -v 1.8.1 > py-1.8.1.spec
-sed '/setuptools-scm/d' -i py-1.8.1.spec
-sudo yum-builddep -y py-1.8.1.spec 
-rpmbuild -bb py-1.8.1.spec 
+pyp2rpm py -t epel7 -b2 -p2 -v 1.5.0 > py-1.5.0.spec
+sed '/setuptools-scm/d' -i py-1.5.0.spec
+sudo yum-builddep -y py-1.5.0.spec 
+rpmbuild -bb py-1.5.0.spec 
 setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<12)
 ```
 
