@@ -365,24 +365,6 @@ rpmbuild -bb certifi-2016.9.26.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2016.9.26-1.el7.noarch.rpm
 ```
 
-ordereddict
-```
-pyp2rpm ordereddict -t epel7 -b2 -p2 -v 1.1 > ordereddict-1.1.spec
-sudo yum-builddep -y ordereddict-1.1.spec 
-Commented "%{python2_sitelib}/%{pypi_name}"
-rpmbuild -bb ordereddict-1.1.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-ordereddict-1.1-1.el7.noarch.rpm
-```
-
-wincertstore
-```
-pyp2rpm wincertstore -t epel7 -b2 -p2 -v 0.2 > wincertstore-0.2.spec
-sudo yum-builddep -y wincertstore-0.2.spec 
-Commented "%{python2_sitelib}/%{pypi_name}"
-rpmbuild -bb wincertstore-0.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-wincertstore-0.2-1.el7.noarch.rpm
-```
-
 ### Пакеты, которые конфликтуют с уже установленными пакетами
 
 ipaddress
@@ -451,6 +433,7 @@ rpmbuild -bb chardet-3.0.4.spec
 setuptools
 ```
 pyp2rpm setuptools -t epel7 -b2 -p2 -v 30.1.0 > setuptools-30.1.0.spec
+Удалить wincertstore из зависимостей
 sudo yum-builddep -y setuptools-30.1.0.spec 
 rpmbuild -bb setuptools-30.1.0.spec 
 Error: Пакет python2-certifi = 2016.9.26 не найден
@@ -476,6 +459,7 @@ Error: Пакет python2-setuptools-scm не найден
 pytest
 ```
 pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 > pytest-3.5.1.spec
+Удалить colorama из зависимостей
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
 Error: Пакет python2-colorama не найден
@@ -604,6 +588,7 @@ rpmbuild -bb oauth2-1.9.0.post1.spec
 kombu
 ```
 pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 > kombu-3.0.35.spec
+Удалить ordereddict из зависимостей
 sudo yum-builddep -y kombu-3.0.35.spec 
 rpmbuild -bb kombu-3.0.35.spec 
 Error: Пакет python2-PyYAML >= 3.10 не найден
