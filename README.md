@@ -256,7 +256,7 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python2-setproctitle-1.1.10-1.el7.x86_6
 BeautifulSoup
 ```
 pyp2rpm BeautifulSoup -t epel7 -b2 -p2 -v 3.2.2 > BeautifulSoup-3.2.2.spec
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i BeautifulSoup-3.2.2.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i BeautifulSoup-3.2.2.spec
@@ -268,7 +268,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-BeautifulSoup-3.2.2-1.el7.noarch
 mistune
 ```
 pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i mistune-0.8.4.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
@@ -290,7 +290,7 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python2-mmh3-2.3.1-1.el7.x86_64.rpm
 python-memcached
 ```
 pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i python-memcached-1.59.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i python-memcached-1.59.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i python-memcached-1.59.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i python-memcached-1.59.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i python-memcached-1.59.spec
@@ -303,7 +303,7 @@ croniter
 ```
 pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
 sudo yum-builddep -y croniter-0.3.31.spec 
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i croniter-0.3.31.spec
 sed "/%{python2_sitelib}\/%{pypi_name}.py\*$/d" -i croniter-0.3.31.spec
@@ -372,7 +372,7 @@ six
 ```
 pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
 sudo yum-builddep -y six-1.10.0.spec 
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i six-1.10.0.spec
@@ -384,9 +384,8 @@ pycparser
 ```
 pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
 sudo yum-builddep -y pycparser-2.19.spec 
-Add %global python2_sitearch /usr/lib/python2.7/site-packages
 sed  '/%global pypi_name pycparser/a %global python2_sitearch /usr/lib/python2.7/site-packages' -i pycparser-2.19.spec
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pycparser-2.19.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pycparser-2.19.spec
@@ -398,7 +397,7 @@ Pillow
 ```
 pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > pillow-4.2.1.spec
 sudo yum-builddep -y pillow-4.2.1.spec 
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pillow-4.2.1.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pillow-4.2.1.spec
@@ -410,7 +409,7 @@ chardet
 ```
 pyp2rpm chardet -t epel7 -b2 -p2 -v 2.2.1 > chardet-2.2.1.spec
 sudo yum-builddep -y chardet-2.2.1.spec 
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-2.2.1.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i chardet-2.2.1.spec
@@ -425,7 +424,7 @@ cffi
 ```
 pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i cffi-1.14.0.spec
-sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
 Add string "%{python2_sitearch}/_cffi_backend.so"
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i hiredis-0.1.6.spec
