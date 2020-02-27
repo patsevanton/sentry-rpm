@@ -467,15 +467,13 @@ pytest
 pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 > pytest-3.5.1.spec
 sed '/colorama/d' -i pytest-3.5.1.spec
 sed '/setuptools-scm/d' -i pytest-3.5.1.spec
+sed s/python2-six/python-six/g -i pytest-3.5.1.spec
 Удалить setuptools-scm из зависимостей
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
-Error: Пакет python2-colorama не найден
-Error: Пакет python2-more-itertools >= 4.0.0 не найден
 Error: Пакет python2-pluggy < 0.7 не найден
 Error: Пакет python2-pluggy >= 0.5 не найден
 Error: Пакет python2-py >= 1.5.0 не найден
-Error: Пакет python2-setuptools-scm не найден
 Error: Пакет python2-six >= 1.10.0 не найден
 ```
 
