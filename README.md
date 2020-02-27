@@ -262,7 +262,7 @@ sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i BeautifulSoup-3.2.2.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i BeautifulSoup-3.2.2.spec
 sudo yum-builddep -y BeautifulSoup-3.2.2.spec 
 rpmbuild -bb BeautifulSoup-3.2.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-BeautifulSoup-3.2.2-1.el7.noarch.rpm
+sudo yum install -y rpmbuild/RPMS/noarch/python-BeautifulSoup-3.2.2-1.el7.noarch.rpm
 ```
 
 mistune
@@ -272,10 +272,9 @@ sed -e '/%package -n     python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i mistune-0.8.4.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
 sudo yum-builddep -y mistune-0.8.4.spec 
 rpmbuild -bb mistune-0.8.4.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-mistune-0.8.4-1.el7.noarch.rpm
+sudo yum install -y rpmbuild/RPMS/noarch/python-mistune-0.8.4-1.el7.noarch.rpm
 ```
 
 mmh3
