@@ -411,7 +411,6 @@ sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i cffi-1.14.0.spec
 sed s/python2-pycparser/python-pycparser/g -i cffi-1.14.0.spec
 sed  '/%{python2_sitearch}\/%{pypi_name}$/a %{python2_sitearch}\/_cffi_backend.so' -i cffi-1.14.0.spec
-Add string "%{python2_sitearch}/_cffi_backend.so"
 sudo yum-builddep -y cffi-1.14.0.spec 
 rpmbuild -bb cffi-1.14.0.spec 
 sudo yum install -y rpmbuild/RPMS/x86_64/python-cffi-1.14.0-1.el7.x86_64.rpm
@@ -421,14 +420,13 @@ milksnake
 ```
 pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
 sed s/python2-cffi/python-cffi/g -i milksnake-0.1.5.spec
-sudo yum-builddep -y milksnake-0.1.5.spec 
 rpmbuild -bb milksnake-0.1.5.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-milksnake-0.1.5-1.el7.noarch.rpm
 ```
 
 py
 ```
-pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 > py-1.5.1.spec
+pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 --skip-doc-build > py-1.5.1.spec
 sed '/setuptools-scm/d' -i py-1.5.1.spec
 sudo yum-builddep -y py-1.5.1.spec 
 rpmbuild -bb py-1.5.1.spec 
