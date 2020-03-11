@@ -529,7 +529,8 @@ Error: Пакет python2-milksnake >= 0.1.2 не найден
 urllib3
 ```
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 > urllib3-1.24.2.spec
-Удалить PySocks из зависимостей
+sed '/python2-PySocks/d' -i urllib3-1.24.2.spec
+sed s/python2-pyOpenSSL/pyOpenSSL/g -i urllib3-1.24.2.spec
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
 Error: Пакет python2-PySocks < 2.0 не найден
