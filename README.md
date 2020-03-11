@@ -78,7 +78,7 @@ rpmbuild -bb sentry-9.1.2.spec
 Нацелевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
 
 ```
-sudo yum install RPMS/noarch/python2-sentry-9.1.2-1.el7.noarch.rpm
+sudo yum install rpmbuild/RPMS/noarch/python2-sentry-9.1.2-1.el7.noarch.rpm
 ```
 
 ## Пакуем зависимости в rpm
