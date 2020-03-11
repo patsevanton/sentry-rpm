@@ -452,6 +452,7 @@ sed s/python2-six/python-six/g -i pytest-3.5.1.spec
 sed s/python2-py/python-py/g -i pytest-3.5.1.spec
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
+setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<12)
 ```
 
 semaphore
@@ -462,7 +463,7 @@ rpmbuild -bb semaphore-0.4.65.spec
 Error: Пакет python2-milksnake >= 0.1.2 не найден
 ```
 
-python-dateutil
+python-dateutil - возможно удалить
 ```
 pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 > python-dateutil-2.8.1.spec
 sed '/setuptools-scm/d' -i python-dateutil-2.8.1.spec
