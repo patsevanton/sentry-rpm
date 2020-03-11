@@ -532,8 +532,6 @@ Error: Пакет python2-milksnake >= 0.1.2 не найден
 
 urllib3
 ```
-sudo yum install -y http://centos-mirror.rbc.ru/pub/centos/7/cloud/x86_64/openstack-stein/python2-urllib3-1.24.1-3.el7.noarch.rpm
-
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
 sed 's/python2-pyOpenSSL/pyOpenSSL/g' -i urllib3-1.24.2.spec
 sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
@@ -542,14 +540,7 @@ sed -e '/%check/,+1d' -i urllib3-1.24.2.spec
 sudo yum install -y http://ftp.riken.jp/Linux/cern/centos/7/cloud/x86_64/openstack-pike/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
-AssertionError: Missing log about unparsed headers
-
-----------------------------------------------------------------------
-Ran 355 tests in 9.559s
-
-FAILED (failures=12, errors=50)
-error: Bad exit status from /var/tmp/rpm-tmp.gB0AQD (%check)
-AttributeError: 'module' object has no attribute 'test_socks'
+sudo yum install -y rpmbuild/RPMS/noarch/python2-urllib3-1.24.2-1.el7.noarch.rpm
 ```
 
 django-crispy-forms
