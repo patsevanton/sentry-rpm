@@ -3,7 +3,6 @@
 sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git 
 sudo yum install -y python34 python3-pip 
-sudo yum install -y nodejs
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 ```
@@ -397,12 +396,12 @@ sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 
 chardet
 ```
-pyp2rpm chardet -t epel7 -b2 -p2 -v 2.2.1 > chardet-2.2.1.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-2.2.1.spec
-rpmbuild -bb chardet-2.2.1.spec 
-sudo yum install rpmbuild/RPMS/noarch/python-chardet-2.2.1-1.el7.noarch.rpm
+pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 > chardet-3.0.2.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.2.spec
+rpmbuild -bb chardet-3.0.2.spec 
+sudo yum install rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
 ```
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
