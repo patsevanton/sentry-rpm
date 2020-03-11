@@ -535,6 +535,7 @@ urllib3
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
 sed 's/python2-pyOpenSSL/pyOpenSSL/g' -i urllib3-1.24.2.spec
 sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
+sed 's/python2-PySocks/python2-pysocks/g' -i urllib3-1.24.2.spec
 sudo yum install -y http://ftp.riken.jp/Linux/cern/centos/7/cloud/x86_64/openstack-pike/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
