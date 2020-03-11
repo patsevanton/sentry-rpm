@@ -476,8 +476,6 @@ sed '/setuptools-scm/d' -i pytest-3.5.1.spec
 sed s/python2-six/python-six/g -i pytest-3.5.1.spec
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
-sudo yum install https://cbs.centos.org/kojifiles/packages/python-setuptools/18.0.1/2.el7/noarch/python-setuptools-18.0.1-2.el7.noarch.rpm
-No module named sphinxcontrib_trio
 ```
 
 semaphore
