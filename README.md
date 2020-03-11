@@ -17,22 +17,15 @@ pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
 
 Удаляем из sentry-9.1.2.spec
 ```
-< BuildConflicts: python2-configparser = 3.5.2
-< BuildConflicts: python2-configparser = 3.5.3
-< BuildConflicts: python2-configparser = 3.7.0
-< BuildRequires:  python2-Babel
-< BuildRequires:  python2-autopep8 < 1.4.0
-< BuildRequires:  python2-autopep8 >= 1.3.5
-< BuildRequires:  python2-docker < 3.8.0
-< BuildRequires:  python2-docker >= 3.7.0
-< BuildRequires:  python2-flake8 < 3.6.0
-< BuildRequires:  python2-flake8 >= 3.5.0
-< BuildRequires:  python2-isort < 4.4.0
-< BuildRequires:  python2-isort >= 4.3.4
-< BuildRequires:  python2-pycodestyle < 2.4.0
-< BuildRequires:  python2-pycodestyle >= 2.3.1
-< BuildRequires:  python2-sentry-flake8 >= 0.0.1
-< BuildRequires:  python2-setuptools
+sed '/python2-configparser/d' -i py-1.5.1.spec
+sed '/python2-Babel/d' -i py-1.5.1.spec
+sed '/python2-autopep8/d' -i py-1.5.1.spec
+sed '/python2-docker/d' -i py-1.5.1.spec
+sed '/python2-flake8/d' -i py-1.5.1.spec
+sed '/python2-isort/d' -i py-1.5.1.spec
+sed '/python2-pycodestyle/d' -i py-1.5.1.spec
+sed '/python2-sentry-flake8/d' -i py-1.5.1.spec
+sed '/python2-setuptools/d' -i py-1.5.1.spec
 ```
 
 Итоговый BuildRequires
