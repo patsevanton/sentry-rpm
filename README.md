@@ -144,7 +144,7 @@ sed -e '/%description -n python2-%{pypi_name}/,+1d' -i enum34-1.1.8.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i enum34-1.1.8.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i enum34-1.1.8.spec
 rpmbuild -bb enum34-1.1.8.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-enum34-1.1.8-1.el7.noarch.rpm
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python-enum34-1.1.8-1.el7.noarch.rpm
 ```
 
 futures
