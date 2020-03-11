@@ -499,8 +499,8 @@ sed s/python2-PyYAML/PyYAML/g -i celery-3.1.18.spec
 sed s/python2-pyOpenSSL/pyOpenSSL/g -i celery-3.1.18.spec
 sed s/python2-billiard/python-billiard/g -i celery-3.1.18.spec
 sed s/python2-kombu/python-kombu/g -i celery-3.1.18.spec
-sed s/Requires:       python-billiard < 3.4/#Requires:       python-billiard < 3.4/g -i celery-3.1.18.spec
-sed s/Requires:       python-kombu < 3.1/#Requires:       python-kombu < 3.1/g -i celery-3.1.18.spec
+sed 's/Requires:       python-billiard < 3.4/#Requires:       python-billiard < 3.4/g' -i celery-3.1.18.spec
+sed 's/Requires:       python-kombu < 3.1/#Requires:       python-kombu < 3.1/g' -i celery-3.1.18.spec
 sudo yum install -y http://mirror.neu.edu.cn/fedora-epel/testing/7/x86_64/p/python-billiard-3.3.0.20-2.el7.x86_64.rpm
 wget ftp5.gwdg.de/pub/opensuse/repositories/home:/radiorabe:/airtime/CentOS_7/noarch/python-kombu-3.0.33-9.2.noarch.rpm
 sudo yum install -y python-kombu-3.0.33-9.2.noarch.rpm
