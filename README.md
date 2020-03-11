@@ -494,6 +494,8 @@ sed s/python2-PyYAML/PyYAML/g -i celery-3.1.18.spec
 sed s/python2-pyOpenSSL/pyOpenSSL/g -i celery-3.1.18.spec
 sed s/python2-billiard/python-billiard/g -i celery-3.1.18.spec
 sudo yum install -y https://repos.fedorapeople.org/pulp/pulp/stable/2.6/7Server/x86_64/python-billiard-3.3.0.17-2.el7.x86_64.rpm
+wget ftp5.gwdg.de/pub/opensuse/repositories/home:/radiorabe:/airtime/CentOS_7/noarch/python-kombu-3.0.33-9.2.noarch.rpm
+sudo yum install -y python-kombu-3.0.33-9.2.noarch.rpm
 sudo yum-builddep -y celery-3.1.18.spec 
 rpmbuild -bb celery-3.1.18.spec 
 ```
