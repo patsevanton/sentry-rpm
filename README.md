@@ -299,7 +299,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 
 utils
 ```
-pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 --skip-doc-build > python-utils-2.3.0.spec
+pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
 sudo yum-builddep -y python-utils-2.3.0.spec 
 rpmbuild -bb python-utils-2.3.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
@@ -308,7 +308,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm
 progressbar2
 ```
 pyp2rpm progressbar2 -t epel7 -b2 -p2 -v 3.10.1 > progressbar2-3.10.1.spec
-sudo yum-builddep -y progressbar2-3.10.1.spec 
 rpmbuild -bb progressbar2-3.10.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-progressbar2-3.10.1-1.el7.noarch.rpm
 ```
@@ -316,7 +315,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-progressbar2-3.10.1-1.el7.noa
 querystring-parser
 ```
 pyp2rpm querystring-parser -t epel7 -b2 -p2 -v 1.2.4 > querystring-parser-1.2.4.spec
-sudo yum-builddep -y querystring-parser-1.2.4.spec 
 rpmbuild -bb querystring-parser-1.2.4.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el7.noarch.rpm
 ```
@@ -324,14 +322,13 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el
 pluggy
 ```
 pyp2rpm pluggy -t epel7 -b2 -p2 -v 0.6.0 > pluggy-0.6.0.spec
-sudo yum-builddep -y pluggy-0.6.0.spec 
 rpmbuild -bb pluggy-0.6.0.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-pluggy-0.6.0-1.el7.noarch.rpm
 ```
 
 more-itertools
 ```
-pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 > more-itertools-5.0.0.spec
+pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 --skip-doc-build > more-itertools-5.0.0.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python2-sphinx_rtd_theme' -i more-itertools-5.0.0.spec
 sudo yum-builddep -y more-itertools-5.0.0.spec 
 rpmbuild -bb more-itertools-5.0.0.spec 
