@@ -539,6 +539,13 @@ sed 's/python2-PySocks/python2-pysocks/g' -i urllib3-1.24.2.spec
 sudo yum install -y http://ftp.riken.jp/Linux/cern/centos/7/cloud/x86_64/openstack-pike/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
+AssertionError: Missing log about unparsed headers
+
+----------------------------------------------------------------------
+Ran 355 tests in 9.559s
+
+FAILED (failures=12, errors=50)
+error: Bad exit status from /var/tmp/rpm-tmp.gB0AQD (%check)
 AttributeError: 'module' object has no attribute 'test_socks'
 ```
 
