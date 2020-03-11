@@ -299,7 +299,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 
 utils
 ```
-pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
+pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 --skip-doc-build > python-utils-2.3.0.spec
 sudo yum-builddep -y python-utils-2.3.0.spec 
 rpmbuild -bb python-utils-2.3.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
