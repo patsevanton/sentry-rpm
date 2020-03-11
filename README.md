@@ -194,7 +194,6 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python2-simplejson-3.8.2-1.el7.x86_64.r
 rb
 ```
 pyp2rpm rb -t epel7 -b2 -p2 -v 1.7 > rb-1.7.spec
-sudo yum-builddep -y rb-1.7.spec 
 rpmbuild -bb rb-1.7.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
@@ -202,7 +201,6 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ua-parser
 ```
 pyp2rpm ua-parser -t epel7 -b2 -p2 -v 0.7.3 > ua-parser-0.7.3.spec
-sudo yum-builddep -y ua-parser-0.7.3.spec 
 rpmbuild -bb ua-parser-0.7.3.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
@@ -217,7 +215,8 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-django-picklefield-0.3.2-1.el7.
 
 statsd
 ```
-pyp2rpm statsd -t epel7 -b2 -p2 -v 3.1 > statsd-3.1.spec
+pyp2rpm statsd -t epel7 -b2 -p2 -v 3.1 --skip-doc-build  > statsd-3.1.spec
+sed  '/BuildRequires:  python2-devel/a BuildRequires:  python2-mock' -i sentry-9.1.2.spec
 sudo yum-builddep -y statsd-3.1.spec 
 rpmbuild -bb statsd-3.1.spec 
 ImportError: No module named mock
