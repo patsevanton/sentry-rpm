@@ -398,12 +398,11 @@ sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 chardet
 ```
 pyp2rpm chardet -t epel7 -b2 -p2 -v 2.2.1 > chardet-2.2.1.spec
-sudo yum-builddep -y chardet-2.2.1.spec 
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-2.2.1.spec
 rpmbuild -bb chardet-2.2.1.spec 
-??
+sudo yum install rpmbuild/RPMS/noarch/python-chardet-2.2.1-1.el7.noarch.rpm
 ```
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
