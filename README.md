@@ -33,6 +33,8 @@ sed '/python2-setuptools/d' -i sentry-9.1.2.spec
 BuildRequires:  python2-devel
 BuildRequires:  nodejs
 BuildRequires:  yarn
+sed  '/BuildRequires:  python2-devel/a BuildRequires:  nodejs' -i sentry-9.1.2.spec
+sed  '/BuildRequires:  python2-devel/a BuildRequires:  yarn' -i sentry-9.1.2.spec
 ```
 
 Секция %prep %build %install
