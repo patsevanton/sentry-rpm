@@ -219,14 +219,12 @@ pyp2rpm statsd -t epel7 -b2 -p2 -v 3.1 --skip-doc-build  > statsd-3.1.spec
 sed  '/BuildRequires:  python2-devel/a BuildRequires:  python2-mock' -i statsd-3.1.spec
 sudo yum-builddep -y statsd-3.1.spec 
 rpmbuild -bb statsd-3.1.spec 
-ImportError: No module named mock
 sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
 ```
 
 strict-rfc3339
 ```
 pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
-sudo yum-builddep -y strict-rfc3339-0.7.spec 
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i strict-rfc3339-0.7.spec
 rpmbuild -bb strict-rfc3339-0.7.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
@@ -235,7 +233,6 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch
 setproctitle
 ```
 pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
-sudo yum-builddep -y setproctitle-1.1.10.spec 
 sed 's/%{python2_sitearch}\/%{pypi_name}$/%{python2_sitearch}\/%{pypi_name}.so/g' -i setproctitle-1.1.10.spec
 rpmbuild -bb setproctitle-1.1.10.spec 
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-setproctitle-1.1.10-1.el7.x86_64.rpm
@@ -248,7 +245,6 @@ sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i BeautifulSoup-3.2.2.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i BeautifulSoup-3.2.2.spec
-sudo yum-builddep -y BeautifulSoup-3.2.2.spec 
 rpmbuild -bb BeautifulSoup-3.2.2.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python-BeautifulSoup-3.2.2-1.el7.noarch.rpm
 ```
@@ -260,7 +256,6 @@ sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i mistune-0.8.4.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
-sudo yum-builddep -y mistune-0.8.4.spec 
 rpmbuild -bb mistune-0.8.4.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python-mistune-0.8.4-1.el7.noarch.rpm
 ```
@@ -285,7 +280,7 @@ sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i python-memcached-1.59.spec
 sudo yum-builddep -y python-memcached-1.59.spec 
 rpmbuild -bb python-memcached-1.59.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-memcached-1.59-1.el7.noarch.rpm
-https://cbs.centos.org/kojifiles/packages/python-memcached/1.58/1.el7/noarch/python-memcached-1.58-1.el7.noarch.rpm
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-memcached/1.58/1.el7/noarch/python-memcached-1.58-1.el7.noarch.rpm
 ```
 
 croniter
