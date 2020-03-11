@@ -30,7 +30,7 @@ sed '/python2-setuptools/d' -i sentry-9.1.2.spec
 
 Итоговый BuildRequires
 ```
-sed  '/BuildRequires:  python2-devel/a BuildRequires:  nodejs' -i sentry-9.1.2.spec
+sed  '/BuildRequires:  python2-devel/a BuildRequires:  nodejs >= 8' -i sentry-9.1.2.spec
 sed  '/BuildRequires:  python2-devel/a BuildRequires:  yarn' -i sentry-9.1.2.spec
 ```
 
