@@ -563,6 +563,8 @@ pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
 sed '/PySocks/d' -i requests-2.20.1.spec
 sed '/pytest-mock/d' -i requests-2.20.1.spec
 sed '/win-inet-pton/d' -i requests-2.20.1.spec
+sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
+sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
 sudo yum-builddep -y requests-2.20.1.spec 
 rpmbuild -bb requests-2.20.1.spec
 ```
