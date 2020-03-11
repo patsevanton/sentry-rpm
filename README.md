@@ -506,6 +506,7 @@ wget ftp5.gwdg.de/pub/opensuse/repositories/home:/radiorabe:/airtime/CentOS_7/no
 sudo yum install -y python-kombu-3.0.33-9.2.noarch.rpm
 sudo yum-builddep -y celery-3.1.18.spec 
 rpmbuild -bb celery-3.1.18.spec 
+pkg_resources.VersionConflict: (amqp 2.4.0 (/usr/lib/python2.7/site-packages), Requirement.parse('amqp>=1.4.9,<2.0'))
 ```
 
 structlog
