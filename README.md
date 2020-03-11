@@ -396,7 +396,7 @@ sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 
 chardet
 ```
-pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 > chardet-3.0.2.spec
+pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 --skip-doc-build > chardet-3.0.2.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.2.spec
