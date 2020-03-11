@@ -478,6 +478,8 @@ Error: Пакет python2-requests >= 2.14.0 не найден
 
 celery
 ```
+sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/arrfab/cccp/epel-7-x86_64/python-celery-3.1.11-1.el7/python-celery-3.1.11-1.el7.centos.noarch.rpm
+
 pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 --skip-doc-build > celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
 sed '/couchbase/d' -i celery-3.1.18.spec
