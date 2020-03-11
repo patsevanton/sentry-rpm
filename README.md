@@ -52,8 +52,8 @@ cd sentry
 %{__python2} setup.py install --skip-build --root %{buildroot}
 
 %files -n python2-%{pypi_name}
-# remove src/sentry/pipeline/README.md src/sentry/logging/README.rst src/sentry/nodestore/README.rst
-%doc src/sentry/logging/README.rst src/sentry/nodestore/README.rst README.rst
+# remove src/sentry/pipeline/README.md src/sentry/logging/README.rst src/sentry/nodestore/README.rst README.rst
+sed '/%doc src/sentry/pipeline/README.md src/sentry/logging/README.rst src/sentry/nodestore/README.rst README.rst/d' -i sentry-9.1.2.spec
 ```
 Из полученного файла убираем опциональные зависимости, зависимости для разработки (dev) и тестирования (test). Их можно найти в файлах requirements-optional.txt, requirements-dev.txt, requirements-test.txt
 
