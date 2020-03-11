@@ -3,7 +3,6 @@
 sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git 
 sudo yum install -y python34 python3-pip 
-curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install -y nodejs
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
@@ -515,9 +514,8 @@ structlog
 ```
 pyp2rpm structlog -t epel7 -b2 -p2 -v 16.1.0 --skip-doc-build > structlog-16.1.0.spec
 sed '/colorama/d' -i structlog-16.1.0.spec
-sudo yum-builddep -y structlog-16.1.0.spec 
 rpmbuild -bb structlog-16.1.0.spec 
-Error: Пакет python2-colorama не найден
+sudo yum install -y rpmbuild/RPMS/noarch/python2-structlog-16.1.0-1.el7.noarch.rpm
 ```
 
 symbolic
