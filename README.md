@@ -473,7 +473,7 @@ Error: Пакет python2-requests >= 2.14.0 не найден
 
 celery
 ```
-pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 > celery-3.1.18.spec
+pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 --skip-doc-build > celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
 sed '/couchbase/d' -i celery-3.1.18.spec
 sed '/couchdb/d' -i celery-3.1.18.spec
