@@ -95,7 +95,6 @@ pip3 install --user pyp2rpm
 msgpack
 ```
 pyp2rpm msgpack -t epel7 -b2 -p2 -v 0.6.2 > msgpack-0.6.2.spec
-sudo yum-builddep -y msgpack-0.6.2.spec 
 rpmbuild -bb msgpack-0.6.2.spec 
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-msgpack-0.6.2-1.el7.x86_64.rpm
 ```
@@ -103,7 +102,6 @@ sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-msgpack-0.6.2-1.el7.x86_64.rp
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
-sudo yum-builddep -y petname-2.0.spec 
 rpmbuild -bb petname-2.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 ```
@@ -118,13 +116,12 @@ sed s/python-%{pypi_name}/%{pypi_name}/g -i PyYAML-3.11.spec
 sudo yum-builddep -y PyYAML-3.11.spec 
 rpmbuild -bb PyYAML-3.11.spec
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/PyYAML-3.11-1.el7.x86_64.rpm
-https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
+yum install -y https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
 ```
 
 django-templatetag-sugar
 ```
 pyp2rpm django-templatetag-sugar -t epel7 -b2 -p2 -v 1.0 > django-templatetag-sugar-1.0.spec
-sudo yum-builddep -y django-templatetag-sugar-1.0.spec 
 rpmbuild -bb django-templatetag-sugar-1.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-templatetag-sugar-1.0-1.el7.noarch.rpm
 ```
@@ -132,7 +129,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-templatetag-sugar-1.0-
 djangorestframework
 ```
 pyp2rpm djangorestframework -t epel7 -b2 -p2 -v 2.4.8 > djangorestframework-2.4.8.spec
-sudo yum-builddep -y djangorestframework-2.4.8.spec 
 rpmbuild -bb djangorestframework-2.4.8.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.el7.noarch.rpm
 ```
@@ -140,15 +136,13 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.e
 enum34
 ```
 pyp2rpm enum34 -t epel7 -b2 -p2 -v 1.1.8 > enum34-1.1.8.spec
-sudo yum-builddep -y enum34-1.1.8.spec 
 rpmbuild -bb enum34-1.1.8.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-enum34-1.1.8-1.el7.noarch.rpm
 ```
 
 futures
 ```
-pyp2rpm futures -t epel7 -b2 -p2 -v 3.3.0 > futures-3.3.0.spec
-sudo yum-builddep -y futures-3.3.0.spec 
+pyp2rpm futures -t epel7 -b2 -p2 -v 3.3.0 --skip-doc-build > futures-3.3.0.spec
 rpmbuild -bb futures-3.3.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
 ```
@@ -165,15 +159,13 @@ sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-hiredis-0.1.6-1.el7.x86_64.rp
 parsimonious
 ```
 pyp2rpm parsimonious -t epel7 -b2 -p2 -v 0.8.0 > parsimonious-0.8.0.spec
-sudo yum-builddep -y parsimonious-0.8.0.spec 
 rpmbuild -bb parsimonious-0.8.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
 
 pytest-django
 ```
-pyp2rpm pytest-django -t epel7 -b2 -p2 -v 2.9.1 > pytest-django-2.9.1.spec
-sudo yum-builddep -y pytest-django-2.9.1.spec 
+pyp2rpm pytest-django -t epel7 -b2 -p2 -v 2.9.1 --skip-doc-build > pytest-django-2.9.1.spec
 rpmbuild -bb pytest-django-2.9.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
 ```
@@ -181,7 +173,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noa
 pytest-html
 ```
 pyp2rpm pytest-html -t epel7 -b2 -p2 -v 1.9.0 > pytest-html-1.9.0.spec
-sudo yum-builddep -y pytest-html-1.9.0.spec 
 rpmbuild -bb pytest-html-1.9.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-html-1.9.0-1.el7.noarch.rpm
 ```
@@ -189,7 +180,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-html-1.9.0-1.el7.noarc
 redis-py-cluster
 ```
 pyp2rpm redis-py-cluster -t epel7 -b2 -p2 -v 1.3.4 > redis-py-cluster-1.3.4.spec
-sudo yum-builddep -y redis-py-cluster-1.3.4.spec 
 rpmbuild -bb redis-py-cluster-1.3.4.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
@@ -197,7 +187,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.
 simplejson
 ```
 pyp2rpm simplejson -t epel7 -b2 -p2 -v 3.8.2 > simplejson-3.8.2.spec
-sudo yum-builddep -y simplejson-3.8.2.spec 
 rpmbuild -bb simplejson-3.8.2.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-simplejson-3.8.2-1.el7.x86_64.rpm
 ```
