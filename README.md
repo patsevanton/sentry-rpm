@@ -139,6 +139,10 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.e
 enum34
 ```
 pyp2rpm enum34 -t epel7 -b2 -p2 -v 1.1.8 > enum34-1.1.8.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i enum34-1.1.8.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i enum34-1.1.8.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i enum34-1.1.8.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i enum34-1.1.8.spec
 rpmbuild -bb enum34-1.1.8.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-enum34-1.1.8-1.el7.noarch.rpm
 ```
