@@ -435,14 +435,6 @@ rpmbuild -bb py-1.5.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-py-1.5.1-1.el7.noarch.rpm
 ```
 
-sphinxcontrib-trio
-```
-pyp2rpm sphinxcontrib-trio -t epel7 -b2 -p2 -v 1.0.1 > sphinxcontrib-trio-1.0.1.spec
-sudo yum-builddep -y sphinxcontrib-trio-1.0.1.spec 
-rpmbuild -bb sphinxcontrib-trio-1.0.1.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-sphinxcontrib-trio-1.0.1-1.el7.noarch.rpm
-```
-
 pytest
 ```
 pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 --skip-doc-build > pytest-3.5.1.spec
@@ -500,27 +492,10 @@ sed '/unittest2/d' -i celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
 sed s/python2-PyYAML/PyYAML/g -i celery-3.1.18.spec
 sed s/python2-pyOpenSSL/pyOpenSSL/g -i celery-3.1.18.spec
+sed s/python2-billiard/python-billiard/g -i celery-3.1.18.spec
+sudo yum install -y https://repos.fedorapeople.org/pulp/pulp/stable/2.6/7Server/x86_64/python-billiard-3.3.0.17-2.el7.x86_64.rpm
 sudo yum-builddep -y celery-3.1.18.spec 
 rpmbuild -bb celery-3.1.18.spec 
-Error: Пакет python2-PyYAML >= 3.10 не найден
-Error: Пакет python2-beanstalkc не найден
-Error: Пакет python2-billiard < 3.4 не найден
-Error: Пакет python2-couchbase не найден
-Error: Пакет python2-couchdb не найден
-Error: Пакет python2-gevent не найден
-Error: Пакет python2-kazoo >= 1.3.1 не найден
-Error: Пакет python2-kombu < 3.1 не найден
-Error: Пакет python2-librabbitmq >= 1.6.1 не найден
-Error: Пакет python2-pyOpenSSL не найден
-Error: Пакет python2-pycassa не найден
-Error: Пакет python2-pylibmc не найден
-Error: Пакет python2-pymongo >= 2.6.2 не найден
-Error: Пакет python2-pyro4 не найден
-Error: Пакет python2-pyzmq >= 13.1.0 не найден
-Error: Пакет python2-softlayer-messaging >= 1.0.3 не найден
-Error: Пакет python2-sqlalchemy не найден
-Error: Пакет python2-threadpool не найден
-Error: Пакет python2-unittest2 >= 0.5.1 не найден
 ```
 
 structlog
