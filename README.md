@@ -17,15 +17,15 @@ pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
 
 Удаляем из sentry-9.1.2.spec
 ```
-sed '/python2-configparser/d' -i py-1.5.1.spec
-sed '/python2-Babel/d' -i py-1.5.1.spec
-sed '/python2-autopep8/d' -i py-1.5.1.spec
-sed '/python2-docker/d' -i py-1.5.1.spec
-sed '/python2-flake8/d' -i py-1.5.1.spec
-sed '/python2-isort/d' -i py-1.5.1.spec
-sed '/python2-pycodestyle/d' -i py-1.5.1.spec
-sed '/python2-sentry-flake8/d' -i py-1.5.1.spec
-sed '/python2-setuptools/d' -i py-1.5.1.spec
+sed '/python2-configparser/d' -i sentry-9.1.2.spec
+sed '/python2-Babel/d' -i sentry-9.1.2.spec
+sed '/python2-autopep8/d' -i sentry-9.1.2.spec
+sed '/python2-docker/d' -i sentry-9.1.2.spec
+sed '/python2-flake8/d' -i sentry-9.1.2.spec
+sed '/python2-isort/d' -i sentry-9.1.2.spec
+sed '/python2-pycodestyle/d' -i sentry-9.1.2.spec
+sed '/python2-sentry-flake8/d' -i sentry-9.1.2.spec
+sed '/python2-setuptools/d' -i sentry-9.1.2.spec
 ```
 
 Итоговый BuildRequires
