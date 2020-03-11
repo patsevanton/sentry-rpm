@@ -498,6 +498,8 @@ sed '/sqlalchemy/d' -i celery-3.1.18.spec
 sed '/threadpool/d' -i celery-3.1.18.spec
 sed '/unittest2/d' -i celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed s/python2-PyYAML/PyYAML/g -i celery-3.1.18.spec
+sed s/python2-pyOpenSSL/pyOpenSSL/g -i celery-3.1.18.spec
 sudo yum-builddep -y celery-3.1.18.spec 
 rpmbuild -bb celery-3.1.18.spec 
 Error: Пакет python2-PyYAML >= 3.10 не найден
