@@ -532,16 +532,14 @@ Error: Пакет python2-milksnake >= 0.1.2 не найден
 
 urllib3
 ```
-pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 > urllib3-1.24.2.spec
+pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
 sed '/python2-PySocks/d' -i urllib3-1.24.2.spec
 sed s/python2-pyOpenSSL/pyOpenSSL/g -i urllib3-1.24.2.spec
 sudo yum install -y http://ftp.riken.jp/Linux/cern/centos/7/cloud/x86_64/openstack-pike/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
-Error: Пакет python2-PySocks < 2.0 не найден
-Error: Пакет python2-PySocks >= 1.5.6 не найден
+Error: Пакет pyOpenSSL >= 0.14 не найден
 Error: Пакет python2-ipaddress не найден
-Error: Пакет python2-pyOpenSSL >= 0.14 не найден
 ```
 
 django-crispy-forms
