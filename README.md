@@ -6,7 +6,6 @@ sudo yum install -y python34 python3-pip
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install -y nodejs
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-sudo yum install -y yarn
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 ```
 
@@ -348,8 +347,7 @@ python2-certifi.noarch 2018.10.15-5.el7 epel
 
 six
 ```
-pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 > six-1.10.0.spec
-sudo yum-builddep -y six-1.10.0.spec 
+pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 --skip-doc-build > six-1.10.0.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
@@ -361,7 +359,6 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
 pycparser
 ```
 pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
-sudo yum-builddep -y pycparser-2.19.spec 
 sed  '/%global pypi_name pycparser/a %global python2_sitearch /usr/lib/python2.7/site-packages' -i pycparser-2.19.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pycparser-2.19.spec
@@ -406,7 +403,7 @@ rpmbuild -bb chardet-2.2.1.spec
 
 cffi
 ```
-pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 > cffi-1.14.0.spec
+pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 --skip-doc-build  > cffi-1.14.0.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i cffi-1.14.0.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i cffi-1.14.0.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
