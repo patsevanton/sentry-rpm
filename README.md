@@ -9,6 +9,7 @@ pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 ```
 
 ### Формирование sentry-9.1.2.spec
+```
 pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
 ```
 
