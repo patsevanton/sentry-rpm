@@ -71,8 +71,6 @@ sudo yum-builddep -y sentry-9.1.2.spec
 rpmbuild -bb sentry-9.1.2.spec
 ```
 
-rpmbuild -bb
-
 ### Попытка установки python2-sentry-9.1.2-1.el7.noarch.rpm
 Нацелевой машине пытаемся установить python2-sentry-9.1.2-1.el7.noarch.rpm
 
