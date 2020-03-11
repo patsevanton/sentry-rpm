@@ -484,9 +484,23 @@ celery
 ```
 pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 > celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
-Удалить beanstalkc из зависимостей
-Удалить couchbase из зависимостей
-Удалить couchdb из зависимостей
+sed '/couchbase/d' -i celery-3.1.18.spec
+sed '/couchdb/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+Удалить  из зависимостей
+Удалить  из зависимостей
 Удалить gevent из зависимостей
 Удалить kazoo из зависимостей
 Удалить librabbitmq из зависимостей
