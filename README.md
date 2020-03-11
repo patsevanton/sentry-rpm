@@ -68,6 +68,11 @@ cd sentry-rpm
 sudo yum-builddep -y sentry-9.1.2.spec
 ```
 
+### Меняем имена зависимостей
+```
+sed s/python2-six/python-six/g -i sentry-9.1.2.spec
+```
+
 ### Сборка sentry-9.1.2
 ```
 rpmbuild -bb sentry-9.1.2.spec
