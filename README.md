@@ -397,8 +397,6 @@ sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm
 
 chardet
 ```
-sudo yum install -y https://forensics.cert.org/centos/cert/7/x86_64/python2-chardet-3.0.4-3.el7.noarch.rpm
-
 pyp2rpm chardet -t epel7 -b2 -p2 -v 2.2.1 > chardet-2.2.1.spec
 sudo yum-builddep -y chardet-2.2.1.spec 
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-2.2.1.spec
