@@ -432,7 +432,7 @@ sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
 rpmbuild -bb py-1.5.1.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-py-1.5.1-1.el7.noarch.rpm
+sudo yum install -y rpmbuild/RPMS/noarch/python-py-1.5.1-1.el7.noarch.rpm
 ```
 
 sphinxcontrib-trio
@@ -449,6 +449,7 @@ pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 --skip-doc-build > pytest-3.5.1.spec
 sed '/colorama/d' -i pytest-3.5.1.spec
 sed '/setuptools-scm/d' -i pytest-3.5.1.spec
 sed s/python2-six/python-six/g -i pytest-3.5.1.spec
+sed s/python2-py/python-py/g -i pytest-3.5.1.spec
 sudo yum-builddep -y pytest-3.5.1.spec 
 rpmbuild -bb pytest-3.5.1.spec 
 ```
