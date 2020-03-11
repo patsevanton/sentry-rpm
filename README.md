@@ -486,33 +486,19 @@ pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 > celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
 sed '/couchbase/d' -i celery-3.1.18.spec
 sed '/couchdb/d' -i celery-3.1.18.spec
+sed '/gevent/d' -i celery-3.1.18.spec
+sed '/kazoo/d' -i celery-3.1.18.spec
+sed '/librabbitmq/d' -i celery-3.1.18.spec
+sed '/pycassa/d' -i celery-3.1.18.spec
+sed '/pylibmc/d' -i celery-3.1.18.spec
+sed '/pymongo/d' -i celery-3.1.18.spec
+sed '/pyro4/d' -i celery-3.1.18.spec
+sed '/pyzmq/d' -i celery-3.1.18.spec
+sed '/softlayer-messaging/d' -i celery-3.1.18.spec
+sed '/sqlalchemy/d' -i celery-3.1.18.spec
+sed '/threadpool/d' -i celery-3.1.18.spec
+sed '/unittest2/d' -i celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-Удалить  из зависимостей
-Удалить  из зависимостей
-Удалить gevent из зависимостей
-Удалить kazoo из зависимостей
-Удалить librabbitmq из зависимостей
-Удалить pycassa из зависимостей
-Удалить pylibmc из зависимостей
-Удалить pymongo из зависимостей
-Удалить pyro4 из зависимостей
-Удалить pyzmq из зависимостей
-Удалить softlayer-messaging из зависимостей
-Удалить sqlalchemy из зависимостей
-Удалить threadpool из зависимостей
-Удалить unittest2 из зависимостей
 sudo yum-builddep -y celery-3.1.18.spec 
 rpmbuild -bb celery-3.1.18.spec 
 Error: Пакет python2-PyYAML >= 3.10 не найден
