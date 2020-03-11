@@ -105,7 +105,7 @@ rpmbuild -bb petname-2.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 ```
 
-PyYAML
+PyYAML - проверить /usr/lib64/python2.7/
 ```
 pyp2rpm PyYAML -t epel7 -b2 -p2 -v 3.11 > PyYAML-3.11.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i PyYAML-3.11.spec
@@ -471,7 +471,6 @@ sudo yum-builddep -y python-dateutil-2.8.1.spec
 rpmbuild -bb python-dateutil-2.8.1.spec 
 Error: Пакет python2-setuptools-scm не найден
 ```
-
 percy
 ```
 pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
