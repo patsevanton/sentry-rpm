@@ -395,7 +395,7 @@ rpmbuild -bb pillow-4.2.1.spec
 sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm 
 ```
 
-chardet - возможно удалить
+chardet
 ```
 pyp2rpm chardet -t epel7 -b2 -p2 -v 2.2.1 > chardet-2.2.1.spec
 sudo yum-builddep -y chardet-2.2.1.spec 
