@@ -216,7 +216,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-django-picklefield-0.3.2-1.el7.
 statsd
 ```
 pyp2rpm statsd -t epel7 -b2 -p2 -v 3.1 --skip-doc-build  > statsd-3.1.spec
-sed  '/BuildRequires:  python2-devel/a BuildRequires:  python2-mock' -i sentry-9.1.2.spec
+sed  '/BuildRequires:  python2-devel/a BuildRequires:  python2-mock' -i statsd-3.1.spec
 sudo yum-builddep -y statsd-3.1.spec 
 rpmbuild -bb statsd-3.1.spec 
 ImportError: No module named mock
