@@ -7,7 +7,7 @@ curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install -y nodejs
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 sudo yum install -y yarn
-pip3 install --user pyp2rpm
+pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 ```
 
 ### Формирование sentry-9.1.2.spec
