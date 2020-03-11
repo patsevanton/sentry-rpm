@@ -400,6 +400,7 @@ pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 --skip-doc-build > chardet-3.0.2.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.2.spec
+sed '/python2-hypothesis/d' -i py-1.5.1.spec
 rpmbuild -bb chardet-3.0.2.spec 
 sudo yum install rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
 ```
