@@ -28,7 +28,7 @@ sed '/python2-sentry-flake8/d' -i sentry-9.1.2.spec
 sed '/python2-setuptools/d' -i sentry-9.1.2.spec
 ```
 
-Итоговый BuildRequires
+Добавляем nodejs и yarn в BuildRequires
 ```
 sed  '/BuildRequires:  python2-devel/a BuildRequires:  nodejs >= 8' -i sentry-9.1.2.spec
 sed  '/BuildRequires:  python2-devel/a BuildRequires:  yarn' -i sentry-9.1.2.spec
