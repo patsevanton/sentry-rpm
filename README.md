@@ -429,6 +429,7 @@ py
 pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 --skip-doc-build > py-1.5.1.spec
 sed '/setuptools-scm/d' -i py-1.5.1.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i py-1.5.1.spec
 rpmbuild -bb py-1.5.1.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-py-1.5.1-1.el7.noarch.rpm
 ```
