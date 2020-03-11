@@ -470,7 +470,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-sphinxcontrib-trio-1.0.1-1.el7.
 
 pytest
 ```
-pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 > pytest-3.5.1.spec
+pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 --skip-doc-build > pytest-3.5.1.spec
 sed '/colorama/d' -i pytest-3.5.1.spec
 sed '/setuptools-scm/d' -i pytest-3.5.1.spec
 sed s/python2-six/python-six/g -i pytest-3.5.1.spec
