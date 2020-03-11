@@ -9,7 +9,6 @@ pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 ```
 
 ### Формирование sentry-9.1.2.spec
-```
 pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
 ```
 
@@ -545,7 +544,7 @@ sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backport
 sudo yum install -y http://ftp.riken.jp/Linux/cern/centos/7/cloud/x86_64/openstack-pike/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-urllib3-1.24.2-1.el7.noarch.rpm
+sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
 ```
 
 django-crispy-forms
