@@ -69,7 +69,29 @@ sudo yum-builddep -y sentry-9.1.2.spec
 ### Меняем имена зависимостей
 ```
 sed s/python2-six/python-six/g -i sentry-9.1.2.spec
+sed s/python2-PyJWT/python-jwt/g -i sentry-9.1.2.spec
+sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
+sed '/python2-betamax/d' -i sentry-9.1.2.spec
+sed '/python2-blist/d' -i sentry-9.1.2.spec
+sed '/python2-cassandra-driver/d' -i sentry-9.1.2.spec
+sed '/python2-casscache/d' -i sentry-9.1.2.spec
+sed '/python2-confluent-kafka/d' -i sentry-9.1.2.spec
+sed '/python2-cqlsh/d' -i sentry-9.1.2.spec
+sed '/python2-datadog/d' -i sentry-9.1.2.spec
+sed '/python2-freezegun/d' -i sentry-9.1.2.spec
+sed '/python2-google-cloud-bigtable/d' -i sentry-9.1.2.spec
+sed '/python2-google-cloud-pubsub/d' -i sentry-9.1.2.spec
+sed '/python2-google-cloud-storage/d' -i sentry-9.1.2.spec
+sed '/python2-ipaddress/d' -i sentry-9.1.2.spec
+sed '/python2-maxminddb/d' -i sentry-9.1.2.spec
+sed '/python2-pytest-cov/d' -i sentry-9.1.2.spec
+sed '/python2-pytest-timeout/d' -i sentry-9.1.2.spec
+sed '/python2-pytest-xdist/d' -i sentry-9.1.2.spec
+sed '/python2-responses/d' -i sentry-9.1.2.spec
+sed '/python2-sqlparse/d' -i sentry-9.1.2.spec
 ```
+
+
 
 ### Сборка sentry-9.1.2
 ```
@@ -590,6 +612,8 @@ rpmbuild -bb oauth2-1.9.0.post1.spec
 
 kombu
 ```
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/radiorabe:/airtime/CentOS_7/noarch/python-kombu-3.0.33-9.2.noarch.rpm
+
 pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 > kombu-3.0.35.spec
 sed '/ordereddict/d' -i kombu-3.0.35.spec
 sed '/beanstalkc/d' -i kombu-3.0.35.spec
