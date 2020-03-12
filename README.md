@@ -4,9 +4,9 @@ sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git 
 sudo yum install -y python34 python3-pip
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-sudo yum install -y nodejs
+#sudo yum install -y nodejs
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-sudo yum install -y yarn
+#sudo yum install -y yarn
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 ```
 
@@ -64,11 +64,6 @@ cd sentry-rpm
 ./build.sh
 ```
 
-### Установка зависимостей для сборки sentry-9.1.2.spec (то что указано в BuildRequires)
-```
-sudo yum-builddep -y sentry-9.1.2.spec
-```
-
 ### Меняем имена зависимостей
 ```
 sed s/python2-six/python-six/g -i sentry-9.1.2.spec
@@ -86,7 +81,7 @@ sed '/python2-google-cloud-bigtable/d' -i sentry-9.1.2.spec
 sed '/python2-google-cloud-pubsub/d' -i sentry-9.1.2.spec
 sed '/python2-google-cloud-storage/d' -i sentry-9.1.2.spec
 sed '/python2-ipaddress/d' -i sentry-9.1.2.spec
-sed s/python2-kombu = 3.0.35/python-kombu = 3.0.33/g -i sentry-9.1.2.spec
+sed 's/python2-kombu = 3.0.35/python-kombu = 3.0.33/g' -i sentry-9.1.2.spec
 sed '/python2-maxminddb/d' -i sentry-9.1.2.spec
 sed '/python2-pytest-cov/d' -i sentry-9.1.2.spec
 sed '/python2-pytest-timeout/d' -i sentry-9.1.2.spec
@@ -96,6 +91,20 @@ sed '/python2-sqlparse/d' -i sentry-9.1.2.spec
 ```
 
 
+
+### Исправление ошибки https://rpm.nodesource.com/pub_10.x/el/7/SRPMS/repodata/repomd.xml: [Errno 14] HTTPS Error 404 - Not Found
+
+```
+sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
+```
+
+
+
+### Установка зависимостей для сборки sentry-9.1.2.spec (то что указано в BuildRequires)
+
+```
+sudo yum-builddep -y sentry-9.1.2.spec
+```
 
 ### Сборка sentry-9.1.2
 ```
