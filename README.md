@@ -400,8 +400,9 @@ pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 --skip-doc-build > chardet-3.0.2.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.2.spec
+sudo yum-builddep -y chardet-3.0.2.spec 
 rpmbuild -bb chardet-3.0.2.spec 
-sudo yum install rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
+sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
 ```
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
@@ -448,9 +449,15 @@ sed '/colorama/d' -i pytest-3.5.1.spec
 sed '/setuptools-scm/d' -i pytest-3.5.1.spec
 sed s/python2-six/python-six/g -i pytest-3.5.1.spec
 sed s/python2-py/python-py/g -i pytest-3.5.1.spec
+sed -e '/%check/,+1d' -i pytest-3.5.1.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pytest-3.5.1.spec
+sed -e '/%description -n python2-%{pypi_name}/,+6d' -i pytest-3.5.1.spec
+sed s/python2-%{pypi_name}/%{pypi_name}/g -i pytest-3.5.1.spec
+sed s/python-%{pypi_name}/%{pypi_name}/g -i pytest-3.5.1.spec
 sudo yum-builddep -y pytest-3.5.1.spec 
+sudo yum install ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python2-setuptools-22.0.5-1.el7.noarch.rpm
 rpmbuild -bb pytest-3.5.1.spec 
-setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<12)
+??
 ```
 
 semaphore
@@ -564,6 +571,8 @@ sed '/win-inet-pton/d' -i requests-2.20.1.spec
 sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
 sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
 sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
+
+sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
 sudo yum-builddep -y requests-2.20.1.spec 
 rpmbuild -bb requests-2.20.1.spec
 ```
@@ -582,36 +591,22 @@ rpmbuild -bb oauth2-1.9.0.post1.spec
 kombu
 ```
 pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 > kombu-3.0.35.spec
-Удалить ordereddict из зависимостей
-Удалить beanstalkc из зависимостей
-Удалить couchdb из зависимостей
-Удалить importlib из зависимостей
-Удалить librabbitmq из зависимостей
-Удалить pymongo из зависимостей
-Удалить pyro4 из зависимостей
-Удалить pyzmq из зависимостей
-Удалить qpid-tools из зависимостей
-Удалить softlayer-messaging из зависимостей
-Удалить sqlalchemy из зависимостей
-Удалить unittest2 из зависимостей
+sed '/ordereddict/d' -i kombu-3.0.35.spec
+sed '/beanstalkc/d' -i kombu-3.0.35.spec
+sed '/couchdb/d' -i kombu-3.0.35.spec
+sed '/importlib/d' -i kombu-3.0.35.spec
+sed '/librabbitmq/d' -i kombu-3.0.35.spec
+sed '/pymongo/d' -i kombu-3.0.35.spec
+sed '/pyro4/d' -i kombu-3.0.35.spec
+sed '/pyzmq/d' -i kombu-3.0.35.spec
+sed '/qpid-tools/d' -i kombu-3.0.35.spec
+sed '/softlayer-messaging/d' -i kombu-3.0.35.spec
+sed '/sqlalchemy/d' -i kombu-3.0.35.spec
+sed '/unittest2/d' -i kombu-3.0.35.spec
+sed s/python2-PyYAML/PyYAML/g -i kombu-3.0.35.spec
+sed s/python2-anyjsonL/python-anyjson/g -i kombu-3.0.35.spec
 sudo yum-builddep -y kombu-3.0.35.spec 
 rpmbuild -bb kombu-3.0.35.spec 
-Error: Пакет python2-PyYAML >= 3.10 не найден
-Error: Пакет python2-amqp < 2.0 не найден
-Error: Пакет python2-anyjson >= 0.3.3 не найден
-Error: Пакет python2-beanstalkc не найден
-Error: Пакет python2-couchdb не найден
-Error: Пакет python2-importlib не найден
-Error: Пакет python2-kazoo >= 1.3.1 не найден
-Error: Пакет python2-librabbitmq >= 1.6.1 не найден
-Error: Пакет python2-ordereddict не найден
-Error: Пакет python2-pymongo >= 2.6.2 не найден
-Error: Пакет python2-pyro4 не найден
-Error: Пакет python2-pyzmq >= 13.1.0 не найден
-Error: Пакет python2-qpid-tools >= 0.26 не найден
-Error: Пакет python2-softlayer-messaging >= 1.0.3 не найден
-Error: Пакет python2-sqlalchemy не найден
-Error: Пакет python2-unittest2 >= 0.5.0 не найден
 ```
 
 PyJWT
