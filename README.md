@@ -83,6 +83,7 @@ sed '/python2-google-cloud-bigtable/d' -i sentry-9.1.2.spec
 sed '/python2-google-cloud-pubsub/d' -i sentry-9.1.2.spec
 sed '/python2-google-cloud-storage/d' -i sentry-9.1.2.spec
 sed '/python2-ipaddress/d' -i sentry-9.1.2.spec
+sed s/python2-kombu = 3.0.35/python-kombu = 3.0.33/g -i sentry-9.1.2.spec
 sed '/python2-maxminddb/d' -i sentry-9.1.2.spec
 sed '/python2-pytest-cov/d' -i sentry-9.1.2.spec
 sed '/python2-pytest-timeout/d' -i sentry-9.1.2.spec
@@ -118,6 +119,8 @@ pip3 install --user pyp2rpm
 
 msgpack
 ```
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-msgpack/0.6.1/2.el7/x86_64/python2-msgpack-0.6.1-2.el7.x86_64.rpm
+
 pyp2rpm msgpack -t epel7 -b2 -p2 -v 0.6.2 > msgpack-0.6.2.spec
 rpmbuild -bb msgpack-0.6.2.spec 
 sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-msgpack-0.6.2-1.el7.x86_64.rpm
@@ -132,6 +135,8 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 
 PyYAML - проверить /usr/lib64/python2.7/
 ```
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
+
 pyp2rpm PyYAML -t epel7 -b2 -p2 -v 3.11 > PyYAML-3.11.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i PyYAML-3.11.spec
 sed -e '/%description -n python2-%{pypi_name}/,+6d' -i PyYAML-3.11.spec
@@ -636,28 +641,21 @@ rpmbuild -bb kombu-3.0.35.spec
 PyJWT
 ```
 pyp2rpm PyJWT -t epel7 -b2 -p2 -v 1.5.3 > PyJWT-1.5.3.spec
-Удалить flake8 из зависимостей
-Удалить flake8-import-order из зависимостей
-Удалить pep8-naming из зависимостей
+sed '/flake8/d' -i PyJWT-1.5.3.spec
+sed '/flake8-import-order/d' -i PyJWT-1.5.3.spec
+sed '/pep8-naming/d' -i PyJWT-1.5.3.spec
 sudo yum-builddep -y PyJWT-1.5.3.spec 
 rpmbuild -bb PyJWT-1.5.3.spec 
-Error: Пакет python2-flake8 не найден
-Error: Пакет python2-flake8-import-order не найден
-Error: Пакет python2-pep8-naming не найден
-Error: Пакет python2-pytest > 3 не найден
 ```
 
 python-u2flib-server
 ```
 pyp2rpm python-u2flib-server -t epel7 -b2 -p2 -v 4.0.1 > python-u2flib-server-4.0.1.spec
-Удалить WebOb из зависимостей
-Удалить argparse из зависимостей
-Удалить yubiauth из зависимостей
+sed '/WebOb/d' -i python-u2flib-server-4.0.1.spec
+sed '/argparse/d' -i python-u2flib-server-4.0.1.spec
+sed '/yubiauth/d' -i python-u2flib-server-4.0.1.spec
 sudo yum-builddep -y python-u2flib-server-4.0.1.spec 
 rpmbuild -bb python-u2flib-server-4.0.1.spec 
-Error: Пакет python2-WebOb не найден
-Error: Пакет python2-argparse не найден
-Error: Пакет python2-yubiauth не найден
 ```
 
 django-jsonfield
@@ -679,80 +677,57 @@ ImportError: No module named tests
 mock
 ```
 pyp2rpm mock -t epel7 -b2 -p2 -v 2.0.0 > mock-2.0.0.spec
-Удалить setuptools из зависимостей
+sed '/setuptools/d' -i mock-2.0.0.spec
 sudo yum-builddep -y mock-2.0.0.spec 
 rpmbuild -bb mock-2.0.0.spec 
 	python2-pbr >= 1.3 нужен для python-mock-2.0.0-1.el7.noarch
-	python2-setuptools >= 17.1 нужен для python-mock-2.0.0-1.el7.noarch
 ```
 
 
 lxml
 ```
 pyp2rpm lxml -t epel7 -b2 -p2 -v 4.5.0 > lxml-4.5.0.spec
-Удалить BeautifulSoup4 из зависимостей
-Удалить Cython из зависимостей
-Удалить html5lib из зависимостей
+sed '/BeautifulSoup4/d' -i lxml-4.5.0.spec
+sed '/Cython/d' -i lxml-4.5.0.spec
+sed '/html5lib/d' -i lxml-4.5.0.spec
 sudo yum-builddep -y lxml-4.5.0.spec 
 rpmbuild -bb lxml-4.5.0.spec 
-Error: Пакет python2-BeautifulSoup4 не найден
-Error: Пакет python2-Cython >= 0.29.7 не найден
-Error: Пакет python2-cssselect >= 0.7 не найден
-Error: Пакет python2-html5lib не найден
 ```
 
 toronado
 ```
 pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
-Удалить flake8 из зависимостей
+sed '/flake8/d' -i toronado-0.0.11.spec
 sudo yum-builddep -y toronado-0.0.11.spec 
 rpmbuild -bb toronado-0.0.11.spec 
-Error: Пакет python2-cssselect не найден
-Error: Пакет python2-cssutils не найден
-Error: Пакет python2-exam не найден
-Error: Пакет python2-flake8 не найден
-Error: Пакет python2-lxml не найден
 ```
 
 jsonschema
 ```
 pyp2rpm jsonschema -t epel7 -b2 -p2 -v 2.6.0 > jsonschema-2.6.0.spec
-Удалить rfc3987 из зависимостей
-Удалить webcolors из зависимостей
+sed '/rfc3987/d' -i jsonschema-2.6.0.spec
+sed '/webcolors/d' -i jsonschema-2.6.0.spec
 sudo yum-builddep -y jsonschema-2.6.0.spec 
 rpmbuild -bb jsonschema-2.6.0.spec 
-	python2-functools32 нужен для python-jsonschema-2.6.0-1.el7.noarch
-	python2-rfc3987 нужен для python-jsonschema-2.6.0-1.el7.noarch
-	python2-strict-rfc3339 нужен для python-jsonschema-2.6.0-1.el7.noarch
-	python2-webcolors нужен для python-jsonschema-2.6.0-1.el7.noarch
 ```
 
 honcho
 ```
 pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
-Удалить argparse из зависимостей
-Удалить colorama из зависимостей
-Удалить ordereddict из зависимостей
+sed '/argparse/d' -i honcho-1.0.1.spec
+sed '/colorama/d' -i honcho-1.0.1.spec
+sed '/ordereddict/d' -i honcho-1.0.1.spec
 sudo yum-builddep -y honcho-1.0.1.spec 
 rpmbuild -bb honcho-1.0.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
-Ошибка: Пакет: python2-honcho-1.0.1-1.el7.noarch (/python2-honcho-1.0.1-1.el7.noarch)
-            Необходимо: python2-argparse
-Ошибка: Пакет: python2-honcho-1.0.1-1.el7.noarch (/python2-honcho-1.0.1-1.el7.noarch)
-            Необходимо: python2-colorama
-Ошибка: Пакет: python2-honcho-1.0.1-1.el7.noarch (/python2-honcho-1.0.1-1.el7.noarch)
-            Необходимо: python2-ordereddict
 ```
 
 botocore
 ```
 pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 > botocore-1.5.70.spec
-Удалить ordereddict из зависимостей
+sed '/ordereddict/d' -i honcho-1.0.1.spec
 sudo yum-builddep -y botocore-1.5.70.spec 
 rpmbuild -bb botocore-1.5.70.spec 
-Error: Пакет python2-dateutil >= 2.1 не найден
-Error: Пакет python2-ordereddict = 1.1 не найден
-Error: Пакет python2-simplejson = 3.3.0 не найден
 ```
 
 boto3
