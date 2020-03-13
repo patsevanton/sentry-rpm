@@ -234,6 +234,24 @@ rpmbuild -bb loremipsum-1.0.5.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-loremipsum-1.0.5-1.el7.noarch.rpm
 ```
 
+semaphore - требуется python2-milksnake
+```
+pyp2rpm semaphore -t epel7 -b2 -p2 -v 0.4.65 > semaphore-0.4.65.spec
+sudo yum-builddep -y semaphore-0.4.65.spec
+rpmbuild -bb semaphore-0.4.65.spec
+copying semaphore/__init__.py -> build/lib/semaphore
+error: No such file or directory
+```
+
+milksnake
+```
+pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
+sed s/python2-cffi/python-cffi/g -i milksnake-0.1.5.spec
+sudo yum-builddep -y milksnake-0.1.5.spec
+rpmbuild -bb milksnake-0.1.5.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python2-milksnake-0.1.5-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -512,13 +530,7 @@ rpmbuild -bb cffi-1.14.0.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python-cffi-1.14.0-1.el7.x86_64.rpm
 ```
 
-milksnake
-```
-pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
-sed s/python2-cffi/python-cffi/g -i milksnake-0.1.5.spec
-rpmbuild -bb milksnake-0.1.5.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-milksnake-0.1.5-1.el7.noarch.rpm
-```
+
 
 py
 ```
@@ -549,13 +561,7 @@ rpmbuild -bb pytest-3.5.1.spec
 ??
 ```
 
-semaphore
-```
-pyp2rpm semaphore -t epel7 -b2 -p2 -v 0.4.65 > semaphore-0.4.65.spec
-sudo yum-builddep -y semaphore-0.4.65.spec 
-rpmbuild -bb semaphore-0.4.65.spec 
-Error: Пакет python2-milksnake >= 0.1.2 не найден
-```
+
 
 python-dateutil - возможно удалить
 ```
