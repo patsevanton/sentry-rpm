@@ -70,6 +70,7 @@ sed s/python2-six/python-six/g -i sentry-9.1.2.spec
 sed s/python2-PyJWT/python-jwt/g -i sentry-9.1.2.spec
 sed s/python2-croniter/python-croniter/g -i sentry-9.1.2.spec
 sed s/python2-memcached/python-memcached/g -i sentry-9.1.2.spec
+sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
 sed '/python2-blist/d' -i sentry-9.1.2.spec
@@ -227,9 +228,10 @@ sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86
 loremipsum
 ```
 pyp2rpm loremipsum -t epel7 -b2 -p2 -v 1.0.5 > loremipsum-1.0.5.spec
+sed -e '/%check/,+1d' -i loremipsum-1.0.5.spec
 sudo yum-builddep -y loremipsum-1.0.5.spec 
-rpmbuild -bb loremipsum-1.0.5.spec 
-ImportError: No module named tests
+rpmbuild -bb loremipsum-1.0.5.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-loremipsum-1.0.5-1.el7.noarch.rpm
 ```
 
 petname
