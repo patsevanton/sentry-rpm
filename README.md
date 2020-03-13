@@ -224,6 +224,14 @@ python-memcached
 sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python-memcached-1.58-1.el7.noarch.rpm
 ```
 
+loremipsum
+```
+pyp2rpm loremipsum -t epel7 -b2 -p2 -v 1.0.5 > loremipsum-1.0.5.spec
+sudo yum-builddep -y loremipsum-1.0.5.spec 
+rpmbuild -bb loremipsum-1.0.5.spec 
+ImportError: No module named tests
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -717,17 +725,6 @@ sudo yum-builddep -y django-jsonfield-0.9.13.spec
 rpmbuild -bb django-jsonfield-0.9.13.spec 
 ImportError: No module named django
 ```
-
-loremipsum
-```
-pyp2rpm loremipsum -t epel7 -b2 -p2 -v 1.0.5 > loremipsum-1.0.5.spec
-sudo yum-builddep -y loremipsum-1.0.5.spec 
-rpmbuild -bb loremipsum-1.0.5.spec 
-ImportError: No module named tests
-```
-
-
-
 
 lxml
 ```
