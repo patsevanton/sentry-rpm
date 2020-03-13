@@ -68,6 +68,8 @@ cd sentry-rpm
 ```
 sed s/python2-six/python-six/g -i sentry-9.1.2.spec
 sed s/python2-PyJWT/python-jwt/g -i sentry-9.1.2.spec
+sed s/python2-croniter/python-croniter/g -i sentry-9.1.2.spec
+sed s/python2-memcached/python-memcached/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
 sed '/python2-blist/d' -i sentry-9.1.2.spec
@@ -87,6 +89,7 @@ sed '/python2-pytest-cov/d' -i sentry-9.1.2.spec
 sed '/python2-pytest-timeout/d' -i sentry-9.1.2.spec
 sed '/python2-pytest-xdist/d' -i sentry-9.1.2.spec
 sed '/python2-responses/d' -i sentry-9.1.2.spec
+sed '/python2-saml/d' -i sentry-9.1.2.spec
 sed '/python2-sqlparse/d' -i sentry-9.1.2.spec
 ```
 
@@ -132,13 +135,9 @@ pip3 install --user pyp2rpm
 msgpack
 ```
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-msgpack/0.6.1/2.el7/x86_64/python2-msgpack-0.6.1-2.el7.x86_64.rpm
-
-pyp2rpm msgpack -t epel7 -b2 -p2 -v 0.6.2 > msgpack-0.6.2.spec
-rpmbuild -bb msgpack-0.6.2.spec 
-sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-msgpack-0.6.2-1.el7.x86_64.rpm
 ```
 
-progressbar2
+progressbar2 - требует python2-utils
 ```
 pyp2rpm progressbar2 -t epel7 -b2 -p2 -v 3.10.1 > progressbar2-3.10.1.spec
 sudo yum-builddep -y progressbar2-3.10.1.spec
@@ -152,6 +151,77 @@ pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
 sudo yum-builddep -y python-utils-2.3.0.spec 
 rpmbuild -bb python-utils-2.3.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
+```
+
+pytest-django
+```
+pyp2rpm pytest-django -t epel7 -b2 -p2 -v 2.9.1 --skip-doc-build > pytest-django-2.9.1.spec
+rpmbuild -bb pytest-django-2.9.1.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
+```
+
+croniter
+```
+pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
+sudo yum-builddep -y croniter-0.3.31.spec 
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i croniter-0.3.31.spec
+sed "/%{python2_sitelib}\/%{pypi_name}.py\*$/d" -i croniter-0.3.31.spec
+rpmbuild -bb croniter-0.3.31.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
+```
+
+jsonschema
+```
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python2-jsonschema-2.6.0-2.el7.noarch.rpm
+```
+
+toronado - требуется python2-exam
+```
+pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
+sed '/flake8/d' -i toronado-0.0.11.spec
+sed s/python2-cssselect/python-cssselect/g -i toronado-0.0.11.spec
+sed s/python2-cssutils/python-cssutils/g -i toronado-0.0.11.spec
+sed s/python2-lxml/python-lxml/g -i toronado-0.0.11.spec
+sed 's/python2-exam/python2-exam >= 0.5.1/g' -i toronado-0.0.11.spec
+sudo yum install -y ftp://ftp.pbone.net/mirror/li.nux.ro/download/nux/dextop/el7/x86_64/python-cssutils-0.9.9-4.el7.nux.noarch.rpm
+sudo yum-builddep -y toronado-0.0.11.spec 
+rpmbuild -bb toronado-0.0.11.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-toronado-0.0.11-1.el7.noarch.rpm
+```
+
+exam
+```
+pyp2rpm exam -t epel7 -b2 -p2 -v 0.5.1 --skip-doc-build > exam-0.5.1.spec
+sed '/python2-describe/d' -i exam-0.5.1.spec
+sed '/python2-nose/d' -i exam-0.5.1.spec
+sed '/python2-pep8/d' -i exam-0.5.1.spec
+sed '/python2-pyflakes/d' -i exam-0.5.1.spec
+sed '/python2-sphinx/d' -i exam-0.5.1.spec
+sed '/python2-unittest2/d' -i exam-0.5.1.spec
+sudo yum-builddep -y exam-0.5.1.spec
+rpmbuild -bb exam-0.5.1.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-exam-0.5.1-1.el7.noarch.rpm
+```
+
+mock
+```
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python2-mock-2.0.0-1.el7.noarch.rpm
+```
+
+hiredis
+```
+pyp2rpm hiredis -t epel7 -b2 -p2 -v 0.1.6 > hiredis-0.1.6.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i hiredis-0.1.6.spec
+sudo yum-builddep -y hiredis-0.1.6.spec 
+rpmbuild -bb hiredis-0.1.6.spec
+sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-hiredis-0.1.6-1.el7.x86_64.rpm
+```
+
+python-memcached
+```
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python-memcached-1.58-1.el7.noarch.rpm
 ```
 
 petname
@@ -208,14 +278,7 @@ rpmbuild -bb futures-3.3.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
 ```
 
-hiredis
-```
-pyp2rpm hiredis -t epel7 -b2 -p2 -v 0.1.6 > hiredis-0.1.6.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i hiredis-0.1.6.spec
-sudo yum-builddep -y hiredis-0.1.6.spec 
-rpmbuild -bb hiredis-0.1.6.spec
-sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-hiredis-0.1.6-1.el7.x86_64.rpm
-```
+
 
 parsimonious
 ```
@@ -224,12 +287,7 @@ rpmbuild -bb parsimonious-0.8.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
 
-pytest-django
-```
-pyp2rpm pytest-django -t epel7 -b2 -p2 -v 2.9.1 --skip-doc-build > pytest-django-2.9.1.spec
-rpmbuild -bb pytest-django-2.9.1.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
-```
+
 
 pytest-html
 ```
@@ -331,30 +389,9 @@ rpmbuild -bb mmh3-2.3.1.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-mmh3-2.3.1-1.el7.x86_64.rpm
 ```
 
-python-memcached
-```
-pyp2rpm python-memcached -t epel7 -b2 -p2 -v 1.59 > python-memcached-1.59.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i python-memcached-1.59.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i python-memcached-1.59.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i python-memcached-1.59.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i python-memcached-1.59.spec
-sudo yum-builddep -y python-memcached-1.59.spec 
-rpmbuild -bb python-memcached-1.59.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-memcached-1.59-1.el7.noarch.rpm
-sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-memcached/1.58/1.el7/noarch/python-memcached-1.58-1.el7.noarch.rpm
-```
 
-croniter
-```
-pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
-sudo yum-builddep -y croniter-0.3.31.spec 
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i croniter-0.3.31.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i croniter-0.3.31.spec
-sed "/%{python2_sitelib}\/%{pypi_name}.py\*$/d" -i croniter-0.3.31.spec
-rpmbuild -bb croniter-0.3.31.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
-```
+
+
 
 ### Зависимости от зависимостей Sentry, которые собираются.
 
@@ -689,14 +726,7 @@ rpmbuild -bb loremipsum-1.0.5.spec
 ImportError: No module named tests
 ```
 
-mock
-```
-pyp2rpm mock -t epel7 -b2 -p2 -v 2.0.0 > mock-2.0.0.spec
-sed '/setuptools/d' -i mock-2.0.0.spec
-sudo yum-builddep -y mock-2.0.0.spec 
-rpmbuild -bb mock-2.0.0.spec 
-	python2-pbr >= 1.3 нужен для python-mock-2.0.0-1.el7.noarch
-```
+
 
 
 lxml
@@ -709,22 +739,7 @@ sudo yum-builddep -y lxml-4.5.0.spec
 rpmbuild -bb lxml-4.5.0.spec 
 ```
 
-toronado
-```
-pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
-sed '/flake8/d' -i toronado-0.0.11.spec
-sudo yum-builddep -y toronado-0.0.11.spec 
-rpmbuild -bb toronado-0.0.11.spec 
-```
 
-jsonschema
-```
-pyp2rpm jsonschema -t epel7 -b2 -p2 -v 2.6.0 > jsonschema-2.6.0.spec
-sed '/rfc3987/d' -i jsonschema-2.6.0.spec
-sed '/webcolors/d' -i jsonschema-2.6.0.spec
-sudo yum-builddep -y jsonschema-2.6.0.spec 
-rpmbuild -bb jsonschema-2.6.0.spec 
-```
 
 honcho
 ```
@@ -774,6 +789,8 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
 
 cssutils
 ```
+sudo yum install -y ftp://ftp.pbone.net/mirror/li.nux.ro/download/nux/dextop/el7/x86_64/python-cssutils-0.9.9-4.el7.nux.noarch.rpm
+
 pyp2rpm cssutils -t epel7 -b2 -p2 -v 0.9.10 > cssutils-0.9.10.spec
 sudo yum-builddep -y cssutils-0.9.10.spec 
 rpmbuild -bb cssutils-0.9.10.spec 
