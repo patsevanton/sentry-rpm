@@ -263,6 +263,7 @@ symbolic - требуется python2-milksnake
 pyp2rpm symbolic -t epel7 -b2 -p2 -v 6.1.4 > symbolic-6.1.4.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  make' -i symbolic-6.1.4.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  cargo' -i symbolic-6.1.4.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc-c++' -i symbolic-6.1.4.spec
 sudo yum-builddep -y symbolic-6.1.4.spec 
 rpmbuild -bb symbolic-6.1.4.spec 
 Error: Пакет python2-milksnake >= 0.1.2 не найден
