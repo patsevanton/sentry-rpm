@@ -264,10 +264,18 @@ pyp2rpm symbolic -t epel7 -b2 -p2 -v 6.1.4 > symbolic-6.1.4.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  make' -i symbolic-6.1.4.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  cargo' -i symbolic-6.1.4.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc-c++' -i symbolic-6.1.4.spec
-sed  '/%global pypi_name semaphore/a %global python2_sitelib /usr/lib64/python2.7/site-packages' -i symbolic-6.1.4.spec
+sed  '/%global pypi_name symbolic/a %global python2_sitelib /usr/lib64/python2.7/site-packages' -i symbolic-6.1.4.spec
+sed 's/BuildArch:      noarch/BuildArch:      x86_64/g' -i symbolic-6.1.4.spec
 sudo yum-builddep -y symbolic-6.1.4.spec 
 rpmbuild -bb symbolic-6.1.4.spec 
-Error: Пакет python2-milksnake >= 0.1.2 не найден
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-symbolic-6.1.4-1.el7.x86_64.rpm
+```
+
+ua-parser
+```
+pyp2rpm ua-parser -t epel7 -b2 -p2 -v 0.7.3 > ua-parser-0.7.3.spec
+rpmbuild -bb ua-parser-0.7.3.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
 petname
@@ -363,12 +371,7 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
-ua-parser
-```
-pyp2rpm ua-parser -t epel7 -b2 -p2 -v 0.7.3 > ua-parser-0.7.3.spec
-rpmbuild -bb ua-parser-0.7.3.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
-```
+
 
 django-picklefield
 ```
