@@ -70,6 +70,7 @@ sed s/python2-six/python-six/g -i sentry-9.1.2.spec
 sed s/python2-PyJWT/python-jwt/g -i sentry-9.1.2.spec
 sed s/python2-croniter/python-croniter/g -i sentry-9.1.2.spec
 sed s/python2-memcached/python-memcached/g -i sentry-9.1.2.spec
+sed s/python2-enum34/python-enum34/g -i sentry-9.1.2.spec
 sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
@@ -278,6 +279,26 @@ rpmbuild -bb ua-parser-0.7.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
 
+enum34
+```
+pyp2rpm enum34 -t epel7 -b2 -p2 -v 1.1.8 > enum34-1.1.8.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i enum34-1.1.8.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i enum34-1.1.8.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i enum34-1.1.8.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i enum34-1.1.8.spec
+rpmbuild -bb enum34-1.1.8.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python-enum34-1.1.8-1.el7.noarch.rpm
+```
+
+selenium
+```
+pyp2rpm selenium -t epel7 -b2 -p2 -v 3.141.0 > selenium-3.141.0.spec
+sed 's/BuildArch:      noarch/BuildArch:      x86_64/g' -i selenium-3.141.0.spec
+sudo yum-builddep -y selenium-3.141.0.spec 
+rpmbuild -bb selenium-3.141.0.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-selenium-3.141.0-1.el7.x86_64.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -314,16 +335,7 @@ rpmbuild -bb djangorestframework-2.4.8.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.el7.noarch.rpm
 ```
 
-enum34
-```
-pyp2rpm enum34 -t epel7 -b2 -p2 -v 1.1.8 > enum34-1.1.8.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i enum34-1.1.8.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i enum34-1.1.8.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i enum34-1.1.8.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i enum34-1.1.8.spec
-rpmbuild -bb enum34-1.1.8.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python-enum34-1.1.8-1.el7.noarch.rpm
-```
+
 
 futures
 ```
@@ -905,14 +917,7 @@ rpmbuild -bb functools32-3.2.3-2.spec
 Bad spec: functools32-3.2.3-2.spec
 ```
 
-selenium
-```
-pyp2rpm selenium -t epel7 -b2 -p2 -v 3.141.0 > selenium-3.141.0.spec
-sudo yum-builddep -y selenium-3.141.0.spec 
-rpmbuild -bb selenium-3.141.0.spec 
-RPM build errors:
-    Arch dependent binaries in noarch package
-```
+
 
 requests-oauthlib
 ```
