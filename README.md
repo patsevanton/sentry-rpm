@@ -237,6 +237,9 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-loremipsum-1.0.5-1.el7.noarch
 semaphore - требуется python2-milksnake
 ```
 pyp2rpm semaphore -t epel7 -b2 -p2 -v 0.4.65 > semaphore-0.4.65.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  make' -i semaphore-0.4.65.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  cargo' -i semaphore-0.4.65.spec
+sed  '/%global pypi_name semaphore/a %global python_sitelib /usr/lib64/python2.7/site-packages' -i pycparser-2.19.spec
 sudo yum-builddep -y semaphore-0.4.65.spec
 rpmbuild -bb semaphore-0.4.65.spec
 copying semaphore/__init__.py -> build/lib/semaphore
