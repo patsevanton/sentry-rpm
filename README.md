@@ -243,7 +243,7 @@ sed  '/%global pypi_name semaphore/a %global python2_sitelib /usr/lib64/python2.
 sed 's/BuildArch:      noarch/BuildArch:      x86_64/g' -i semaphore-0.4.65.spec
 sudo yum-builddep -y semaphore-0.4.65.spec
 rpmbuild -bb semaphore-0.4.65.spec
-sudo yum install -y rpmbuild/RPMS/
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-semaphore-0.4.65-1.el7.x86_64.rpm
 ```
 
 milksnake
