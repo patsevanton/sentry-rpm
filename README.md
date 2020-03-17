@@ -71,6 +71,7 @@ sed s/python2-PyJWT/python-jwt/g -i sentry-9.1.2.spec
 sed s/python2-croniter/python-croniter/g -i sentry-9.1.2.spec
 sed s/python2-memcached/python-memcached/g -i sentry-9.1.2.spec
 sed s/python2-enum34/python-enum34/g -i sentry-9.1.2.spec
+sed s/python2-mistune/python-mistune/g -i sentry-9.1.2.spec
 sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
@@ -343,6 +344,14 @@ rpmbuild -bb mistune-0.8.4.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-mistune-0.8.4-1.el7.noarch.rpm
 ```
 
+django-picklefield
+```
+pyp2rpm django-picklefield -t epel7 -b2 -p2 -v 0.3.2 > django-picklefield-0.3.2.spec
+sudo yum-builddep -y django-picklefield-0.3.2.spec 
+rpmbuild -bb django-picklefield-0.3.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-django-picklefield-0.3.2-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -429,13 +438,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 
 
 
-django-picklefield
-```
-pyp2rpm django-picklefield -t epel7 -b2 -p2 -v 0.3.2 > django-picklefield-0.3.2.spec
-sudo yum-builddep -y django-picklefield-0.3.2.spec 
-rpmbuild -bb django-picklefield-0.3.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-django-picklefield-0.3.2-1.el7.noarch.rpm
-```
+
 
 statsd
 ```
