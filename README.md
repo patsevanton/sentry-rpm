@@ -299,6 +299,37 @@ rpmbuild -bb selenium-3.141.0.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python2-selenium-3.141.0-1.el7.x86_64.rpm
 ```
 
+mmh3
+```
+pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc-c++' -i mmh3-2.3.1.spec
+sed 's/%{python2_sitearch}\/%{pypi_name}$/%{python2_sitearch}\/%{pypi_name}.so/g' -i mmh3-2.3.1.spec
+sudo yum-builddep -y mmh3-2.3.1.spec 
+rpmbuild -bb mmh3-2.3.1.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-mmh3-2.3.1-1.el7.x86_64.rpm
+```
+
+psycopg2-binary
+```
+pyp2rpm psycopg2-binary -t epel7 -b2 -p2 -v 2.7.7 --skip-doc-build > psycopg2-binary-2.7.7.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  postgresql-devel' -i psycopg2-binary-2.7.7.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i psycopg2-binary-2.7.7.spec
+sudo yum-builddep -y psycopg2-binary-2.7.7.spec 
+rpmbuild -bb psycopg2-binary-2.7.7.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-psycopg2-binary-2.7.7-1.el7.x86_64.rpm
+```
+
+honcho
+```
+pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
+sed '/argparse/d' -i honcho-1.0.1.spec
+sed '/colorama/d' -i honcho-1.0.1.spec
+sed '/ordereddict/d' -i honcho-1.0.1.spec
+sudo yum-builddep -y honcho-1.0.1.spec 
+rpmbuild -bb honcho-1.0.1.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -440,15 +471,7 @@ rpmbuild -bb mistune-0.8.4.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-mistune-0.8.4-1.el7.noarch.rpm
 ```
 
-mmh3
-```
-pyp2rpm mmh3 -t epel7 -b2 -p2 -v 2.3.1 > mmh3-2.3.1.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc-c++' -i mmh3-2.3.1.spec
-sed 's/%{python2_sitearch}\/%{pypi_name}$/%{python2_sitearch}\/%{pypi_name}.so/g' -i mmh3-2.3.1.spec
-sudo yum-builddep -y mmh3-2.3.1.spec 
-rpmbuild -bb mmh3-2.3.1.spec 
-sudo yum install -y rpmbuild/RPMS/x86_64/python2-mmh3-2.3.1-1.el7.x86_64.rpm
-```
+
 
 
 
@@ -773,16 +796,7 @@ rpmbuild -bb lxml-4.5.0.spec
 
 
 
-honcho
-```
-pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
-sed '/argparse/d' -i honcho-1.0.1.spec
-sed '/colorama/d' -i honcho-1.0.1.spec
-sed '/ordereddict/d' -i honcho-1.0.1.spec
-sudo yum-builddep -y honcho-1.0.1.spec 
-rpmbuild -bb honcho-1.0.1.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
-```
+
 
 botocore
 ```
@@ -847,13 +861,7 @@ error: Installed (but unpackaged) file(s) found:
    /usr/share/man/man1/qr.1.gz
 ```
 
-psycopg2-binary
-```
-pyp2rpm psycopg2-binary -t epel7 -b2 -p2 -v 2.7.7 > psycopg2-binary-2.7.7.spec
-sudo yum-builddep -y psycopg2-binary-2.7.7.spec 
-rpmbuild -bb psycopg2-binary-2.7.7.spec 
-Error: pg_config executable not found.
-```
+
 
 email-reply-parser
 ```
