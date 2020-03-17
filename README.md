@@ -321,13 +321,26 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python2-psycopg2-binary-2.7.7-1.el7.x86
 
 honcho
 ```
-pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 > honcho-1.0.1.spec
+pyp2rpm honcho -t epel7 -b2 -p2 -v 1.0.1 --skip-doc-build > honcho-1.0.1.spec
 sed '/argparse/d' -i honcho-1.0.1.spec
 sed '/colorama/d' -i honcho-1.0.1.spec
 sed '/ordereddict/d' -i honcho-1.0.1.spec
 sudo yum-builddep -y honcho-1.0.1.spec 
 rpmbuild -bb honcho-1.0.1.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-honcho-1.0.1-1.el7.noarch.rpm
+```
+
+mistune  - требуется python2-nose
+```
+pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i mistune-0.8.4.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
+sed s/python2-nose/python-nose/g -i mistune-0.8.4.spec
+sudo yum-builddep -y mistune-0.8.4.spec
+rpmbuild -bb mistune-0.8.4.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-mistune-0.8.4-1.el7.noarch.rpm
 ```
 
 petname
@@ -460,16 +473,7 @@ rpmbuild -bb BeautifulSoup-3.2.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-BeautifulSoup-3.2.2-1.el7.noarch.rpm
 ```
 
-mistune
-```
-pyp2rpm mistune -t epel7 -b2 -p2 -v 0.8.4 > mistune-0.8.4.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i mistune-0.8.4.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i mistune-0.8.4.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i mistune-0.8.4.spec
-rpmbuild -bb mistune-0.8.4.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-mistune-0.8.4-1.el7.noarch.rpm
-```
+
 
 
 
