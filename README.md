@@ -258,6 +258,16 @@ rpmbuild -bb milksnake-0.1.5.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-milksnake-0.1.5-1.el7.noarch.rpm
 ```
 
+symbolic - требуется python2-milksnake
+```
+pyp2rpm symbolic -t epel7 -b2 -p2 -v 6.1.4 > symbolic-6.1.4.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  make' -i symbolic-6.1.4.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  cargo' -i symbolic-6.1.4.spec
+sudo yum-builddep -y symbolic-6.1.4.spec 
+rpmbuild -bb symbolic-6.1.4.spec 
+Error: Пакет python2-milksnake >= 0.1.2 не найден
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -628,13 +638,7 @@ rpmbuild -bb structlog-16.1.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-structlog-16.1.0-1.el7.noarch.rpm
 ```
 
-symbolic
-```
-pyp2rpm symbolic -t epel7 -b2 -p2 -v 6.1.4 > symbolic-6.1.4.spec
-sudo yum-builddep -y symbolic-6.1.4.spec 
-rpmbuild -bb symbolic-6.1.4.spec 
-Error: Пакет python2-milksnake >= 0.1.2 не найден
-```
+
 
 urllib3
 ```
