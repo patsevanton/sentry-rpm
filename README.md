@@ -352,6 +352,25 @@ rpmbuild -bb django-picklefield-0.3.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-django-picklefield-0.3.2-1.el7.noarch.rpm
 ```
 
+lxml
+```
+pyp2rpm lxml -t epel7 -b2 -p2 -v 4.5.0 > lxml-4.5.0.spec
+sed '/BeautifulSoup4/d' -i lxml-4.5.0.spec
+sed '/Cython/d' -i lxml-4.5.0.spec
+sed '/html5lib/d' -i lxml-4.5.0.spec
+sed s/python2-cssselect/python-cssselect/g -i lxml-4.5.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libxml2-devel' -i lxml-4.5.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i lxml-4.5.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libxslt-devel' -i lxml-4.5.0.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i lxml-4.5.0.spec 
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i lxml-4.5.0.spec 
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i lxml-4.5.0.spec 
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i lxml-4.5.0.spec 
+sudo yum-builddep -y lxml-4.5.0.spec 
+rpmbuild -bb lxml-4.5.0.spec
+sudo yum install -y rpmbuild/RPMS/x86_64/python-lxml-4.5.0-1.el7.x86_64.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -791,15 +810,7 @@ rpmbuild -bb django-jsonfield-0.9.13.spec
 ImportError: No module named django
 ```
 
-lxml
-```
-pyp2rpm lxml -t epel7 -b2 -p2 -v 4.5.0 > lxml-4.5.0.spec
-sed '/BeautifulSoup4/d' -i lxml-4.5.0.spec
-sed '/Cython/d' -i lxml-4.5.0.spec
-sed '/html5lib/d' -i lxml-4.5.0.spec
-sudo yum-builddep -y lxml-4.5.0.spec 
-rpmbuild -bb lxml-4.5.0.spec 
-```
+
 
 
 
