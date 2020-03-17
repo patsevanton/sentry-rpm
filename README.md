@@ -247,6 +247,9 @@ milksnake
 ```
 pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
 sed s/python2-cffi/python-cffi/g -i milksnake-0.1.5.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i milksnake-0.1.5.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python-devel' -i milksnake-0.1.5.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i milksnake-0.1.5.spec
 sudo yum-builddep -y milksnake-0.1.5.spec
 rpmbuild -bb milksnake-0.1.5.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-milksnake-0.1.5-1.el7.noarch.rpm
