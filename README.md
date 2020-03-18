@@ -434,9 +434,30 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el
 email-reply-parser
 ```
 pyp2rpm email-reply-parser -t epel7 -b2 -p2 -v 0.2.0 > email-reply-parser-0.2.0.spec
-sudo yum-builddep -y email-reply-parser-0.2.0.spec 
-rpmbuild -bb email-reply-parser-0.2.0.spec 
-AttributeError: 'module' object has no attribute 'test_support'
+sed -e '/%check/,+1d' -i email-reply-parser-0.2.0.spec
+sudo yum-builddep -y email-reply-parser-0.2.0.spec
+rpmbuild -bb email-reply-parser-0.2.0.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-email-reply-parser-0.2.0-1.el7.noarch.rpm
+```
+
+sentry-sdk
+```
+pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
+sed '/python2-beam/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-blinker/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-bottle/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-falcon/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-flask/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-pyspark/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-sanic/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-sqlalchemy/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-tornado/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-aiohttp/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-0-6/d' -i sentry-sdk-0.14.1.spec
+добавить строку %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g') в sentry-sdk-0.14.1.spec
+sudo yum-builddep -y sentry-sdk-0.14.1.spec 
+rpmbuild -bb sentry-sdk-0.14.1.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sentry-sdk-0.14.1-1.el7.noarch.rpm
 ```
 
 petname
@@ -475,8 +496,6 @@ rpmbuild -bb djangorestframework-2.4.8.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.el7.noarch.rpm
 ```
 
-
-
 futures
 ```
 pyp2rpm futures -t epel7 -b2 -p2 -v 3.3.0 --skip-doc-build > futures-3.3.0.spec
@@ -484,16 +503,12 @@ rpmbuild -bb futures-3.3.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
 ```
 
-
-
 parsimonious
 ```
 pyp2rpm parsimonious -t epel7 -b2 -p2 -v 0.8.0 > parsimonious-0.8.0.spec
 rpmbuild -bb parsimonious-0.8.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
-
-
 
 pytest-html
 ```
@@ -509,18 +524,12 @@ rpmbuild -bb redis-py-cluster-1.3.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
-
-
 rb
 ```
 pyp2rpm rb -t epel7 -b2 -p2 -v 1.7 > rb-1.7.spec
 rpmbuild -bb rb-1.7.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
-
-
-
-
 
 statsd
 ```
@@ -871,10 +880,6 @@ error: Installed (but unpackaged) file(s) found:
    /usr/share/man/man1/qr.1.gz
 ```
 
-
-
-
-
 redis
 ```
 pyp2rpm redis -t epel7 -b2 -p2 -v 2.10.5 > redis-2.10.5.spec
@@ -882,18 +887,6 @@ sudo yum-builddep -y redis-2.10.5.spec
 rpmbuild -bb redis-2.10.5.spec 
 >           raise ConnectionError(self._error_message(e))
 E           ConnectionError: Error 111 connecting to 127.0.0.1:6379. Connection refused.
-```
-
-sentry-sdk
-```
-pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
-sudo yum-builddep -y sentry-sdk-0.14.1.spec 
-rpmbuild -bb sentry-sdk-0.14.1.spec 
-Compiling /home/centos/rpmbuild/BUILDROOT/python-sentry-sdk-0.14.1-1.el7.x86_64/usr/lib/python2.7/site-packages/sentry_sdk/integrations/aiohttp.py ...
-  File "/usr/lib/python2.7/site-packages/sentry_sdk/integrations/aiohttp.py", line 58
-    async def sentry_app_handle(self, request, *args, **kwargs):
-            ^
-SyntaxError: invalid syntax
 ```
 
 Django
