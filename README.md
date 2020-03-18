@@ -80,6 +80,7 @@ sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
 sed s/python2-boto3/python-boto3/g -i sentry-9.1.2.spec
 sed s/python2-setproctitle/python-setproctitle/g -i sentry-9.1.2.spec
 sed s/python2-Django/python2-django16/g -i sentry-9.1.2.spec
+sed s/python2-cffi/python-cffi/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
 sed '/python2-blist/d' -i sentry-9.1.2.spec
