@@ -419,9 +419,8 @@ rpmbuild -bb email-reply-parser-0.2.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-email-reply-parser-0.2.0-1.el7.noarch.rpm
 ```
 
-sentry-sdk
+sentry-sdk - необходим пакет python2-celery
 ```
-sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.1/pulp/el7/x86_64/python-celery-3.1.11-1.el7.noarch.rpm
 sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
 pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
 sed '/python2-beam/d' -i sentry-sdk-0.14.1.spec
@@ -435,6 +434,7 @@ sed '/python2-sqlalchemy/d' -i sentry-sdk-0.14.1.spec
 sed '/python2-tornado/d' -i sentry-sdk-0.14.1.spec
 sed '/python2-aiohttp/d' -i sentry-sdk-0.14.1.spec
 sed '/python2-0-6/d' -i sentry-sdk-0.14.1.spec
+sed 's/python2-django >= 1.8/python2-django <= 1.7/g' -i sentry-sdk-0.14.1.spec
 добавить строку %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g') в sentry-sdk-0.14.1.spec
 sudo yum-builddep -y sentry-sdk-0.14.1.spec 
 rpmbuild -bb sentry-sdk-0.14.1.spec
@@ -696,8 +696,8 @@ Error: Пакет python2-requests >= 2.14.0 не найден
 
 celery
 ```
-sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/arrfab/cccp/epel-7-x86_64/python-celery-3.1.11-1.el7/python-celery-3.1.11-1.el7.centos.noarch.rpm
-
+sudo yum install -y http://mirror.neu.edu.cn/fedora-epel/testing/7/x86_64/p/python-billiard-3.3.0.20-2.el7.x86_64.rpm
+wget ftp5.gwdg.de/pub/opensuse/repositories/home:/radiorabe:/airtime/CentOS_7/noarch/python-kombu-3.0.33-9.2.noarch.rpm
 pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 --skip-doc-build > celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
 sed '/couchbase/d' -i celery-3.1.18.spec
@@ -721,8 +721,6 @@ sed s/python2-billiard/python-billiard/g -i celery-3.1.18.spec
 sed s/python2-kombu/python-kombu/g -i celery-3.1.18.spec
 sed 's/Requires:       python-billiard < 3.4/#Requires:       python-billiard < 3.4/g' -i celery-3.1.18.spec
 sed 's/Requires:       python-kombu < 3.1/#Requires:       python-kombu < 3.1/g' -i celery-3.1.18.spec
-sudo yum install -y http://mirror.neu.edu.cn/fedora-epel/testing/7/x86_64/p/python-billiard-3.3.0.20-2.el7.x86_64.rpm
-wget ftp5.gwdg.de/pub/opensuse/repositories/home:/radiorabe:/airtime/CentOS_7/noarch/python-kombu-3.0.33-9.2.noarch.rpm
 sudo yum install -y python-kombu-3.0.33-9.2.noarch.rpm
 sudo yum-builddep -y celery-3.1.18.spec 
 rpmbuild -bb celery-3.1.18.spec 
