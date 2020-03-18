@@ -421,6 +421,8 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-email-reply-parser-0.2.0-1.el
 
 sentry-sdk
 ```
+sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.1/pulp/el7/x86_64/python-celery-3.1.11-1.el7.noarch.rpm
+sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
 pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
 sed '/python2-beam/d' -i sentry-sdk-0.14.1.spec
 sed '/python2-blinker/d' -i sentry-sdk-0.14.1.spec
@@ -462,7 +464,8 @@ sed s/python2-PyYAML/PyYAML/g -i kombu-3.0.35.spec
 sed s/python2-anyjson/python-anyjson/g -i kombu-3.0.35.spec
 sed s/python2-amqp/python-amqp/g -i kombu-3.0.35.spec
 sudo yum-builddep -y kombu-3.0.35.spec 
-rpmbuild -bb kombu-3.0.35.spec 
+rpmbuild -bb kombu-3.0.35.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-kombu-3.0.35-1.el7.noarch.rpm
 ```
 
 petname
