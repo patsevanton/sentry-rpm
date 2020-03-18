@@ -79,6 +79,7 @@ sed s/python2-lxml/python-lxml/g -i sentry-9.1.2.spec
 sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
 sed s/python2-boto3/python-boto3/g -i sentry-9.1.2.spec
 sed s/python2-setproctitle/python-setproctitle/g -i sentry-9.1.2.spec
+sed s/python2-Django/python2-django16/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
 sed '/python2-blist/d' -i sentry-9.1.2.spec
@@ -418,7 +419,7 @@ rpmbuild -bb email-reply-parser-0.2.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-email-reply-parser-0.2.0-1.el7.noarch.rpm
 ```
 
-sentry-sdk - необходим пакет python2-celery
+sentry-sdk - необходим пакет celery
 ```
 sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
 pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
@@ -502,6 +503,21 @@ rpmbuild -bb kombu-3.0.35.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-kombu-3.0.35-1.el7.noarch.rpm
 ```
 
+pytest-html
+```
+pyp2rpm pytest-html -t epel7 -b2 -p2 -v 1.9.0 > pytest-html-1.9.0.spec
+rpmbuild -bb pytest-html-1.9.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-html-1.9.0-1.el7.noarch.rpm
+```
+
+strict-rfc3339
+```
+pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i strict-rfc3339-0.7.spec
+rpmbuild -bb strict-rfc3339-0.7.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -552,12 +568,7 @@ rpmbuild -bb parsimonious-0.8.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
 
-pytest-html
-```
-pyp2rpm pytest-html -t epel7 -b2 -p2 -v 1.9.0 > pytest-html-1.9.0.spec
-rpmbuild -bb pytest-html-1.9.0.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-html-1.9.0-1.el7.noarch.rpm
-```
+
 
 redis-py-cluster
 ```
@@ -582,13 +593,7 @@ rpmbuild -bb statsd-3.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
 ```
 
-strict-rfc3339
-```
-pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i strict-rfc3339-0.7.spec
-rpmbuild -bb strict-rfc3339-0.7.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
-```
+
 
 BeautifulSoup
 ```
