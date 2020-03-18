@@ -4,9 +4,7 @@ sudo setenforce 0
 sudo yum install -y epel-release rpmdevtools mc git 
 sudo yum install -y python34 python3-pip
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-#sudo yum install -y nodejs
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-#sudo yum install -y yarn
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 ```
 
@@ -380,15 +378,8 @@ pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 --skip-doc-build > pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libjpeg-devel' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  zlib-devel' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i pillow-4.2.1.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pillow-4.2.1.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pillow-4.2.1.spec
-sed 's/%global pypi_name Pillow/%global pypi_name pillow/g' -i pillow-4.2.1.spec
-sed 's/%{pypi_name}\/%{pypi_name}-%{version}/Pillow\/Pillow-%{version}/g' -i pillow-4.2.1.spec
 sudo yum-builddep -y pillow-4.2.1.spec 
 rpmbuild -bb pillow-4.2.1.spec 
-ошибка: Файл /home/centos/rpmbuild/SOURCES/pillow-4.2.1.tar.gz: Нет такого файла или каталога
 sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm 
 ```
 
@@ -409,14 +400,6 @@ sed -e '/%check/,+1d' -i python-u2flib-server-4.0.1.spec
 sudo yum-builddep -y python-u2flib-server-4.0.1.spec 
 rpmbuild -bb python-u2flib-server-4.0.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-u2flib-server-4.0.1-1.el7.noarch.rpm
-```
-
-boto3
-```
-pyp2rpm boto3 -t epel7 -b2 -p2 -v 1.4.5 > boto3-1.4.5.spec
-sudo yum-builddep -y boto3-1.4.5.spec 
-rpmbuild -bb boto3-1.4.5.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
 ```
 
 setproctitle
