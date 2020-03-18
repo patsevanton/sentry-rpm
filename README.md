@@ -372,6 +372,51 @@ rpmbuild -bb lxml-4.5.0.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python-lxml-4.5.0-1.el7.x86_64.rpm
 ```
 
+Pillow
+```
+pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 --skip-doc-build > pillow-4.2.1.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libjpeg-devel' -i pillow-4.2.1.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  zlib-devel' -i pillow-4.2.1.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i pillow-4.2.1.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pillow-4.2.1.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pillow-4.2.1.spec
+sed 's/%global pypi_name Pillow/%global pypi_name pillow/g' -i pillow-4.2.1.spec
+sed 's/%{pypi_name}\/%{pypi_name}-%{version}/Pillow\/Pillow-%{version}/g' -i pillow-4.2.1.spec
+sudo yum-builddep -y pillow-4.2.1.spec 
+rpmbuild -bb pillow-4.2.1.spec 
+ошибка: Файл /home/centos/rpmbuild/SOURCES/pillow-4.2.1.tar.gz: Нет такого файла или каталога
+sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm 
+```
+
+simplejson
+```
+pyp2rpm simplejson -t epel7 -b2 -p2 -v 3.8.2 > simplejson-3.8.2.spec
+rpmbuild -bb simplejson-3.8.2.spec
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-simplejson-3.8.2-1.el7.x86_64.rpm
+```
+
+python-u2flib-server
+```
+pyp2rpm python-u2flib-server -t epel7 -b2 -p2 -v 4.0.1 > python-u2flib-server-4.0.1.spec
+sed '/WebOb/d' -i python-u2flib-server-4.0.1.spec
+sed '/argparse/d' -i python-u2flib-server-4.0.1.spec
+sed '/yubiauth/d' -i python-u2flib-server-4.0.1.spec
+sed -e '/%check/,+1d' -i python-u2flib-server-4.0.1.spec
+sudo yum-builddep -y python-u2flib-server-4.0.1.spec 
+rpmbuild -bb python-u2flib-server-4.0.1.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python2-u2flib-server-4.0.1-1.el7.noarch.rpm
+```
+
+boto3
+```
+pyp2rpm boto3 -t epel7 -b2 -p2 -v 1.4.5 > boto3-1.4.5.spec
+sudo yum-builddep -y boto3-1.4.5.spec 
+rpmbuild -bb boto3-1.4.5.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -442,12 +487,7 @@ rpmbuild -bb redis-py-cluster-1.3.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
-simplejson
-```
-pyp2rpm simplejson -t epel7 -b2 -p2 -v 3.8.2 > simplejson-3.8.2.spec
-rpmbuild -bb simplejson-3.8.2.spec
-sudo yum install -y rpmbuild/RPMS/x86_64/python2-simplejson-3.8.2-1.el7.x86_64.rpm
-```
+
 
 rb
 ```
@@ -565,24 +605,6 @@ rpmbuild -bb pycparser-2.19.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python-pycparser-2.19-1.el7.x86_64.rpm
 ```
 
-Pillow
-```
-pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 > pillow-4.2.1.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libjpeg-devel' -i pillow-4.2.1.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  zlib-devel' -i pillow-4.2.1.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python2-sphinx_rtd_theme' -i pillow-4.2.1.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python-nose' -i pillow-4.2.1.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i pillow-4.2.1.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i pillow-4.2.1.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i pillow-4.2.1.spec
-sed 's/%global pypi_name Pillow/%global pypi_name pillow/g' -i pillow-4.2.1.spec
-sed 's/%{pypi_name}\/%{pypi_name}-%{version}/Pillow\/Pillow-%{version}/g' -i pillow-4.2.1.spec
-sudo yum-builddep -y pillow-4.2.1.spec 
-rpmbuild -bb pillow-4.2.1.spec 
-ошибка: Файл /home/centos/rpmbuild/SOURCES/pillow-4.2.1.tar.gz: Нет такого файла или каталога
-sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm 
-```
 
 chardet
 ```
@@ -793,15 +815,7 @@ sudo yum-builddep -y PyJWT-1.5.3.spec
 rpmbuild -bb PyJWT-1.5.3.spec 
 ```
 
-python-u2flib-server
-```
-pyp2rpm python-u2flib-server -t epel7 -b2 -p2 -v 4.0.1 > python-u2flib-server-4.0.1.spec
-sed '/WebOb/d' -i python-u2flib-server-4.0.1.spec
-sed '/argparse/d' -i python-u2flib-server-4.0.1.spec
-sed '/yubiauth/d' -i python-u2flib-server-4.0.1.spec
-sudo yum-builddep -y python-u2flib-server-4.0.1.spec 
-rpmbuild -bb python-u2flib-server-4.0.1.spec 
-```
+
 
 django-jsonfield
 ```
@@ -825,29 +839,7 @@ sudo yum-builddep -y botocore-1.5.70.spec
 rpmbuild -bb botocore-1.5.70.spec 
 ```
 
-boto3
-```
-pyp2rpm boto3 -t epel7 -b2 -p2 -v 1.4.5 > boto3-1.4.5.spec
-sudo yum-builddep -y boto3-1.4.5.spec 
-rpmbuild -bb boto3-1.4.5.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
-Ошибка: Пакет: python2-boto3-1.4.5-1.el7.noarch (/python2-boto3-1.4.5-1.el7.noarch)
-            Необходимо: python2-s3transfer < 0.2.0
-            Доступно: python2-s3transfer-0.1.10-1.el7.noarch (epel)
-                python2-s3transfer = 0.1.10-1.el7
-Ошибка: Пакет: python2-boto3-1.4.5-1.el7.noarch (/python2-boto3-1.4.5-1.el7.noarch)
-            Необходимо: python2-botocore < 1.6.0
-            Доступно: python2-botocore-1.6.0-1.el7.noarch (epel)
-                python2-botocore = 1.6.0-1.el7
-Ошибка: Пакет: python2-boto3-1.4.5-1.el7.noarch (/python2-boto3-1.4.5-1.el7.noarch)
-            Необходимо: python2-s3transfer >= 0.1.10
-            Доступно: python2-s3transfer-0.1.10-1.el7.noarch (epel)
-                python2-s3transfer = 0.1.10-1.el7
-Ошибка: Пакет: python2-boto3-1.4.5-1.el7.noarch (/python2-boto3-1.4.5-1.el7.noarch)
-            Необходимо: python2-botocore < 1.6.0
-            Установка: python2-botocore-1.6.0-1.el7.noarch (epel)
-                python2-botocore = 1.6.0-1.el7
-```
+
 
 ### Пакеты, которые при сборке выдают ошибку
 
