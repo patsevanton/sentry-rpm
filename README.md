@@ -424,6 +424,21 @@ setproctitle
 sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python-setproctitle-1.1.9-4.el7.x86_64.rpm
 ```
 
+querystring-parser
+```
+pyp2rpm querystring-parser -t epel7 -b2 -p2 -v 1.2.4 > querystring-parser-1.2.4.spec
+rpmbuild -bb querystring-parser-1.2.4.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el7.noarch.rpm
+```
+
+email-reply-parser
+```
+pyp2rpm email-reply-parser -t epel7 -b2 -p2 -v 0.2.0 > email-reply-parser-0.2.0.spec
+sudo yum-builddep -y email-reply-parser-0.2.0.spec 
+rpmbuild -bb email-reply-parser-0.2.0.spec 
+AttributeError: 'module' object has no attribute 'test_support'
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -537,24 +552,7 @@ rpmbuild -bb BeautifulSoup-3.2.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-BeautifulSoup-3.2.2-1.el7.noarch.rpm
 ```
 
-
-
-
-
-
-
-
-
 ### Зависимости от зависимостей Sentry, которые собираются.
-
-
-
-querystring-parser
-```
-pyp2rpm querystring-parser -t epel7 -b2 -p2 -v 1.2.4 > querystring-parser-1.2.4.spec
-rpmbuild -bb querystring-parser-1.2.4.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-querystring-parser-1.2.4-1.el7.noarch.rpm
-```
 
 pluggy
 ```
@@ -875,13 +873,7 @@ error: Installed (but unpackaged) file(s) found:
 
 
 
-email-reply-parser
-```
-pyp2rpm email-reply-parser -t epel7 -b2 -p2 -v 0.2.0 > email-reply-parser-0.2.0.spec
-sudo yum-builddep -y email-reply-parser-0.2.0.spec 
-rpmbuild -bb email-reply-parser-0.2.0.spec 
-AttributeError: 'module' object has no attribute 'test_support'
-```
+
 
 redis
 ```
