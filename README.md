@@ -92,7 +92,6 @@ sed '/python2-google-cloud-bigtable/d' -i sentry-9.1.2.spec
 sed '/python2-google-cloud-pubsub/d' -i sentry-9.1.2.spec
 sed '/python2-google-cloud-storage/d' -i sentry-9.1.2.spec
 sed '/python2-ipaddress/d' -i sentry-9.1.2.spec
-sed 's/python2-kombu = 3.0.35/python-kombu = 3.0.33/g' -i sentry-9.1.2.spec
 sed '/python2-maxminddb/d' -i sentry-9.1.2.spec
 sed '/python2-pytest-cov/d' -i sentry-9.1.2.spec
 sed '/python2-pytest-timeout/d' -i sentry-9.1.2.spec
@@ -441,6 +440,40 @@ rpmbuild -bb sentry-sdk-0.14.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sentry-sdk-0.14.1-1.el7.noarch.rpm
 ```
 
+celery - требуетя kombu
+```
+sudo yum install -y http://mirror.neu.edu.cn/fedora-epel/testing/7/x86_64/p/python-billiard-3.3.0.20-2.el7.x86_64.rpm
+sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
+pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 --skip-doc-build > celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/couchbase/d' -i celery-3.1.18.spec
+sed '/couchdb/d' -i celery-3.1.18.spec
+sed '/gevent/d' -i celery-3.1.18.spec
+sed '/kazoo/d' -i celery-3.1.18.spec
+sed '/librabbitmq/d' -i celery-3.1.18.spec
+sed '/pycassa/d' -i celery-3.1.18.spec
+sed '/pylibmc/d' -i celery-3.1.18.spec
+sed '/pymongo/d' -i celery-3.1.18.spec
+sed '/pyro4/d' -i celery-3.1.18.spec
+sed '/pyzmq/d' -i celery-3.1.18.spec
+sed '/softlayer-messaging/d' -i celery-3.1.18.spec
+sed '/sqlalchemy/d' -i celery-3.1.18.spec
+sed '/threadpool/d' -i celery-3.1.18.spec
+sed '/unittest2/d' -i celery-3.1.18.spec
+sed '/beanstalkc/d' -i celery-3.1.18.spec
+sed '/python2-boto/d' -i celery-3.1.18.spec
+sed '/python2-eventlet/d' -i celery-3.1.18.spec
+sed s/python2-PyYAML/PyYAML/g -i celery-3.1.18.spec
+sed s/python2-pyOpenSSL/pyOpenSSL/g -i celery-3.1.18.spec
+sed s/python2-billiard/python-billiard/g -i celery-3.1.18.spec
+sed 's/python2-pytz > dev/pytz/g' -i celery-3.1.18.spec
+sed '/python-billiard < 3.4/d' -i celery-3.1.18.spec
+sed -e '/%check/,+1d' -i celery-3.1.18.spec
+sudo yum-builddep -y celery-3.1.18.spec 
+rpmbuild -bb celery-3.1.18.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-celery-3.1.18-1.el7.noarch.rpm
+```
+
 kombu
 ```
 sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
@@ -463,6 +496,7 @@ sed '/python2-qpid/d' -i kombu-3.0.35.spec
 sed s/python2-PyYAML/PyYAML/g -i kombu-3.0.35.spec
 sed s/python2-anyjson/python-anyjson/g -i kombu-3.0.35.spec
 sed s/python2-amqp/python-amqp/g -i kombu-3.0.35.spec
+#sed '/python-amqp < 2.0/d' -i kombu-3.0.35.spec
 sudo yum-builddep -y kombu-3.0.35.spec 
 rpmbuild -bb kombu-3.0.35.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-kombu-3.0.35-1.el7.noarch.rpm
@@ -694,38 +728,7 @@ rpmbuild -bb percy-2.0.2.spec
 Error: Пакет python2-requests >= 2.14.0 не найден
 ```
 
-celery
-```
-sudo yum install -y http://mirror.neu.edu.cn/fedora-epel/testing/7/x86_64/p/python-billiard-3.3.0.20-2.el7.x86_64.rpm
-wget ftp5.gwdg.de/pub/opensuse/repositories/home:/radiorabe:/airtime/CentOS_7/noarch/python-kombu-3.0.33-9.2.noarch.rpm
-pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 --skip-doc-build > celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed '/couchbase/d' -i celery-3.1.18.spec
-sed '/couchdb/d' -i celery-3.1.18.spec
-sed '/gevent/d' -i celery-3.1.18.spec
-sed '/kazoo/d' -i celery-3.1.18.spec
-sed '/librabbitmq/d' -i celery-3.1.18.spec
-sed '/pycassa/d' -i celery-3.1.18.spec
-sed '/pylibmc/d' -i celery-3.1.18.spec
-sed '/pymongo/d' -i celery-3.1.18.spec
-sed '/pyro4/d' -i celery-3.1.18.spec
-sed '/pyzmq/d' -i celery-3.1.18.spec
-sed '/softlayer-messaging/d' -i celery-3.1.18.spec
-sed '/sqlalchemy/d' -i celery-3.1.18.spec
-sed '/threadpool/d' -i celery-3.1.18.spec
-sed '/unittest2/d' -i celery-3.1.18.spec
-sed '/beanstalkc/d' -i celery-3.1.18.spec
-sed s/python2-PyYAML/PyYAML/g -i celery-3.1.18.spec
-sed s/python2-pyOpenSSL/pyOpenSSL/g -i celery-3.1.18.spec
-sed s/python2-billiard/python-billiard/g -i celery-3.1.18.spec
-sed s/python2-kombu/python-kombu/g -i celery-3.1.18.spec
-sed 's/Requires:       python-billiard < 3.4/#Requires:       python-billiard < 3.4/g' -i celery-3.1.18.spec
-sed 's/Requires:       python-kombu < 3.1/#Requires:       python-kombu < 3.1/g' -i celery-3.1.18.spec
-sudo yum install -y python-kombu-3.0.33-9.2.noarch.rpm
-sudo yum-builddep -y celery-3.1.18.spec 
-rpmbuild -bb celery-3.1.18.spec 
-pkg_resources.VersionConflict: (amqp 2.4.0 (/usr/lib/python2.7/site-packages), Requirement.parse('amqp>=1.4.9,<2.0'))
-```
+
 
 structlog
 ```
