@@ -8,6 +8,11 @@ curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.r
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 ```
 
+### Исправление ошибки https://rpm.nodesource.com/pub_10.x/el/7/SRPMS/repodata/repomd.xml: [Errno 14] HTTPS Error 404 - Not Found
+```
+sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
+```
+
 ### Формирование sentry-9.1.2.spec
 ```
 pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
@@ -96,16 +101,6 @@ sed '/python2-responses/d' -i sentry-9.1.2.spec
 sed '/python2-saml/d' -i sentry-9.1.2.spec
 sed '/python2-sqlparse/d' -i sentry-9.1.2.spec
 ```
-
-
-
-### Исправление ошибки https://rpm.nodesource.com/pub_10.x/el/7/SRPMS/repodata/repomd.xml: [Errno 14] HTTPS Error 404 - Not Found
-
-```
-sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
-```
-
-
 
 ### Установка зависимостей для сборки sentry-9.1.2.spec (то что указано в BuildRequires)
 
@@ -378,9 +373,10 @@ pyp2rpm Pillow -t epel7 -b2 -p2 -v 4.2.1 --skip-doc-build > pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libjpeg-devel' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  zlib-devel' -i pillow-4.2.1.spec
 sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i pillow-4.2.1.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  python-nose' -i pillow-4.2.1.spec
 sudo yum-builddep -y pillow-4.2.1.spec 
 rpmbuild -bb pillow-4.2.1.spec 
-sudo yum install rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm 
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-Pillow-4.2.1-1.el7.x86_64.rpm 
 ```
 
 simplejson
