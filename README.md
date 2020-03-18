@@ -75,6 +75,7 @@ sed s/python2-mistune/python-mistune/g -i sentry-9.1.2.spec
 sed s/python2-lxml/python-lxml/g -i sentry-9.1.2.spec
 sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
 sed s/python2-boto3/python-boto3/g -i sentry-9.1.2.spec
+sed s/python2-setproctitle/python-setproctitle/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
 sed '/python2-blist/d' -i sentry-9.1.2.spec
@@ -418,6 +419,11 @@ rpmbuild -bb boto3-1.4.5.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-boto3-1.4.5-1.el7.noarch.rpm
 ```
 
+setproctitle
+```
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python-setproctitle-1.1.9-4.el7.x86_64.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -518,13 +524,7 @@ rpmbuild -bb strict-rfc3339-0.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
 ```
 
-setproctitle
-```
-pyp2rpm setproctitle -t epel7 -b2 -p2 -v 1.1.10 > setproctitle-1.1.10.spec
-sed 's/%{python2_sitearch}\/%{pypi_name}$/%{python2_sitearch}\/%{pypi_name}.so/g' -i setproctitle-1.1.10.spec
-rpmbuild -bb setproctitle-1.1.10.spec 
-sudo yum install -y rpmbuild/RPMS/x86_64/python2-setproctitle-1.1.10-1.el7.x86_64.rpm
-```
+
 
 BeautifulSoup
 ```
