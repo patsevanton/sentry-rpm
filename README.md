@@ -439,6 +439,32 @@ rpmbuild -bb sentry-sdk-0.14.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sentry-sdk-0.14.1-1.el7.noarch.rpm
 ```
 
+kombu
+```
+sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
+pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 --skip-doc-build > kombu-3.0.35.spec
+sed '/ordereddict/d' -i kombu-3.0.35.spec
+sed '/beanstalkc/d' -i kombu-3.0.35.spec
+sed '/couchdb/d' -i kombu-3.0.35.spec
+sed '/importlib/d' -i kombu-3.0.35.spec
+sed '/librabbitmq/d' -i kombu-3.0.35.spec
+sed '/pymongo/d' -i kombu-3.0.35.spec
+sed '/pyro4/d' -i kombu-3.0.35.spec
+sed '/pyzmq/d' -i kombu-3.0.35.spec
+sed '/qpid-tools/d' -i kombu-3.0.35.spec
+sed '/softlayer-messaging/d' -i kombu-3.0.35.spec
+sed '/sqlalchemy/d' -i kombu-3.0.35.spec
+sed '/unittest2/d' -i kombu-3.0.35.spec
+sed '/python2-boto/d' -i kombu-3.0.35.spec
+sed '/python2-kazoo/d' -i kombu-3.0.35.spec
+sed '/python2-qpid/d' -i kombu-3.0.35.spec
+sed s/python2-PyYAML/PyYAML/g -i kombu-3.0.35.spec
+sed s/python2-anyjson/python-anyjson/g -i kombu-3.0.35.spec
+sed s/python2-amqp/python-amqp/g -i kombu-3.0.35.spec
+sudo yum-builddep -y kombu-3.0.35.spec 
+rpmbuild -bb kombu-3.0.35.spec 
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -526,8 +552,6 @@ sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i strict-rfc3339-0.7.spec
 rpmbuild -bb strict-rfc3339-0.7.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
 ```
-
-
 
 BeautifulSoup
 ```
@@ -622,8 +646,6 @@ rpmbuild -bb cffi-1.14.0.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python-cffi-1.14.0-1.el7.x86_64.rpm
 ```
 
-
-
 py
 ```
 pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 --skip-doc-build > py-1.5.1.spec
@@ -652,8 +674,6 @@ sudo yum install ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64
 rpmbuild -bb pytest-3.5.1.spec 
 ??
 ```
-
-
 
 python-dateutil - возможно удалить
 ```
@@ -769,28 +789,7 @@ rpmbuild -bb oauth2-1.9.0.post1.spec
 	python2-httplib2 нужен для python-oauth2-1.9.0.post1-1.el7.noarch
 ```
 
-kombu
-```
-sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/radiorabe:/airtime/CentOS_7/noarch/python-kombu-3.0.33-9.2.noarch.rpm
 
-pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 > kombu-3.0.35.spec
-sed '/ordereddict/d' -i kombu-3.0.35.spec
-sed '/beanstalkc/d' -i kombu-3.0.35.spec
-sed '/couchdb/d' -i kombu-3.0.35.spec
-sed '/importlib/d' -i kombu-3.0.35.spec
-sed '/librabbitmq/d' -i kombu-3.0.35.spec
-sed '/pymongo/d' -i kombu-3.0.35.spec
-sed '/pyro4/d' -i kombu-3.0.35.spec
-sed '/pyzmq/d' -i kombu-3.0.35.spec
-sed '/qpid-tools/d' -i kombu-3.0.35.spec
-sed '/softlayer-messaging/d' -i kombu-3.0.35.spec
-sed '/sqlalchemy/d' -i kombu-3.0.35.spec
-sed '/unittest2/d' -i kombu-3.0.35.spec
-sed s/python2-PyYAML/PyYAML/g -i kombu-3.0.35.spec
-sed s/python2-anyjsonL/python-anyjson/g -i kombu-3.0.35.spec
-sudo yum-builddep -y kombu-3.0.35.spec 
-rpmbuild -bb kombu-3.0.35.spec 
-```
 
 PyJWT
 ```
