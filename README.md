@@ -518,6 +518,30 @@ rpmbuild -bb strict-rfc3339-0.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
 ```
 
+requests-oauthlib
+```
+pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.spec
+sed -e '/%check/,+1d' -i requests-oauthlib-0.3.3.spec
+sudo yum-builddep -y requests-oauthlib-0.3.3.spec 
+rpmbuild -bb requests-oauthlib-0.3.3.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-requests-oauthlib-0.3.3-1.el7.noarch.rpm
+```
+
+cffi
+```
+pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 --skip-doc-build  > cffi-1.14.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i cffi-1.14.0.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i cffi-1.14.0.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i cffi-1.14.0.spec
+sed s/python2-pycparser/python-pycparser/g -i cffi-1.14.0.spec
+sed  '/%{python2_sitearch}\/%{pypi_name}$/a %{python2_sitearch}\/_cffi_backend.so' -i cffi-1.14.0.spec
+sudo yum-builddep -y cffi-1.14.0.spec 
+rpmbuild -bb cffi-1.14.0.spec 
+sudo yum install -y rpmbuild/RPMS/x86_64/python-cffi-1.14.0-1.el7.x86_64.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -673,20 +697,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
 ### Пакеты для которых нет зависимостей в системных репозиториях
 
 
-cffi
-```
-pyp2rpm cffi -t epel7 -b2 -p2 -v 1.14.0 --skip-doc-build  > cffi-1.14.0.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i cffi-1.14.0.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  gcc' -i cffi-1.14.0.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i cffi-1.14.0.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i cffi-1.14.0.spec
-sed s/python2-pycparser/python-pycparser/g -i cffi-1.14.0.spec
-sed  '/%{python2_sitearch}\/%{pypi_name}$/a %{python2_sitearch}\/_cffi_backend.so' -i cffi-1.14.0.spec
-sudo yum-builddep -y cffi-1.14.0.spec 
-rpmbuild -bb cffi-1.14.0.spec 
-sudo yum install -y rpmbuild/RPMS/x86_64/python-cffi-1.14.0-1.el7.x86_64.rpm
-```
+
 
 py
 ```
@@ -909,12 +920,3 @@ rpmbuild -bb functools32-3.2.3-2.spec
 Bad spec: functools32-3.2.3-2.spec
 ```
 
-
-
-requests-oauthlib
-```
-pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.spec
-sudo yum-builddep -y requests-oauthlib-0.3.3.spec 
-rpmbuild -bb requests-oauthlib-0.3.3.spec 
-ImportError: No module named tests
-```
