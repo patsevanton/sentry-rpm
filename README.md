@@ -76,7 +76,7 @@ sed s/python2-cffi/python-cffi/g -i sentry-9.1.2.spec
 sed s/python2-PyYAML/PyYAML/g -i sentry-9.1.2.spec
 sed s/python2-BeautifulSoup/python-BeautifulSoup/g -i sentry-9.1.2.spec
 sed s/python2-oauth2/python-oauth2/g -i sentry-9.1.2.spec
-sed s/python2-redis/python-redis/g -i sentry-9.1.2.spec
+sed 's/python2-redis /python-redis /g' -i sentry-9.1.2.spec
 sed s/python2-openid/python-openid/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
