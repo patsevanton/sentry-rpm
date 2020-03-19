@@ -845,11 +845,7 @@ ERROR   0001: file '/usr/bin/uwsgi' contains a standard rpath '/usr/lib64' in [/
 
 redis
 ```
-pyp2rpm redis -t epel7 -b2 -p2 -v 2.10.5 > redis-2.10.5.spec
-sudo yum-builddep -y redis-2.10.5.spec 
-rpmbuild -bb redis-2.10.5.spec 
->           raise ConnectionError(self._error_message(e))
-E           ConnectionError: Error 111 connecting to 127.0.0.1:6379. Connection refused.
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
 ```
 
 Django
