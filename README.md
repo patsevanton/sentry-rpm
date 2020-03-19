@@ -81,6 +81,9 @@ sed s/python2-boto3/python-boto3/g -i sentry-9.1.2.spec
 sed s/python2-setproctitle/python-setproctitle/g -i sentry-9.1.2.spec
 sed s/python2-Django/python2-django16/g -i sentry-9.1.2.spec
 sed s/python2-cffi/python-cffi/g -i sentry-9.1.2.spec
+sed s/python2-PyYAML/PyYAML/g -i sentry-9.1.2.spec
+sed s/python2-BeautifulSoup/python-BeautifulSoup/g -i sentry-9.1.2.spec
+sed s/Requires:       python2-simplejson < 3.9.0/Conflicts:      python2-simplejson >= 3.9.0/g -i sentry-9.1.2.spec
 sed s/python2-oauth2/python-oauth2/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
@@ -544,6 +547,14 @@ rpmbuild -bb cffi-1.14.0.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python-cffi-1.14.0-1.el7.x86_64.rpm
 ```
 
+structlog
+```
+pyp2rpm structlog -t epel7 -b2 -p2 -v 16.1.0 --skip-doc-build > structlog-16.1.0.spec
+sed '/colorama/d' -i structlog-16.1.0.spec
+rpmbuild -bb structlog-16.1.0.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-structlog-16.1.0-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -554,16 +565,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 PyYAML - проверить /usr/lib64/python2.7/
 ```
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
-
-pyp2rpm PyYAML -t epel7 -b2 -p2 -v 3.11 > PyYAML-3.11.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i PyYAML-3.11.spec
-sed -e '/%description -n python2-%{pypi_name}/,+6d' -i PyYAML-3.11.spec
-sed s/python2-%{pypi_name}/%{pypi_name}/g -i PyYAML-3.11.spec
-sed s/python-%{pypi_name}/%{pypi_name}/g -i PyYAML-3.11.spec
-sudo yum-builddep -y PyYAML-3.11.spec 
-rpmbuild -bb PyYAML-3.11.spec
-sudo yum install -y ~/rpmbuild/RPMS/x86_64/PyYAML-3.11-1.el7.x86_64.rpm
-yum install -y https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
 ```
 
 django-templatetag-sugar
@@ -617,19 +618,6 @@ sed  '/BuildRequires:  python2-devel/a BuildRequires:  python2-mock' -i statsd-3
 sudo yum-builddep -y statsd-3.1.spec 
 rpmbuild -bb statsd-3.1.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
-```
-
-
-
-BeautifulSoup
-```
-pyp2rpm BeautifulSoup -t epel7 -b2 -p2 -v 3.2.2 > BeautifulSoup-3.2.2.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i BeautifulSoup-3.2.2.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i BeautifulSoup-3.2.2.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i BeautifulSoup-3.2.2.spec
-rpmbuild -bb BeautifulSoup-3.2.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-BeautifulSoup-3.2.2-1.el7.noarch.rpm
 ```
 
 ### Зависимости от зависимостей Sentry, которые собираются.
@@ -748,13 +736,7 @@ Error: Пакет python2-requests >= 2.14.0 не найден
 
 
 
-structlog
-```
-pyp2rpm structlog -t epel7 -b2 -p2 -v 16.1.0 --skip-doc-build > structlog-16.1.0.spec
-sed '/colorama/d' -i structlog-16.1.0.spec
-rpmbuild -bb structlog-16.1.0.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-structlog-16.1.0-1.el7.noarch.rpm
-```
+
 
 
 
