@@ -589,6 +589,40 @@ rpmbuild -bb urllib3-1.24.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
 ```
 
+requests - требуется python-chardet
+```
+pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
+sed '/PySocks/d' -i requests-2.20.1.spec
+sed '/pytest-mock/d' -i requests-2.20.1.spec
+sed '/win-inet-pton/d' -i requests-2.20.1.spec
+sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
+sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
+sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
+sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
+sudo yum-builddep -y requests-2.20.1.spec 
+rpmbuild -bb requests-2.20.1.spec
+```
+
+chardet
+```
+pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 --skip-doc-build > chardet-3.0.2.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.2.spec
+sudo yum-builddep -y chardet-3.0.2.spec 
+rpmbuild -bb chardet-3.0.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
+```
+
+django-jsonfield
+```
+pyp2rpm django-jsonfield -t epel7 -b2 -p2 -v 0.9.13 > django-jsonfield-0.9.13.spec
+sed  '/BuildRequires:  python2-setuptools/a Requires:  python2-django16' -i django-jsonfield-0.9.13.spec 
+sudo yum-builddep -y django-jsonfield-0.9.13.spec 
+rpmbuild -bb django-jsonfield-0.9.13.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-django-jsonfield-0.9.13-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -698,17 +732,6 @@ rpmbuild -bb pycparser-2.19.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python-pycparser-2.19-1.el7.x86_64.rpm
 ```
 
-chardet
-```
-pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 --skip-doc-build > chardet-3.0.2.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.2.spec
-sudo yum-builddep -y chardet-3.0.2.spec 
-rpmbuild -bb chardet-3.0.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
-```
-
 ### Пакеты для которых нет зависимостей в системных репозиториях
 
 py
@@ -756,8 +779,6 @@ rpmbuild -bb percy-2.0.2.spec
 Error: Пакет python2-requests >= 2.14.0 не найден
 ```
 
-
-
 django-crispy-forms
 ```
 pyp2rpm django-crispy-forms -t epel7 -b2 -p2 -v 1.4.0 > django-crispy-forms-1.4.0.spec
@@ -765,21 +786,6 @@ sudo yum-builddep -y django-crispy-forms-1.4.0.spec
 rpmbuild -bb django-crispy-forms-1.4.0.spec 
 Error: Пакет python2-Django < 1.6 не найден
 Error: Пакет python2-Django >= 1.3 не найден
-```
-
-requests
-```
-pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
-sed '/PySocks/d' -i requests-2.20.1.spec
-sed '/pytest-mock/d' -i requests-2.20.1.spec
-sed '/win-inet-pton/d' -i requests-2.20.1.spec
-sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
-sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
-sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
-
-sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
-sudo yum-builddep -y requests-2.20.1.spec 
-rpmbuild -bb requests-2.20.1.spec
 ```
 
 oauth2
@@ -801,14 +807,6 @@ sed '/flake8-import-order/d' -i PyJWT-1.5.3.spec
 sed '/pep8-naming/d' -i PyJWT-1.5.3.spec
 sudo yum-builddep -y PyJWT-1.5.3.spec 
 rpmbuild -bb PyJWT-1.5.3.spec 
-```
-
-django-jsonfield
-```
-pyp2rpm django-jsonfield -t epel7 -b2 -p2 -v 0.9.13 > django-jsonfield-0.9.13.spec
-sudo yum-builddep -y django-jsonfield-0.9.13.spec 
-rpmbuild -bb django-jsonfield-0.9.13.spec 
-ImportError: No module named django
 ```
 
 botocore
