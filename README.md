@@ -716,7 +716,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-templatetag-sugar-1.0-
 rb
 ```
 pyp2rpm rb -t epel7 -b2 -p2 -v 1.7 > rb-1.7.spec
-sed 's/python2-redis /python-redis /g' -i sentry-9.1.2.spec
+sed 's/python2-redis /python-redis /g' -i rb-1.7.spec
 sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
 rpmbuild -bb rb-1.7.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
