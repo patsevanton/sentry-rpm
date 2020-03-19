@@ -555,6 +555,20 @@ rpmbuild -bb structlog-16.1.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-structlog-16.1.0-1.el7.noarch.rpm
 ```
 
+PyYAML - проверить /usr/lib64/python2.7/
+```
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
+```
+
+qrcode
+```
+pyp2rpm qrcode -t epel7 -b2 -p2 -v 5.3 > qrcode-5.3.spec
+sed '/README.rst/a /usr/share/man/man1/qr.1.gz' -i qrcode-5.3.spec
+sudo yum-builddep -y qrcode-5.3.spec
+rpmbuild -bb qrcode-5.3.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-qrcode-5.3-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -562,10 +576,7 @@ rpmbuild -bb petname-2.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 ```
 
-PyYAML - проверить /usr/lib64/python2.7/
-```
-sudo yum install -y https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
-```
+
 
 django-templatetag-sugar
 ```
@@ -594,8 +605,6 @@ pyp2rpm parsimonious -t epel7 -b2 -p2 -v 0.8.0 > parsimonious-0.8.0.spec
 rpmbuild -bb parsimonious-0.8.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
-
-
 
 redis-py-cluster
 ```
@@ -648,7 +657,6 @@ python2-certifi.noarch 2018.10.15-5.el7 epel
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
 
-
 six
 ```
 pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 --skip-doc-build > six-1.10.0.spec
@@ -672,7 +680,6 @@ rpmbuild -bb pycparser-2.19.spec
 sudo yum install -y rpmbuild/RPMS/x86_64/python-pycparser-2.19-1.el7.x86_64.rpm
 ```
 
-
 chardet
 ```
 pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 --skip-doc-build > chardet-3.0.2.spec
@@ -685,9 +692,6 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
 ```
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
-
-
-
 
 py
 ```
@@ -733,12 +737,6 @@ sudo yum-builddep -y percy-2.0.2.spec
 rpmbuild -bb percy-2.0.2.spec 
 Error: Пакет python2-requests >= 2.14.0 не найден
 ```
-
-
-
-
-
-
 
 urllib3
 ```
@@ -793,8 +791,6 @@ rpmbuild -bb oauth2-1.9.0.post1.spec
 	python2-httplib2 нужен для python-oauth2-1.9.0.post1-1.el7.noarch
 ```
 
-
-
 PyJWT
 ```
 pyp2rpm PyJWT -t epel7 -b2 -p2 -v 1.5.3 > PyJWT-1.5.3.spec
@@ -805,8 +801,6 @@ sudo yum-builddep -y PyJWT-1.5.3.spec
 rpmbuild -bb PyJWT-1.5.3.spec 
 ```
 
-
-
 django-jsonfield
 ```
 pyp2rpm django-jsonfield -t epel7 -b2 -p2 -v 0.9.13 > django-jsonfield-0.9.13.spec
@@ -815,12 +809,6 @@ rpmbuild -bb django-jsonfield-0.9.13.spec
 ImportError: No module named django
 ```
 
-
-
-
-
-
-
 botocore
 ```
 pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 > botocore-1.5.70.spec
@@ -828,8 +816,6 @@ sed '/ordereddict/d' -i honcho-1.0.1.spec
 sudo yum-builddep -y botocore-1.5.70.spec 
 rpmbuild -bb botocore-1.5.70.spec 
 ```
-
-
 
 ### Пакеты, которые при сборке выдают ошибку
 
@@ -851,15 +837,6 @@ pyp2rpm uWSGI -t epel7 -b2 -p2 -v 2.0.18 > uWSGI-2.0.18.spec
 sudo yum-builddep -y uWSGI-2.0.18.spec 
 rpmbuild -bb uWSGI-2.0.18.spec 
 ERROR   0001: file '/usr/bin/uwsgi' contains a standard rpath '/usr/lib64' in [/usr/lib64]
-```
-
-qrcode
-```
-pyp2rpm qrcode -t epel7 -b2 -p2 -v 5.3 > qrcode-5.3.spec
-sudo yum-builddep -y qrcode-5.3.spec 
-rpmbuild -bb qrcode-5.3.spec 
-error: Installed (but unpackaged) file(s) found:
-   /usr/share/man/man1/qr.1.gz
 ```
 
 redis
