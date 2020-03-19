@@ -295,7 +295,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python-enum34-1.1.8-1.el7.noarch.rpm
 selenium
 ```
 pyp2rpm selenium -t epel7 -b2 -p2 -v 3.141.0 > selenium-3.141.0.spec
-sed s/python2-urllib3/python-urllib3/g -i sentry-9.1.2.spec
+sed s/python2-urllib3/python-urllib3/g -i selenium-3.141.0.spec
 sed 's/BuildArch:      noarch/BuildArch:      x86_64/g' -i selenium-3.141.0.spec
 sudo yum-builddep -y selenium-3.141.0.spec 
 rpmbuild -bb selenium-3.141.0.spec 
