@@ -80,6 +80,7 @@ sed 's/python2-redis /python-redis /g' -i sentry-9.1.2.spec
 sed s/python2-openid/python-openid/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
+sed '/python2-msgpack < 0.5.0/d' -i sentry-9.1.2.spec
 sed '/python2-blist/d' -i sentry-9.1.2.spec
 sed '/python2-cassandra-driver/d' -i sentry-9.1.2.spec
 sed '/python2-casscache/d' -i sentry-9.1.2.spec
@@ -689,12 +690,40 @@ rpmbuild -bb petname-2.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 ```
 
+six
+```
+pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 --skip-doc-build > six-1.10.0.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i six-1.10.0.spec
+rpmbuild -bb six-1.10.0.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
+```
+
+python-dateutil
+```
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-dateutil/2.8.0/1.el7/noarch/python2-dateutil-2.8.0-1.el7.noarch.rpm
+```
+
 django-templatetag-sugar
 ```
 pyp2rpm django-templatetag-sugar -t epel7 -b2 -p2 -v 1.0 > django-templatetag-sugar-1.0.spec
 rpmbuild -bb django-templatetag-sugar-1.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-templatetag-sugar-1.0-1.el7.noarch.rpm
 ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -735,16 +764,7 @@ python2-certifi.noarch 2018.10.15-5.el7 epel
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
 
-six
-```
-pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 --skip-doc-build > six-1.10.0.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i six-1.10.0.spec
-rpmbuild -bb six-1.10.0.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
-```
+
 
 pycparser
 ```
@@ -789,14 +809,7 @@ rpmbuild -bb pytest-3.5.1.spec
 ??
 ```
 
-python-dateutil - возможно удалить
-```
-pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 > python-dateutil-2.8.1.spec
-sed '/setuptools-scm/d' -i python-dateutil-2.8.1.spec
-sudo yum-builddep -y python-dateutil-2.8.1.spec 
-rpmbuild -bb python-dateutil-2.8.1.spec 
-Error: Пакет python2-setuptools-scm не найден
-```
+
 percy
 ```
 pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
