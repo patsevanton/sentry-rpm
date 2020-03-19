@@ -655,9 +655,30 @@ rpmbuild -bb django-sudo-2.1.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-sudo-2.1.0-1.el7.noarch.rpm
 ```
 
-redis
+statsd
 ```
-sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
+pyp2rpm statsd -t epel7 -b2 -p2 -v 3.1 --skip-doc-build  > statsd-3.1.spec
+sed  '/BuildRequires:  python2-devel/a BuildRequires:  python2-mock' -i statsd-3.1.spec
+sudo yum-builddep -y statsd-3.1.spec 
+rpmbuild -bb statsd-3.1.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
+```
+
+djangorestframework
+```
+pyp2rpm djangorestframework -t epel7 -b2 -p2 -v 2.4.8 > djangorestframework-2.4.8.spec
+rpmbuild -bb djangorestframework-2.4.8.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.el7.noarch.rpm
+```
+
+django-crispy-forms
+```
+pyp2rpm django-crispy-forms -t epel7 -b2 -p2 -v 1.4.0 > django-crispy-forms-1.4.0.spec
+sed 's/python2-Django < 1.6/python2-django16 <= 1.7/g' -i django-crispy-forms-1.4.0.spec
+sed 's/python2-Django >= 1.3/python2-django16 >= 1.3/g' -i django-crispy-forms-1.4.0.spec
+sudo yum-builddep -y django-crispy-forms-1.4.0.spec 
+rpmbuild -bb django-crispy-forms-1.4.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-crispy-forms-1.4.0-1.el7.noarch.rpm
 ```
 
 petname
@@ -674,12 +695,7 @@ rpmbuild -bb django-templatetag-sugar-1.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-templatetag-sugar-1.0-1.el7.noarch.rpm
 ```
 
-djangorestframework
-```
-pyp2rpm djangorestframework -t epel7 -b2 -p2 -v 2.4.8 > djangorestframework-2.4.8.spec
-rpmbuild -bb djangorestframework-2.4.8.spec
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.el7.noarch.rpm
-```
+
 
 rb
 ```
@@ -688,14 +704,7 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
-statsd
-```
-pyp2rpm statsd -t epel7 -b2 -p2 -v 3.1 --skip-doc-build  > statsd-3.1.spec
-sed  '/BuildRequires:  python2-devel/a BuildRequires:  python2-mock' -i statsd-3.1.spec
-sudo yum-builddep -y statsd-3.1.spec 
-rpmbuild -bb statsd-3.1.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
-```
+
 
 ### Зависимости от зависимостей Sentry, которые собираются.
 
@@ -795,14 +804,7 @@ rpmbuild -bb percy-2.0.2.spec
 Error: Пакет python2-requests >= 2.14.0 не найден
 ```
 
-django-crispy-forms
-```
-pyp2rpm django-crispy-forms -t epel7 -b2 -p2 -v 1.4.0 > django-crispy-forms-1.4.0.spec
-sudo yum-builddep -y django-crispy-forms-1.4.0.spec 
-rpmbuild -bb django-crispy-forms-1.4.0.spec 
-Error: Пакет python2-Django < 1.6 не найден
-Error: Пакет python2-Django >= 1.3 не найден
-```
+
 
 oauth2
 ```
