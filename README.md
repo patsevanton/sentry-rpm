@@ -76,6 +76,7 @@ sed s/python2-cffi/python-cffi/g -i sentry-9.1.2.spec
 sed s/python2-PyYAML/PyYAML/g -i sentry-9.1.2.spec
 sed s/python2-BeautifulSoup/python-BeautifulSoup/g -i sentry-9.1.2.spec
 sed s/python2-oauth2/python-oauth2/g -i sentry-9.1.2.spec
+sed s/python2-redis/python-redis/g -i sentry-9.1.2.spec
 sed s/python2-openid/python-openid/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
@@ -441,10 +442,11 @@ rpmbuild -bb sentry-sdk-0.14.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sentry-sdk-0.14.1-1.el7.noarch.rpm
 ```
 
-celery - требуетя kombu
+celery - требуетcя kombu
 ```
 sudo yum install -y http://mirror.neu.edu.cn/fedora-epel/testing/7/x86_64/p/python-billiard-3.3.0.20-2.el7.x86_64.rpm
 sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
 pyp2rpm celery -t epel7 -b2 -p2 -v 3.1.18 --skip-doc-build > celery-3.1.18.spec
 sed '/beanstalkc/d' -i celery-3.1.18.spec
 sed '/couchbase/d' -i celery-3.1.18.spec
@@ -467,6 +469,7 @@ sed '/python2-eventlet/d' -i celery-3.1.18.spec
 sed s/python2-PyYAML/PyYAML/g -i celery-3.1.18.spec
 sed s/python2-pyOpenSSL/pyOpenSSL/g -i celery-3.1.18.spec
 sed s/python2-billiard/python-billiard/g -i celery-3.1.18.spec
+sed s/python2-redis/python-redis/g -i celery-3.1.18.spec
 sed 's/python2-pytz > dev/pytz/g' -i celery-3.1.18.spec
 sed '/python-billiard < 3.4/d' -i celery-3.1.18.spec
 sed -e '/%check/,+1d' -i celery-3.1.18.spec
@@ -478,6 +481,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-celery-3.1.18-1.el7.noarch.rp
 kombu
 ```
 sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
 pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 --skip-doc-build > kombu-3.0.35.spec
 sed '/ordereddict/d' -i kombu-3.0.35.spec
 sed '/beanstalkc/d' -i kombu-3.0.35.spec
@@ -497,6 +501,7 @@ sed '/python2-qpid/d' -i kombu-3.0.35.spec
 sed s/python2-PyYAML/PyYAML/g -i kombu-3.0.35.spec
 sed s/python2-anyjson/python-anyjson/g -i kombu-3.0.35.spec
 sed s/python2-amqp/python-amqp/g -i kombu-3.0.35.spec
+sed s/python2-redis/python-redis/g -i kombu-3.0.35.spec
 #sed '/python-amqp < 2.0/d' -i kombu-3.0.35.spec
 sudo yum-builddep -y kombu-3.0.35.spec 
 rpmbuild -bb kombu-3.0.35.spec
@@ -632,8 +637,10 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rp
 
 redis-py-cluster
 ```
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
 pyp2rpm redis-py-cluster -t epel7 -b2 -p2 -v 1.3.4 > redis-py-cluster-1.3.4.spec
-rpmbuild -bb redis-py-cluster-1.3.4.spec 
+sed s/python2-redis/python-redis/g -i redis-py-cluster-1.3.4.spec
+rpmbuild -bb redis-py-cluster-1.3.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
