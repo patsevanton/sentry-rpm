@@ -868,14 +868,6 @@ FAILED (failures=3)
 ошибка: Неверный код возврата из /var/tmp/rpm-tmp.wDbJ8G (%check)
 ```
 
-uWSGI
-```
-pyp2rpm uWSGI -t epel7 -b2 -p2 -v 2.0.18 > uWSGI-2.0.18.spec
-sudo yum-builddep -y uWSGI-2.0.18.spec 
-rpmbuild -bb uWSGI-2.0.18.spec 
-ERROR   0001: file '/usr/bin/uwsgi' contains a standard rpath '/usr/lib64' in [/usr/lib64]
-```
-
 python-openid
 ```
 pyp2rpm python-openid -t epel7 -b2 -p2 -v 2.2.5 > python-openid-2.2.5.spec
