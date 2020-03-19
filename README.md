@@ -616,6 +616,13 @@ rpmbuild -bb django-jsonfield-0.9.13.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-django-jsonfield-0.9.13-1.el7.noarch.rpm
 ```
 
+parsimonious
+```
+pyp2rpm parsimonious -t epel7 -b2 -p2 -v 0.8.0 > parsimonious-0.8.0.spec
+rpmbuild -bb parsimonious-0.8.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -644,12 +651,7 @@ rpmbuild -bb futures-3.3.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
 ```
 
-parsimonious
-```
-pyp2rpm parsimonious -t epel7 -b2 -p2 -v 0.8.0 > parsimonious-0.8.0.spec
-rpmbuild -bb parsimonious-0.8.0.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
-```
+
 
 redis-py-cluster
 ```
