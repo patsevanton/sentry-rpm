@@ -623,6 +623,31 @@ rpmbuild -bb parsimonious-0.8.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
 
+futures
+```
+pyp2rpm futures -t epel7 -b2 -p2 -v 3.3.0 --skip-doc-build > futures-3.3.0.spec
+rpmbuild -bb futures-3.3.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
+```
+
+redis-py-cluster
+```
+pyp2rpm redis-py-cluster -t epel7 -b2 -p2 -v 1.3.4 > redis-py-cluster-1.3.4.spec
+rpmbuild -bb redis-py-cluster-1.3.4.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
+```
+
+django-sudo
+```
+pyp2rpm django-sudo -t epel7 -b2 -p2 -v 2.1.0 --skip-doc-build > django-sudo-2.1.0.spec
+sed '/python2-flake8/d' -i django-sudo-2.1.0.spec
+sed '/python2-pytest-cov/d' -i django-sudo-2.1.0.spec
+sed -e '/%check/,+1d' -i django-sudo-2.1.0.spec
+sudo yum-builddep -y django-sudo-2.1.0.spec 
+rpmbuild -bb django-sudo-2.1.0.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-sudo-2.1.0-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -642,22 +667,6 @@ djangorestframework
 pyp2rpm djangorestframework -t epel7 -b2 -p2 -v 2.4.8 > djangorestframework-2.4.8.spec
 rpmbuild -bb djangorestframework-2.4.8.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-djangorestframework-2.4.8-1.el7.noarch.rpm
-```
-
-futures
-```
-pyp2rpm futures -t epel7 -b2 -p2 -v 3.3.0 --skip-doc-build > futures-3.3.0.spec
-rpmbuild -bb futures-3.3.0.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
-```
-
-
-
-redis-py-cluster
-```
-pyp2rpm redis-py-cluster -t epel7 -b2 -p2 -v 1.3.4 > redis-py-cluster-1.3.4.spec
-rpmbuild -bb redis-py-cluster-1.3.4.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
 rb
@@ -849,14 +858,6 @@ pyp2rpm Django -t epel7 -b2 -p2 -v 1.6.11 > Django-1.6.11.spec
 sudo yum-builddep -y Django-1.6.11.spec 
 rpmbuild -bb Django-1.6.11.spec 
 error: invalid command 'test'
-```
-
-django-sudo
-```
-pyp2rpm django-sudo -t epel7 -b2 -p2 -v 2.1.0 > django-sudo-2.1.0.spec
-sudo yum-builddep -y django-sudo-2.1.0.spec 
-rpmbuild -bb django-sudo-2.1.0.spec 
-Error: Пакет python2-flake8 не найден
 ```
 
 python-openid
