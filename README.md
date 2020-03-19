@@ -648,6 +648,11 @@ rpmbuild -bb django-sudo-2.1.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-sudo-2.1.0-1.el7.noarch.rpm
 ```
 
+redis
+```
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
@@ -841,19 +846,6 @@ pyp2rpm uWSGI -t epel7 -b2 -p2 -v 2.0.18 > uWSGI-2.0.18.spec
 sudo yum-builddep -y uWSGI-2.0.18.spec 
 rpmbuild -bb uWSGI-2.0.18.spec 
 ERROR   0001: file '/usr/bin/uwsgi' contains a standard rpath '/usr/lib64' in [/usr/lib64]
-```
-
-redis
-```
-sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
-```
-
-Django
-```
-pyp2rpm Django -t epel7 -b2 -p2 -v 1.6.11 > Django-1.6.11.spec
-sudo yum-builddep -y Django-1.6.11.spec 
-rpmbuild -bb Django-1.6.11.spec 
-error: invalid command 'test'
 ```
 
 python-openid
