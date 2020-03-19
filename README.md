@@ -441,6 +441,7 @@ sed '/python2-tornado/d' -i sentry-sdk-0.14.1.spec
 sed '/python2-aiohttp/d' -i sentry-sdk-0.14.1.spec
 sed '/python2-0-6/d' -i sentry-sdk-0.14.1.spec
 sed 's/python2-django >= 1.8/python2-django <= 1.7/g' -i sentry-sdk-0.14.1.spec
+sed s/python2-urllib3/python-urllib3/g -i sentry-sdk-0.14.1.spec
 добавить строку %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g') в sentry-sdk-0.14.1.spec
 sudo yum-builddep -y sentry-sdk-0.14.1.spec 
 rpmbuild -bb sentry-sdk-0.14.1.spec
