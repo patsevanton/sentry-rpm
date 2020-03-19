@@ -18,25 +18,6 @@ sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
 pyp2rpm sentry -t epel7 -b2 -p2 -v 9.1.2 > sentry-9.1.2.spec
 ```
 
-Удаляем из sentry-9.1.2.spec
-```
-sed '/python2-configparser/d' -i sentry-9.1.2.spec
-sed '/python2-Babel/d' -i sentry-9.1.2.spec
-sed '/python2-autopep8/d' -i sentry-9.1.2.spec
-sed '/python2-docker/d' -i sentry-9.1.2.spec
-sed '/python2-flake8/d' -i sentry-9.1.2.spec
-sed '/python2-isort/d' -i sentry-9.1.2.spec
-sed '/python2-pycodestyle/d' -i sentry-9.1.2.spec
-sed '/python2-sentry-flake8/d' -i sentry-9.1.2.spec
-sed '/python2-setuptools/d' -i sentry-9.1.2.spec
-```
-
-Добавляем nodejs и yarn в BuildRequires
-```
-sed  '/BuildRequires:  python2-devel/a BuildRequires:  nodejs >= 8' -i sentry-9.1.2.spec
-sed  '/BuildRequires:  python2-devel/a BuildRequires:  yarn' -i sentry-9.1.2.spec
-```
-
 Секция %prep %build %install
 ```
 %prep
@@ -67,8 +48,19 @@ cd sentry-rpm
 ./build.sh
 ```
 
-### Меняем имена зависимостей
+### Меняем  зависимости
 ```
+sed  '/BuildRequires:  python2-devel/a BuildRequires:  nodejs >= 8' -i sentry-9.1.2.spec
+sed  '/BuildRequires:  python2-devel/a BuildRequires:  yarn' -i sentry-9.1.2.spec
+sed '/python2-configparser/d' -i sentry-9.1.2.spec
+sed '/python2-Babel/d' -i sentry-9.1.2.spec
+sed '/python2-autopep8/d' -i sentry-9.1.2.spec
+sed '/python2-docker/d' -i sentry-9.1.2.spec
+sed '/python2-flake8/d' -i sentry-9.1.2.spec
+sed '/python2-isort/d' -i sentry-9.1.2.spec
+sed '/python2-pycodestyle/d' -i sentry-9.1.2.spec
+sed '/python2-sentry-flake8/d' -i sentry-9.1.2.spec
+sed '/python2-setuptools/d' -i sentry-9.1.2.spec
 sed s/python2-six/python-six/g -i sentry-9.1.2.spec
 sed s/python2-PyJWT/python-jwt/g -i sentry-9.1.2.spec
 sed s/python2-croniter/python-croniter/g -i sentry-9.1.2.spec
@@ -83,8 +75,8 @@ sed s/python2-Django/python2-django16/g -i sentry-9.1.2.spec
 sed s/python2-cffi/python-cffi/g -i sentry-9.1.2.spec
 sed s/python2-PyYAML/PyYAML/g -i sentry-9.1.2.spec
 sed s/python2-BeautifulSoup/python-BeautifulSoup/g -i sentry-9.1.2.spec
-sed s/Requires:       python2-simplejson < 3.9.0/Conflicts:      python2-simplejson >= 3.9.0/g -i sentry-9.1.2.spec
 sed s/python2-oauth2/python-oauth2/g -i sentry-9.1.2.spec
+sed s/python2-openid/python-openid/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
 sed '/python2-betamax/d' -i sentry-9.1.2.spec
 sed '/python2-blist/d' -i sentry-9.1.2.spec
@@ -105,6 +97,7 @@ sed '/python2-pytest-xdist/d' -i sentry-9.1.2.spec
 sed '/python2-responses/d' -i sentry-9.1.2.spec
 sed '/python2-saml/d' -i sentry-9.1.2.spec
 sed '/python2-sqlparse/d' -i sentry-9.1.2.spec
+sed 's/Requires:       python2-simplejson < 3.9.0/Conflicts:       python2-simplejson >= 3.9.0/g' -i sentry-9.1.2.spec
 ```
 
 ### Установка зависимостей для сборки sentry-9.1.2.spec (то что указано в BuildRequires)
