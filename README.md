@@ -295,6 +295,7 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python-enum34-1.1.8-1.el7.noarch.rpm
 selenium
 ```
 pyp2rpm selenium -t epel7 -b2 -p2 -v 3.141.0 > selenium-3.141.0.spec
+sed s/python2-urllib3/python-urllib3/g -i sentry-9.1.2.spec
 sed 's/BuildArch:      noarch/BuildArch:      x86_64/g' -i selenium-3.141.0.spec
 sudo yum-builddep -y selenium-3.141.0.spec 
 rpmbuild -bb selenium-3.141.0.spec 
@@ -569,14 +570,30 @@ rpmbuild -bb qrcode-5.3.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-qrcode-5.3-1.el7.noarch.rpm
 ```
 
+urllib3
+```
+sudo yum install -y http://ftp.riken.jp/Linux/cern/centos/7/cloud/x86_64/openstack-pike/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm
+pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
+sed 's/python2-pyOpenSSL/pyOpenSSL/g' -i urllib3-1.24.2.spec
+sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
+sed 's/python2-PySocks/python2-pysocks/g' -i urllib3-1.24.2.spec
+sed -e '/%check/,+1d' -i urllib3-1.24.2.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i urllib3-1.24.2.spec
+sed  '/setup.py install --skip-build --root/a rm -rf %{buildroot}\/%{python2_sitelib}\/urllib3\/packages\/ssl_match_hostname\/' -i urllib3-1.24.2.spec
+sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backports/ssl_match_hostname %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname' -i urllib3-1.24.2.spec
+sudo yum-builddep -y urllib3-1.24.2.spec 
+rpmbuild -bb urllib3-1.24.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
+```
+
 petname
 ```
 pyp2rpm petname -t epel7 -b2 -p2 -v 2.0 > petname-2.0.spec
 rpmbuild -bb petname-2.0.spec 
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 ```
-
-
 
 django-templatetag-sugar
 ```
@@ -738,23 +755,7 @@ rpmbuild -bb percy-2.0.2.spec
 Error: Пакет python2-requests >= 2.14.0 не найден
 ```
 
-urllib3
-```
-pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
-sed 's/python2-pyOpenSSL/pyOpenSSL/g' -i urllib3-1.24.2.spec
-sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
-sed 's/python2-PySocks/python2-pysocks/g' -i urllib3-1.24.2.spec
-sed -e '/%check/,+1d' -i urllib3-1.24.2.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i urllib3-1.24.2.spec
-sed  '/setup.py install --skip-build --root/a rm -rf %{buildroot}\/%{python2_sitelib}\/urllib3\/packages\/ssl_match_hostname\/' -i urllib3-1.24.2.spec
-sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backports/ssl_match_hostname %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname' -i urllib3-1.24.2.spec
-sudo yum install -y http://ftp.riken.jp/Linux/cern/centos/7/cloud/x86_64/openstack-pike/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm
-sudo yum-builddep -y urllib3-1.24.2.spec 
-rpmbuild -bb urllib3-1.24.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
-```
+
 
 django-crispy-forms
 ```
