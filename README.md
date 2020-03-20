@@ -559,7 +559,7 @@ rpmbuild -bb structlog-16.1.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-structlog-16.1.0-1.el7.noarch.rpm
 ```
 
-PyYAML - проверить /usr/lib64/python2.7/
+PyYAML
 ```
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/PyYAML/3.11/6.el7/x86_64/PyYAML-3.11-6.el7.x86_64.rpm
 ```
