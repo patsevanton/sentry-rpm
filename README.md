@@ -70,6 +70,7 @@ sed s/python2-mistune/python-mistune/g -i sentry-9.1.2.spec
 sed s/python2-urllib3/python-urllib3/g -i sentry-9.1.2.spec
 sed s/python2-lxml/python-lxml/g -i sentry-9.1.2.spec
 sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
+sed s/python2-requests/python-requests/g -i sentry-9.1.2.spec
 sed s/python2-setproctitle/python-setproctitle/g -i sentry-9.1.2.spec
 sed s/python2-Django/python2-django16/g -i sentry-9.1.2.spec
 sed s/python2-cffi/python-cffi/g -i sentry-9.1.2.spec
@@ -526,10 +527,11 @@ rpmbuild -bb strict-rfc3339-0.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
 ```
 
-requests-oauthlib
+requests-oauthlib - требуется requests
 ```
 pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.spec
 sed -e '/%check/,+1d' -i requests-oauthlib-0.3.3.spec
+sed s/python2-requests/python-requests/g -i requests-oauthlib-0.3.3.spec
 sudo yum-builddep -y requests-oauthlib-0.3.3.spec 
 rpmbuild -bb requests-oauthlib-0.3.3.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-requests-oauthlib-0.3.3-1.el7.noarch.rpm
@@ -816,9 +818,14 @@ sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
 sed '/python2-pytest-cov/d' -i requests-2.20.1.spec
 sed '/python2-pytest-httpbin/d' -i requests-2.20.1.spec
 sed '/python2-pytest-xdist/d' -i requests-2.20.1.spec
+sed -e '/%check/,+1d' -i requests-2.20.1.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i requests-2.20.1.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i requests-2.20.1.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i requests-2.20.1.spec
 sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
 sudo yum-builddep -y requests-2.20.1.spec 
 rpmbuild -bb requests-2.20.1.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python-requests-2.20.1-1.el7.noarch.rpm
 ```
 
 percy
