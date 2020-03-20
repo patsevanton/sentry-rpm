@@ -805,7 +805,7 @@ rpmbuild -bb pytest-3.5.1.spec
 ??
 ```
 
-requests - требуется python-chardet, pytest
+requests - требуется chardet, pytest
 ```
 pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
 sed '/PySocks/d' -i requests-2.20.1.spec
@@ -827,7 +827,7 @@ rpmbuild -bb requests-2.20.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-requests-2.20.1-1.el7.noarch.rpm
 ```
 
-percy
+percy - требуется requests
 ```
 pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
 sed '/requests-mock/d' -i percy-2.0.2.spec
@@ -845,9 +845,21 @@ sed '/python2-coverage/d' -i oauth2-1.9.0.post1.spec
 sed '/python2-httplib2/d' -i oauth2-1.9.0.post1.spec
 sed -e '/%check/,+1d' -i oauth2-1.9.0.post1.spec
 sed 's/%{python2_sitelib}\/tests$/%exclude %{python2_sitelib}\/tests/g' -i oauth2-1.9.0.post1.spec
+sudo yum-builddep -y oauth2-1.9.0.post1.spec
 rpmbuild -bb oauth2-1.9.0.post1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-oauth2-1.9.0.post1-1.el7.noarch.rpm
 ```
+
+
+
+
+
+
+
+
+
+
+
 
 ### Зависимости от зависимостей Sentry, которые собираются.
 
