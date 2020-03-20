@@ -67,6 +67,7 @@ sed s/python2-croniter/python-croniter/g -i sentry-9.1.2.spec
 sed s/python2-memcached/python-memcached/g -i sentry-9.1.2.spec
 sed s/python2-enum34/python-enum34/g -i sentry-9.1.2.spec
 sed s/python2-mistune/python-mistune/g -i sentry-9.1.2.spec
+sed s/python2-urllib3/python-urllib3/g -i sentry-9.1.2.spec
 sed s/python2-lxml/python-lxml/g -i sentry-9.1.2.spec
 sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
 sed s/python2-setproctitle/python-setproctitle/g -i sentry-9.1.2.spec
