@@ -603,7 +603,8 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-django-jsonfield-0.9.13-1.el7.n
 parsimonious
 ```
 pyp2rpm parsimonious -t epel7 -b2 -p2 -v 0.8.0 > parsimonious-0.8.0.spec
-rpmbuild -bb parsimonious-0.8.0.spec 
+sudo yum-builddep -y parsimonious-0.8.0.spec
+rpmbuild -bb parsimonious-0.8.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noarch.rpm
 ```
 
@@ -613,7 +614,8 @@ pyp2rpm futures -t epel7 -b2 -p2 -v 3.3.0 --skip-doc-build > futures-3.3.0.spec
 sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i futures-3.3.0.spec
 sed -e '/%description -n python2-%{pypi_name}/,+1d' -i futures-3.3.0.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i futures-3.3.0.spec
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
+rpmbuild -bb futures-3.3.0.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python-futures-3.3.0-1.el7.noarch.rpm
 ```
 
 redis-py-cluster
@@ -647,6 +649,7 @@ statsd
 ```
 pyp2rpm statsd -t epel7 -b2 -p2 -v 3.1 --skip-doc-build  > statsd-3.1.spec
 sed  '/BuildRequires:  python2-devel/a BuildRequires:  python2-mock' -i statsd-3.1.spec
+sed -e '/%check/,+1d' -i statsd-3.1.spec
 sudo yum-builddep -y statsd-3.1.spec 
 rpmbuild -bb statsd-3.1.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-statsd-3.1-1.el7.noarch.rpm 
@@ -732,7 +735,10 @@ s3transfer - требуется futures и botocore
 ```
 pyp2rpm s3transfer -t epel7 -b2 -p2 -v 0.1.11 > s3transfer-0.1.11.spec
 sed 's/Requires:       python2-botocore < 1.5.71/Requires:       python2-botocore == 1.5.70/g' -i s3transfer-0.1.11.spec
-rpmbuild -bb s3transfer-0.1.11.spec 
+sed 's/python-docutils/python2-docutils/g' -i s3transfer-0.1.11.spec
+sed 's/python2-futures/python-futures/g' -i s3transfer-0.1.11.spec
+sudo yum-builddep -y s3transfer-0.1.11.spec
+rpmbuild -bb s3transfer-0.1.11.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-s3transfer-0.1.11-1.el7.noarch.rpm
 ```
 
@@ -761,11 +767,10 @@ py
 ```
 pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 --skip-doc-build > py-1.5.1.spec
 sed '/setuptools-scm/d' -i py-1.5.1.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
+#sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
+#sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
+#sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
 rpmbuild -bb py-1.5.1.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-py-1.5.1-1.el7.noarch.rpm
 sudo yum install -y rpmbuild/RPMS/noarch/python2-py-1.5.1-1.el7.noarch.rpm
 ```
 
@@ -779,30 +784,11 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-pluggy-0.6.0-1.el7.noarch.rpm
 more-itertools
 ```
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-more-itertools/4.1.0/1.el7/noarch/python2-more-itertools-4.1.0-1.el7.noarch.rpm
-
-pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 --skip-doc-build > more-itertools-5.0.0.spec
-rpmbuild -bb more-itertools-5.0.0.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-more-itertools-5.0.0-1.el7.noarch.rpm
 ```
 
 pytest - требуется py, more-itertools
 ```
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/pytest/3.5.1/1.el7/noarch/python2-pytest-3.5.1-1.el7.noarch.rpm
-
-pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 --skip-doc-build > pytest-3.5.1.spec
-sed '/colorama/d' -i pytest-3.5.1.spec
-sed '/setuptools-scm/d' -i pytest-3.5.1.spec
-sed s/python2-six/python-six/g -i pytest-3.5.1.spec
-sed s/python2-py/python-py/g -i pytest-3.5.1.spec
-sed -e '/%check/,+1d' -i pytest-3.5.1.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pytest-3.5.1.spec
-sed -e '/%description -n python2-%{pypi_name}/,+6d' -i pytest-3.5.1.spec
-sed s/python2-%{pypi_name}/%{pypi_name}/g -i pytest-3.5.1.spec
-sed s/python-%{pypi_name}/%{pypi_name}/g -i pytest-3.5.1.spec
-sudo yum-builddep -y pytest-3.5.1.spec 
-sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python2-setuptools-22.0.5-1.el7.noarch.rpm
-rpmbuild -bb pytest-3.5.1.spec
-??
 ```
 
 requests - требуется chardet, pytest
