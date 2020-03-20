@@ -274,6 +274,7 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python2-symbolic-6.1.4-1.el7.x86_64.rpm
 ua-parser
 ```
 pyp2rpm ua-parser -t epel7 -b2 -p2 -v 0.7.3 > ua-parser-0.7.3.spec
+sed s/python2-pyyaml/PyYAML/g -i ua-parser-0.7.3.spec
 rpmbuild -bb ua-parser-0.7.3.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-ua-parser-0.7.3-1.el7.noarch.rpm
 ```
