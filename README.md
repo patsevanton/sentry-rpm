@@ -77,7 +77,6 @@ sed s/python2-cffi/python-cffi/g -i sentry-9.1.2.spec
 sed s/python2-PyYAML/PyYAML/g -i sentry-9.1.2.spec
 sed s/python2-uwsgi/uwsgi/g -i sentry-9.1.2.spec
 sed s/python2-BeautifulSoup/python-BeautifulSoup/g -i sentry-9.1.2.spec
-sed s/python2-oauth2/python-oauth2/g -i sentry-9.1.2.spec
 sed 's/python2-redis /python-redis /g' -i sentry-9.1.2.spec
 sed s/python2-openid/python-openid/g -i sentry-9.1.2.spec
 sed '/python2-batching-kafka-consumer/d' -i sentry-9.1.2.spec
@@ -839,6 +838,17 @@ rpmbuild -bb percy-2.0.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-percy-2.0.2-1.el7.noarch.rpm
 ```
 
+oauth2
+```
+pyp2rpm oauth2 -t epel7 -b2 -p2 -v 1.9.0.post1 > oauth2-1.9.0.post1.spec
+sed '/python2-coverage/d' -i oauth2-1.9.0.post1.spec
+sed '/python2-httplib2/d' -i oauth2-1.9.0.post1.spec
+sed -e '/%check/,+1d' -i oauth2-1.9.0.post1.spec
+sed 's/%{python2_sitelib}\/tests$/%exclude %{python2_sitelib}\/tests/g' -i oauth2-1.9.0.post1.spec
+rpmbuild -bb oauth2-1.9.0.post1.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python2-oauth2-1.9.0.post1-1.el7.noarch.rpm
+```
+
 ### Зависимости от зависимостей Sentry, которые собираются.
 
 certifi - воможно удалить 
@@ -867,16 +877,7 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python-pycparser-2.19-1.el7.x86_64.rpm
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
 
-oauth2
-```
-pyp2rpm oauth2 -t epel7 -b2 -p2 -v 1.9.0.post1 > oauth2-1.9.0.post1.spec
-Удалить coverage из зависимостей
-sudo yum-builddep -y oauth2-1.9.0.post1.spec 
-rpmbuild -bb oauth2-1.9.0.post1.spec 
-ошибка: Неудовлетворенные зависимости сборки:
-	python2-coverage нужен для python-oauth2-1.9.0.post1-1.el7.noarch
-	python2-httplib2 нужен для python-oauth2-1.9.0.post1-1.el7.noarch
-```
+
 
 PyJWT
 ```
