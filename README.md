@@ -159,12 +159,7 @@ rpmbuild -bb python-utils-2.3.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
 ```
 
-pytest-django
-```
-pyp2rpm pytest-django -t epel7 -b2 -p2 -v 2.9.1 --skip-doc-build > pytest-django-2.9.1.spec
-rpmbuild -bb pytest-django-2.9.1.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
-```
+
 
 croniter
 ```
@@ -629,7 +624,14 @@ rpmbuild -bb redis-py-cluster-1.3.4.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-redis-py-cluster-1.3.4-1.el7.noarch.rpm
 ```
 
-django-sudo
+pytest-django
+```
+pyp2rpm pytest-django -t epel7 -b2 -p2 -v 2.9.1 --skip-doc-build > pytest-django-2.9.1.spec
+rpmbuild -bb pytest-django-2.9.1.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-pytest-django-2.9.1-1.el7.noarch.rpm
+```
+
+django-sudo - требуется pytest-django
 ```
 pyp2rpm django-sudo -t epel7 -b2 -p2 -v 2.1.0 --skip-doc-build > django-sudo-2.1.0.spec
 sed '/python2-flake8/d' -i django-sudo-2.1.0.spec
@@ -763,6 +765,7 @@ sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
 sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
 rpmbuild -bb py-1.5.1.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python-py-1.5.1-1.el7.noarch.rpm
+sudo yum install -y rpmbuild/RPMS/noarch/python2-py-1.5.1-1.el7.noarch.rpm
 ```
 
 pluggy
@@ -837,8 +840,6 @@ python2-certifi.noarch 2018.10.15-5.el7 epel
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
 
-
-
 pycparser
 ```
 pyp2rpm pycparser -t epel7 -b2 -p2 -v 2.19 > pycparser-2.19.spec
@@ -852,10 +853,6 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python-pycparser-2.19-1.el7.x86_64.rpm
 ```
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
-
-
-
-
 
 oauth2
 ```
@@ -878,27 +875,7 @@ sudo yum-builddep -y PyJWT-1.5.3.spec
 rpmbuild -bb PyJWT-1.5.3.spec 
 ```
 
-### Пакеты, которые при сборке выдают ошибку
-
-
 cssutils
 ```
 sudo yum install -y ftp://ftp.pbone.net/mirror/li.nux.ro/download/nux/dextop/el7/x86_64/python-cssutils-0.9.9-4.el7.nux.noarch.rpm
-
-pyp2rpm cssutils -t epel7 -b2 -p2 -v 0.9.10 > cssutils-0.9.10.spec
-sudo yum-builddep -y cssutils-0.9.10.spec 
-rpmbuild -bb cssutils-0.9.10.spec 
-FAILED (failures=3)
-ошибка: Неверный код возврата из /var/tmp/rpm-tmp.wDbJ8G (%check)
 ```
-
-python-openid
-```
-pyp2rpm python-openid -t epel7 -b2 -p2 -v 2.2.5 > python-openid-2.2.5.spec
-sudo yum-builddep -y python-openid-2.2.5.spec 
-rpmbuild -bb python-openid-2.2.5.spec 
-error: invalid command 'test'
-```
-
-
-
