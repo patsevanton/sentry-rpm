@@ -159,8 +159,6 @@ rpmbuild -bb python-utils-2.3.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
 ```
 
-
-
 croniter
 ```
 pyp2rpm croniter -t epel7 -b2 -p2 -v 0.3.31 > croniter-0.3.31.spec
@@ -201,6 +199,7 @@ sed '/python2-pep8/d' -i exam-0.5.1.spec
 sed '/python2-pyflakes/d' -i exam-0.5.1.spec
 sed '/python2-sphinx/d' -i exam-0.5.1.spec
 sed '/python2-unittest2/d' -i exam-0.5.1.spec
+sed 's/%{python2_sitelib}\/tests$/%exclude %{python2_sitelib}\/tests/g' -i exam-0.5.1.spec
 sudo yum-builddep -y exam-0.5.1.spec
 rpmbuild -bb exam-0.5.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-exam-0.5.1-1.el7.noarch.rpm
