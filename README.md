@@ -701,10 +701,40 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
-boto3 - требуется futures
+botocore - требуется docutils
+```
+pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 --skip-doc-build > botocore-1.5.70.spec
+sed '/ordereddict/d' -i botocore-1.5.70.spec
+sed 's/BuildRequires:  python2-dateutil < 3.0.0/Conflicts:       python2-dateutil >= 3.0.0/g' -i botocore-1.5.70.spec
+sed '/Requires:       python2-dateutil < 3.0.0/d' -i botocore-1.5.70.spec
+sed 's/python2-simplejson = 3.3.0/python2-simplejson >= 3.2.0/g' -i botocore-1.5.70.spec
+sed  '/python2-simplejson/a Conflicts:       python2-simplejson >= 3.9.0' -i botocore-1.5.70.spec
+sudo yum-builddep -y botocore-1.5.70.spec 
+rpmbuild -bb botocore-1.5.70.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python2-botocore-1.5.70-1.el7.noarch.rpm
+```
+
+docutils
+```
+pyp2rpm docutils -t epel7 -b2 -p2 -v 0.16 > docutils-0.16.spec
+rpmbuild -bb docutils-0.16.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-docutils-0.16-1.el7.noarch.rpm
+```
+
+s3transfer - требуется futures и botocore
+```
+pyp2rpm s3transfer -t epel7 -b2 -p2 -v 0.1.11 > s3transfer-0.1.11.spec 
+rpmbuild -bb s3transfer-0.1.11.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-s3transfer-0.1.11-1.el7.noarch.rpm
+```
+
+boto3 - требуется futures и s3transfer
 ```
 sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python2-boto3-1.4.4-1.el7.noarch.rpm
 ```
+
+
+
 
 
 ############
@@ -827,11 +857,6 @@ rpmbuild -bb pytest-3.5.1.spec
 ??
 ```
 
-
-
-
-
-
 oauth2
 ```
 pyp2rpm oauth2 -t epel7 -b2 -p2 -v 1.9.0.post1 > oauth2-1.9.0.post1.spec
@@ -851,14 +876,6 @@ sed '/flake8-import-order/d' -i PyJWT-1.5.3.spec
 sed '/pep8-naming/d' -i PyJWT-1.5.3.spec
 sudo yum-builddep -y PyJWT-1.5.3.spec 
 rpmbuild -bb PyJWT-1.5.3.spec 
-```
-
-botocore
-```
-pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 > botocore-1.5.70.spec
-sed '/ordereddict/d' -i honcho-1.0.1.spec
-sudo yum-builddep -y botocore-1.5.70.spec 
-rpmbuild -bb botocore-1.5.70.spec 
 ```
 
 ### Пакеты, которые при сборке выдают ошибку
