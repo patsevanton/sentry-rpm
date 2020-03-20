@@ -103,6 +103,7 @@ sed 's/Requires:       python2-simplejson < 3.9.0/Conflicts:       python2-simpl
 sed 's/Requires:       python2-statsd < 3.2.0/Conflicts:       python2-statsd >= 3.2.0/g' -i sentry-9.1.2.spec
 sed 's/Requires:       python2-dateutil < 3.0.0/Conflicts:       python2-dateutil >= 3.0.0/g' -i sentry-9.1.2.spec
 sed s/python2-rb >= 1.7.0/python2-rb >= 1.7/g -i sentry-9.1.2.spec
+sed 's/Requires:       python2-botocore < 1.5.71/Conflicts:       python2-botocore >= 1.5.71/g' -i sentry-9.1.2.spec
 ```
 
 ### Установка зависимостей для сборки sentry-9.1.2.spec (то что указано в BuildRequires)
