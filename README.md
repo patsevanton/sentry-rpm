@@ -813,6 +813,9 @@ sed '/win-inet-pton/d' -i requests-2.20.1.spec
 sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
 sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
 sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
+sed '/python2-pytest-cov/d' -i requests-2.20.1.spec
+sed '/python2-pytest-httpbin/d' -i requests-2.20.1.spec
+sed '/python2-pytest-xdist/d' -i requests-2.20.1.spec
 sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
 sudo yum-builddep -y requests-2.20.1.spec 
 rpmbuild -bb requests-2.20.1.spec
