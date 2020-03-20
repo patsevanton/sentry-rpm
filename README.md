@@ -103,6 +103,7 @@ sed '/python2-sqlparse/d' -i sentry-9.1.2.spec
 sed 's/Requires:       python2-simplejson < 3.9.0/Conflicts:       python2-simplejson >= 3.9.0/g' -i sentry-9.1.2.spec
 sed 's/Requires:       python2-statsd < 3.2.0/Conflicts:       python2-statsd >= 3.2.0/g' -i sentry-9.1.2.spec
 sed 's/Requires:       python2-dateutil < 3.0.0/Conflicts:       python2-dateutil >= 3.0.0/g' -i sentry-9.1.2.spec
+sed '/Requires:       python2-dateutil < 3.0.0/d' -i sentry-9.1.2.spec
 sed s/python2-rb >= 1.7.0/python2-rb >= 1.7/g -i sentry-9.1.2.spec
 sed 's/Requires:       python2-botocore < 1.5.71/Requires:       python2-botocore == 1.5.70/g' -i sentry-9.1.2.spec
 sed 's/Requires:       python2-simplejson < 3.9.0/Requires:       python2-simplejson == 3.8.2/g' -i sentry-9.1.2.spec
@@ -726,7 +727,8 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-docutils-0.16-1.el7.noarch.rp
 
 s3transfer - требуется futures и botocore
 ```
-pyp2rpm s3transfer -t epel7 -b2 -p2 -v 0.1.11 > s3transfer-0.1.11.spec 
+pyp2rpm s3transfer -t epel7 -b2 -p2 -v 0.1.11 > s3transfer-0.1.11.spec
+sed 's/Requires:       python2-botocore < 1.5.71/Requires:       python2-botocore == 1.5.70/g' -i s3transfer-0.1.11.spec
 rpmbuild -bb s3transfer-0.1.11.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-s3transfer-0.1.11-1.el7.noarch.rpm
 ```
@@ -736,31 +738,9 @@ boto3 - требуется futures и s3transfer
 sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python2-boto3-1.4.4-1.el7.noarch.rpm
 ```
 
-
-
-
-
-############
-percy
+functools32
 ```
-pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
-sudo yum-builddep -y percy-2.0.2.spec 
-rpmbuild -bb percy-2.0.2.spec 
-Error: Пакет python2-requests >= 2.14.0 не найден
-```
-
-requests - требуется python-chardet
-```
-pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
-sed '/PySocks/d' -i requests-2.20.1.spec
-sed '/pytest-mock/d' -i requests-2.20.1.spec
-sed '/win-inet-pton/d' -i requests-2.20.1.spec
-sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
-sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
-sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
-sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
-sudo yum-builddep -y requests-2.20.1.spec 
-rpmbuild -bb requests-2.20.1.spec
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-functools32/3.2.3.2/1.el7/noarch/python2-functools32-3.2.3.2-1.el7.noarch.rpm
 ```
 
 chardet
@@ -774,20 +754,16 @@ rpmbuild -bb chardet-3.0.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Зависимости от зависимостей Sentry, которые собираются.
+py
+```
+pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 --skip-doc-build > py-1.5.1.spec
+sed '/setuptools-scm/d' -i py-1.5.1.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
+rpmbuild -bb py-1.5.1.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-py-1.5.1-1.el7.noarch.rpm
+```
 
 pluggy
 ```
@@ -798,10 +774,56 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-pluggy-0.6.0-1.el7.noarch.rpm
 
 more-itertools
 ```
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-more-itertools/4.1.0/1.el7/noarch/python2-more-itertools-4.1.0-1.el7.noarch.rpm
+
 pyp2rpm more-itertools -t epel7 -b2 -p2 -v 5.0.0 --skip-doc-build > more-itertools-5.0.0.spec
 rpmbuild -bb more-itertools-5.0.0.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-more-itertools-5.0.0-1.el7.noarch.rpm
 ```
+
+pytest - требуется py, more-itertools
+```
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/pytest/3.5.1/1.el7/noarch/python2-pytest-3.5.1-1.el7.noarch.rpm
+
+pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 --skip-doc-build > pytest-3.5.1.spec
+sed '/colorama/d' -i pytest-3.5.1.spec
+sed '/setuptools-scm/d' -i pytest-3.5.1.spec
+sed s/python2-six/python-six/g -i pytest-3.5.1.spec
+sed s/python2-py/python-py/g -i pytest-3.5.1.spec
+sed -e '/%check/,+1d' -i pytest-3.5.1.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pytest-3.5.1.spec
+sed -e '/%description -n python2-%{pypi_name}/,+6d' -i pytest-3.5.1.spec
+sed s/python2-%{pypi_name}/%{pypi_name}/g -i pytest-3.5.1.spec
+sed s/python-%{pypi_name}/%{pypi_name}/g -i pytest-3.5.1.spec
+sudo yum-builddep -y pytest-3.5.1.spec 
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python2-setuptools-22.0.5-1.el7.noarch.rpm
+rpmbuild -bb pytest-3.5.1.spec
+??
+```
+
+requests - требуется python-chardet, pytest
+```
+pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
+sed '/PySocks/d' -i requests-2.20.1.spec
+sed '/pytest-mock/d' -i requests-2.20.1.spec
+sed '/win-inet-pton/d' -i requests-2.20.1.spec
+sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
+sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
+sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
+sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
+sudo yum-builddep -y requests-2.20.1.spec 
+rpmbuild -bb requests-2.20.1.spec
+```
+
+percy
+```
+pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
+sudo yum-builddep -y percy-2.0.2.spec 
+rpmbuild -bb percy-2.0.2.spec 
+Error: Пакет python2-requests >= 2.14.0 не найден
+```
+
+### Зависимости от зависимостей Sentry, которые собираются.
 
 certifi - воможно удалить 
 ```
@@ -831,34 +853,9 @@ sudo yum install -y rpmbuild/RPMS/x86_64/python-pycparser-2.19-1.el7.x86_64.rpm
 
 ### Пакеты для которых нет зависимостей в системных репозиториях
 
-py
-```
-pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 --skip-doc-build > py-1.5.1.spec
-sed '/setuptools-scm/d' -i py-1.5.1.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
-rpmbuild -bb py-1.5.1.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-py-1.5.1-1.el7.noarch.rpm
-```
 
-pytest
-```
-pyp2rpm pytest -t epel7 -b2 -p2 -v 3.5.1 --skip-doc-build > pytest-3.5.1.spec
-sed '/colorama/d' -i pytest-3.5.1.spec
-sed '/setuptools-scm/d' -i pytest-3.5.1.spec
-sed s/python2-six/python-six/g -i pytest-3.5.1.spec
-sed s/python2-py/python-py/g -i pytest-3.5.1.spec
-sed -e '/%check/,+1d' -i pytest-3.5.1.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i pytest-3.5.1.spec
-sed -e '/%description -n python2-%{pypi_name}/,+6d' -i pytest-3.5.1.spec
-sed s/python2-%{pypi_name}/%{pypi_name}/g -i pytest-3.5.1.spec
-sed s/python-%{pypi_name}/%{pypi_name}/g -i pytest-3.5.1.spec
-sudo yum-builddep -y pytest-3.5.1.spec 
-sudo yum install ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python2-setuptools-22.0.5-1.el7.noarch.rpm
-rpmbuild -bb pytest-3.5.1.spec 
-??
-```
+
+
 
 oauth2
 ```
@@ -903,12 +900,5 @@ rpmbuild -bb python-openid-2.2.5.spec
 error: invalid command 'test'
 ```
 
-functools32
-```
-pyp2rpm functools32 -t epel7 -b2 -p2 -v 3.2.3-2 > functools32-3.2.3-2.spec
-sudo yum-builddep -y functools32-3.2.3-2.spec 
-rpmbuild -bb functools32-3.2.3-2.spec 
-ошибка: line 5: Illegal char '-' in: Version:        3.2.3-2
-Bad spec: functools32-3.2.3-2.spec
-```
+
 
