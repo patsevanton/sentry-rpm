@@ -69,7 +69,6 @@ sed s/python2-enum34/python-enum34/g -i sentry-9.1.2.spec
 sed s/python2-mistune/python-mistune/g -i sentry-9.1.2.spec
 sed s/python2-lxml/python-lxml/g -i sentry-9.1.2.spec
 sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
-sed s/python2-boto3/python-boto3/g -i sentry-9.1.2.spec
 sed s/python2-setproctitle/python-setproctitle/g -i sentry-9.1.2.spec
 sed s/python2-Django/python2-django16/g -i sentry-9.1.2.spec
 sed s/python2-cffi/python-cffi/g -i sentry-9.1.2.spec
@@ -592,31 +591,6 @@ rpmbuild -bb urllib3-1.24.2.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
 ```
 
-requests - требуется python-chardet
-```
-pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
-sed '/PySocks/d' -i requests-2.20.1.spec
-sed '/pytest-mock/d' -i requests-2.20.1.spec
-sed '/win-inet-pton/d' -i requests-2.20.1.spec
-sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
-sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
-sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
-sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
-sudo yum-builddep -y requests-2.20.1.spec 
-rpmbuild -bb requests-2.20.1.spec
-```
-
-chardet
-```
-pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 --skip-doc-build > chardet-3.0.2.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.2.spec
-sudo yum-builddep -y chardet-3.0.2.spec 
-rpmbuild -bb chardet-3.0.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
-```
-
 django-jsonfield
 ```
 pyp2rpm django-jsonfield -t epel7 -b2 -p2 -v 0.9.13 > django-jsonfield-0.9.13.spec
@@ -636,7 +610,9 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-parsimonious-0.8.0-1.el7.noar
 futures
 ```
 pyp2rpm futures -t epel7 -b2 -p2 -v 3.3.0 --skip-doc-build > futures-3.3.0.spec
-rpmbuild -bb futures-3.3.0.spec 
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i futures-3.3.0.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i futures-3.3.0.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i futures-3.3.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-futures-3.3.0-1.el7.noarch.rpm
 ```
 
@@ -725,8 +701,45 @@ rpmbuild -bb rb-1.7.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-rb-1.7-1.el7.noarch.rpm
 ```
 
+boto3 - требуется futures
+```
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python2-boto3-1.4.4-1.el7.noarch.rpm
+```
 
 
+############
+percy
+```
+pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
+sudo yum-builddep -y percy-2.0.2.spec 
+rpmbuild -bb percy-2.0.2.spec 
+Error: Пакет python2-requests >= 2.14.0 не найден
+```
+
+requests - требуется python-chardet
+```
+pyp2rpm requests -t epel7 -b2 -p2 -v 2.20.1 > requests-2.20.1.spec
+sed '/PySocks/d' -i requests-2.20.1.spec
+sed '/pytest-mock/d' -i requests-2.20.1.spec
+sed '/win-inet-pton/d' -i requests-2.20.1.spec
+sed s/python2-pyOpenSSL/pyOpenSSL/g -i requests-2.20.1.spec
+sed s/python2-urllib3/python-urllib3/g -i requests-2.20.1.spec
+sed s/python2-chardet/python-chardet/g -i requests-2.20.1.spec
+sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/python2-idna-2.5-1.el7.noarch.rpm
+sudo yum-builddep -y requests-2.20.1.spec 
+rpmbuild -bb requests-2.20.1.spec
+```
+
+chardet
+```
+pyp2rpm chardet -t epel7 -b2 -p2 -v 3.0.2 --skip-doc-build > chardet-3.0.2.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i chardet-3.0.2.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i chardet-3.0.2.spec
+sudo yum-builddep -y chardet-3.0.2.spec 
+rpmbuild -bb chardet-3.0.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
+```
 
 
 
@@ -815,13 +828,7 @@ rpmbuild -bb pytest-3.5.1.spec
 ```
 
 
-percy
-```
-pyp2rpm percy -t epel7 -b2 -p2 -v 2.0.2 > percy-2.0.2.spec
-sudo yum-builddep -y percy-2.0.2.spec 
-rpmbuild -bb percy-2.0.2.spec 
-Error: Пакет python2-requests >= 2.14.0 не найден
-```
+
 
 
 
