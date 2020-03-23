@@ -69,6 +69,7 @@ sed s/python2-enum34/python-enum34/g -i sentry-9.1.2.spec
 sed s/python2-mistune/python-mistune/g -i sentry-9.1.2.spec
 sed s/python2-urllib3/python-urllib3/g -i sentry-9.1.2.spec
 sed s/python2-lxml/python-lxml/g -i sentry-9.1.2.spec
+sed s/python2-futures/python-futures/g -i sentry-9.1.2.spec
 sed s/python2-cssutils/python-cssutils/g -i sentry-9.1.2.spec
 sed 's/python2-requests /python-requests /g' -i sentry-9.1.2.spec
 sed s/python2-setproctitle/python-setproctitle/g -i sentry-9.1.2.spec
@@ -717,8 +718,7 @@ pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 --skip-doc-build > botocore-1.5.70.s
 sed '/ordereddict/d' -i botocore-1.5.70.spec
 sed 's/BuildRequires:  python2-dateutil < 3.0.0/Conflicts:       python2-dateutil >= 3.0.0/g' -i botocore-1.5.70.spec
 sed '/Requires:       python2-dateutil < 3.0.0/d' -i botocore-1.5.70.spec
-sed 's/python2-simplejson = 3.3.0/python2-simplejson >= 3.2.0/g' -i botocore-1.5.70.spec
-sed  '/python2-simplejson/a Conflicts:       python2-simplejson >= 3.9.0' -i botocore-1.5.70.spec
+sed 's/python2-simplejson = 3.3.0/python2-simplejson = 3.8.2/g' -i botocore-1.5.70.spec
 sudo yum-builddep -y botocore-1.5.70.spec 
 rpmbuild -bb botocore-1.5.70.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-botocore-1.5.70-1.el7.noarch.rpm
@@ -734,7 +734,8 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-docutils-0.16-1.el7.noarch.rp
 s3transfer - требуется futures и botocore
 ```
 pyp2rpm s3transfer -t epel7 -b2 -p2 -v 0.1.11 > s3transfer-0.1.11.spec
-sed 's/Requires:       python2-botocore < 1.5.71/Requires:       python2-botocore == 1.5.70/g' -i s3transfer-0.1.11.spec
+sed '/python2-botocore < 2.0.0/d' -i botocore-1.5.70.spec
+sed 's/python2-botocore >= 1.3.0/python2-botocore == 1.5.70/g' -i s3transfer-0.1.11.spec
 sed 's/python-docutils/python2-docutils/g' -i s3transfer-0.1.11.spec
 sed 's/python2-futures/python-futures/g' -i s3transfer-0.1.11.spec
 sudo yum-builddep -y s3transfer-0.1.11.spec
