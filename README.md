@@ -40,14 +40,6 @@ cd sentry
 ```
 Из полученного файла убираем опциональные зависимости, зависимости для разработки (dev) и тестирования (test). Их можно найти в файлах requirements-optional.txt, requirements-dev.txt, requirements-test.txt
 
-### Сборка sentry-rpm без выше указанных процедур
-Это все исправил в репозитории sentry-rpm
-```
-git clone https://github.com/patsevanton/sentry-rpm.git
-cd sentry-rpm
-./build.sh
-```
-
 ### Меняем  зависимости
 ```
 sed  '/BuildRequires:  python2-devel/a BuildRequires:  nodejs >= 8' -i sentry-9.1.2.spec
@@ -109,7 +101,6 @@ sed '/python2-dateutil < 3.0.0/d' -i sentry-9.1.2.spec
 sed 's/python2-dateutil >= 2.0.0/python2-dateutil = 2.8.0/g' -i sentry-9.1.2.spec
 sed 's/python2-rb >= 1.7.0/python2-rb >= 1.7/g' -i sentry-9.1.2.spec
 sed 's/Requires:       python2-botocore < 1.5.71/Requires:       python2-botocore == 1.5.70/g' -i sentry-9.1.2.spec
-
 ```
 
 ### Установка зависимостей для сборки sentry-9.1.2.spec (то что указано в BuildRequires)
@@ -146,20 +137,20 @@ msgpack
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-msgpack/0.6.1/2.el7/x86_64/python2-msgpack-0.6.1-2.el7.x86_64.rpm
 ```
 
+utils
+```
+pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
+sudo yum-builddep -y python-utils-2.3.0.spec 
+rpmbuild -bb python-utils-2.3.0.spec 
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm
+```
+
 progressbar2 - требует python2-utils
 ```
 pyp2rpm progressbar2 -t epel7 -b2 -p2 -v 3.10.1 > progressbar2-3.10.1.spec
 sudo yum-builddep -y progressbar2-3.10.1.spec
 rpmbuild -bb progressbar2-3.10.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-progressbar2-3.10.1-1.el7.noarch.rpm
-```
-
-utils
-```
-pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
-sudo yum-builddep -y python-utils-2.3.0.spec 
-rpmbuild -bb python-utils-2.3.0.spec 
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-utils-2.3.0-1.el7.noarch.rpm 
 ```
 
 croniter
@@ -179,20 +170,6 @@ jsonschema
 sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python2-jsonschema-2.6.0-2.el7.noarch.rpm
 ```
 
-toronado - требуется python2-exam
-```
-pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
-sed '/flake8/d' -i toronado-0.0.11.spec
-sed s/python2-cssselect/python-cssselect/g -i toronado-0.0.11.spec
-sed s/python2-cssutils/python-cssutils/g -i toronado-0.0.11.spec
-sed s/python2-lxml/python-lxml/g -i toronado-0.0.11.spec
-sed 's/python2-exam/python2-exam >= 0.5.1/g' -i toronado-0.0.11.spec
-sudo yum install -y ftp://ftp.pbone.net/mirror/li.nux.ro/download/nux/dextop/el7/x86_64/python-cssutils-0.9.9-4.el7.nux.noarch.rpm
-sudo yum-builddep -y toronado-0.0.11.spec 
-rpmbuild -bb toronado-0.0.11.spec
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-toronado-0.0.11-1.el7.noarch.rpm
-```
-
 exam
 ```
 pyp2rpm exam -t epel7 -b2 -p2 -v 0.5.1 --skip-doc-build > exam-0.5.1.spec
@@ -206,6 +183,20 @@ sed 's/%{python2_sitelib}\/tests$/%exclude %{python2_sitelib}\/tests/g' -i exam-
 sudo yum-builddep -y exam-0.5.1.spec
 rpmbuild -bb exam-0.5.1.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-exam-0.5.1-1.el7.noarch.rpm
+```
+
+toronado - требуется python2-exam
+```
+pyp2rpm toronado -t epel7 -b2 -p2 -v 0.0.11 > toronado-0.0.11.spec
+sed '/flake8/d' -i toronado-0.0.11.spec
+sed s/python2-cssselect/python-cssselect/g -i toronado-0.0.11.spec
+sed s/python2-cssutils/python-cssutils/g -i toronado-0.0.11.spec
+sed s/python2-lxml/python-lxml/g -i toronado-0.0.11.spec
+sed 's/python2-exam/python2-exam >= 0.5.1/g' -i toronado-0.0.11.spec
+sudo yum install -y ftp://ftp.pbone.net/mirror/li.nux.ro/download/nux/dextop/el7/x86_64/python-cssutils-0.9.9-4.el7.nux.noarch.rpm
+sudo yum-builddep -y toronado-0.0.11.spec 
+rpmbuild -bb toronado-0.0.11.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-toronado-0.0.11-1.el7.noarch.rpm
 ```
 
 mock
@@ -236,18 +227,6 @@ rpmbuild -bb loremipsum-1.0.5.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-loremipsum-1.0.5-1.el7.noarch.rpm
 ```
 
-semaphore - требуется python2-milksnake
-```
-pyp2rpm semaphore -t epel7 -b2 -p2 -v 0.4.65 > semaphore-0.4.65.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  make' -i semaphore-0.4.65.spec
-sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  cargo' -i semaphore-0.4.65.spec
-sed  '/%global pypi_name semaphore/a %global python2_sitelib /usr/lib64/python2.7/site-packages' -i semaphore-0.4.65.spec
-sed 's/BuildArch:      noarch/BuildArch:      x86_64/g' -i semaphore-0.4.65.spec
-sudo yum-builddep -y semaphore-0.4.65.spec
-rpmbuild -bb semaphore-0.4.65.spec
-sudo yum install -y rpmbuild/RPMS/x86_64/python2-semaphore-0.4.65-1.el7.x86_64.rpm
-```
-
 milksnake
 ```
 pyp2rpm milksnake -t epel7 -b2 -p2 -v 0.1.5 > milksnake-0.1.5.spec
@@ -258,6 +237,18 @@ sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  libffi-devel' -i mil
 sudo yum-builddep -y milksnake-0.1.5.spec
 rpmbuild -bb milksnake-0.1.5.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-milksnake-0.1.5-1.el7.noarch.rpm
+```
+
+semaphore - требуется python2-milksnake
+```
+pyp2rpm semaphore -t epel7 -b2 -p2 -v 0.4.65 > semaphore-0.4.65.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  make' -i semaphore-0.4.65.spec
+sed  '/BuildRequires:  python2-setuptools/a BuildRequires:  cargo' -i semaphore-0.4.65.spec
+sed  '/%global pypi_name semaphore/a %global python2_sitelib /usr/lib64/python2.7/site-packages' -i semaphore-0.4.65.spec
+sed 's/BuildArch:      noarch/BuildArch:      x86_64/g' -i semaphore-0.4.65.spec
+sudo yum-builddep -y semaphore-0.4.65.spec
+rpmbuild -bb semaphore-0.4.65.spec
+sudo yum install -y rpmbuild/RPMS/x86_64/python2-semaphore-0.4.65-1.el7.x86_64.rpm
 ```
 
 symbolic - требуется python2-milksnake
@@ -693,9 +684,13 @@ rpmbuild -bb six-1.10.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
 ```
 
-python-dateutil
+dateutil
 ```
-sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-dateutil/2.8.0/1.el7/noarch/python2-dateutil-2.8.0-1.el7.noarch.rpm
+pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 > python-dateutil-2.8.1.spec
+sed '/setuptools-scm/d' -i python-dateutil-2.8.1.spec
+sudo yum-builddep -y python-dateutil-2.8.1.spec 
+rpmbuild -bb python-dateutil-2.8.1.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python2-dateutil
 ```
 
 django-templatetag-sugar
