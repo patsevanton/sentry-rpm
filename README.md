@@ -102,10 +102,10 @@ sed '/python2-responses/d' -i sentry-9.1.2.spec
 sed '/python2-saml/d' -i sentry-9.1.2.spec
 sed '/python2-sqlparse/d' -i sentry-9.1.2.spec
 sed '/python2-simplejson < 3.9.0/d' -i sentry-9.1.2.spec
-sed 's/python2-simplejson >= 3.2.0/Requires:       python2-simplejson = 3.8.2/g' -i sentry-9.1.2.spec
+sed 's/python2-simplejson >= 3.2.0/python2-simplejson = 3.8.2/g' -i sentry-9.1.2.spec
 sed '/python2-statsd < 3.2.0/d' -i sentry-9.1.2.spec
 sed 's/python2-statsd >= 3.1.0/python2-statsd = 3.1/g' -i sentry-9.1.2.spec
-sed '/Requires:       python2-dateutil < 3.0.0/d' -i sentry-9.1.2.spec
+sed '/python2-dateutil < 3.0.0/d' -i sentry-9.1.2.spec
 sed 's/python2-dateutil >= 2.0.0/python2-dateutil = 2.8.0/g' -i sentry-9.1.2.spec
 sed 's/python2-rb >= 1.7.0/python2-rb >= 1.7/g' -i sentry-9.1.2.spec
 sed 's/Requires:       python2-botocore < 1.5.71/Requires:       python2-botocore == 1.5.70/g' -i sentry-9.1.2.spec
@@ -718,8 +718,8 @@ botocore - требуется docutils
 ```
 pyp2rpm botocore -t epel7 -b2 -p2 -v 1.5.70 --skip-doc-build > botocore-1.5.70.spec
 sed '/ordereddict/d' -i botocore-1.5.70.spec
-sed 's/BuildRequires:  python2-dateutil < 3.0.0/Conflicts:       python2-dateutil >= 3.0.0/g' -i botocore-1.5.70.spec
-sed '/Requires:       python2-dateutil < 3.0.0/d' -i botocore-1.5.70.spec
+sed '/python2-dateutil < 3.0.0/d' -i botocore-1.5.70.spec
+sed 's/python2-dateutil >= 2.1/python2-dateutil = 2.8.0/g' -i botocore-1.5.70.spec
 sed 's/python2-simplejson = 3.3.0/python2-simplejson = 3.8.2/g' -i botocore-1.5.70.spec
 sudo yum-builddep -y botocore-1.5.70.spec 
 rpmbuild -bb botocore-1.5.70.spec
