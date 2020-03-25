@@ -416,27 +416,34 @@ rpmbuild -bb email-reply-parser-0.2.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-email-reply-parser-0.2.0-1.el7.noarch.rpm
 ```
 
-sentry-sdk - необходим пакет celery
+kombu
 ```
 sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
-pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
-sed '/python2-beam/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-blinker/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-bottle/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-falcon/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-flask/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-pyspark/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-sanic/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-sqlalchemy/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-tornado/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-aiohttp/d' -i sentry-sdk-0.14.1.spec
-sed '/python2-0-6/d' -i sentry-sdk-0.14.1.spec
-sed 's/python2-django >= 1.8/python2-django <= 1.7/g' -i sentry-sdk-0.14.1.spec
-sed s/python2-urllib3/python-urllib3/g -i sentry-sdk-0.14.1.spec
-добавить строку %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g') в sentry-sdk-0.14.1.spec
-sudo yum-builddep -y sentry-sdk-0.14.1.spec 
-rpmbuild -bb sentry-sdk-0.14.1.spec
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sentry-sdk-0.14.1-1.el7.noarch.rpm
+sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
+pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 --skip-doc-build > kombu-3.0.35.spec
+sed '/ordereddict/d' -i kombu-3.0.35.spec
+sed '/beanstalkc/d' -i kombu-3.0.35.spec
+sed '/couchdb/d' -i kombu-3.0.35.spec
+sed '/importlib/d' -i kombu-3.0.35.spec
+sed '/librabbitmq/d' -i kombu-3.0.35.spec
+sed '/pymongo/d' -i kombu-3.0.35.spec
+sed '/pyro4/d' -i kombu-3.0.35.spec
+sed '/pyzmq/d' -i kombu-3.0.35.spec
+sed '/qpid-tools/d' -i kombu-3.0.35.spec
+sed '/softlayer-messaging/d' -i kombu-3.0.35.spec
+sed '/sqlalchemy/d' -i kombu-3.0.35.spec
+sed '/unittest2/d' -i kombu-3.0.35.spec
+sed '/python2-boto/d' -i kombu-3.0.35.spec
+sed '/python2-kazoo/d' -i kombu-3.0.35.spec
+sed '/python2-qpid/d' -i kombu-3.0.35.spec
+sed s/python2-PyYAML/PyYAML/g -i kombu-3.0.35.spec
+sed s/python2-anyjson/python-anyjson/g -i kombu-3.0.35.spec
+sed s/python2-amqp/python-amqp/g -i kombu-3.0.35.spec
+sed s/python2-redis/python-redis/g -i kombu-3.0.35.spec
+#sed '/python-amqp < 2.0/d' -i kombu-3.0.35.spec
+sudo yum-builddep -y kombu-3.0.35.spec 
+rpmbuild -bb kombu-3.0.35.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-kombu-3.0.35-1.el7.noarch.rpm
 ```
 
 celery - требуетcя kombu
@@ -475,34 +482,27 @@ rpmbuild -bb celery-3.1.18.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-celery-3.1.18-1.el7.noarch.rpm
 ```
 
-kombu
+sentry-sdk - необходим пакет celery
 ```
 sudo yum install -y https://fedorapeople.org/groups/katello/releases/yum/3.0/pulp/el7/x86_64/python-amqp-1.4.9-1.el7.noarch.rpm
-sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python-redis-2.10.3-1.el7.noarch.rpm
-pyp2rpm kombu -t epel7 -b2 -p2 -v 3.0.35 --skip-doc-build > kombu-3.0.35.spec
-sed '/ordereddict/d' -i kombu-3.0.35.spec
-sed '/beanstalkc/d' -i kombu-3.0.35.spec
-sed '/couchdb/d' -i kombu-3.0.35.spec
-sed '/importlib/d' -i kombu-3.0.35.spec
-sed '/librabbitmq/d' -i kombu-3.0.35.spec
-sed '/pymongo/d' -i kombu-3.0.35.spec
-sed '/pyro4/d' -i kombu-3.0.35.spec
-sed '/pyzmq/d' -i kombu-3.0.35.spec
-sed '/qpid-tools/d' -i kombu-3.0.35.spec
-sed '/softlayer-messaging/d' -i kombu-3.0.35.spec
-sed '/sqlalchemy/d' -i kombu-3.0.35.spec
-sed '/unittest2/d' -i kombu-3.0.35.spec
-sed '/python2-boto/d' -i kombu-3.0.35.spec
-sed '/python2-kazoo/d' -i kombu-3.0.35.spec
-sed '/python2-qpid/d' -i kombu-3.0.35.spec
-sed s/python2-PyYAML/PyYAML/g -i kombu-3.0.35.spec
-sed s/python2-anyjson/python-anyjson/g -i kombu-3.0.35.spec
-sed s/python2-amqp/python-amqp/g -i kombu-3.0.35.spec
-sed s/python2-redis/python-redis/g -i kombu-3.0.35.spec
-#sed '/python-amqp < 2.0/d' -i kombu-3.0.35.spec
-sudo yum-builddep -y kombu-3.0.35.spec 
-rpmbuild -bb kombu-3.0.35.spec
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-kombu-3.0.35-1.el7.noarch.rpm
+pyp2rpm sentry-sdk -t epel7 -b2 -p2 -v 0.14.1 > sentry-sdk-0.14.1.spec
+sed '/python2-beam/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-blinker/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-bottle/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-falcon/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-flask/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-pyspark/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-sanic/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-sqlalchemy/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-tornado/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-aiohttp/d' -i sentry-sdk-0.14.1.spec
+sed '/python2-0-6/d' -i sentry-sdk-0.14.1.spec
+sed 's/python2-django >= 1.8/python2-django <= 1.7/g' -i sentry-sdk-0.14.1.spec
+sed s/python2-urllib3/python-urllib3/g -i sentry-sdk-0.14.1.spec
+добавить строку %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g') в sentry-sdk-0.14.1.spec
+sudo yum-builddep -y sentry-sdk-0.14.1.spec 
+rpmbuild -bb sentry-sdk-0.14.1.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sentry-sdk-0.14.1-1.el7.noarch.rpm
 ```
 
 pytest-html
@@ -518,16 +518,6 @@ pyp2rpm strict-rfc3339 -t epel7 -b2 -p2 -v 0.7 > strict-rfc3339-0.7.spec
 sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i strict-rfc3339-0.7.spec
 rpmbuild -bb strict-rfc3339-0.7.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-strict-rfc3339-0.7-1.el7.noarch.rpm
-```
-
-requests-oauthlib - требуется requests
-```
-pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.spec
-sed -e '/%check/,+1d' -i requests-oauthlib-0.3.3.spec
-sed s/python2-requests/python-requests/g -i requests-oauthlib-0.3.3.spec
-sudo yum-builddep -y requests-oauthlib-0.3.3.spec 
-rpmbuild -bb requests-oauthlib-0.3.3.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-requests-oauthlib-0.3.3-1.el7.noarch.rpm
 ```
 
 cffi
@@ -686,7 +676,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
 
 dateutil
 ```
-pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 > python-dateutil-2.8.1.spec
+pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 --skip-doc-build > python-dateutil-2.8.1.spec
 sed '/setuptools-scm/d' -i python-dateutil-2.8.1.spec
 sudo yum-builddep -y python-dateutil-2.8.1.spec 
 rpmbuild -bb python-dateutil-2.8.1.spec
@@ -809,6 +799,16 @@ sudo yum install -y https://mirror.yandex.ru/centos/7/virt/x86_64/ovirt-4.3/pyth
 sudo yum-builddep -y requests-2.20.1.spec 
 rpmbuild -bb requests-2.20.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-requests-2.20.1-1.el7.noarch.rpm
+```
+
+requests-oauthlib - требуется requests
+```
+pyp2rpm requests-oauthlib -t epel7 -b2 -p2 -v 0.3.3 > requests-oauthlib-0.3.3.spec
+sed -e '/%check/,+1d' -i requests-oauthlib-0.3.3.spec
+sed s/python2-requests/python-requests/g -i requests-oauthlib-0.3.3.spec
+sudo yum-builddep -y requests-oauthlib-0.3.3.spec 
+rpmbuild -bb requests-oauthlib-0.3.3.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python2-requests-oauthlib-0.3.3-1.el7.noarch.rpm
 ```
 
 percy - требуется requests
