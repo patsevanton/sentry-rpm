@@ -783,6 +783,7 @@ sed '/setuptools-scm/d' -i py-1.5.1.spec
 #sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
 #sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
 #sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
+sudo yum-builddep -y py-1.5.1.spec
 rpmbuild -bb py-1.5.1.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-py-1.5.1-1.el7.noarch.rpm
 ```
