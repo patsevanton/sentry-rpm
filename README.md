@@ -674,7 +674,7 @@ rpmbuild -bb six-1.10.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
 ```
 
-setuptools
+setuptools - требуется pytest
 ```
 pyp2rpm setuptools -t epel7 -b2 -p2 -v 27.3.1 --skip-doc-build > setuptools-27.3.1.spec
 sed 's/python2-certifi = 2016.8.8/python2-certifi/g' -i setuptools-27.3.1.spec
@@ -773,9 +773,9 @@ py
 ```
 pyp2rpm py -t epel7 -b2 -p2 -v 1.5.1 --skip-doc-build > py-1.5.1.spec
 sed '/setuptools-scm/d' -i py-1.5.1.spec
-#sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
-#sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
-#sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i py-1.5.1.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i py-1.5.1.spec
 rpmbuild -bb py-1.5.1.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-py-1.5.1-1.el7.noarch.rpm
 ```
