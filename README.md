@@ -676,11 +676,12 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
 
 setuptools
 ```
-pyp2rpm setuptools -t epel7 -b2 -p2 -v 17.0 --skip-doc-build > setuptools-17.0.spec
-sed '/python2-certifi = 1.0.1/d' -i setuptools-17.0.spec
-sed '/python2-wincertstore = 0.2/d' -i setuptools-17.0.spec
-sudo yum-builddep -y setuptools-17.0.spec
-rpmbuild -bb setuptools-17.0.spec
+pyp2rpm setuptools -t epel7 -b2 -p2 -v 27.3.1 --skip-doc-build > setuptools-27.3.1.spec
+sed 's/python2-certifi = 2016.8.8/python2-certifi/g' -i setuptools-27.3.1.spec
+sed '/python2-wincertstore = 0.2/d' -i setuptools-27.3.1.spec
+sed '/python2-pytest-flake8/d' -i setuptools-27.3.1.spec
+sudo yum-builddep -y setuptools-27.3.1.spec
+rpmbuild -bb setuptools-27.3.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-setuptools
 ```
 
