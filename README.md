@@ -137,7 +137,18 @@ msgpack
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-msgpack/0.6.1/2.el7/x86_64/python2-msgpack-0.6.1-2.el7.x86_64.rpm
 ```
 
-utils
+six
+```
+pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 --skip-doc-build > six-1.10.0.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
+sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i six-1.10.0.spec
+rpmbuild -bb six-1.10.0.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
+```
+
+utils - требуется six
 ```
 pyp2rpm python-utils -t epel7 -b2 -p2 -v 2.3.0 > python-utils-2.3.0.spec
 sudo yum-builddep -y python-utils-2.3.0.spec 
@@ -663,23 +674,15 @@ rpmbuild -bb petname-2.0.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-petname-2.0-1.el7.noarch.rpm
 ```
 
-six
-```
-pyp2rpm six -t epel7 -b2 -p2 -v 1.10.0 --skip-doc-build > six-1.10.0.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i six-1.10.0.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i six-1.10.0.spec
-sed "/%{python2_sitelib}\/%{pypi_name}$/d" -i six-1.10.0.spec
-rpmbuild -bb six-1.10.0.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
-```
-
 setuptools - требуется pytest
 ```
 pyp2rpm setuptools -t epel7 -b2 -p2 -v 27.3.1 --skip-doc-build > setuptools-27.3.1.spec
-sed 's/python2-certifi = 2016.8.8/python2-certifi/g' -i setuptools-27.3.1.spec
+sed '/python2-certifi/d' -i setuptools-27.3.1.spec
 sed '/python2-wincertstore = 0.2/d' -i setuptools-27.3.1.spec
 sed '/python2-pytest-flake8/d' -i setuptools-27.3.1.spec
+sed '/rm -rf %{pypi_name}.egg-info/d' -i setuptools-27.3.1.spec
+sed  '/%global pypi_name symbolic/a %global python2_sitelib /usr/lib64/python2.7/site-packages' -i setuptools-27.3.1.spec
+sed -e '/%check/,+1d' -i setuptools-27.3.1.spec
 sudo yum-builddep -y setuptools-27.3.1.spec
 rpmbuild -bb setuptools-27.3.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-setuptools
@@ -793,7 +796,7 @@ more-itertools
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-more-itertools/4.1.0/1.el7/noarch/python2-more-itertools-4.1.0-1.el7.noarch.rpm
 ```
 
-pytest - требуется py, more-itertools
+pytest - требуется py, more-itertools, pluggy
 ```
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/pytest/3.5.1/1.el7/noarch/python2-pytest-3.5.1-1.el7.noarch.rpm
 ```
@@ -862,19 +865,6 @@ sudo yum install -y rpmbuild/RPMS/noarch/python2-oauth2-1.9.0.post1-1.el7.noarch
 
 
 
-
-
-### Зависимости от зависимостей Sentry, которые собираются.
-
-certifi - воможно удалить 
-```
-pyp2rpm certifi -t epel7 -b2 -p2 -v 2016.9.26 > certifi-2016.9.26.spec
-sudo yum-builddep -y certifi-2016.9.26.spec 
-Change string "%{python2_sitelib}/%{pypi_name}-2016.09.26-py%{python2_version}.egg-info"
-rpmbuild -bb certifi-2016.9.26.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python2-certifi-2016.9.26-1.el7.noarch.rpm
-python2-certifi.noarch 2018.10.15-5.el7 epel
-```
 
 ### Пакеты, которые конфликтуют с уже установленными пакетами
 
