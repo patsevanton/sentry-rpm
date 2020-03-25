@@ -681,8 +681,9 @@ sed '/python2-certifi/d' -i setuptools-27.3.1.spec
 sed '/python2-wincertstore = 0.2/d' -i setuptools-27.3.1.spec
 sed '/python2-pytest-flake8/d' -i setuptools-27.3.1.spec
 sed '/rm -rf %{pypi_name}.egg-info/d' -i setuptools-27.3.1.spec
-sed  '/%global pypi_name symbolic/a %global python2_sitelib /usr/lib64/python2.7/site-packages' -i setuptools-27.3.1.spec
+sed  '/%global pypi_name setuptools/a %global python2_sitearch /usr/lib/python2.7/site-packages' -i setuptools-27.3.1.spec
 sed -e '/%check/,+1d' -i setuptools-27.3.1.spec
+sed 's/easy_install-3.6/easy_install-2.7/g' -i setuptools-27.3.1.spec
 sudo yum-builddep -y setuptools-27.3.1.spec
 rpmbuild -bb setuptools-27.3.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-setuptools
