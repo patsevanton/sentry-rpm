@@ -674,11 +674,28 @@ rpmbuild -bb six-1.10.0.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-six-1.10.0-1.el7.noarch.rpm
 ```
 
+setuptools
+```
+pyp2rpm setuptools -t epel7 -b2 -p2 -v 17.0 --skip-doc-build > setuptools-17.0.spec
+sed '/python2-certifi = 1.0.1/d' -i setuptools-17.0.spec
+sed '/python2-wincertstore = 0.2/d' -i setuptools-17.0.spec
+sudo yum-builddep -y setuptools-17.0.spec
+rpmbuild -bb setuptools-17.0.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python2-setuptools
+```
+
+setuptools-scm
+```
+pyp2rpm setuptools-scm -t epel7 -b2 -p2 -v 2.8.1 --skip-doc-build > setuptools-scm-2.8.1.spec
+sudo yum-builddep -y setuptools-scm-2.8.1.spec
+rpmbuild -bb setuptools-scm-2.8.1.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python2-setuptools-scm
+```
+
 dateutil
 ```
 pyp2rpm python-dateutil -t epel7 -b2 -p2 -v 2.8.1 --skip-doc-build > python-dateutil-2.8.1.spec
-sed '/setuptools-scm/d' -i python-dateutil-2.8.1.spec
-sudo yum-builddep -y python-dateutil-2.8.1.spec 
+sudo yum-builddep -y python-dateutil-2.8.1.spec
 rpmbuild -bb python-dateutil-2.8.1.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python2-dateutil
 ```
