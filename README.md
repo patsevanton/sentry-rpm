@@ -3,6 +3,8 @@
 fpm -s virtualenv -t rpm --name myapp-python-libs \
   --prefix /opt/myapp/virtualenv requirements.txt
 ```
+https://github.com/jordansissel/fpm/issues/1692
+
 https://fpm.readthedocs.io/en/latest/source/virtualenv.html
 
 ## Подготовка
