@@ -1,3 +1,10 @@
+Попробовать 
+```
+fpm -s virtualenv -t deb --name myapp-python-libs \
+  --prefix /opt/myapp/virtualenv requirements.txt
+```
+https://fpm.readthedocs.io/en/latest/source/virtualenv.html
+
 ## Подготовка
 ```
 sudo setenforce 0
