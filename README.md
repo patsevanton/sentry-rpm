@@ -7,6 +7,16 @@ https://github.com/jordansissel/fpm/issues/1692
 
 https://fpm.readthedocs.io/en/latest/source/virtualenv.html
 
+
+Или
+
+echo "{}" > conf.json && rpmvenv \
+  conf.json \
+  --core_name="msgpack" \
+  --core_version="0.6.1" \
+  --core_license="MIT" \
+  --python_venv_path="/tmp/msgpack"
+
 ## Подготовка
 ```
 sudo setenforce 0
