@@ -1,4 +1,9 @@
 ```
+sudo yum -y install epel-release rpmdevtools
+sudo yum -y install python3-pip
+pip3 install --user rpmvenv
+pip3 install --user virtualenv
+
 echo "pip" > requirements.txt && \
 echo "msgpack==0.6.1" >> requirements.txt && \
 echo "{}" > conf.json && \
