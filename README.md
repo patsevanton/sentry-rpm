@@ -1,21 +1,18 @@
-Попробовать 
 ```
-fpm -s virtualenv -t rpm --name myapp-python-libs \
-  --prefix /opt/myapp/virtualenv requirements.txt
-```
-https://github.com/jordansissel/fpm/issues/1692
-
-https://fpm.readthedocs.io/en/latest/source/virtualenv.html
-
-
-Или
-
-echo "{}" > conf.json && rpmvenv \
-  conf.json \
+echo "pip" > requirements.txt && \
+echo "msgpack==0.6.1" >> requirements.txt && \
+echo "{}" > conf.json && \
+LC_ALL=en_US.UTF-8 rpmvenv conf.json \
   --core_name="msgpack" \
   --core_version="0.6.1" \
   --core_license="MIT" \
-  --python_venv_path="/tmp/msgpack"
+  --core_summary="msgpack" \
+  --extensions_enabled="blocks,python_venv" \
+  --python_venv_name="msgpack" \
+  --blocks_desc="msgpack" \
+  --python_venv_require_setup_py="false" \
+  --python_venv_python="python2.7"
+  ```
 
 ## Подготовка
 ```
