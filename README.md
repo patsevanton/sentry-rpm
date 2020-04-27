@@ -1,24 +1,3 @@
-```
-sudo yum -y install epel-release rpmdevtools
-sudo yum -y install python3-pip
-pip3 install --user rpmvenv
-pip3 install --user virtualenv
-
-echo "pip" > requirements.txt && \
-echo "msgpack==0.6.1" >> requirements.txt && \
-echo "{}" > conf.json && \
-LC_ALL=en_US.UTF-8 rpmvenv conf.json \
-  --core_name="msgpack" \
-  --core_version="0.6.1" \
-  --core_license="MIT" \
-  --core_summary="msgpack" \
-  --extensions_enabled="blocks,python_venv" \
-  --python_venv_name="msgpack" \
-  --blocks_desc="msgpack" \
-  --python_venv_require_setup_py="false" \
-  --python_venv_python="python2.7"
-  ```
-
 ## Подготовка
 ```
 sudo setenforce 0
