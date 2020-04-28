@@ -776,6 +776,7 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-chardet-3.0.2-1.el7.noarch.rpm
 pluggy
 ```
 pyp2rpm pluggy -t epel7 -b2 -p2 -v 0.6.0 > pluggy-0.6.0.spec
+sudo yum-builddep -y pluggy-0.6.0.spec
 rpmbuild -bb pluggy-0.6.0.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python2-pluggy-0.6.0-1.el7.noarch.rpm
 ```
@@ -800,6 +801,30 @@ sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-more-iterto
 pytest - требуется py, more-itertools, pluggy
 ```
 sudo yum install -y https://cbs.centos.org/kojifiles/packages/pytest/3.5.1/1.el7/noarch/python2-pytest-3.5.1-1.el7.noarch.rpm
+```
+
+setuptools - требуется pytest
+```
+pyp2rpm setuptools -t epel7 -b2 -p2 -v 27.3.1 --skip-doc-build > setuptools-27.3.1.spec
+sed '/python2-certifi/d' -i setuptools-27.3.1.spec
+sed '/python2-wincertstore = 0.2/d' -i setuptools-27.3.1.spec
+sed '/python2-pytest-flake8/d' -i setuptools-27.3.1.spec
+sed '/rm -rf %{pypi_name}.egg-info/d' -i setuptools-27.3.1.spec
+sed  '/%global pypi_name setuptools/a %global python2_sitearch /usr/lib/python2.7/site-packages' -i setuptools-27.3.1.spec
+sed -e '/%check/,+1d' -i setuptools-27.3.1.spec
+sed 's/easy_install-3.6/easy_install-2.7/g' -i setuptools-27.3.1.spec
+sed '/Requires:       python2-setuptools/d' -i setuptools-27.3.1.spec
+sudo yum-builddep -y setuptools-27.3.1.spec
+rpmbuild -bb setuptools-27.3.1.spec
+sudo yum install -y rpmbuild/RPMS/x86_64/python-setuptools-27.3.1-1.el7.x86_64.rpm
+```
+
+setuptools-scm
+```
+pyp2rpm setuptools-scm -t epel7 -b2 -p2 -v 2.8.1 --skip-doc-build > setuptools-scm-2.8.1.spec
+sudo yum-builddep -y setuptools-scm-2.8.1.spec
+rpmbuild -bb setuptools-scm-2.8.1.spec
+sudo yum install -y rpmbuild/RPMS/noarch/python2-setuptools-scm
 ```
 
 requests - требуется chardet, pytest
