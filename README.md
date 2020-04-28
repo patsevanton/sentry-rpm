@@ -187,6 +187,10 @@ sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-functools32
 jsonschema
 ```
 pyp2rpm jsonschema -t epel7 -b2 -p2 -v 2.6.0 > jsonschema-2.6.0.spec
+sed '/python2-rfc3987/d' -i jsonschema-2.6.0.spec
+sed '/python2-functools32/d' -i jsonschema-2.6.0.spec
+sed '/python2-strict-rfc3339/d' -i jsonschema-2.6.0.spec
+sed '/python2-webcolors/d' -i jsonschema-2.6.0.spec
 sudo yum-builddep -y jsonschema-2.6.0.spec 
 rpmbuild -bb jsonschema-2.6.0.spec 
 ```
