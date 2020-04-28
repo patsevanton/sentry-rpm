@@ -181,8 +181,11 @@ sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 
 jsonschema
 ```
-sudo yum install -y ftp://ftp.pbone.net/mirror/ftp.centos.org/7.7.1908/cloud/x86_64/openstack-queens/python2-jsonschema-2.6.0-2.el7.noarch.rpm
+pyp2rpm jsonschema -t epel7 -b2 -p2 -v 2.6.0 > jsonschema-2.6.0.spec
+sudo yum-builddep -y jsonschema-2.6.0.spec 
+rpmbuild -bb jsonschema-2.6.0.spec 
 ```
+
 
 exam
 ```
