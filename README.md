@@ -134,7 +134,10 @@ pip3 install --user pyp2rpm
 
 msgpack
 ```
-sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-msgpack/0.6.1/2.el7/x86_64/python2-msgpack-0.6.1-2.el7.x86_64.rpm
+pyp2rpm msgpack -t epel7 -b2 -p2 -v 0.6.2 > msgpack-0.6.2.spec
+sudo yum-builddep -y msgpack-0.6.2.spec
+rpmbuild -bb msgpack-0.6.2.spec
+sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-msgpack-0.6.2-1.el7.x86_64.rpm
 ```
 
 six
