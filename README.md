@@ -179,6 +179,11 @@ rpmbuild -bb croniter-0.3.31.spec
 sudo yum install -y rpmbuild/RPMS/noarch/python-croniter-0.3.31-1.el7.noarch.rpm
 ```
 
+functools32
+```
+sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-functools32/3.2.3.2/1.el7/noarch/python2-functools32-3.2.3.2-1.el7.noarch.rpm
+```
+
 jsonschema
 ```
 pyp2rpm jsonschema -t epel7 -b2 -p2 -v 2.6.0 > jsonschema-2.6.0.spec
@@ -763,10 +768,7 @@ boto3 - требуется futures и s3transfer
 sudo yum install -y ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/matthewdva:/build:/EPEL:/el7/RHEL_7/noarch/python2-boto3-1.4.4-1.el7.noarch.rpm
 ```
 
-functools32
-```
-sudo yum install -y https://cbs.centos.org/kojifiles/packages/python-functools32/3.2.3.2/1.el7/noarch/python2-functools32-3.2.3.2-1.el7.noarch.rpm
-```
+
 
 chardet
 ```
