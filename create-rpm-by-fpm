@@ -3,6 +3,27 @@ yum install -y epel-release gcc libffi-devel make openssl-devel python-devel rpm
 gem install --no-document fpm
 
 
+
+pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
+sed 's/python2-pyOpenSSL/python-pyopenssl/g' -i urllib3-1.24.2.spec
+sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
+sed 's/python2-PySocks/python2-pysocks/g' -i urllib3-1.24.2.spec
+sed 's/python2-cryptography/python-cryptography/g' -i urllib3-1.24.2.spec
+sed 's/python2-setuptools/python-setuptools/g' -i urllib3-1.24.2.spec
+sed 's/python2-idna/python-idna/g' -i urllib3-1.24.2.spec
+sed 's/python2-mock/python-mock/g' -i urllib3-1.24.2.spec
+sed -e '/%check/,+1d' -i urllib3-1.24.2.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i urllib3-1.24.2.spec
+sed  '/setup.py install --skip-build --root/a rm -rf %{buildroot}\/%{python2_sitelib}\/urllib3\/packages\/ssl_match_hostname\/' -i urllib3-1.24.2.spec
+sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backports/ssl_match_hostname %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname' -i urllib3-1.24.2.spec
+sudo yum-builddep -y urllib3-1.24.2.spec 
+rpmbuild -bb urllib3-1.24.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
+
+
+
 fpm -s python -t rpm setuptools==27.3.1
 fpm -s python -t rpm chardet==3.0.2
 fpm -s python -t rpm idna==2.7
