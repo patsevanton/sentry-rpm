@@ -4,37 +4,6 @@ sudo yum install -y cargo epel-release gcc gcc-c++ git libffi-devel libjpeg-deve
                     libxslt-devel make mc openssl-devel postgresql-devel python-devel python-lxml \
                     python-nose python3-pip python34 rpm-build rpmdevtools ruby-devel rubygems zlib-devel
 
-rpmbuld --bb python-dateutil.spec
-spectool -g -R python-dateutil.spec
-скопировать патчи в SOURCES
-rpmbuld --bb python-dateutil.spec
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
-
-curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-sudo yum install -y nodejs
-sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
-curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-
-pip3 install --user git+https://github.com/kspby/pyp2rpm.git
-
-pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
-sed 's/python2-pyOpenSSL/python-pyopenssl/g' -i urllib3-1.24.2.spec
-sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
-sed 's/python2-PySocks/python2-pysocks/g' -i urllib3-1.24.2.spec
-sed 's/python2-cryptography/python-cryptography/g' -i urllib3-1.24.2.spec
-sed 's/python2-setuptools/python-setuptools/g' -i urllib3-1.24.2.spec
-sed 's/python2-idna/python-idna/g' -i urllib3-1.24.2.spec
-sed 's/python2-mock/python-mock/g' -i urllib3-1.24.2.spec
-sed -e '/%check/,+1d' -i urllib3-1.24.2.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i urllib3-1.24.2.spec
-sed  '/setup.py install --skip-build --root/a rm -rf %{buildroot}\/%{python2_sitelib}\/urllib3\/packages\/ssl_match_hostname\/' -i urllib3-1.24.2.spec
-sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backports/ssl_match_hostname %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname' -i urllib3-1.24.2.spec
-sudo yum-builddep -y urllib3-1.24.2.spec 
-rpmbuild -bb urllib3-1.24.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
-
 gem install --no-document fpm
 
 fpm -s python -t rpm amqp==1.4.9
@@ -128,3 +97,35 @@ fpm -s python -t rpm toronado==0.0.11
 fpm -s python -t rpm ua-parser==0.7.3
 fpm -s python -t rpm unidiff==0.5.5
 fpm -s python -t rpm uwsgi==2.0.18
+
+
+rpmbuld --bb python-dateutil.spec
+spectool -g -R python-dateutil.spec
+скопировать патчи в SOURCES
+rpmbuld --bb python-dateutil.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
+
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install -y nodejs
+sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
+curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+
+pip3 install --user git+https://github.com/kspby/pyp2rpm.git
+
+pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
+sed 's/python2-pyOpenSSL/python-pyopenssl/g' -i urllib3-1.24.2.spec
+sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
+sed 's/python2-PySocks/python2-pysocks/g' -i urllib3-1.24.2.spec
+sed 's/python2-cryptography/python-cryptography/g' -i urllib3-1.24.2.spec
+sed 's/python2-setuptools/python-setuptools/g' -i urllib3-1.24.2.spec
+sed 's/python2-idna/python-idna/g' -i urllib3-1.24.2.spec
+sed 's/python2-mock/python-mock/g' -i urllib3-1.24.2.spec
+sed -e '/%check/,+1d' -i urllib3-1.24.2.spec
+sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
+sed -e '/%description -n python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
+sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i urllib3-1.24.2.spec
+sed  '/setup.py install --skip-build --root/a rm -rf %{buildroot}\/%{python2_sitelib}\/urllib3\/packages\/ssl_match_hostname\/' -i urllib3-1.24.2.spec
+sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backports/ssl_match_hostname %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname' -i urllib3-1.24.2.spec
+sudo yum-builddep -y urllib3-1.24.2.spec 
+rpmbuild -bb urllib3-1.24.2.spec 
+sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
