@@ -111,7 +111,7 @@ fpm -s python -t rpm simplejson==3.8.2
 fpm -s python -t rpm six==1.10.0
 fpm -s python -t rpm sqlparse==0.1.19
 fpm -s python -t rpm statsd==3.1
-fpm -s python -t rpm strict==rfc3339==0.7
+fpm -s python -t rpm strict-rfc3339==0.7
 fpm -s python -t rpm structlog==16.1.0
 fpm -s python -t rpm symbolic==6.1.4
 fpm -s python -t rpm toronado==0.0.11
