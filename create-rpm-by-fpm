@@ -2,7 +2,9 @@ yum install -y epel-release gcc libffi-devel make openssl-devel python-devel rpm
                rubygems libxslt python-lxml git
 gem install --no-document fpm
 
-
+spectool -g -R python-dateutil.spec
+скопировать патчи в SOURCES
+rpmbuld --bb python-dateutil.spec
 
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
 sed 's/python2-pyOpenSSL/python-pyopenssl/g' -i urllib3-1.24.2.spec
