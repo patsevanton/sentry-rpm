@@ -34,8 +34,6 @@ sudo yum-builddep -y urllib3-1.24.2.spec
 rpmbuild -bb urllib3-1.24.2.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
 
-
-
 fpm -s python -t rpm setuptools==27.3.1
 fpm -s python -t rpm chardet==3.0.2
 fpm -s python -t rpm idna==2.7
@@ -113,7 +111,6 @@ fpm -s python -t rpm requests==2.20.1
 fpm -s python -t rpm requests-oauthlib==0.3.3
 fpm -s python -t rpm selenium==3.141.0
 fpm -s python -t rpm semaphore==0.4.65
-fpm -s python -t rpm sentry==9.1.2
 fpm -s python -t rpm sentry-sdk==0.14.1
 fpm -s python -t rpm setproctitle==1.1.10
 fpm -s python -t rpm simplejson==3.8.2
@@ -127,3 +124,4 @@ fpm -s python -t rpm toronado==0.0.11
 fpm -s python -t rpm ua-parser==0.7.3
 fpm -s python -t rpm unidiff==0.5.5
 fpm -s python -t rpm uwsgi==2.0.18
+fpm -s python -t rpm sentry==9.1.2
