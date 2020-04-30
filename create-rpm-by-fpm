@@ -15,14 +15,6 @@ sudo yum install -y nodejs
 sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
-gem install --no-document fpm
-fpm -s python -t rpm setuptools==27.3.1
-fpm -s python -t rpm cryptography==2.8
-fpm -s python -t rpm idna==2.7
-fpm -s python -t rpm mock==2.0.0
-fpm -s python -t rpm pyOpenSSL==19.1.0
-fpm -s python -t rpm pytest==3.5.1
-
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
 
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
@@ -43,10 +35,8 @@ sudo yum-builddep -y urllib3-1.24.2.spec
 rpmbuild -bb urllib3-1.24.2.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
 
+gem install --no-document fpm
 
-
-
-fpm -s python -t rpm chardet==3.0.2
 fpm -s python -t rpm amqp==1.4.9
 fpm -s python -t rpm anyjson==0.3.3
 fpm -s python -t rpm attrs==19.3.0
@@ -56,16 +46,18 @@ fpm -s python -t rpm boto3==1.4.5
 fpm -s python -t rpm botocore==1.5.70
 fpm -s python -t rpm celery==3.1.18
 fpm -s python -t rpm cffi==1.14.0
+fpm -s python -t rpm chardet==3.0.2
 fpm -s python -t rpm click==6.7
 fpm -s python -t rpm croniter==0.3.31
+fpm -s python -t rpm cryptography==2.8
 fpm -s python -t rpm cssselect==1.1.0
 fpm -s python -t rpm cssutils==0.9.10
-fpm -s python -t rpm Django==1.6.11
 fpm -s python -t rpm django-crispy-forms==1.4.0
 fpm -s python -t rpm django-jsonfield==0.9.13
 fpm -s python -t rpm django-picklefield==0.3.2
 fpm -s python -t rpm django-sudo==2.1.0
 fpm -s python -t rpm django-templatetag-sugar==1.0
+fpm -s python -t rpm Django==1.6.11
 fpm -s python -t rpm djangorestframework==2.4.8
 fpm -s python -t rpm docutils==0.16
 fpm -s python -t rpm email-reply-parser==0.2.0
@@ -77,6 +69,7 @@ fpm -s python -t rpm futures==3.3.0
 fpm -s python -t rpm hiredis==0.1.6
 fpm -s python -t rpm honcho==1.0.1
 fpm -s python -t rpm httplib2==0.17.0
+fpm -s python -t rpm idna==2.7
 fpm -s python -t rpm jmespath==0.9.5
 fpm -s python -t rpm jsonschema==2.6.0
 fpm -s python -t rpm kombu==3.0.35
@@ -85,6 +78,7 @@ fpm -s python -t rpm lxml==4.5.0
 fpm -s python -t rpm milksnake==0.1.5
 fpm -s python -t rpm mistune==0.8.4
 fpm -s python -t rpm mmh3==2.3.1
+fpm -s python -t rpm mock==2.0.0
 fpm -s python -t rpm more-itertools==5.0.0
 fpm -s python -t rpm msgpack==0.6.2
 fpm -s python -t rpm oauth2==1.9.0.post1
@@ -101,8 +95,10 @@ fpm -s python -t rpm psycopg2-binary==2.7.7
 fpm -s python -t rpm py==1.8.1
 fpm -s python -t rpm pycparser==2.19
 fpm -s python -t rpm PyJWT==1.5.3
+fpm -s python -t rpm pyOpenSSL==19.1.0
 fpm -s python -t rpm pytest-django==2.9.1
 fpm -s python -t rpm pytest-html==1.9.0
+fpm -s python -t rpm pytest==3.5.1
 fpm -s python -t rpm python-memcached==1.59
 fpm -s python -t rpm python-openid==2.2.5
 fpm -s python -t rpm python-u2flib-server==4.0.1
@@ -111,14 +107,16 @@ fpm -s python -t rpm pytz==2019.3
 fpm -s python -t rpm qrcode==5.3
 fpm -s python -t rpm querystring-parser==1.2.4
 fpm -s python -t rpm rb==1.7
-fpm -s python -t rpm redis==2.10.5
 fpm -s python -t rpm redis-py-cluster==1.3.4
-fpm -s python -t rpm requests==2.20.1
+fpm -s python -t rpm redis==2.10.5
 fpm -s python -t rpm requests-oauthlib==0.3.3
+fpm -s python -t rpm requests==2.20.1
 fpm -s python -t rpm selenium==3.141.0
 fpm -s python -t rpm semaphore==0.4.65
 fpm -s python -t rpm sentry-sdk==0.14.1
+fpm -s python -t rpm sentry==9.1.2
 fpm -s python -t rpm setproctitle==1.1.10
+fpm -s python -t rpm setuptools==27.3.1
 fpm -s python -t rpm simplejson==3.8.2
 fpm -s python -t rpm six==1.10.0
 fpm -s python -t rpm sqlparse==0.1.19
@@ -130,4 +128,3 @@ fpm -s python -t rpm toronado==0.0.11
 fpm -s python -t rpm ua-parser==0.7.3
 fpm -s python -t rpm unidiff==0.5.5
 fpm -s python -t rpm uwsgi==2.0.18
-fpm -s python -t rpm sentry==9.1.2
