@@ -1,5 +1,5 @@
 yum install -y epel-release gcc libffi-devel make openssl-devel python-devel rpm-build rpmdevtools ruby-devel \
-               rubygems libxslt python-lxml git libxml2-devel libxslt-devel
+               rubygems libxslt python-lxml git libxml2-devel libxslt-devel gcc-c++
 gem install --no-document fpm
 
 spectool -g -R python-dateutil.spec
