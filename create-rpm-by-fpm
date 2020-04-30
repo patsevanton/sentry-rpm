@@ -1,8 +1,8 @@
 sudo setenforce 0
 
-sudo yum install -y epel-release gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel cargo python34 python3-pip \
-               libxslt libxslt-devel make openssl-devel python-devel python-lxml epel-release rpmdevtools mc git \
-               python-nose rpm-build rpmdevtools ruby-devel rubygems zlib-devel postgresql-devel
+sudo yum install -y cargo epel-release gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel libxslt \
+                    libxslt-devel make mc openssl-devel postgresql-devel python-devel python-lxml \
+                    python-nose python3-pip python34 rpm-build rpmdevtools ruby-devel rubygems zlib-devel
 
 spectool -g -R python-dateutil.spec
 скопировать патчи в SOURCES
