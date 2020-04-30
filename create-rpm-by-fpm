@@ -1,6 +1,6 @@
-yum install -y ruby-devel gcc make rpm-build rubygems
+yum install -y gcc libffi-devel make openssl-devel python-devel rpm-build ruby-devel rubygems
 gem install --no-document fpm
-yum install -y gcc libffi-devel python-devel openssl-devel
+
 
 fpm -s python -t rpm setuptools==27.3.1
 fpm -s python -t rpm chardet==3.0.2
