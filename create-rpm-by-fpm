@@ -1,6 +1,6 @@
 sudo setenforce 0
 
-yum install -y epel-release gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel cargo python34 python3-pip \
+sudo yum install -y epel-release gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel cargo python34 python3-pip \
                libxslt libxslt-devel make openssl-devel python-devel python-lxml epel-release rpmdevtools mc git \
                python-nose rpm-build rpmdevtools ruby-devel rubygems zlib-devel postgresql-devel
 gem install --no-document fpm
