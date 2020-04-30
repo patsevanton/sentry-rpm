@@ -116,5 +116,4 @@ fpm -s python -t rpm symbolic==6.1.4
 fpm -s python -t rpm toronado==0.0.11
 fpm -s python -t rpm ua-parser==0.7.3
 fpm -s python -t rpm unidiff==0.5.5
-fpm -s python -t rpm urllib3==1.24.2
 fpm -s python -t rpm uwsgi==2.0.18
