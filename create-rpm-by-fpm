@@ -4,11 +4,14 @@ sudo yum install -y cargo epel-release gcc gcc-c++ git libffi-devel libjpeg-deve
                     libxslt-devel make mc openssl-devel postgresql-devel python-devel python-lxml \
                     python-nose python3-pip python34 rpm-build rpmdevtools ruby-devel rubygems zlib-devel
 
+rpmbuld --bb python-dateutil.spec
 spectool -g -R python-dateutil.spec
 скопировать патчи в SOURCES
 rpmbuld --bb python-dateutil.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
 
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install -y nodejs
 sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
