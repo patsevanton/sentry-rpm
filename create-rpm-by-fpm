@@ -1,11 +1,20 @@
-yum install -y epel-release gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel cargo \
-               libxslt libxslt-devel make openssl-devel python-devel python-lxml \
+sudo setenforce 0
+
+yum install -y epel-release gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel cargo python34 python3-pip \
+               libxslt libxslt-devel make openssl-devel python-devel python-lxml epel-release rpmdevtools mc git \
                python-nose rpm-build rpmdevtools ruby-devel rubygems zlib-devel postgresql-devel
 gem install --no-document fpm
 
 spectool -g -R python-dateutil.spec
 скопировать патчи в SOURCES
 rpmbuld --bb python-dateutil.spec
+
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
+curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+
+pip3 install --user git+https://github.com/kspby/pyp2rpm.git
+
 
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
 sed 's/python2-pyOpenSSL/python-pyopenssl/g' -i urllib3-1.24.2.spec
