@@ -1,4 +1,4 @@
-yum install -y gcc libffi-devel make openssl-devel python-devel rpm-build ruby-devel rubygems libxslt python-lxml
+yum install -y gcc libffi-devel make openssl-devel python-devel rpm-build rpmdevtools ruby-devel rubygems libxslt python-lxml
 gem install --no-document fpm
 
 
