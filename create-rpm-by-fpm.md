@@ -1,12 +1,33 @@
+Disable selinux
+
+```bash
 sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 sudo reboot
+```
 
+
+
+Install epel-release
+
+```bash
 sudo yum install -y epel-release
-sudo yum install -y cargo gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel libxslt \
-                    libxslt-devel make mc openssl-devel postgresql-devel python-devel python-lxml \
-                    python-nose python3-pip python34 rpm-build rpmdevtools ruby-devel rubygems zlib-devel
+```
 
+Install dependencies
+
+```bash
+sudo yum install -y cargo gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel \ libxslt libxslt-devel make mc openssl-devel postgresql-devel python-devel \
+python-lxml python-nose python3-pip python34 rpm-build rpmdevtools \
+ruby-devel rubygems zlib-devel
+```
+
+Install fpm
+
+```bash
 gem install --no-document fpm
+```
+
+Build rpm by fpm
 
 ```
 #!/bin/bash
@@ -102,6 +123,7 @@ fpm -s python -t rpm ua-parser==0.7.3
 fpm -s python -t rpm unidiff==0.5.5
 fpm -s python -t rpm uwsgi==2.0.18
 ```
+
 
 
 rpmbuld --bb python-dateutil.spec
