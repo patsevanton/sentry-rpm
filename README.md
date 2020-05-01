@@ -5,10 +5,15 @@ sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 echo 'do not reboot'
 
 echo "Install epel-release"
-sudo yum install -y epel-release
+sudo yum install -y epel-release git
 
-echo "Install dependencies"
-sudo yum install -y cargo gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel \
-libxslt libxslt-devel make mc openssl-devel postgresql-devel python-devel \
-python-lxml python-nose python3-pip python34 rpm-build rpmdevtools \
-ruby-devel rubygems zlib-devel
+git clone https://github.com/patsevanton/sentry-rpm.git
+
+cd sentry-rpm
+
+Install dependencies
+./build_dependencies_rpm.sh
+
+Build and install python-dateutil rpm
+./build_dateutil.sh
+

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Build python-dateutil rpm"
+echo "Build and install python-dateutil rpm"
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS}
 spectool -g -R spec/python-dateutil.spec
 wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/spec/python-dateutil-system-zoneinfo.patch -P ~/rpmbuild/SOURCES
