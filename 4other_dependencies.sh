@@ -47,8 +47,8 @@ fpm -s python -t rpm email-reply-parser==0.2.0
 sudo yum install -y python-email_reply_parser-0.2.0-1.noarch.rpm
 fpm -s python -t rpm enum34==1.1.9
 sudo yum install -y python-enum34-1.1.9-1.noarch.rpm
-fpm -s python -t rpm funcsigs==1.0.2
-sudo yum install -y python-funcsigs-1.0.2-1.noarch.rpm
+#fpm -s python -t rpm funcsigs==1.0.2
+#sudo yum install -y python-funcsigs-1.0.2-1.noarch.rpm
 fpm -s python -t rpm functools32==3.2.3.post2
 sudo yum install -y python-functools32-3.2.3_2-1.noarch.rpm
 fpm -s python -t rpm futures==3.3.0
@@ -83,8 +83,8 @@ fpm -s python -t rpm oauth2==1.9.0.post1
 sudo yum install -y python-oauth2-1.9.0.post1-1.noarch.rpm
 fpm -s python -t rpm oauthlib==3.1.0
 sudo yum install -y python-oauthlib-3.1.0-1.noarch.rpm
-fpm -s python -t rpm olefile==0.46
-sudo yum install -y python-olefile-0.46-1.noarch.rpm
+#fpm -s python -t rpm olefile==0.46
+#sudo yum install -y python-olefile-0.46-1.noarch.rpm
 fpm -s python -t rpm parsimonious==0.8.0
 sudo yum install -y python-parsimonious-0.8.0-1.noarch.rpm
 fpm -s python -t rpm requests==2.20.1
@@ -152,4 +152,4 @@ sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
 fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
 fpm -s python -t rpm pyyaml==3.11
-sudo yum install -y python-pyyaml-3.11-1.noarch.rpm
+sudo yum install -y python-pyyaml-3.11-1.x86_64.rpm
