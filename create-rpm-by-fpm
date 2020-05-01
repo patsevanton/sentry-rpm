@@ -1,4 +1,5 @@
-sudo setenforce 0
+sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
+sudo reboot
 
 sudo yum install -y epel-release
 sudo yum install -y cargo gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel libxslt \
