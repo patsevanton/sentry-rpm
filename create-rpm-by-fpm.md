@@ -31,7 +31,7 @@ For chardet==3.0.2 need setuptools>=12
 
 ```bash
 fpm -s python -t rpm setuptools==12
-yum install -y python-setuptools-12.0-1.noarch.rpm
+sudo yum install -y python-setuptools-12.0-1.noarch.rpm
 ```
 
 Build rpm by fpm
