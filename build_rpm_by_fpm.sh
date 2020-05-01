@@ -91,6 +91,8 @@ fpm -s python -t rpm requests==2.20.1
 sudo yum install -y python-requests-2.20.1-1.noarch.rpm
 fpm -s python -t rpm petname==2.0
 sudo yum install -y python-petname-2.0-1.noarch.rpm
+fpm -s python -t rpm python-utils==2.3.0
+sudo yum install -y python-utils-2.3.0-1.noarch.rpm
 fpm -s python -t rpm progressbar2==3.10.1
 sudo yum install -y python-progressbar2-3.10.1-1.noarch.rpm
 fpm -s python -t rpm psycopg2-binary==2.7.7
@@ -107,10 +109,6 @@ fpm -s python -t rpm python-openid==2.2.5
 sudo yum install -y python-openid-2.2.5-1.noarch.rpm
 fpm -s python -t rpm python-u2flib-server==4.0.1
 sudo yum install -y python-u2flib-server-4.0.1-1.noarch.rpm
-fpm -s python -t rpm python-utils==2.3.0
-sudo yum install -y python-utils-2.3.0-1.noarch.rpm
-fpm -s python -t rpm pytz==2019.3
-sudo yum install -y python-pytz-2019.3-1.noarch.rpm
 fpm -s python -t rpm qrcode==5.3
 sudo yum install -y python-qrcode-5.3-1.noarch.rpm
 fpm -s python -t rpm querystring-parser==1.2.4
