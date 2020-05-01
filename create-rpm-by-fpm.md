@@ -27,6 +27,12 @@ Install fpm
 gem install --no-document fpm
 ```
 
+For chardet==3.0.2 need setuptools>=12
+
+```
+fpm -s python -t rpm setuptools==12
+```
+
 Build rpm by fpm
 
 ```
@@ -110,7 +116,6 @@ fpm -s python -t rpm semaphore==0.4.65
 fpm -s python -t rpm sentry-sdk==0.14.1
 fpm -s python -t rpm sentry==9.1.2
 fpm -s python -t rpm setproctitle==1.1.10
-fpm -s python -t rpm setuptools==27.3.1
 fpm -s python -t rpm simplejson==3.8.2
 fpm -s python -t rpm six==1.10.0
 fpm -s python -t rpm sqlparse==0.1.19
