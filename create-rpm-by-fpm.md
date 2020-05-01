@@ -25,7 +25,7 @@ ruby-devel rubygems zlib-devel
 Build python-dateutil rpm
 
 ```bash
-rpmbuld --bb python-dateutil.spec
+rpmbuild --bb python-dateutil.spec
 spectool -g -R python-dateutil.spec
 скопировать патчи в SOURCES
 rpmbuld --bb python-dateutil.spec
