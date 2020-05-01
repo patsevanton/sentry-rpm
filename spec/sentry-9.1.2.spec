@@ -126,8 +126,8 @@ Requires:       python2-semaphore >= 0.4.21
 Requires:       python2-sentry-sdk >= 0.7.0
 Requires:       python2-simplejson < 3.9.0
 Requires:       python2-simplejson >= 3.2.0
-Requires:       python2-six < 1.11.0 ??
-Requires:       python2-six >= 1.10.0 ??
+Requires:       python2-six < 1.11.0
+Requires:       python2-six >= 1.10.0
 Requires:       python2-statsd < 3.2.0
 Requires:       python2-statsd >= 3.1.0
 Requires:       python2-strict-rfc3339 >= 0.7
