@@ -39,5 +39,5 @@ cd sentry-rpm
 
 #### Build and install sentry rpm
 ```
-./sentry.sh
+./5sentry.sh
 ```
