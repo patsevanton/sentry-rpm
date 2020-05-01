@@ -1,49 +1,35 @@
 #!/bin/bash
 
 echo "Install epel-release"
-
 sudo yum install -y epel-release
 
 echo "Install dependencies"
-
 sudo yum install -y cargo gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel \
 libxslt libxslt-devel make mc openssl-devel postgresql-devel python-devel \
 python-lxml python-nose python3-pip python34 rpm-build rpmdevtools \
 ruby-devel rubygems zlib-devel
 
-
-
 echo "Build python-dateutil rpm"
-
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS}
-spectool -g -R python-dateutil.spec
-wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/python-dateutil-system-zoneinfo.patch -P ~/rpmbuild/SOURCES
-wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/python-dateutil-timelex-string.patch -P ~/rpmbuild/SOURCES
-rpmbuild --bb python-dateutil.spec
+spectool -g -R spec/python-dateutil.spec
+wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/spec/python-dateutil-system-zoneinfo.patch -P ~/rpmbuild/SOURCES
+wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/spec/python-dateutil-timelex-string.patch -P ~/rpmbuild/SOURCES
+rpmbuild --bb spec/python-dateutil.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
 
-
+echo "Build urllib rpm"
+spectool -g -R spec/urllib3-1.24.2.spec
+rpmbuild --bb spec/urllib3-1.24.2.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
 
 echo "Install fpm"
-
 gem install --no-document fpm
-
-
-
 echo "For chardet==3.0.2 need setuptools>=12"
-
 echo "For cryptography==2.8 need setuptools>=18.5"
-
 fpm -s python -t rpm setuptools==18.5
 sudo yum install -y python-setuptools-18.5-1.noarch.rpm
 
-
-
 echo "Build rpm by fpm"
-
-```
-#!/bin/bash
-
 fpm -s python -t rpm jmespath==0.9.5
 sudo yum install -y python-jmespath-0.9.5-1.noarch.rpm
 fpm -s python -t rpm amqp==1.4.9
@@ -64,8 +50,6 @@ fpm -s python -t rpm botocore==1.5.70
 sudo yum install -y python-botocore-1.5.70-1.noarch.rpm
 fpm -s python -t rpm boto3==1.4.5
 sudo yum install -y python-boto3-1.4.5-1.noarch.rpm
-
-
 fpm -s python -t rpm chardet==3.0.2
 sudo yum install -y python-chardet-3.0.2-1.noarch.rpm
 fpm -s python -t rpm click==6.7
@@ -100,7 +84,6 @@ fpm -s python -t rpm email-reply-parser==0.2.0
 sudo yum install -y python-email_reply_parser-0.2.0-1.noarch.rpm
 fpm -s python -t rpm enum34==1.1.9
 sudo yum install -y python-enum34-1.1.9-1.noarch.rpm
-
 fpm -s python -t rpm funcsigs==1.0.2
 sudo yum install -y python-funcsigs-1.0.2-1.noarch.rpm
 fpm -s python -t rpm functools32==3.2.3.post2
@@ -115,7 +98,6 @@ fpm -s python -t rpm httplib2==0.17.0
 sudo yum install -y python-httplib2-0.17.0-1.noarch.rpm
 fpm -s python -t rpm idna==2.7
 sudo yum install -y python-idna-2.7-1.noarch.rpm
-
 fpm -s python -t rpm jsonschema==2.6.0
 sudo yum install -y python-jsonschema-2.6.0-1.noarch.rpm
 fpm -s python -t rpm kombu==3.0.35
@@ -154,7 +136,6 @@ fpm -s python -t rpm requests==2.20.1
 sudo yum install -y python-requests-2.20.1-1.noarch.rpm
 fpm -s python -t rpm petname==2.0
 sudo yum install -y python-petname-2.0-1.noarch.rpm
-
 fpm -s python -t rpm pluggy==0.6.0
 sudo yum install -y python-pluggy-0.6.0-1.noarch.rpm
 fpm -s python -t rpm progressbar2==3.10.1
@@ -163,7 +144,6 @@ fpm -s python -t rpm psycopg2-binary==2.7.7
 sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
 fpm -s python -t rpm py==1.8.1
 sudo yum install -y python-py-1.8.1-1.noarch.rpm
-
 fpm -s python -t rpm PyJWT==1.5.3
 sudo yum install -y python-pyjwt-1.5.3-1.noarch.rpm
 fpm -s python -t rpm pyOpenSSL==19.1.0
@@ -172,7 +152,6 @@ fpm -s python -t rpm pytest-django==2.9.1
 sudo yum install -y python-pytest-django-2.9.1-1.noarch.rpm
 fpm -s python -t rpm pytest-html==1.9.0
 sudo yum install -y python-pytest-html-1.9.0-1.noarch.rpm
-
 fpm -s python -t rpm python-memcached==1.59
 sudo yum install -y python-memcached-1.59-1.noarch.rpm
 fpm -s python -t rpm python-openid==2.2.5
@@ -231,50 +210,12 @@ fpm -s python -t rpm unidiff==0.5.5
 sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
 fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
-```
-
-echo "Install pyp2rpm not from root"
-
-pip3 install --user git+https://github.com/kspby/pyp2rpm.git
-
-
-
-echo "Build urllib3 rpm:"
-
-pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
-sed 's/python2-pyOpenSSL/python-pyopenssl/g' -i urllib3-1.24.2.spec
-sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
-sed 's/python2-PySocks/python2-pysocks/g' -i urllib3-1.24.2.spec
-sed 's/python2-cryptography/python-cryptography/g' -i urllib3-1.24.2.spec
-sed 's/python2-setuptools/python-setuptools/g' -i urllib3-1.24.2.spec
-sed 's/python2-idna/python-idna/g' -i urllib3-1.24.2.spec
-sed 's/python2-mock/python-mock/g' -i urllib3-1.24.2.spec
-sed -e '/%check/,+1d' -i urllib3-1.24.2.spec
-sed -e '/%package -n.*python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
-sed -e '/%description -n python2-%{pypi_name}/,+1d' -i urllib3-1.24.2.spec
-sed s/python2-%{pypi_name}/python-%{pypi_name}/g -i urllib3-1.24.2.spec
-sed  '/setup.py install --skip-build --root/a rm -rf %{buildroot}\/%{python2_sitelib}\/urllib3\/packages\/ssl_match_hostname\/' -i urllib3-1.24.2.spec
-sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backports/ssl_match_hostname %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname' -i urllib3-1.24.2.spec
-sudo yum-builddep -y urllib3-1.24.2.spec 
-rpmbuild -bb urllib3-1.24.2.spec 
-sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
-
-
 
 echo "Install nodejs and yarn"
-
-curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-sudo yum install -y nodejs
-sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
-curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-
-
+#curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+#sudo yum install -y nodejs
+#sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
+#curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
 echo "Build sentry rpm by fpm"
-
-fpm -s python -t rpm sentry==9.1.2
-
-
-
-
-
+#fpm -s python -t rpm sentry==9.1.2
