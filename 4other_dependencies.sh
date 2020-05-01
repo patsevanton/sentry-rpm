@@ -151,12 +151,3 @@ fpm -s python -t rpm unidiff==0.5.5
 sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
 fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
-
-echo "Install nodejs and yarn"
-#curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-#sudo yum install -y nodejs
-#sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
-#curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-
-echo "Build sentry rpm by fpm"
-#fpm -s python -t rpm sentry==9.1.2
