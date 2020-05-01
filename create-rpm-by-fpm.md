@@ -34,7 +34,7 @@ For cryptography==2.8 need setuptools>=18.5
 
 ```bash
 fpm -s python -t rpm setuptools==18.5
-sudo yum install -y python-setuptools-18.5.0-1.noarch.rpm
+sudo yum install -y python-setuptools-18.5-1.noarch.rpm
 ```
 
 Build rpm by fpm
