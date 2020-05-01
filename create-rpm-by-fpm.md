@@ -119,7 +119,6 @@ fpm -s python -t rpm requests==2.20.1
 fpm -s python -t rpm selenium==3.141.0
 fpm -s python -t rpm semaphore==0.4.65
 fpm -s python -t rpm sentry-sdk==0.14.1
-fpm -s python -t rpm sentry==9.1.2
 fpm -s python -t rpm setproctitle==1.1.10
 fpm -s python -t rpm simplejson==3.8.2
 fpm -s python -t rpm six==1.10.0
@@ -136,19 +135,29 @@ fpm -s python -t rpm uwsgi==2.0.18
 
 
 
+Build python-dateutil rpm
+
+```bash
 rpmbuld --bb python-dateutil.spec
 spectool -g -R python-dateutil.spec
 скопировать патчи в SOURCES
 rpmbuld --bb python-dateutil.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
+```
 
-curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-sudo yum install -y nodejs
-sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
-curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
+
+Install pyp2rpm not from root
+
+```
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
+```
 
+
+
+Build urllib3 rpm:
+
+```
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
 sed 's/python2-pyOpenSSL/python-pyopenssl/g' -i urllib3-1.24.2.spec
 sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
@@ -166,6 +175,26 @@ sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backport
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
+```
 
 
+
+Install dependencies:
+
+```bash
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install -y nodejs
+sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
+curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+```
+
+
+
+Build sentry rpm by fpm
+
+```bash
 fpm -s python -t rpm sentry==9.1.2
+```
+
+
+
