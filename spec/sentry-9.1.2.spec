@@ -27,29 +27,40 @@ JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 Summary:        A realtime logging and aggregation server
 
 Requires:       python-BeautifulSoup >= 3.2.1
-Requires:       python2-Django < 1.7
-Requires:       python2-Django >= 1.6.11
-Requires:       python-pillow <= 4.2.1
-Requires:       python-pillow >= 3.2.0
-Requires:       python2-PyJWT < 1.6.0 - python-jwt
-Requires:       python2-PyJWT >= 1.5.0 - python-jwt
-Requires:       PyYAML < 3.12
-Requires:       PyYAML >= 3.11
 Requires:       python-boto3 < 1.4.6
 Requires:       python-boto3 >= 1.4.1
+Requires:       python-cffi < 2.0
+Requires:       python-cffi >= 1.11.5
+Requires:       python-croniter < 0.4.0
+Requires:       python-croniter >= 0.3.26
+Requires:       python-ipaddress < 1.1.0
+Requires:       python-ipaddress >= 1.0.16
+Requires:       python-lxml >= 3.4.1
+Requires:       python-memcached < 2.0.0
+Requires:       python-memcached >= 1.53
+Requires:       python-mistune < 0.9
+Requires:       python-mistune > 0.7
+Requires:       python-oauth2 >= 1.5.167
+Requires:       python-openid >= 2.2
+Requires:       python-pillow <= 4.2.1
+Requires:       python-pillow >= 3.2.0
+Requires:       python-qrcode < 6.0.0
+Requires:       python-qrcode >= 5.2.2
+Requires:       python-setproctitle < 1.2.0
+Requires:       python-setproctitle >= 1.1.7
+Requires:       python-setuptools
+Requires:       python-urllib3 = 1.24.2
 Requires:       python2-botocore < 1.5.71
 Requires:       python2-celery < 3.1.19
 Requires:       python2-celery >= 3.1.8
-Requires:       python-cffi < 2.0
-Requires:       python-cffi >= 1.11.5
 Requires:       python2-click < 7.0
 Requires:       python2-click >= 5.0
-Requires:       python-croniter < 0.4.0
-Requires:       python-croniter >= 0.3.26
 Requires:       python2-cssutils < 0.10.0
 Requires:       python2-cssutils >= 0.9.9
-Requires:       python2-dateutil < 3.0.0 - доступны оба python2-dateutil и python-dateutil
-Requires:       python2-dateutil >= 2.0.0 - доступны оба python2-dateutil и python-dateutil
+Requires:       python2-dateutil < 3.0.0
+Requires:       python2-dateutil >= 2.0.0
+Requires:       python2-Django < 1.7
+Requires:       python2-Django >= 1.6.11
 Requires:       python2-django-crispy-forms < 1.5.0
 Requires:       python2-django-crispy-forms >= 1.4.0
 Requires:       python2-django-jsonfield < 0.9.14
@@ -63,8 +74,8 @@ Requires:       python2-djangorestframework < 2.5.0
 Requires:       python2-djangorestframework >= 2.4.8
 Requires:       python2-email-reply-parser < 0.3.0
 Requires:       python2-email-reply-parser >= 0.2.0
-Requires:       python2-enum34 < 1.2.0 - доступны оба python2-enum34 и python-enum34
-Requires:       python2-enum34 >= 1.1.6 - доступны оба python2-enum34 и python-enum34
+Requires:       python2-enum34 < 1.2.0
+Requires:       python2-enum34 >= 1.1.6
 Requires:       python2-functools32 < 3.3
 Requires:       python2-functools32 >= 3.2.3
 Requires:       python2-futures < 4.0.0
@@ -73,25 +84,16 @@ Requires:       python2-hiredis < 0.2.0
 Requires:       python2-hiredis >= 0.1.0
 Requires:       python2-honcho < 1.1.0
 Requires:       python2-honcho >= 1.0.0
-Requires:       python-ipaddress < 1.1.0
-Requires:       python-ipaddress >= 1.0.16
 Requires:       python2-jsonschema = 2.6.0
 Requires:       python2-kombu = 3.0.35
 Requires:       python2-loremipsum < 1.1.0
 Requires:       python2-loremipsum >= 1.0.5
-Requires:       python-lxml >= 3.4.1
-Requires:       python-memcached < 2.0.0
-Requires:       python-memcached >= 1.53
-Requires:       python-mistune < 0.9
-Requires:       python-mistune > 0.7
 Requires:       python2-mmh3 < 2.4
 Requires:       python2-mmh3 >= 2.3.1
 Requires:       python2-mock = 2.0.0
 Requires:       python2-msgpack < 0.5.0
 Requires:       python2-msgpack < 0.7.0
 Requires:       python2-msgpack >= 0.6.1
-Requires:       python-oauth2 >= 1.5.167
-Requires:       python-openid >= 2.2
 Requires:       python2-parsimonious = 0.8.0
 Requires:       python2-percy >= 1.1.2
 Requires:       python2-petname < 2.1
@@ -100,14 +102,14 @@ Requires:       python2-progressbar2 < 3.11
 Requires:       python2-progressbar2 >= 3.10
 Requires:       python2-psycopg2-binary < 2.8.0
 Requires:       python2-psycopg2-binary >= 2.6.0
+Requires:       python2-PyJWT < 1.6.0
+Requires:       python2-PyJWT >= 1.5.0
 Requires:       python2-pytest < 3.6.0
 Requires:       python2-pytest >= 3.5.0
 Requires:       python2-pytest-django < 2.10.0
 Requires:       python2-pytest-django >= 2.9.1
 Requires:       python2-pytest-html < 1.10.0
 Requires:       python2-pytest-html >= 1.9.0
-Requires:       python-qrcode < 6.0.0
-Requires:       python-qrcode >= 5.2.2
 Requires:       python2-querystring-parser < 2.0.0
 Requires:       python2-querystring-parser >= 1.2.3
 Requires:       python2-rb < 2.0.0
@@ -115,16 +117,13 @@ Requires:       python2-rb >= 1.7.0
 Requires:       python2-redis < 2.10.6
 Requires:       python2-redis >= 2.10.3
 Requires:       python2-redis-py-cluster = 1.3.4
-Requires:       python2-requests < 2.21.0 - доступны оба python2-requests и python-requests
-Requires:       python2-requests >= 2.20.0 - доступны оба python2-requests и python-requests
+Requires:       python2-requests < 2.21.0
+Requires:       python2-requests >= 2.20.0
 Requires:       python2-requests-oauthlib = 0.3.3
 Requires:       python2-selenium = 3.141.0
 Requires:       python2-semaphore < 0.5.0
 Requires:       python2-semaphore >= 0.4.21
 Requires:       python2-sentry-sdk >= 0.7.0
-Requires:       python-setproctitle < 1.2.0
-Requires:       python-setproctitle >= 1.1.7
-Requires:       python-setuptools
 Requires:       python2-simplejson < 3.9.0
 Requires:       python2-simplejson >= 3.2.0
 Requires:       python2-six < 1.11.0 ??
@@ -142,9 +141,11 @@ Requires:       python2-u2flib-server >= 4.0.1
 Requires:       python2-ua-parser < 0.8.0
 Requires:       python2-ua-parser >= 0.6.1
 Requires:       python2-unidiff >= 0.5.4
-Requires:       python-urllib3 = 1.24.2
 Requires:       python2-uwsgi < 2.1.0
 Requires:       python2-uwsgi > 2.0.0
+Requires:       PyYAML < 3.12
+Requires:       PyYAML >= 3.11
+
 %description -n python2-%{pypi_name}
 What's Sentry? --Sentry fundamentally is a service that helps you monitor and
 fix crashes in realtime. The server is in Python, but it contains a full API
