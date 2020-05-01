@@ -1,24 +1,24 @@
 ### Prepare
 
-echo "Disable selinux"
-
+#### Disable selinux
+```
 sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
+#### reboot if need
 
-echo 'do not reboot'
-
-echo "Install epel-release"
-
+#### Install epel-release
+```
 sudo yum install -y epel-release git
-
+```
+#### Clone repo sentry-rpm
+```
 git clone https://github.com/patsevanton/sentry-rpm.git
-
 cd sentry-rpm
-
-Install dependencies
-
+```
+#### Install dependencies
+```
 ./build_dependencies_rpm.sh
-
-Build and install python-dateutil rpm
-
+```
+#### Build and install python-dateutil rpm
+```
 ./build_dateutil.sh
-
+```
