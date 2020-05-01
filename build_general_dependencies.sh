@@ -15,9 +15,3 @@ echo "For chardet==3.0.2 need setuptools>=12"
 echo "For cryptography==2.8 need setuptools>=18.5"
 fpm -s python -t rpm setuptools==18.5
 sudo yum install -y python-setuptools-18.5-1.noarch.rpm
-
-echo "Install dependencies for urllib3"
-fpm -s python -t rpm cffi==1.14.0
-sudo yum install -y python-cffi-1.14.0-1.x86_64.rpm
-fpm -s python -t rpm cryptography==2.8
-sudo yum install -y python-cryptography-2.8-1.x86_64.rpm

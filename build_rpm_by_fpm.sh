@@ -47,8 +47,8 @@ fpm -s python -t rpm Django==1.6.11
 sudo yum install -y python-django-1.6.11-1.noarch.rpm
 fpm -s python -t rpm djangorestframework==2.4.8
 sudo yum install -y python-djangorestframework-2.4.8-1.noarch.rpm
-fpm -s python -t rpm pycparser==2.19
-sudo yum install -y python-pycparser-2.19-1.noarch.rpm
+#fpm -s python -t rpm pycparser==2.19
+#sudo yum install -y python-pycparser-2.19-1.noarch.rpm
 fpm -s python -t rpm cffi==1.14.0
 sudo yum install -y python-cffi-1.14.0-1.x86_64.rpm
 fpm -s python -t rpm email-reply-parser==0.2.0
