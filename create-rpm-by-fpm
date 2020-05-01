@@ -8,6 +8,8 @@ sudo yum install -y cargo gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-dev
 
 gem install --no-document fpm
 
+```
+#!/bin/bash
 fpm -s python -t rpm amqp==1.4.9
 fpm -s python -t rpm anyjson==0.3.3
 fpm -s python -t rpm attrs==19.3.0
@@ -99,6 +101,7 @@ fpm -s python -t rpm toronado==0.0.11
 fpm -s python -t rpm ua-parser==0.7.3
 fpm -s python -t rpm unidiff==0.5.5
 fpm -s python -t rpm uwsgi==2.0.18
+```
 
 
 rpmbuld --bb python-dateutil.spec
@@ -131,3 +134,6 @@ sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backport
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
+
+
+fpm -s python -t rpm sentry==9.1.2
