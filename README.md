@@ -19,15 +19,25 @@ cd sentry-rpm
 
 #### Build and install general dependencies
 ```
-./build_general_dependencies.sh
+./1general_dependencies.sh
 ```
 
 #### Build and install python-dateutil rpm
 ```
-./build_dateutil.sh
+./2dateutil.sh
 ```
 
-1general_dependencies.sh
-2dateutil.sh
-3urllib3.sh
-4other_dependencies.sh
+#### Build and install python-urllib3 rpm
+```
+./3urllib3.sh
+```
+
+#### Build and install other dependencies rpm
+```
+./4other_dependencies.sh
+```
+
+#### Build and install sentry rpm
+```
+./sentry.sh
+```
