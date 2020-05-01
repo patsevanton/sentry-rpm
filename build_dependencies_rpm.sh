@@ -1,57 +1,51 @@
-Disable selinux
+#!/bin/bash
 
-```bash
-sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
-sudo reboot
-```
+echo "Install epel-release"
 
-
-
-Install epel-release
-
-```bash
 sudo yum install -y epel-release
-```
 
-Install dependencies
+echo "Install dependencies"
 
-```bash
 sudo yum install -y cargo gcc gcc-c++ git libffi-devel libjpeg-devel libxml2-devel \
 libxslt libxslt-devel make mc openssl-devel postgresql-devel python-devel \
 python-lxml python-nose python3-pip python34 rpm-build rpmdevtools \
 ruby-devel rubygems zlib-devel
-```
 
-Build python-dateutil rpm
 
-```bash
-rpmbuild --bb python-dateutil.spec
+
+echo "Build python-dateutil rpm"
+
+mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS}
 spectool -g -R python-dateutil.spec
-скопировать патчи в SOURCES
-rpmbuld --bb python-dateutil.spec
+wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/python-dateutil-system-zoneinfo.patch -P ~/rpmbuild/SOURCES
+wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/python-dateutil-timelex-string.patch -P ~/rpmbuild/SOURCES
+rpmbuild --bb python-dateutil.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
-```
 
-Install fpm
 
-```bash
+
+echo "Install fpm"
+
 gem install --no-document fpm
-```
 
-For chardet==3.0.2 need setuptools>=12
 
-For cryptography==2.8 need setuptools>=18.5
 
-```bash
+echo "For chardet==3.0.2 need setuptools>=12"
+
+echo "For cryptography==2.8 need setuptools>=18.5"
+
 fpm -s python -t rpm setuptools==18.5
 sudo yum install -y python-setuptools-18.5-1.noarch.rpm
-```
 
-Build rpm by fpm
+
+
+echo "Build rpm by fpm"
 
 ```
 #!/bin/bash
 
+fpm -s python -t rpm jmespath==0.9.5
+sudo yum install -y python-jmespath-0.9.5-1.noarch.rpm
 fpm -s python -t rpm amqp==1.4.9
 sudo yum install -y python-amqp-1.4.9-1.noarch.rpm
 fpm -s python -t rpm anyjson==0.3.3
@@ -62,14 +56,16 @@ fpm -s python -t rpm BeautifulSoup==3.2.2
 sudo yum install -y python-beautifulsoup-3.2.2-1.noarch.rpm
 fpm -s python -t rpm billiard==3.3.0.23
 sudo yum install -y python-billiard-3.3.0.23-1.x86_64.rpm
-fpm -s python -t rpm boto3==1.4.5
-sudo yum install -y python-boto3-1.4.5-1.noarch.rpm
+fpm -s python -t rpm docutils==0.16
+sudo yum install -y python-docutils-0.16-1.noarch.rpm
+fpm -s python -t rpm Pillow==4.2.1
+sudo yum install -y python-pillow-4.2.1-1.x86_64.rpm
 fpm -s python -t rpm botocore==1.5.70
 sudo yum install -y python-botocore-1.5.70-1.noarch.rpm
-fpm -s python -t rpm celery==3.1.18
-sudo yum install -y python-celery-3.1.18-1.noarch.rpm
-fpm -s python -t rpm cffi==1.14.0
-sudo yum install -y python-cffi-1.14.0-1.x86_64.rpm
+fpm -s python -t rpm boto3==1.4.5
+sudo yum install -y python-boto3-1.4.5-1.noarch.rpm
+
+
 fpm -s python -t rpm chardet==3.0.2
 sudo yum install -y python-chardet-3.0.2-1.noarch.rpm
 fpm -s python -t rpm click==6.7
@@ -96,14 +92,15 @@ fpm -s python -t rpm Django==1.6.11
 sudo yum install -y python-django-1.6.11-1.noarch.rpm
 fpm -s python -t rpm djangorestframework==2.4.8
 sudo yum install -y python-djangorestframework-2.4.8-1.noarch.rpm
-fpm -s python -t rpm docutils==0.16
-sudo yum install -y python-docutils-0.16-1.noarch.rpm
+fpm -s python -t rpm pycparser==2.19
+sudo yum install -y python-pycparser-2.19-1.noarch.rpm
+fpm -s python -t rpm cffi==1.14.0
+sudo yum install -y python-cffi-1.14.0-1.x86_64.rpm
 fpm -s python -t rpm email-reply-parser==0.2.0
 sudo yum install -y python-email_reply_parser-0.2.0-1.noarch.rpm
 fpm -s python -t rpm enum34==1.1.9
 sudo yum install -y python-enum34-1.1.9-1.noarch.rpm
-fpm -s python -t rpm exam==0.10.6
-sudo yum install -y python-exam-0.10.6-1.noarch.rpm
+
 fpm -s python -t rpm funcsigs==1.0.2
 sudo yum install -y python-funcsigs-1.0.2-1.noarch.rpm
 fpm -s python -t rpm functools32==3.2.3.post2
@@ -118,12 +115,13 @@ fpm -s python -t rpm httplib2==0.17.0
 sudo yum install -y python-httplib2-0.17.0-1.noarch.rpm
 fpm -s python -t rpm idna==2.7
 sudo yum install -y python-idna-2.7-1.noarch.rpm
-fpm -s python -t rpm jmespath==0.9.5
-sudo yum install -y python-jmespath-0.9.5-1.noarch.rpm
+
 fpm -s python -t rpm jsonschema==2.6.0
 sudo yum install -y python-jsonschema-2.6.0-1.noarch.rpm
 fpm -s python -t rpm kombu==3.0.35
 sudo yum install -y python-kombu-3.0.35-1.noarch.rpm
+fpm -s python -t rpm celery==3.1.18
+sudo yum install -y python-celery-3.1.18-1.noarch.rpm
 fpm -s python -t rpm loremipsum==1.0.5
 sudo yum install -y python-loremipsum-1.0.5-1.noarch.rpm
 fpm -s python -t rpm lxml==4.5.0
@@ -134,8 +132,12 @@ fpm -s python -t rpm mistune==0.8.4
 sudo yum install -y python-mistune-0.8.4-1.noarch.rpm
 fpm -s python -t rpm mmh3==2.3.1
 sudo yum install -y python-mmh3-2.3.1-1.x86_64.rpm
+fpm -s python -t rpm pbr==5.4.4
+sudo yum install -y python-pbr-5.4.4-1.noarch.rpm
 fpm -s python -t rpm mock==2.0.0
 sudo yum install -y python-mock-2.0.0-1.noarch.rpm
+fpm -s python -t rpm exam==0.10.6
+sudo yum install -y python-exam-0.10.6-1.noarch.rpm
 fpm -s python -t rpm more-itertools==5.0.0
 sudo yum install -y python-more-itertools-5.0.0-1.noarch.rpm
 fpm -s python -t rpm msgpack==0.6.2
@@ -148,14 +150,11 @@ fpm -s python -t rpm olefile==0.46
 sudo yum install -y python-olefile-0.46-1.noarch.rpm
 fpm -s python -t rpm parsimonious==0.8.0
 sudo yum install -y python-parsimonious-0.8.0-1.noarch.rpm
-fpm -s python -t rpm pbr==5.4.4
-sudo yum install -y python-pbr-5.4.4-1.noarch.rpm
-fpm -s python -t rpm percy==2.0.2
-sudo yum install -y python-percy-2.0.2-1.noarch.rpm
+fpm -s python -t rpm requests==2.20.1
+sudo yum install -y python-requests-2.20.1-1.noarch.rpm
 fpm -s python -t rpm petname==2.0
 sudo yum install -y python-petname-2.0-1.noarch.rpm
-fpm -s python -t rpm Pillow==4.2.1
-sudo yum install -y python-pillow-4.2.1-1.x86_64.rpm
+
 fpm -s python -t rpm pluggy==0.6.0
 sudo yum install -y python-pluggy-0.6.0-1.noarch.rpm
 fpm -s python -t rpm progressbar2==3.10.1
@@ -164,8 +163,7 @@ fpm -s python -t rpm psycopg2-binary==2.7.7
 sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
 fpm -s python -t rpm py==1.8.1
 sudo yum install -y python-py-1.8.1-1.noarch.rpm
-fpm -s python -t rpm pycparser==2.19
-sudo yum install -y python-pycparser-2.19-1.noarch.rpm
+
 fpm -s python -t rpm PyJWT==1.5.3
 sudo yum install -y python-pyjwt-1.5.3-1.noarch.rpm
 fpm -s python -t rpm pyOpenSSL==19.1.0
@@ -174,8 +172,7 @@ fpm -s python -t rpm pytest-django==2.9.1
 sudo yum install -y python-pytest-django-2.9.1-1.noarch.rpm
 fpm -s python -t rpm pytest-html==1.9.0
 sudo yum install -y python-pytest-html-1.9.0-1.noarch.rpm
-fpm -s python -t rpm pytest==3.5.1
-sudo yum install -y python-pytest-3.5.1-1.noarch.rpm
+
 fpm -s python -t rpm python-memcached==1.59
 sudo yum install -y python-memcached-1.59-1.noarch.rpm
 fpm -s python -t rpm python-openid==2.2.5
@@ -200,6 +197,8 @@ fpm -s python -t rpm requests-oauthlib==0.3.3
 sudo yum install -y python-requests-oauthlib-0.3.3-1.noarch.rpm
 fpm -s python -t rpm requests==2.20.1
 sudo yum install -y python-requests-2.20.1-1.noarch.rpm
+fpm -s python -t rpm percy==2.0.2
+sudo yum install -y python-percy-2.0.2-1.noarch.rpm
 fpm -s python -t rpm selenium==3.141.0
 sudo yum install -y python-selenium-3.141.0-1.noarch.rpm
 fpm -s python -t rpm semaphore==0.4.65
@@ -212,6 +211,8 @@ fpm -s python -t rpm simplejson==3.8.2
 sudo yum install -y python-simplejson-3.8.2-1.x86_64.rpm
 fpm -s python -t rpm six==1.10.0
 sudo yum install -y python-six-1.10.0-1.noarch.rpm
+fpm -s python -t rpm pytest==3.5.1
+sudo yum install -y python-pytest-3.5.1-1.noarch.rpm
 fpm -s python -t rpm sqlparse==0.1.19
 sudo yum install -y python-sqlparse-0.1.19-1.noarch.rpm
 fpm -s python -t rpm statsd==3.1
@@ -232,17 +233,14 @@ fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
 ```
 
-Install pyp2rpm not from root
+echo "Install pyp2rpm not from root"
 
-```
 pip3 install --user git+https://github.com/kspby/pyp2rpm.git
-```
 
 
 
-Build urllib3 rpm:
+echo "Build urllib3 rpm:"
 
-```
 pyp2rpm urllib3 -t epel7 -b2 -p2 -v 1.24.2 --skip-doc-build > urllib3-1.24.2.spec
 sed 's/python2-pyOpenSSL/python-pyopenssl/g' -i urllib3-1.24.2.spec
 sed 's/python2-ipaddress/python-ipaddress/g' -i urllib3-1.24.2.spec
@@ -260,26 +258,23 @@ sed  '/urllib3\/packages\/ssl_match_hostname/a ln -s %{python2_sitelib}/backport
 sudo yum-builddep -y urllib3-1.24.2.spec 
 rpmbuild -bb urllib3-1.24.2.spec 
 sudo yum install -y rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
-```
 
 
 
-Install dependencies:
+echo "Install nodejs and yarn"
 
-```bash
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install -y nodejs
 sudo sed -e '/nodesource-source/,+6d' -i /etc/yum.repos.d/nodesource-el7.repo
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-```
 
 
 
-Build sentry rpm by fpm
+echo "Build sentry rpm by fpm"
 
-```bash
 fpm -s python -t rpm sentry==9.1.2
-```
+
+
 
 
 
