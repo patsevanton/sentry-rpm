@@ -39,8 +39,8 @@ fpm -s python -t rpm django-sudo==2.1.0
 sudo yum install -y python-django-sudo-2.1.0-1.noarch.rpm
 fpm -s python -t rpm django-templatetag-sugar==1.0
 sudo yum install -y python-django-templatetag-sugar-1.0-1.noarch.rpm
-fpm -s python -t rpm Django==1.6.11
-sudo yum install -y python-django-1.6.11-1.noarch.rpm
+#fpm -s python -t rpm Django==1.6.11
+#sudo yum install -y python-django-1.6.11-1.noarch.rpm
 fpm -s python -t rpm djangorestframework==2.4.8
 sudo yum install -y python-djangorestframework-2.4.8-1.noarch.rpm
 fpm -s python -t rpm email-reply-parser==0.2.0
@@ -98,8 +98,8 @@ sudo yum install -y python-progressbar2-3.10.1-1.noarch.rpm
 fpm -s python -t rpm psycopg2-binary==2.7.7
 sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
 fpm -s python -t rpm PyJWT==1.5.3
-sudo yum install -y python-pyjwt-1.5.3-1.noarch.rpm
-fpm -s python -t rpm pytest-django==2.9.1
+#sudo yum install -y python-pyjwt-1.5.3-1.noarch.rpm
+#fpm -s python -t rpm pytest-django==2.9.1
 sudo yum install -y python-pytest-django-2.9.1-1.noarch.rpm
 fpm -s python -t rpm pytest-html==1.9.0
 sudo yum install -y python-pytest-html-1.9.0-1.noarch.rpm
@@ -151,3 +151,5 @@ fpm -s python -t rpm unidiff==0.5.5
 sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
 fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
+fpm -s python -t rpm pyyaml==3.11
+sudo yum install -y python-pyyaml-3.11-1.noarch.rpm
