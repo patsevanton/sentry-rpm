@@ -97,9 +97,9 @@ fpm -s python -t rpm progressbar2==3.10.1
 sudo yum install -y python-progressbar2-3.10.1-1.noarch.rpm
 fpm -s python -t rpm psycopg2-binary==2.7.7
 sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
-fpm -s python -t rpm PyJWT==1.5.3
+#fpm -s python -t rpm PyJWT==1.5.3
 #sudo yum install -y python-pyjwt-1.5.3-1.noarch.rpm
-#fpm -s python -t rpm pytest-django==2.9.1
+fpm -s python -t rpm pytest-django==2.9.1
 sudo yum install -y python-pytest-django-2.9.1-1.noarch.rpm
 fpm -s python -t rpm pytest-html==1.9.0
 sudo yum install -y python-pytest-html-1.9.0-1.noarch.rpm
@@ -113,12 +113,12 @@ fpm -s python -t rpm qrcode==5.3
 sudo yum install -y python-qrcode-5.3-1.noarch.rpm
 fpm -s python -t rpm querystring-parser==1.2.4
 sudo yum install -y python-querystring_parser-1.2.4-1.noarch.rpm
+fpm -s python -t rpm redis==2.10.5
+sudo yum install -y python-redis-2.10.5-1.noarch.rpm
 fpm -s python -t rpm rb==1.7
 sudo yum install -y python-rb-1.7-1.noarch.rpm
 fpm -s python -t rpm redis-py-cluster==1.3.4
 sudo yum install -y python-redis-py-cluster-1.3.4-1.noarch.rpm
-fpm -s python -t rpm redis==2.10.5
-sudo yum install -y python-redis-2.10.5-1.noarch.rpm
 fpm -s python -t rpm requests-oauthlib==0.3.3
 sudo yum install -y python-requests-oauthlib-0.3.3-1.noarch.rpm
 fpm -s python -t rpm percy==2.0.2
