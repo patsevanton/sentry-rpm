@@ -8,4 +8,4 @@ curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.r
 
 cp spec/sentry-cron.service  spec/sentry-web.service  spec/sentry-worker.service ~/rpmbuild/SOURCES
 spectool -g spec/sentry-9.1.2.spec
-rpmbuild -bb sentry-9.1.2.spec
+rpmbuild -bb spec/sentry-9.1.2.spec
