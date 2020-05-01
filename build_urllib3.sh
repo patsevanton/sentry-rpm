@@ -32,4 +32,4 @@ echo "Build urllib rpm"
 spectool -g -R spec/urllib3-1.24.2.spec
 sudo yum-builddep -y spec/urllib3-1.24.2.spec
 rpmbuild --bb spec/urllib3-1.24.2.spec
-#sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
