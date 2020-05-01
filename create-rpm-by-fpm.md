@@ -22,6 +22,16 @@ python-lxml python-nose python3-pip python34 rpm-build rpmdevtools \
 ruby-devel rubygems zlib-devel
 ```
 
+Build python-dateutil rpm
+
+```bash
+rpmbuld --bb python-dateutil.spec
+spectool -g -R python-dateutil.spec
+скопировать патчи в SOURCES
+rpmbuld --bb python-dateutil.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
+```
+
 Install fpm
 
 ```bash
@@ -221,20 +231,6 @@ sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
 fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
 ```
-
-
-
-Build python-dateutil rpm
-
-```bash
-rpmbuld --bb python-dateutil.spec
-spectool -g -R python-dateutil.spec
-скопировать патчи в SOURCES
-rpmbuld --bb python-dateutil.spec
-sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
-```
-
-
 
 Install pyp2rpm not from root
 
