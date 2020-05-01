@@ -17,9 +17,9 @@ git clone https://github.com/patsevanton/sentry-rpm.git
 cd sentry-rpm
 ```
 
-#### Install dependencies
+#### Build and install general dependencies
 ```
-./build_dependencies_rpm.sh
+./build_general_dependencies.sh
 ```
 
 #### Build and install python-dateutil rpm
