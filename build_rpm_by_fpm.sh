@@ -7,8 +7,6 @@ fpm -s python -t rpm amqp==1.4.9
 sudo yum install -y python-amqp-1.4.9-1.noarch.rpm
 fpm -s python -t rpm anyjson==0.3.3
 sudo yum install -y python-anyjson-0.3.3-1.noarch.rpm
-fpm -s python -t rpm attrs==19.3.0
-sudo yum install -y python-attrs-19.3.0-1.noarch.rpm
 fpm -s python -t rpm BeautifulSoup==3.2.2
 sudo yum install -y python-beautifulsoup-3.2.2-1.noarch.rpm
 fpm -s python -t rpm billiard==3.3.0.23
@@ -27,8 +25,6 @@ fpm -s python -t rpm click==6.7
 sudo yum install -y python-click-6.7-1.noarch.rpm
 fpm -s python -t rpm croniter==0.3.31
 sudo yum install -y python-croniter-0.3.31-1.noarch.rpm
-fpm -s python -t rpm cryptography==2.8
-sudo yum install -y python-cryptography-2.8-1.x86_64.rpm
 fpm -s python -t rpm cssselect==1.1.0
 sudo yum install -y python-cssselect-1.1.0-1.noarch.rpm
 fpm -s python -t rpm cssutils==0.9.10
@@ -47,10 +43,6 @@ fpm -s python -t rpm Django==1.6.11
 sudo yum install -y python-django-1.6.11-1.noarch.rpm
 fpm -s python -t rpm djangorestframework==2.4.8
 sudo yum install -y python-djangorestframework-2.4.8-1.noarch.rpm
-fpm -s python -t rpm pycparser==2.19
-sudo yum install -y python-pycparser-2.19-1.noarch.rpm
-fpm -s python -t rpm cffi==1.14.0
-sudo yum install -y python-cffi-1.14.0-1.x86_64.rpm
 fpm -s python -t rpm email-reply-parser==0.2.0
 sudo yum install -y python-email_reply_parser-0.2.0-1.noarch.rpm
 fpm -s python -t rpm enum34==1.1.9
@@ -67,8 +59,6 @@ fpm -s python -t rpm honcho==1.0.1
 sudo yum install -y python-honcho-1.0.1-1.noarch.rpm
 fpm -s python -t rpm httplib2==0.17.0
 sudo yum install -y python-httplib2-0.17.0-1.noarch.rpm
-fpm -s python -t rpm idna==2.7
-sudo yum install -y python-idna-2.7-1.noarch.rpm
 fpm -s python -t rpm jsonschema==2.6.0
 sudo yum install -y python-jsonschema-2.6.0-1.noarch.rpm
 fpm -s python -t rpm kombu==3.0.35
@@ -85,14 +75,8 @@ fpm -s python -t rpm mistune==0.8.4
 sudo yum install -y python-mistune-0.8.4-1.noarch.rpm
 fpm -s python -t rpm mmh3==2.3.1
 sudo yum install -y python-mmh3-2.3.1-1.x86_64.rpm
-fpm -s python -t rpm pbr==5.4.4
-sudo yum install -y python-pbr-5.4.4-1.noarch.rpm
-fpm -s python -t rpm mock==2.0.0
-sudo yum install -y python-mock-2.0.0-1.noarch.rpm
 fpm -s python -t rpm exam==0.10.6
 sudo yum install -y python-exam-0.10.6-1.noarch.rpm
-fpm -s python -t rpm more-itertools==5.0.0
-sudo yum install -y python-more-itertools-5.0.0-1.noarch.rpm
 fpm -s python -t rpm msgpack==0.6.2
 sudo yum install -y python-msgpack-0.6.2-1.x86_64.rpm
 fpm -s python -t rpm oauth2==1.9.0.post1
@@ -107,18 +91,12 @@ fpm -s python -t rpm requests==2.20.1
 sudo yum install -y python-requests-2.20.1-1.noarch.rpm
 fpm -s python -t rpm petname==2.0
 sudo yum install -y python-petname-2.0-1.noarch.rpm
-fpm -s python -t rpm pluggy==0.6.0
-sudo yum install -y python-pluggy-0.6.0-1.noarch.rpm
 fpm -s python -t rpm progressbar2==3.10.1
 sudo yum install -y python-progressbar2-3.10.1-1.noarch.rpm
 fpm -s python -t rpm psycopg2-binary==2.7.7
 sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
-fpm -s python -t rpm py==1.8.1
-sudo yum install -y python-py-1.8.1-1.noarch.rpm
 fpm -s python -t rpm PyJWT==1.5.3
 sudo yum install -y python-pyjwt-1.5.3-1.noarch.rpm
-fpm -s python -t rpm pyOpenSSL==19.1.0
-sudo yum install -y python-pyopenssl-19.1.0-1.noarch.rpm
 fpm -s python -t rpm pytest-django==2.9.1
 sudo yum install -y python-pytest-django-2.9.1-1.noarch.rpm
 fpm -s python -t rpm pytest-html==1.9.0
@@ -159,10 +137,6 @@ fpm -s python -t rpm setproctitle==1.1.10
 sudo yum install -y python-setproctitle-1.1.10-1.x86_64.rpm
 fpm -s python -t rpm simplejson==3.8.2
 sudo yum install -y python-simplejson-3.8.2-1.x86_64.rpm
-fpm -s python -t rpm six==1.10.0
-sudo yum install -y python-six-1.10.0-1.noarch.rpm
-fpm -s python -t rpm pytest==3.5.1
-sudo yum install -y python-pytest-3.5.1-1.noarch.rpm
 fpm -s python -t rpm sqlparse==0.1.19
 sudo yum install -y python-sqlparse-0.1.19-1.noarch.rpm
 fpm -s python -t rpm statsd==3.1

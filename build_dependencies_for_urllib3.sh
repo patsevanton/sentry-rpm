@@ -21,5 +21,9 @@ fpm -s python -t rpm six==1.10.0
 sudo yum install -y python-six-1.10.0-1.noarch.rpm
 fpm -s python -t rpm pluggy==0.6.0
 sudo yum install -y python-pluggy-0.6.0-1.noarch.rpm
+fpm -s python -t rpm attrs==19.3.0
+sudo yum install -y python-attrs-19.3.0-1.noarch.rpm
+fpm -s python -t rpm more-itertools==5.0.0
+sudo yum install -y python-more-itertools-5.0.0-1.noarch.rpm
 fpm -s python -t rpm pytest==3.5.1
 sudo yum install -y python-pytest-3.5.1-1.noarch.rpm
