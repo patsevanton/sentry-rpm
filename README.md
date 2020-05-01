@@ -26,3 +26,8 @@ cd sentry-rpm
 ```
 ./build_dateutil.sh
 ```
+
+1general_dependencies.sh
+2dateutil.sh
+3urllib3.sh
+4other_dependencies.sh
