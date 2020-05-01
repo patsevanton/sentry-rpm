@@ -121,8 +121,6 @@ fpm -s python -t rpm redis==2.10.5
 sudo yum install -y python-redis-2.10.5-1.noarch.rpm
 fpm -s python -t rpm requests-oauthlib==0.3.3
 sudo yum install -y python-requests-oauthlib-0.3.3-1.noarch.rpm
-fpm -s python -t rpm requests==2.20.1
-sudo yum install -y python-requests-2.20.1-1.noarch.rpm
 fpm -s python -t rpm percy==2.0.2
 sudo yum install -y python-percy-2.0.2-1.noarch.rpm
 fpm -s python -t rpm selenium==3.141.0
