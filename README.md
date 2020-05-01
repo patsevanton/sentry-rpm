@@ -3,7 +3,7 @@
 #### Disable selinux
 ```
 sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
-#### reboot if need
+#### sudo reboot
 ```
 
 #### Install epel-release
