@@ -29,15 +29,18 @@ gem install --no-document fpm
 
 For chardet==3.0.2 need setuptools>=12
 
+For cryptography==2.8 need setuptools>=18.5
+
 ```bash
-fpm -s python -t rpm setuptools==12
-sudo yum install -y python-setuptools-12.0-1.noarch.rpm
+fpm -s python -t rpm setuptools==18.5
+sudo yum install -y python-setuptools-18.5.0-1.noarch.rpm
 ```
 
 Build rpm by fpm
 
 ```
 #!/bin/bash
+
 fpm -s python -t rpm amqp==1.4.9
 fpm -s python -t rpm anyjson==0.3.3
 fpm -s python -t rpm attrs==19.3.0
