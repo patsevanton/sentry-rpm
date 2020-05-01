@@ -21,7 +21,7 @@ BuildRequires:  python-idna >= 2.0.0
 BuildRequires:  python-ipaddress
 BuildRequires:  python-mock
 BuildRequires:  python-pyopenssl >= 0.14
-BuildRequires:  python2-pytest
+BuildRequires:  python-pytest
 BuildRequires:  python-setuptools
 BuildRequires:  python-tornado
 
