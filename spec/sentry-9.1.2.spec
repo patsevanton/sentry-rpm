@@ -72,8 +72,8 @@ Requires:       python-django-sudo >= 2.1.0
 Requires:       python-django-templatetag-sugar >= 0.1.0
 Requires:       python-djangorestframework < 2.5.0
 Requires:       python-djangorestframework >= 2.4.8
-Requires:       python-email-reply-parser < 0.3.0
-Requires:       python-email-reply-parser >= 0.2.0
+Requires:       python-email_reply_parser < 0.3.0
+Requires:       python-email_reply_parser >= 0.2.0
 Requires:       python-enum34 < 1.2.0
 Requires:       python-enum34 >= 1.1.6
 Requires:       python-functools32 < 3.3
