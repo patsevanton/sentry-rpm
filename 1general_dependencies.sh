@@ -15,3 +15,5 @@ echo "For chardet==3.0.2 need setuptools>=12"
 echo "For cryptography==2.8 need setuptools>=18.5"
 fpm -s python -t rpm setuptools==18.5
 sudo yum install -y python-setuptools-18.5-1.noarch.rpm
+fpm -s python -t rpm pip=20.0.2
+sudo yum install -y python-pip-20.0.2-1.noarch.rpm
