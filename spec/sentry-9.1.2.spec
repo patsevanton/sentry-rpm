@@ -108,8 +108,8 @@ Requires:       python-pytest-django < 2.10.0
 Requires:       python-pytest-django >= 2.9.1
 Requires:       python-pytest-html < 1.10.0
 Requires:       python-pytest-html >= 1.9.0
-Requires:       python-querystring-parser < 2.0.0
-Requires:       python-querystring-parser >= 1.2.3
+Requires:       python-querystring_parser < 2.0.0
+Requires:       python-querystring_parser >= 1.2.3
 Requires:       python-rb < 2.0.0
 Requires:       python-rb >= 1.7.0
 Requires:       python-redis < 2.10.6
