@@ -1,6 +1,7 @@
 [Unit]
 Description=Sentry Background Worker
 After=network.target
+Requires=redis.service
 
 [Service]
 Type=simple

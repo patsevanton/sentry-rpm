@@ -33,6 +33,7 @@ JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 %package -n     python2-%{pypi_name}
 Summary:        A realtime logging and aggregation server
 
+Requires:       memcached
 Requires:       redis
 Requires:       python-BeautifulSoup >= 3.2.1
 Requires:       python-boto3 < 1.4.6
