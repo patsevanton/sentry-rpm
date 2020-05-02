@@ -9,6 +9,7 @@ fpm -s python -t rpm cryptography==2.8
 sudo yum install -y python-cryptography-2.8-1.x86_64.rpm
 fpm -s python -t rpm idna==2.7
 sudo yum install -y python-idna-2.7-1.noarch.rpm
+sudo chmod +r /usr/lib/python2.7/site-packages/idna-2.7-py2.7.egg-info/PKG-INFO
 fpm -s python -t rpm pyOpenSSL==19.1.0
 sudo yum install -y python-pyopenssl-19.1.0-1.noarch.rpm
 fpm -s python -t rpm pbr==5.4.4
