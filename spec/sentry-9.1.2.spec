@@ -57,8 +57,8 @@ Requires:       python2-click < 7.0
 Requires:       python2-click >= 5.0
 Requires:       python-cssutils < 0.10.0
 Requires:       python-cssutils >= 0.9.9
-Requires:       python2-dateutil < 3.0.0
-Requires:       python2-dateutil >= 2.0.0
+Requires:       python-dateutil < 3.0.0
+Requires:       python-dateutil >= 2.0.0
 Requires:       python2-Django16 < 1.7
 Requires:       python2-Django16 >= 1.6.11
 Requires:       python-django-crispy-forms < 1.5.0
