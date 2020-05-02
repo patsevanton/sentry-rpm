@@ -6,6 +6,6 @@ After=network.target
 Type=simple
 User=sentry
 Group=sentry
-WorkingDirectory=/www/sentry
+WorkingDirectory=/home/sentry
 Environment=SENTRY_CONF=/etc/sentry
-ExecStart=/www/sentry/bin/sentry celery worker
+ExecStart=/usr/bin/sentry celery worker

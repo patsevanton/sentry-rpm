@@ -8,6 +8,6 @@ Requires=sentry-cron.service
 Type=simple
 User=sentry
 Group=sentry
-WorkingDirectory=/www/sentry
+WorkingDirectory=/home/sentry
 Environment=SENTRY_CONF=/etc/sentry
-ExecStart=/www/sentry/bin/sentry run web
+ExecStart=/usr/bin/sentry run web
