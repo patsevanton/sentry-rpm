@@ -151,5 +151,5 @@ fpm -s python -t rpm unidiff==0.5.5
 sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
 fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
-fpm -s python -t rpm pyyaml==3.11
-sudo yum install -y python-pyyaml-3.11-1.x86_64.rpm
+fpm -s python -t rpm -n PyYAML pyyaml==3.11
+sudo yum install -y PyYAML-3.11-1.x86_64.rpm
