@@ -91,7 +91,8 @@ Requires:       python-loremipsum >= 1.0.5
 Requires:       python-mmh3 < 2.4
 Requires:       python-mmh3 >= 2.3.1
 Requires:       python-mock = 2.0.0
-Requires:       python-msgpack = 0.6.1
+Requires:       python-msgpack < 0.7.0
+Requires:       python-msgpack >= 0.6.1
 Requires:       python-parsimonious = 0.8.0
 Requires:       python-percy >= 1.1.2
 Requires:       python-petname < 2.1
