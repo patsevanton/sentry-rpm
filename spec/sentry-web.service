@@ -11,3 +11,8 @@ Group=sentry
 WorkingDirectory=/home/sentry
 Environment=SENTRY_CONF=/etc/sentry
 ExecStart=/usr/bin/sentry run web
+StandardOutput=syslog+console
+StandardError=syslog+console
+
+[Install]
+WantedBy=multi-user.target
