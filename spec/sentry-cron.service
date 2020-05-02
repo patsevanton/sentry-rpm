@@ -8,4 +8,4 @@ User=sentry
 Group=sentry
 WorkingDirectory=/home/sentry
 Environment=SENTRY_CONF=/etc/sentry
-ExecStart=/usr/bin/sentry celery beat
+ExecStart=/usr/bin/sentry run cron
