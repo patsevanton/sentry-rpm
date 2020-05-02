@@ -198,9 +198,9 @@ cp %{SOURCE4} %{buildroot}/etc/sentry
 %{python2_sitelib}/south
 %{python2_sitelib}/%{pypi_name}-%{version}-py%{python2_version}.egg-info
 %if %{use_systemd}
-%{_unitdir}/%{SOURCE0}
-%{_unitdir}/%{SOURCE1}
-%{_unitdir}/%{SOURCE2}
+%{_unitdir}/sentry-cron.service
+%{_unitdir}/sentry-web.service
+%{_unitdir}/sentry-worker.service
 %endif
 
 %changelog
