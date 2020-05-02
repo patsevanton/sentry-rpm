@@ -100,8 +100,8 @@ Requires:       python-progressbar2 < 3.11
 Requires:       python-progressbar2 >= 3.10
 Requires:       python-psycopg2-binary < 2.8.0
 Requires:       python-psycopg2-binary >= 2.6.0
-Requires:       python-pyjwt < 1.6.0
-Requires:       python-pyjwt >= 1.5.0
+Requires:       python-jwt < 1.6.0
+Requires:       python-jwt >= 1.5.0
 Requires:       python-pytest < 3.6.0
 Requires:       python-pytest >= 3.5.0
 Requires:       python-pytest-django < 2.10.0
