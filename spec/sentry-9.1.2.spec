@@ -59,8 +59,8 @@ Requires:       python-cssutils < 0.10.0
 Requires:       python-cssutils >= 0.9.9
 Requires:       python-dateutil < 3.0.0
 Requires:       python-dateutil >= 2.0.0
-Requires:       python2-Django16 < 1.7
-Requires:       python2-Django16 >= 1.6.11.7
+Requires:       python2-django16 < 1.7
+Requires:       python2-django16 >= 1.6.11
 Requires:       python-django-crispy-forms < 1.5.0
 Requires:       python-django-crispy-forms >= 1.4.0
 Requires:       python-django-jsonfield < 0.9.14
