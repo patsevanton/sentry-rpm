@@ -7,8 +7,8 @@ fpm -s python -t rpm amqp==1.4.9
 sudo yum install -y python-amqp-1.4.9-1.noarch.rpm
 fpm -s python -t rpm anyjson==0.3.3
 sudo yum install -y python-anyjson-0.3.3-1.noarch.rpm
-fpm -s python -t rpm BeautifulSoup==3.2.2
-sudo yum install -y python-beautifulsoup-3.2.2-1.noarch.rpm
+#fpm -s python -t rpm BeautifulSoup==3.2.2
+#sudo yum install -y python-beautifulsoup-3.2.2-1.noarch.rpm
 fpm -s python -t rpm billiard==3.3.0.23
 sudo yum install -y python-billiard-3.3.0.23-1.x86_64.rpm
 fpm -s python -t rpm docutils==0.16
@@ -21,8 +21,8 @@ fpm -s python -t rpm boto3==1.4.5
 sudo yum install -y python-boto3-1.4.5-1.noarch.rpm
 fpm -s python -t rpm chardet==3.0.2
 sudo yum install -y python-chardet-3.0.2-1.noarch.rpm
-fpm -s python -t rpm click==6.7
-sudo yum install -y python-click-6.7-1.noarch.rpm
+#fpm -s python -t rpm click==6.7
+#sudo yum install -y python-click-6.7-1.noarch.rpm
 fpm -s python -t rpm croniter==0.3.31
 sudo yum install -y python-croniter-0.3.31-1.noarch.rpm
 fpm -s python -t rpm cssselect==1.1.0
@@ -147,8 +147,8 @@ fpm -s python -t rpm toronado==0.0.11
 sudo yum install -y python-toronado-0.0.11-1.noarch.rpm
 fpm -s python -t rpm ua-parser==0.7.3
 sudo yum install -y python-ua-parser-0.7.3-1.noarch.rpm
-fpm -s python -t rpm unidiff==0.5.5
-sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
+#fpm -s python -t rpm unidiff==0.5.5
+#sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
 fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
 fpm -s python -t rpm -n PyYAML pyyaml==3.11
