@@ -14,7 +14,7 @@ Source2:        sentry-worker.service
 Source3:        config.yml
 Source4:        sentry.conf.py
 BuildArch:      noarch
-Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+Requires(pre):  /usr/sbin/useradd, /usr/bin/getent
 Requires(postun): /usr/sbin/userdel
 
 # Use systemd for fedora >= 18, rhel >=7, SUSE >= 12 SP1 and openSUSE >= 42.1
@@ -181,9 +181,9 @@ cp %{SOURCE3} %{buildroot}/etc/sentry
 cp %{SOURCE4} %{buildroot}/etc/sentry
 %if %{use_systemd}
 %{__mkdir} -p %{buildroot}%{_unitdir}
-%{__install} -m644 %{SOURCE0} %{buildroot}%{_unitdir}/%{SOURCE0}
-%{__install} -m644 %{SOURCE1} %{buildroot}%{_unitdir}/%{SOURCE1}
-%{__install} -m644 %{SOURCE2} %{buildroot}%{_unitdir}/%{SOURCE2}
+%{__install} -m644 %{SOURCE0} %{buildroot}%{_unitdir}/
+%{__install} -m644 %{SOURCE1} %{buildroot}%{_unitdir}/
+%{__install} -m644 %{SOURCE2} %{buildroot}%{_unitdir}/
 %endif
 
 %files -n python2-%{pypi_name}
@@ -197,6 +197,11 @@ cp %{SOURCE4} %{buildroot}/etc/sentry
 %{python2_sitelib}/social_auth
 %{python2_sitelib}/south
 %{python2_sitelib}/%{pypi_name}-%{version}-py%{python2_version}.egg-info
+%if %{use_systemd}
+%{_unitdir}/%{SOURCE0}
+%{_unitdir}/%{SOURCE1}
+%{_unitdir}/%{SOURCE2}
+%endif
 
 %changelog
 * Mon Feb 24 2020 Cloud User - 9.1.2-1
