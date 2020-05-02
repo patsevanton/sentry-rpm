@@ -111,7 +111,7 @@ Requires:       python-pytest-html >= 1.9.0
 Requires:       python-querystring_parser < 2.0.0
 Requires:       python-querystring_parser >= 1.2.3
 Requires:       python-rb < 2.0.0
-Requires:       python-rb >= 1.7.0
+Requires:       python-rb >= 1.7
 Requires:       python-redis < 2.10.6
 Requires:       python-redis >= 2.10.3
 Requires:       python-redis-py-cluster = 1.3.4
