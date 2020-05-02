@@ -127,7 +127,7 @@ Requires:       python-simplejson >= 3.2.0
 Requires:       python-six < 1.11.0
 Requires:       python-six >= 1.10.0
 Requires:       python-statsd < 3.2.0
-Requires:       python-statsd >= 3.1.0
+Requires:       python-statsd >= 3.1
 Requires:       python-strict-rfc3339 >= 0.7
 Requires:       python-structlog = 16.1.0
 Requires:       python-symbolic < 7.0.0
