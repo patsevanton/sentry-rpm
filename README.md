@@ -25,7 +25,7 @@ Sentry поддерживает большую часть языков прог�
 
 ### Запуск Sentry с помощью docker и docker-compose
 
-Вы можете запустить Sentry с помощью docker и docker-compose как описано здесь: https://github.com/getsentry/onpremise. Но скрипт запускает на этом же сервере в single режиме (без отказоустройчивости) дополнительные сервисы:
+Вы можете запустить Sentry с помощью docker и docker-compose как описано здесь: https://github.com/getsentry/onpremise. Но скрипт запускает на этом же сервере в single режиме (без отказоустройчивости) дополнительные сервисы (Для версии sentry 10.0.0):
 
 - data
 - postgres
@@ -65,8 +65,6 @@ sudo yum install -y epel-release git
 
 ### Устанавливаем rpm зависимости. Собираем в rpm и устанавливаем pip зависимости 
 ```
-#!/bin/bash
-
 echo "Install dependencies"
 sudo yum install -y cargo gcc gcc-c++ libffi-devel libjpeg-devel libxml2-devel \
 libxslt libxslt-devel make mc openssl-devel python-devel memcached \
@@ -89,8 +87,6 @@ sudo yum install -y python2-pip-20.0.2-1.noarch.rpm
 Версию PostgreSQL вы можете поменять в скрипте.
 
 ```
-#!/bin/bash
-
 yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 yum install -y postgresql96-devel
 ```
@@ -110,8 +106,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rp
 
 ### Собираем и устанавливаем python-urllib3 rpm
 ```
-#!/bin/bash
-
 echo "Build pip dependencies to rpm by fpm for urllib3"
 fpm -s python -t rpm pycparser==2.19
 sudo yum install -y python-pycparser-2.19-1.noarch.rpm
@@ -150,8 +144,6 @@ sudo yum install -y ~/rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rp
 
 ### Собираем в rpm и устанавливаем остальные pip зависимости
 ```
-#!/bin/bash
-
 echo "Build rpm by fpm"
 fpm -s python -t rpm jmespath==0.9.5
 sudo yum install -y python-jmespath-0.9.5-1.noarch.rpm
@@ -299,8 +291,6 @@ sudo yum install -y sentry-ldap-auth-2.8.1-1.x86_64.rpm
 
 ### Собираем в rpm и устанавливаем sentry
 ```
-#!/bin/bash
-
 echo "Install nodejs and yarn"
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install -y nodejs
@@ -335,8 +325,6 @@ systemctl start redis
 #### Устанавливаем и запускаем PostgreSQL 9.6
 
 ```
-#!/bin/bash
-
 yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 yum install -y postgresql96 postgresql96-server postgresql96-contrib
 /usr/pgsql-9.6/bin/postgresql96-setup initdb
@@ -350,6 +338,15 @@ sudo -i -u postgres psql -c "alter role sentry superuser;"
 #sudo -i -u postgres psql -c "CREATE SCHEMA main AUTHORIZATION sentry;"
 ```
 
+#### Запускаем миграцию (создание схемы БД) и запускаем сервисы
+
+```
+sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ upgrade
+systemctl start sentry-worker
+systemctl start sentry-cron
+systemctl start sentry-web
+```
+
 ### Сборка sentry в rpm для ленивых
 
 #### Выключаем Selinux
@@ -359,7 +356,7 @@ sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 sudo reboot
 ```
 
-Запускаем скрипты для сборки и установки sentry
+#### Запускаем скрипты для сборки и установки sentry
 
 ```
 sudo yum install -y epel-release git
@@ -371,6 +368,14 @@ cd sentry-rpm
 ./4urllib3.sh
 ./5other_dependencies.sh
 ./6sentry.sh
+Копируем rpm из rpmbuild/RPMS и корня sentry-rpm на целевой сервер. Создаем yum репо.
 ./7postgresql.sh
 ./8start_sentry.sh
 ```
+
+#### Создаем внутреннего администратора Sentry
+
+```
+sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createsuperuser
+```
+
