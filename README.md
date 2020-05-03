@@ -72,7 +72,7 @@ sudo yum install -y cargo gcc gcc-c++ libffi-devel libjpeg-devel libxml2-devel \
 libxslt libxslt-devel make mc openssl-devel python-devel memcached \
 python-lxml python-nose python2-pip python34 rpm-build rpmdevtools \
 ruby-devel rubygems zlib-devel redis xmlsec1-openssl xmlsec1 \
-libtool-ltdl-devel xmlsec1-devel xmlsec1-openssl-devel
+libtool-ltdl-devel xmlsec1-devel xmlsec1-openssl-devel openldap-devel
 
 echo "Build common pip dependencies to rpm by fpm"
 gem install --no-document fpm
