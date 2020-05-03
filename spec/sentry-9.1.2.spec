@@ -160,7 +160,7 @@ fix crashes in realtime. The server is in Python, but it contains a full API
 for sending events from any language, in any application.Official Sentry SDKs *
 JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 
-%prep
+%pre
 /usr/bin/getent group sentry > /dev/null || /usr/sbin/groupadd -r sentry
 /usr/bin/getent passwd sentry > /dev/null || /usr/sbin/useradd -r -d /home/sentry -s /bin/bash -g sentry sentry
 git clone https://github.com/getsentry/sentry.git
