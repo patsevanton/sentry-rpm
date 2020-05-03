@@ -89,8 +89,10 @@ sudo yum install -y python2-pip-20.0.2-1.noarch.rpm
 Версию PostgreSQL вы можете поменять в скрипте.
 
 ```
-yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-yum install -y postgresql96-devel
+yum install -y postgresql-devel
+fpm -s python -t rpm psycopg2-binary==2.7.7
+sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
+yum remove -y postgresql-devel
 ```
 
 ### Собираем и устанавливаем python-dateutil rpm
@@ -231,8 +233,6 @@ fpm -s python -t rpm python-utils==2.3.0
 sudo yum install -y python-utils-2.3.0-1.noarch.rpm
 fpm -s python -t rpm progressbar2==3.10.1
 sudo yum install -y python-progressbar2-3.10.1-1.noarch.rpm
-fpm -s python -t rpm psycopg2-binary==2.7.7
-sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
 fpm -s python -t rpm pytest-django==2.9.1
 sudo yum install -y python-pytest-django-2.9.1-1.noarch.rpm
 fpm -s python -t rpm pytest-html==1.9.0
