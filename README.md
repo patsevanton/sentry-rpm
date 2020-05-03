@@ -377,3 +377,8 @@ cd sentry-rpm
 sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createsuperuser
 ```
 
+#### TODO: LDAP
+```
+fpm -s python -t rpm sentry-ldap-auth==2.8.1
+sudo yum install -y sentry-ldap-auth-2.8.1-1.x86_64.rpm
+```
