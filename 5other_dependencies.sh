@@ -7,8 +7,6 @@ fpm -s python -t rpm amqp==1.4.9
 sudo yum install -y python-amqp-1.4.9-1.noarch.rpm
 fpm -s python -t rpm anyjson==0.3.3
 sudo yum install -y python-anyjson-0.3.3-1.noarch.rpm
-#fpm -s python -t rpm BeautifulSoup==3.2.2
-#sudo yum install -y python-beautifulsoup-3.2.2-1.noarch.rpm
 fpm -s python -t rpm billiard==3.3.0.23
 sudo yum install -y python-billiard-3.3.0.23-1.x86_64.rpm
 fpm -s python -t rpm docutils==0.16
@@ -21,8 +19,6 @@ fpm -s python -t rpm boto3==1.4.5
 sudo yum install -y python-boto3-1.4.5-1.noarch.rpm
 fpm -s python -t rpm chardet==3.0.2
 sudo yum install -y python-chardet-3.0.2-1.noarch.rpm
-#fpm -s python -t rpm click==6.7
-#sudo yum install -y python-click-6.7-1.noarch.rpm
 fpm -s python -t rpm croniter==0.3.31
 sudo yum install -y python-croniter-0.3.31-1.noarch.rpm
 fpm -s python -t rpm cssselect==1.1.0
@@ -39,16 +35,12 @@ fpm -s python -t rpm django-sudo==2.1.0
 sudo yum install -y python-django-sudo-2.1.0-1.noarch.rpm
 fpm -s python -t rpm django-templatetag-sugar==1.0
 sudo yum install -y python-django-templatetag-sugar-1.0-1.noarch.rpm
-#fpm -s python -t rpm Django==1.6.11
-#sudo yum install -y python-django-1.6.11-1.noarch.rpm
 fpm -s python -t rpm djangorestframework==2.4.8
 sudo yum install -y python-djangorestframework-2.4.8-1.noarch.rpm
 fpm -s python -t rpm email-reply-parser==0.2.0
 sudo yum install -y python-email_reply_parser-0.2.0-1.noarch.rpm
 fpm -s python -t rpm enum34==1.1.9
 sudo yum install -y python-enum34-1.1.9-1.noarch.rpm
-#fpm -s python -t rpm funcsigs==1.0.2
-#sudo yum install -y python-funcsigs-1.0.2-1.noarch.rpm
 fpm -s python -t rpm functools32==3.2.3.post2
 sudo yum install -y python-functools32-3.2.3_2-1.noarch.rpm
 fpm -s python -t rpm futures==3.3.0
@@ -83,8 +75,6 @@ fpm -s python -t rpm oauth2==1.9.0.post1
 sudo yum install -y python-oauth2-1.9.0.post1-1.noarch.rpm
 fpm -s python -t rpm oauthlib==3.1.0
 sudo yum install -y python-oauthlib-3.1.0-1.noarch.rpm
-#fpm -s python -t rpm olefile==0.46
-#sudo yum install -y python-olefile-0.46-1.noarch.rpm
 fpm -s python -t rpm parsimonious==0.8.0
 sudo yum install -y python-parsimonious-0.8.0-1.noarch.rpm
 fpm -s python -t rpm requests==2.20.1
@@ -97,8 +87,6 @@ fpm -s python -t rpm progressbar2==3.10.1
 sudo yum install -y python-progressbar2-3.10.1-1.noarch.rpm
 fpm -s python -t rpm psycopg2-binary==2.7.7
 sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
-#fpm -s python -t rpm PyJWT==1.5.3
-#sudo yum install -y python-pyjwt-1.5.3-1.noarch.rpm
 fpm -s python -t rpm pytest-django==2.9.1
 sudo yum install -y python-pytest-django-2.9.1-1.noarch.rpm
 fpm -s python -t rpm pytest-html==1.9.0
@@ -147,9 +135,9 @@ fpm -s python -t rpm toronado==0.0.11
 sudo yum install -y python-toronado-0.0.11-1.noarch.rpm
 fpm -s python -t rpm ua-parser==0.7.3
 sudo yum install -y python-ua-parser-0.7.3-1.noarch.rpm
-#fpm -s python -t rpm unidiff==0.5.5
-#sudo yum install -y python-unidiff-0.5.5-1.noarch.rpm
 fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
 fpm -s python -t rpm -n PyYAML pyyaml==3.11
 sudo yum install -y PyYAML-3.11-1.x86_64.rpm
+fpm -s python -t rpm sentry-ldap-auth==2.8.1
+sudo yum install -y sentry-ldap-auth-2.8.1-1.x86_64.rpm
