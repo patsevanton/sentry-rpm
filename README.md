@@ -60,7 +60,7 @@ sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 ### Install epel-release
 ```
 sudo yum install -y epel-release git libjpeg-turbo redis
-systemdctl start redis
+systemctl start redis
 ```
 
 #### Install and start PostgreSQL 9.6
