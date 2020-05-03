@@ -22,22 +22,26 @@ cd sentry-rpm
 ./1general_dependencies.sh
 ```
 
+#### Install and start PostgreSQL 9.6
+
+./2postgresql.sh
+
 #### Build and install python-dateutil rpm
 ```
-./2dateutil.sh
+./3dateutil.sh
 ```
 
 #### Build and install python-urllib3 rpm
 ```
-./3urllib3.sh
+./4urllib3.sh
 ```
 
 #### Build and install other dependencies rpm
 ```
-./4other_dependencies.sh
+./5other_dependencies.sh
 ```
 
 #### Build and install sentry rpm
 ```
-./5sentry.sh
+./6sentry.sh
 ```
