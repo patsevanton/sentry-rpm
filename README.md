@@ -372,9 +372,10 @@ cd sentry-rpm
 ```
 
 #### Создаем внутреннего администратора Sentry
+https://forum.sentry.io/t/noninteractive-first-time-setup-of-user-via-upgrade/164
 
 ```
-sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createsuperuser
+sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createuser 
 ```
 
 #### TODO: LDAP
