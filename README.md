@@ -24,7 +24,9 @@ cd sentry-rpm
 
 #### Install and start PostgreSQL 9.6
 
+```
 ./2postgresql.sh
+```
 
 #### Build and install python-dateutil rpm
 ```
