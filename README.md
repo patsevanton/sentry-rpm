@@ -311,11 +311,19 @@ sudo -i -u postgres psql -c "alter role sentry superuser;"
 
 
 
-Сборка sentry в rpm для ленивых
+### Сборка sentry в rpm для ленивых
+
+#### Выключаем Selinux
 
 ```
 sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
-#### sudo reboot
+sudo reboot
+```
+
+Запускаем скрипты для сборки и установки sentry
+
+```
+
 sudo yum install -y epel-release git
 git clone https://github.com/patsevanton/sentry-rpm.git
 cd sentry-rpm
