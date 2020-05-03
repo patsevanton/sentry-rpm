@@ -378,4 +378,6 @@ sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createsuperuser
 ```
 
 #### TODO: LDAP
+```
 ./9sentry-ldap-auth.sh
+```
