@@ -283,10 +283,6 @@ fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
 fpm -s python -t rpm -n PyYAML pyyaml==3.11
 sudo yum install -y PyYAML-3.11-1.x86_64.rpm
-
-# Если кто-нибудь будет проверять LDAP, то ниже собираем в rpm sentry-ldap-auth
-fpm -s python -t rpm sentry-ldap-auth==2.8.1
-sudo yum install -y sentry-ldap-auth-2.8.1-1.x86_64.rpm
 ```
 
 ### Собираем в rpm и устанавливаем sentry
