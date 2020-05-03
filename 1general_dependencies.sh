@@ -7,7 +7,8 @@ echo "Install dependencies"
 sudo yum install -y cargo gcc gcc-c++ libffi-devel libjpeg-devel libxml2-devel \
 libxslt libxslt-devel make mc openssl-devel postgresql-devel python-devel \
 python-lxml python-nose python2-pip python34 rpm-build rpmdevtools \
-ruby-devel rubygems zlib-devel redis xmlsec1-openssl xmlsec1 libtool-ltdl-devel xmlsec1-devel xmlsec1-openssl-devel
+ruby-devel rubygems zlib-devel redis xmlsec1-openssl xmlsec1 \
+libtool-ltdl-devel xmlsec1-devel xmlsec1-openssl-devel memcached
 
 echo "Install fpm"
 gem install --no-document fpm
