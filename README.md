@@ -8,7 +8,7 @@ sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 
 #### Install epel-release
 ```
-sudo yum install -y epel-release git
+sudo yum install -y epel-release git libjpeg-turbo
 ```
 
 #### Clone repo sentry-rpm
