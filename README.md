@@ -366,7 +366,7 @@ cd sentry-rpm
 ./4urllib3.sh
 ./5other_dependencies.sh
 ./6sentry.sh
-Копируем rpm из rpmbuild/RPMS и корня sentry-rpm на целевой сервер. Создаем yum репо.
+Копируем rpm из rpmbuild/RPMS и корня sentry-rpm на целевой сервер. Создаем yum репо. Устанавливаем все собранные rpm пакеты.
 ./7postgresql.sh
 ./8start_sentry.sh
 ```
