@@ -47,3 +47,18 @@ cd sentry-rpm
 ```
 ./6sentry.sh
 ```
+
+
+### Install from rpm another server
+
+#### Install epel-release
+```
+sudo yum install -y epel-release git libjpeg-turbo redis
+systemdctl start redis
+```
+
+#### Install and start PostgreSQL 9.6
+
+```
+./2postgresql.sh
+```
