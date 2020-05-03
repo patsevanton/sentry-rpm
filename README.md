@@ -361,7 +361,7 @@ sudo yum install -y epel-release git
 git clone https://github.com/patsevanton/sentry-rpm.git
 cd sentry-rpm
 ./1general_dependencies.sh
-./2postgresql.sh
+./2psycopg2-binary.sh
 ./3dateutil.sh
 ./4urllib3.sh
 ./5other_dependencies.sh
