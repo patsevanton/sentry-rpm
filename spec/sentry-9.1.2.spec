@@ -161,13 +161,9 @@ for sending events from any language, in any application.Official Sentry SDKs *
 JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 
 %prep
-/usr/bin/getent group sentry > /dev/null || /usr/sbin/groupadd -r sentry
-/usr/bin/getent passwd sentry > /dev/null || /usr/sbin/useradd -r -d /home/sentry -s /bin/bash -g sentry sentry
 git clone https://github.com/getsentry/sentry.git
 cd sentry
 git checkout releases/9.1.x
-# Remove bundled egg-info
-#rm -rf %{pypi_name}.egg-info
 
 %build
 cd sentry
@@ -186,6 +182,10 @@ cp %{SOURCE4} %{buildroot}/etc/sentry
 %{__install} -m644 %{SOURCE1} %{buildroot}%{_unitdir}/
 %{__install} -m644 %{SOURCE2} %{buildroot}%{_unitdir}/
 %endif
+
+%pre
+/usr/bin/getent group sentry > /dev/null || /usr/sbin/groupadd -r sentry
+/usr/bin/getent passwd sentry > /dev/null || /usr/sbin/useradd -r -d /home/sentry -s /bin/bash -g sentry sentry
 
 %files -n python2-%{pypi_name}
 #%doc src/sentry/pipeline/README.md src/sentry/logging/README.rst src/sentry/nodestore/README.rst README.rst

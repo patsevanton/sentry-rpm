@@ -32,5 +32,5 @@ sudo yum install -y python-pytest-3.5.1-1.noarch.rpm
 echo "Build urllib rpm"
 spectool -g -R spec/urllib3-1.24.2.spec
 sudo yum-builddep -y spec/urllib3-1.24.2.spec
-rpmbuild --bb spec/urllib3-1.24.2.spec
+rpmbuild --define "_topdir `pwd`" --bb spec/urllib3-1.24.2.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
