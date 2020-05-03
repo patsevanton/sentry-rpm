@@ -383,4 +383,7 @@ fpm -s python -t rpm django-auth-ldap==1.2.17
 sudo yum install -y python-django-auth-ldap-1.2.17-1.noarch.rpm
 pyp2rpm sentry-ldap-auth -t epel7 -b2 -p2 -v 2.8.1 > sentry-ldap-auth-2.8.1.spec
 sed 's/python2-django-auth-ldap = 1.2.\*/python2-django-auth-ldap = 1.2.17/g' -i sentry-ldap-auth-2.8.1.spec
+sudo yum-builddep -y sentry-ldap-auth-2.8.1.spec
+rpmbuild -bb sentry-ldap-auth-2.8.1.spec
+sudo yum install -y ~/rpmbuild/RPMS/x86_64/python2-sentry-ldap-auth-2.8.1
 ```
