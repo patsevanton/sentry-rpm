@@ -382,6 +382,5 @@ sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createsuperuser
 fpm -s python -t rpm django-auth-ldap==1.2.17
 sudo yum install -y python-django-auth-ldap-1.2.17-1.noarch.rpm
 pyp2rpm sentry-ldap-auth -t epel7 -b2 -p2 -v 2.8.1 > sentry-ldap-auth-2.8.1.spec
-sed 
-sed  '/python2-django-auth-ldap = 1.2.\*/python2-django-auth-ldap = 1.2.17/' -i sentry-ldap-auth-2.8.1.spec
+sed 's/python2-django-auth-ldap = 1.2.\*/python2-django-auth-ldap = 1.2.17/g' -i sentry-ldap-auth-2.8.1.spec
 ```
