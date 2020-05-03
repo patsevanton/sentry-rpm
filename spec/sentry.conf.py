@@ -13,7 +13,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '',
+        'PORT': '5432',
         'AUTOCOMMIT': True,
         'ATOMIC_REQUESTS': False,
     }
