@@ -183,10 +183,6 @@ cp %{SOURCE4} %{buildroot}/etc/sentry
 %{__install} -m644 %{SOURCE2} %{buildroot}%{_unitdir}/
 %endif
 
-%pre
-/usr/bin/getent group sentry > /dev/null || /usr/sbin/groupadd -r sentry
-/usr/bin/getent passwd sentry > /dev/null || /usr/sbin/useradd -r -d /home/sentry -s /bin/bash -g sentry sentry
-
 %files -n python2-%{pypi_name}
 #%doc src/sentry/pipeline/README.md src/sentry/logging/README.rst src/sentry/nodestore/README.rst README.rst
 %{_bindir}/sentry
@@ -203,6 +199,10 @@ cp %{SOURCE4} %{buildroot}/etc/sentry
 %{_unitdir}/sentry-web.service
 %{_unitdir}/sentry-worker.service
 %endif
+
+%pre
+/usr/bin/getent group sentry > /dev/null || /usr/sbin/groupadd -r sentry
+/usr/bin/getent passwd sentry > /dev/null || /usr/sbin/useradd -r -d /home/sentry -s /bin/bash -g sentry sentry
 
 %changelog
 * Mon Feb 24 2020 Cloud User - 9.1.2-1
