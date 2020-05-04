@@ -1,6 +1,6 @@
 #!/bin/bash
 
 sudo -i -u sentry --config /etc/sentry/ upgrade
-systemctl start sentry-worker
-systemctl start sentry-cron
-systemctl start sentry-web
+sudo systemctl start sentry-worker
+sudo systemctl start sentry-cron
+sudo systemctl start sentry-web
