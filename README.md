@@ -375,7 +375,71 @@ https://forum.sentry.io/t/noninteractive-first-time-setup-of-user-via-upgrade/16
 sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createuser 
 ```
 
-#### TODO: LDAP
+### Тестирование отправки exception
+
+Тестировать будем на java проекте. Скачиваем java и maven.
+
 ```
-./9sentry-ldap-auth.sh
+yum install -y java-1.8.0-openjdk-devel git
+wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+yum -y install apache-maven
+git clone https://github.com/getsentry/examples.git
+cd examples/java/basic
 ```
+
+Теперь нам нужно запустить java передав ему SENTRY_DSN
+
+```
+SENTRY_DSN=https://public:private@host:port/1 mvn exec:java
+```
+
+Теперь нужно найти сгенерированный по умолчанию SENTRY_DSN.
+
+Заходим в Sentry. Идем в проект по умолчанию `internal.`
+
+![](https://habrastorage.org/webt/s-/2b/lc/s-2blc7p7dnfzsi_anrohoqbc94.png)
+
+
+
+Переходим в настройки проекта.
+
+![](https://habrastorage.org/webt/7u/aj/vp/7uajvp33t_nq2ensgcemzbgqnta.png)
+
+
+
+Переходим в Client Keys (DSN).
+
+![](https://habrastorage.org/webt/el/zm/rm/elzmrmybo3fxnpilx_r5mv7r3hs.png)
+
+
+
+Копируем DSN. Это и есть SENTRY_DSN.
+
+![](https://habrastorage.org/webt/xl/er/d-/xlerd-ik8pi1z7by6tnzpid31fq.png)
+
+Запускаем java с этим параметром.
+
+```
+SENTRY_DSN=http://633e7361061d4dcaaca53877c4c0e80a@172.26.9.34:9000/1 mvn exec:java
+```
+
+Видим такую картину.
+
+![](https://habrastorage.org/webt/kh/nt/j3/khntj3xyg36qmff7mjccr8-wfs0.png)
+
+Если перейдем в  `UnsupportedOperationException`, то увидем расширенную информацию.
+
+![](https://habrastorage.org/webt/qx/zw/ag/qxzwagb686t-kqvdevoummsqwyc.png)
+
+![](https://habrastorage.org/webt/vj/as/db/vjasdbflhpocxv3gsklbduwdofu.png)
+
+
+
+#### Telegram чат по Sentry
+
+https://t.me/sentry_ru
+
+#### В следующих сериях: 
+
+- Протестировать LDAP. Скрипт уже заготовил `9sentry-ldap-auth.sh`
+- Протестировать sentry версию 10.0.X после того как выкатят пару минорных релизов.
