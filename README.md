@@ -302,7 +302,7 @@ cp spec/sentry-cron.service spec/sentry-web.service spec/sentry-worker.service ~
 spectool -g spec/sentry-9.1.2.spec
 sudo yum-builddep -y spec/sentry-9.1.2.spec
 rpmbuild -bb spec/sentry-9.1.2.spec
-sudo yum install ~/rpmbuild/RPMS/noarch/python2-sentry-9.1.2-1.el7.noarch.rpm
+sudo yum install ~/rpmbuild/RPMS/noarch/python-sentry-9.1.2-1.el7.noarch.rpm
 ```
 
 ## Установка sentry rpm с зависимостями на другом сервере
