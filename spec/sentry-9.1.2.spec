@@ -22,9 +22,6 @@ BuildRequires:  yarn
 # Use systemd for fedora >= 18, rhel >=7, SUSE >= 12 SP1 and openSUSE >= 42.1
 %define use_systemd (0%{?fedora} && 0%{?fedora} >= 18) || (0%{?rhel} && 0%{?rhel} >= 7) || (!0%{?is_opensuse} && 0%{?suse_version} >=1210) || (0%{?is_opensuse} && 0%{?sle_version} >= 120100)
 
-%package
-Summary:        A realtime logging and aggregation server
-
 Requires:       memcached
 Requires:       redis
 Requires:       python-BeautifulSoup >= 3.2.1
