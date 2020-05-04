@@ -316,15 +316,15 @@ sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 ### Подключаем репозиторий epel-release
 ```
 sudo yum install -y epel-release git libjpeg-turbo redis
-systemctl start redis
+sudo systemctl start redis
 ```
 
 #### Устанавливаем и запускаем PostgreSQL 9.6. Файл 7postgresql.sh
 ```
-yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-yum install -y postgresql96 postgresql96-server postgresql96-contrib
-/usr/pgsql-9.6/bin/postgresql96-setup initdb
-systemctl start postgresql-9.6
+sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+sudo yum install -y postgresql96 postgresql96-server postgresql96-contrib
+sudo /usr/pgsql-9.6/bin/postgresql96-setup initdb
+sudo systemctl start postgresql-9.6
 sudo -i -u postgres psql -c "create user sentry with password 'password';"
 sudo -i -u postgres psql -c "create database sentry with owner sentry;"
 sudo -i -u postgres psql -c "alter role sentry superuser;"
@@ -337,9 +337,9 @@ sudo -i -u postgres psql -c "alter role sentry superuser;"
 #### Запускаем миграцию (создание схемы БД) и запускаем сервисы. Файл 8start_sentry.sh
 ```
 sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ upgrade
-systemctl start sentry-worker
-systemctl start sentry-cron
-systemctl start sentry-web
+sudo systemctl start sentry-worker
+sudo systemctl start sentry-cron
+sudo systemctl start sentry-web
 ```
 
 ### Сборка sentry в rpm для ленивых
