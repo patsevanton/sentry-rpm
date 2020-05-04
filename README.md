@@ -65,7 +65,7 @@ sudo reboot
 sudo yum install -y epel-release git
 ```
 
-### Устанавливаем rpm зависимости. Собираем в rpm и устанавливаем pip зависимости 
+### Собираем в rpm pip зависимости и устанавливаем их. Файл 1general_dependencies.sh
 ```
 echo "Install dependencies"
 sudo yum install -y cargo gcc gcc-c++ libffi-devel libjpeg-devel libxml2-devel \
@@ -84,8 +84,7 @@ fpm -s python -t rpm --name python2-pip pip==20.0.2
 sudo yum install -y python2-pip-20.0.2-1.noarch.rpm
 ```
 
-### Устанавливаем и запускаем PostgreSQL 9.6 для сборки python-psycopg2-binary
-
+### Устанавливаем и запускаем PostgreSQL 9.6 для сборки python-psycopg2-binary. Файл 2psycopg2-binary.sh
 Версию PostgreSQL вы можете поменять в скрипте.
 
 ```
@@ -95,7 +94,7 @@ sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
 sudo yum remove -y postgresql-devel postgresql postgresql-libs
 ```
 
-### Собираем и устанавливаем python-dateutil rpm
+### Собираем и устанавливаем python-dateutil rpm. Файл 3dateutil.sh
 ```
 #!/bin/bash
 
@@ -108,7 +107,7 @@ rpmbuild --bb spec/python-dateutil.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
 ```
 
-### Собираем и устанавливаем python-urllib3 rpm
+### Собираем и устанавливаем python-urllib3 rpm. Файл 4urllib3.sh
 ```
 echo "Build pip dependencies to rpm by fpm for urllib3"
 fpm -s python -t rpm pycparser==2.19
@@ -146,7 +145,7 @@ rpmbuild --bb spec/urllib3-1.24.2.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
 ```
 
-### Собираем в rpm и устанавливаем остальные pip зависимости
+### Собираем в rpm остальные pip зависимости и устанавливаем их. Файл 5other_dependencies.sh
 ```
 echo "Build rpm by fpm"
 fpm -s python -t rpm jmespath==0.9.5
@@ -289,7 +288,7 @@ fpm -s python -t rpm django-auth-ldap==1.2.17
 sudo yum install -y python-django-auth-ldap-1.2.17-1.noarch.rpm
 ```
 
-### Собираем в rpm и устанавливаем sentry
+### Собираем в rpm sentry и устанавливаем его. Файл 6sentry.sh
 ```
 echo "Install nodejs and yarn"
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
@@ -320,8 +319,7 @@ sudo yum install -y epel-release git libjpeg-turbo redis
 systemctl start redis
 ```
 
-#### Устанавливаем и запускаем PostgreSQL 9.6
-
+#### Устанавливаем и запускаем PostgreSQL 9.6. Файл 7postgresql.sh
 ```
 yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 yum install -y postgresql96 postgresql96-server postgresql96-contrib
@@ -336,8 +334,7 @@ sudo -i -u postgres psql -c "alter role sentry superuser;"
 #sudo -i -u postgres psql -c "CREATE SCHEMA main AUTHORIZATION sentry;"
 ```
 
-#### Запускаем миграцию (создание схемы БД) и запускаем сервисы
-
+#### Запускаем миграцию (создание схемы БД) и запускаем сервисы. Файл 8start_sentry.sh
 ```
 sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ upgrade
 systemctl start sentry-worker
@@ -355,7 +352,6 @@ sudo reboot
 ```
 
 #### Запускаем скрипты для сборки и установки sentry
-
 ```
 sudo yum install -y epel-release git
 git clone https://github.com/patsevanton/sentry-rpm.git
