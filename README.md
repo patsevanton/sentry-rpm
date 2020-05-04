@@ -435,7 +435,7 @@ SENTRY_DSN=http://633e7361061d4dcaaca53877c4c0e80a@172.26.9.34:9000/1 mvn exec:j
 
 
 
-#### Telegram чат по Sentry
+#### Создал Telegram чат по Sentry
 
 https://t.me/sentry_ru
 
