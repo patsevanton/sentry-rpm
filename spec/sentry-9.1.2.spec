@@ -22,7 +22,7 @@ BuildRequires:  yarn
 # Use systemd for fedora >= 18, rhel >=7, SUSE >= 12 SP1 and openSUSE >= 42.1
 %define use_systemd (0%{?fedora} && 0%{?fedora} >= 18) || (0%{?rhel} && 0%{?rhel} >= 7) || (!0%{?is_opensuse} && 0%{?suse_version} >=1210) || (0%{?is_opensuse} && 0%{?sle_version} >= 120100)
 
-%package -n     python2-%{pypi_name}
+%package
 Summary:        A realtime logging and aggregation server
 
 Requires:       memcached
@@ -146,22 +146,22 @@ Requires:       python-uwsgi > 2.0.0
 Requires:       PyYAML < 3.12
 Requires:       PyYAML >= 3.11
 
-%description -n python2-%{pypi_name}
+%description
 What's Sentry? --Sentry fundamentally is a service that helps you monitor and
 fix crashes in realtime. The server is in Python, but it contains a full API
 for sending events from any language, in any application.Official Sentry SDKs *
 JavaScript < * React-Native < * Python < * Ruby < * PHP < * Go < * Java <
 
-%prep -n python2-%{pypi_name}
+%prep
 git clone https://github.com/getsentry/sentry.git
 cd sentry
 git checkout releases/9.1.x
 
-%build -n python2-%{pypi_name}
+%build
 cd sentry
 %{__python2} setup.py build
 
-%install -n python2-%{pypi_name}
+%install
 cd sentry
 %{__python2} setup.py install --skip-build --root %{buildroot}
 %{__install} -m 0755 -d %{buildroot}/home/sentry
@@ -175,7 +175,7 @@ cp %{SOURCE4} %{buildroot}/etc/sentry
 %{__install} -m644 %{SOURCE2} %{buildroot}%{_unitdir}/
 %endif
 
-%pre -n python2-%{pypi_name}
+%pre
 /usr/bin/echo "create group sentry"
 /usr/bin/cat /etc/group | grep sentry
 /usr/bin/getent group sentry > /dev/null || /usr/sbin/groupadd -r sentry
@@ -183,24 +183,24 @@ cp %{SOURCE4} %{buildroot}/etc/sentry
 /usr/bin/cat /etc/passwd | grep sentry
 /usr/bin/getent passwd sentry > /dev/null || /usr/sbin/useradd -r -d /home/sentry -s /bin/bash -g sentry sentry
 
-%post -n python2-%{pypi_name}
+%post
 %if %use_systemd
 /usr/bin/systemctl daemon-reload
 %endif
 
-%preun -n python2-%{pypi_name}
+%preun
 %if %use_systemd
 /usr/bin/systemctl stop sentry-web
 /usr/bin/systemctl stop sentry-worker
 /usr/bin/systemctl stop sentry-cron
 %endif
 
-%postun -n python2-%{pypi_name}
+%postun
 %if %use_systemd
 /usr/bin/systemctl daemon-reload
 %endif
 
-%files -n python2-%{pypi_name}
+%files
 #%doc src/sentry/pipeline/README.md src/sentry/logging/README.rst src/sentry/nodestore/README.rst README.rst
 %{_bindir}/sentry
 /etc/sentry
