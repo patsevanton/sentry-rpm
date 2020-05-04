@@ -9,7 +9,7 @@ sudo yum install -y yarn
 
 cp spec/config.yml spec/sentry.conf.py ~/rpmbuild/SOURCES
 cp spec/sentry-cron.service spec/sentry-web.service spec/sentry-worker.service ~/rpmbuild/SOURCES
-spectool -g spec/sentry-9.1.2.spec
+spectool -g -R spec/sentry-9.1.2.spec
 sudo yum-builddep -y spec/sentry-9.1.2.spec
 rpmbuild spec/sentry-9.1.2.spec
 sudo yum install ~/rpmbuild/RPMS/noarch/python2-sentry-9.1.2-1.el7.noarch.rpm
