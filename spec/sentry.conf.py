@@ -12,7 +12,7 @@ DATABASES = {
         'NAME': 'sentry',
         'USER': 'sentry',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'HOST': '',
         'PORT': '',
         'AUTOCOMMIT': True,
         'ATOMIC_REQUESTS': False,
