@@ -184,7 +184,11 @@ cp %{SOURCE4} %{buildroot}/etc/sentry
 %endif
 
 %pre
+/usr/bin/echo "create group sentry"
+/usr/bin/cat /etc/group | grep sentry
 /usr/bin/getent group sentry > /dev/null || /usr/sbin/groupadd -r sentry
+/usr/bin/echo "create user sentry"
+/usr/bin/cat /etc/passwd | grep sentry
 /usr/bin/getent passwd sentry > /dev/null || /usr/sbin/useradd -r -d /home/sentry -s /bin/bash -g sentry sentry
 
 %post
