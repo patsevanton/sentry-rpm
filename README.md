@@ -336,6 +336,7 @@ sudo -i -u postgres psql -c "alter role sentry superuser;"
 
 #### Запускаем миграцию (создание схемы БД) и запускаем сервисы. Файл 8start_sentry.sh
 ```
+sudo systemctl start redis
 sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ upgrade
 sudo systemctl start sentry-worker
 sudo systemctl start sentry-cron
