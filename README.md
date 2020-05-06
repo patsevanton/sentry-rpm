@@ -343,7 +343,14 @@ sudo systemctl start sentry-cron
 sudo systemctl start sentry-web
 ```
 
-### Сборка sentry в rpm для ленивых
+#### Создаем внутреннего администратора Sentry
+https://forum.sentry.io/t/noninteractive-first-time-setup-of-user-via-upgrade/164
+
+```
+sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createuser 
+```
+
+### Сборка sentry в rpm, установка, настройка для ленивых
 
 #### Выключаем Selinux
 
@@ -400,17 +407,14 @@ SENTRY_DSN=https://public:private@host:port/1 mvn exec:java
 ![](https://habrastorage.org/webt/s-/2b/lc/s-2blc7p7dnfzsi_anrohoqbc94.png)
 
 
-
 Переходим в настройки проекта.
 
 ![](https://habrastorage.org/webt/7u/aj/vp/7uajvp33t_nq2ensgcemzbgqnta.png)
 
 
-
 Переходим в Client Keys (DSN).
 
 ![](https://habrastorage.org/webt/el/zm/rm/elzmrmybo3fxnpilx_r5mv7r3hs.png)
-
 
 
 Копируем DSN. Это и есть SENTRY_DSN.
