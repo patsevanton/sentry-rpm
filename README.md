@@ -392,6 +392,7 @@ sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-mav
 sudo yum -y install apache-maven
 git clone https://github.com/getsentry/examples.git
 cd examples/java/basic
+mvn compile exec:java
 ```
 
 Теперь нам нужно запустить java передав ему SENTRY_DSN
