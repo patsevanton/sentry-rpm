@@ -387,9 +387,9 @@ sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createuser
 Тестировать будем на java проекте. Скачиваем java и maven.
 
 ```
-yum install -y java-1.8.0-openjdk-devel git
-wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
-yum -y install apache-maven
+sudo yum install -y java-1.8.0-openjdk-devel git
+sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+sudo yum -y install apache-maven
 git clone https://github.com/getsentry/examples.git
 cd examples/java/basic
 ```
