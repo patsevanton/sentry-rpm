@@ -404,6 +404,10 @@ SENTRY_DSN=https://public:private@host:port/1 mvn exec:java
 
 Заходим в Sentry. Идем в проект по умолчанию `internal.`
 
+![](https://habrastorage.org/webt/ma/ky/fr/makyfr6cc2hqt6jb7vcf1hbdsly.png)
+
+или
+
 ![](https://habrastorage.org/webt/s-/2b/lc/s-2blc7p7dnfzsi_anrohoqbc94.png)
 
 
