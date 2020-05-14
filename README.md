@@ -84,7 +84,7 @@ fpm -s python -t rpm --name python2-pip pip==20.0.2
 sudo yum install -y python2-pip-20.0.2-1.noarch.rpm
 ```
 
-### Устанавливаем и запускаем PostgreSQL 9.6 для сборки python-psycopg2-binary. Файл 2psycopg2-binary.sh
+### Устанавливаем и запускаем PostgreSQL для сборки python-psycopg2-binary. Файл 2psycopg2-binary.sh
 Версию PostgreSQL вы можете поменять в скрипте.
 
 ```
