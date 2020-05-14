@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "Build and install python-six rpm"
+fpm -s python -t rpm six==1.10.0
+sudo yum install -y python-six-1.10.0-1.noarch.rpm
+
 echo "Build and install python-dateutil rpm"
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS}
 spectool -g -R spec/python-dateutil.spec

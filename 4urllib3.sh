@@ -18,8 +18,6 @@ fpm -s python -t rpm mock==2.0.0
 sudo yum install -y python-mock-2.0.0-1.noarch.rpm
 fpm -s python -t rpm py==1.8.1
 sudo yum install -y python-py-1.8.1-1.noarch.rpm
-fpm -s python -t rpm six==1.10.0
-sudo yum install -y python-six-1.10.0-1.noarch.rpm
 fpm -s python -t rpm pluggy==0.6.0
 sudo yum install -y python-pluggy-0.6.0-1.noarch.rpm
 fpm -s python -t rpm attrs==19.3.0
