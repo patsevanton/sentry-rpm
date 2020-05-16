@@ -85,8 +85,6 @@ fpm -s python -t rpm python-utils==2.3.0
 sudo yum install -y python-utils-2.3.0-1.noarch.rpm
 fpm -s python -t rpm progressbar2==3.10.1
 sudo yum install -y python-progressbar2-3.10.1-1.noarch.rpm
-fpm -s python -t rpm psycopg2-binary==2.7.7
-sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
 fpm -s python -t rpm pytest-django==2.9.1
 sudo yum install -y python-pytest-django-2.9.1-1.noarch.rpm
 fpm -s python -t rpm pytest-html==1.9.0
