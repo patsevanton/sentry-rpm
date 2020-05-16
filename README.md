@@ -463,23 +463,36 @@ https://t.me/sentry_ru
 LDAP:
 
 Собираем пакеты для LDAP в отдельном каталоге:
+
+```
 fpm -s python -t rpm pyasn1
 fpm -s python -t rpm pyasn1-modules
 fpm -s python -t rpm python-ldap
 fpm -s python -t rpm django-auth-ldap==1.2.17
+```
+
+
+
 # без выкачки новейшей версии, с учётом уже остановленного sentry
+```
 fpm --no-depends -s python -t rpm sentry-ldap-auth
 sudo rpm -Uvh *.rpm
-
+```
 
 Запускаем LDAP
+
+```
 docker run -p 389:389 -p 636:636 --name test-ldap --detach gitea/test-openldap
+```
 
 В конец конфига sentry /etc/sentry/sentry.conf.py добавляем, правя нужный адрес и параметры поиска
 (для docker'а с базой из planetexpress):
-"
+
+```
 #############
+
 # LDAP auth #
+
 #############
 
 import ldap
@@ -527,7 +540,9 @@ SENTRY_MANAGED_USER_FIELDS = ('email', 'first_name', 'last_name', 'password', )
 AUTHENTICATION_BACKENDS = AUTHENTICATION_BACKENDS + (
     'sentry_ldap_auth.backend.SentryLdapBackend',
 )
-"
+```
+
+
 
 Сервисы sentry должны быть перечитаны/перезапущены.
 Убеждаемся в вебе под административной учётной записью по адресу, например http://192.168.88.242:9000/manage/status/packages/, что новые пакеты с некоторыми зафиксированными версиями установлены.
