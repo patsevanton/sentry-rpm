@@ -456,3 +456,85 @@ https://t.me/sentry_ru
 
 - Протестировать LDAP. Скрипт уже заготовил `9sentry-ldap-auth.sh`
 - Протестировать sentry версию 10.0.X после того как выкатят пару минорных релизов.
+
+
+
+
+LDAP:
+
+Собираем пакеты для LDAP в отдельном каталоге:
+fpm -s python -t rpm pyasn1
+fpm -s python -t rpm pyasn1-modules
+fpm -s python -t rpm python-ldap
+fpm -s python -t rpm django-auth-ldap==1.2.17
+# без выкачки новейшей версии, с учётом уже остановленного sentry
+fpm --no-depends -s python -t rpm sentry-ldap-auth
+sudo rpm -Uvh *.rpm
+
+
+Запускаем LDAP
+docker run -p 389:389 -p 636:636 --name test-ldap --detach gitea/test-openldap
+
+В конец конфига sentry /etc/sentry/sentry.conf.py добавляем, правя нужный адрес и параметры поиска
+(для docker'а с базой из planetexpress):
+"
+#############
+# LDAP auth #
+#############
+
+import ldap
+from django_auth_ldap.config import LDAPSearch, GroupOfUniqueNamesType
+
+AUTH_LDAP_SERVER_URI = 'ldap://192.168.88.244:389'
+#AUTH_LDAP_BIND_DN = 'admin'
+#AUTH_LDAP_BIND_PASSWORD = 'GoodNewsEveryone'
+
+AUTH_LDAP_BIND_DN = 'cn=admin,dc=planetexpress,dc=com'
+AUTH_LDAP_BIND_PASSWORD = 'GoodNewsEveryone'
+
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    'dc=planetexpress,dc=com',
+    ldap.SCOPE_SUBTREE,
+    '(uid=%(user)s)',
+)
+
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
+    '',
+    ldap.SCOPE_SUBTREE,
+    '(objectClass=groupOfUniqueNames)'
+)
+
+AUTH_LDAP_GROUP_TYPE = GroupOfUniqueNamesType()
+AUTH_LDAP_REQUIRE_GROUP = None
+AUTH_LDAP_DENY_GROUP = None
+
+AUTH_LDAP_USER_ATTR_MAP = {
+    'name': 'cn',
+    'email': 'mail'
+}
+
+AUTH_LDAP_FIND_GROUP_PERMS = False
+AUTH_LDAP_CACHE_GROUPS = True
+AUTH_LDAP_GROUP_CACHE_TIMEOUT = 3600
+
+AUTH_LDAP_DEFAULT_SENTRY_ORGANIZATION = u'Sentry'
+AUTH_LDAP_SENTRY_ORGANIZATION_ROLE_TYPE = 'member'
+AUTH_LDAP_SENTRY_ORGANIZATION_GLOBAL_ACCESS = True
+AUTH_LDAP_SENTRY_SUBSCRIBE_BY_DEFAULT = True
+
+SENTRY_MANAGED_USER_FIELDS = ('email', 'first_name', 'last_name', 'password', )
+
+AUTHENTICATION_BACKENDS = AUTHENTICATION_BACKENDS + (
+    'sentry_ldap_auth.backend.SentryLdapBackend',
+)
+"
+
+Сервисы sentry должны быть перечитаны/перезапущены.
+Убеждаемся в вебе под административной учётной записью по адресу, например http://192.168.88.242:9000/manage/status/packages/, что новые пакеты с некоторыми зафиксированными версиями установлены.
+Присутствует в AUTHENTICATION_BACKENDS новая запись: sentry_ldap_auth.backend.SentryLdapBackend по адресу http://192.168.88.242:9000/manage/status/environment/
+
+
+Пробуем ввести связку логин-пароль из базы LDAP, например professor professor.
+Убеждаемся, что уже пользователь в организация Sentry, и соотвтетсвенно смог залогиниться.
+Он не может менять свои параметры. указанные в конфиге выше. Хотя формально, сочетание полного имени меняться может..
+
