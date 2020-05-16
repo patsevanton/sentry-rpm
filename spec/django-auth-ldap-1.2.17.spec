@@ -13,7 +13,7 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python2-django16
-BuildRequires:  python2-ldap >= 2.0
+BuildRequires:  python-ldap >= 2.0
 BuildRequires:  python2-setuptools >= 0.6c11
 
 %description
@@ -28,7 +28,7 @@ under Python...
 Summary:        Django LDAP authentication backend
 
 Requires:       python2-django16
-Requires:       python2-ldap >= 2.0
+Requires:       python-ldap >= 2.0
 %description -n python2-%{pypi_name}
 This is a Django authentication backend that authenticates against an LDAP
 service. Configuration can be as simple as a single distinguished name
