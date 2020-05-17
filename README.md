@@ -369,7 +369,7 @@ sudo reboot
 
 #### Запускаем скрипты для сборки и установки sentry
 ```
-sudo yum install -y epel-release git
+sudo yum install -y git
 git clone https://github.com/patsevanton/sentry-rpm.git
 cd sentry-rpm
 ./1general_dependencies.sh
@@ -470,7 +470,6 @@ fpm -s python -t rpm pyasn1-modules
 fpm -s python -t rpm python-ldap
 fpm -s python -t rpm django-auth-ldap==1.2.17
 ```
-
 
 
 # без выкачки новейшей версии, с учётом уже остановленного sentry
