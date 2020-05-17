@@ -75,14 +75,17 @@ sudo yum install -y epel-release git
 
 ### Собираем в rpm pip зависимости и устанавливаем их. Файл 1general_dependencies.sh
 ```
+echo "Install epel-release"
+sudo yum install -y epel-release
+
 echo "Install dependencies"
 sudo yum install -y cargo gcc gcc-c++ libffi-devel libjpeg-devel libxml2-devel \
 libxslt libxslt-devel make mc openssl-devel python-devel memcached \
 python-lxml python-nose python2-pip python34 rpm-build rpmdevtools \
-ruby-devel rubygems zlib-devel redis xmlsec1-openssl xmlsec1 \
-libtool-ltdl-devel xmlsec1-devel xmlsec1-openssl-devel openldap-devel
+ruby-devel rubygems zlib-devel redis xmlsec1-openssl xmlsec1 wget \
+libtool-ltdl-devel xmlsec1-devel xmlsec1-openssl-devel openldap-devel yum-utils
 
-echo "Build common pip dependencies to rpm by fpm"
+echo "Install fpm"
 gem install --no-document fpm
 echo "For chardet==3.0.2 need setuptools>=12"
 echo "For cryptography==2.8 need setuptools>=18.5"
@@ -100,24 +103,27 @@ sudo yum install -y postgresql-devel
 fpm -s python -t rpm psycopg2-binary==2.7.7
 sudo yum install -y python-psycopg2-binary-2.7.7-1.x86_64.rpm
 sudo yum remove -y postgresql-devel postgresql postgresql-libs
+
 ```
 
 ### Собираем и устанавливаем python-dateutil rpm. Файл 3dateutil.sh
 ```
-#!/bin/bash
+echo "Build and install python-six rpm"
+fpm -s python -t rpm six==1.10.0
+sudo yum install -y python-six-1.10.0-1.noarch.rpm
 
 echo "Build and install python-dateutil rpm"
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS}
+cp spec/python-dateutil-system-zoneinfo.patch ~/rpmbuild/SOURCES
+cp spec/python-dateutil-timelex-string.patch ~/rpmbuild/SOURCES
 spectool -g -R spec/python-dateutil.spec
-wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/spec/python-dateutil-system-zoneinfo.patch -P ~/rpmbuild/SOURCES
-wget https://raw.githubusercontent.com/patsevanton/sentry-rpm/master/spec/python-dateutil-timelex-string.patch -P ~/rpmbuild/SOURCES
-rpmbuild --bb spec/python-dateutil.spec
+rpmbuild -bb spec/python-dateutil.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-dateutil-2.4.2-1.el7.noarch.rpm
 ```
 
 ### Собираем и устанавливаем python-urllib3 rpm. Файл 4urllib3.sh
 ```
-echo "Build pip dependencies to rpm by fpm for urllib3"
+echo "Install dependencies for urllib3"
 fpm -s python -t rpm pycparser==2.19
 sudo yum install -y python-pycparser-2.19-1.noarch.rpm
 fpm -s python -t rpm cffi==1.14.0
@@ -135,8 +141,6 @@ fpm -s python -t rpm mock==2.0.0
 sudo yum install -y python-mock-2.0.0-1.noarch.rpm
 fpm -s python -t rpm py==1.8.1
 sudo yum install -y python-py-1.8.1-1.noarch.rpm
-fpm -s python -t rpm six==1.10.0
-sudo yum install -y python-six-1.10.0-1.noarch.rpm
 fpm -s python -t rpm pluggy==0.6.0
 sudo yum install -y python-pluggy-0.6.0-1.noarch.rpm
 fpm -s python -t rpm attrs==19.3.0
@@ -149,7 +153,7 @@ sudo yum install -y python-pytest-3.5.1-1.noarch.rpm
 echo "Build urllib rpm"
 spectool -g -R spec/urllib3-1.24.2.spec
 sudo yum-builddep -y spec/urllib3-1.24.2.spec
-rpmbuild --bb spec/urllib3-1.24.2.spec
+rpmbuild -bb spec/urllib3-1.24.2.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-urllib3-1.24.2-1.el7.noarch.rpm
 ```
 
@@ -292,8 +296,12 @@ fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
 fpm -s python -t rpm -n PyYAML pyyaml==3.11
 sudo yum install -y PyYAML-3.11-1.x86_64.rpm
-fpm -s python -t rpm django-auth-ldap==1.2.17
-sudo yum install -y python-django-auth-ldap-1.2.17-1.noarch.rpm
+
+# for LDAP
+fpm -s python -t rpm pyasn1
+sudo yum install -y python-pyasn1-0.4.8-1.noarch.rpm
+fpm -s python -t rpm pyasn1-modules
+sudo yum install -y python-pyasn1-modules-0.2.8-1.noarch.rpm
 ```
 
 ### Собираем в rpm sentry и устанавливаем его. Файл 6sentry.sh
@@ -307,27 +315,28 @@ sudo yum install -y yarn
 
 cp spec/config.yml spec/sentry.conf.py ~/rpmbuild/SOURCES
 cp spec/sentry-cron.service spec/sentry-web.service spec/sentry-worker.service ~/rpmbuild/SOURCES
-spectool -g spec/sentry-9.1.2.spec
+spectool -g -R spec/sentry-9.1.2.spec
 sudo yum-builddep -y spec/sentry-9.1.2.spec
 rpmbuild -bb spec/sentry-9.1.2.spec
 sudo yum install -y ~/rpmbuild/RPMS/noarch/python-sentry-9.1.2-1.el7.noarch.rpm
 ```
 
-## Установка sentry rpm с зависимостями на другом сервере
+#### Собираем в rpm LDAP зависимости. Файл 7sentry-ldap-auth.sh
+```
+echo "Build django-auth-ldap to rpm"
+spectool -g -R spec/django-auth-ldap-1.2.17.spec
+sudo yum-builddep -y spec/django-auth-ldap-1.2.17.spec
+rpmbuild -bb spec/django-auth-ldap-1.2.17.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-django-auth-ldap-1.2.17-1.el7.noarch.rpm
 
-### Выключаем Selinux
-```
-sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
-#### sudo reboot
-```
-
-### Подключаем репозиторий epel-release
-```
-sudo yum install -y epel-release git libjpeg-turbo redis
-sudo systemctl start redis
+echo "Build sentry-ldap-auth to rpm"
+spectool -g -R spec/sentry-ldap-auth-2.8.1.spec
+sudo yum-builddep -y spec/sentry-ldap-auth-2.8.1.spec
+rpmbuild -bb spec/sentry-ldap-auth-2.8.1.spec
+sudo yum install -y ~/rpmbuild/RPMS/noarch/python2-sentry-ldap-auth-2.8.1-1.el7.noarch.rpm
 ```
 
-#### Устанавливаем и запускаем PostgreSQL 9.6. Файл 7postgresql.sh
+#### Устанавливаем и запускаем PostgreSQL 9.6. Файл 8postgresql.sh
 ```
 sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 sudo yum install -y postgresql96 postgresql96-server postgresql96-contrib
@@ -342,7 +351,76 @@ sudo -i -u postgres psql -c "alter role sentry superuser;"
 #sudo -i -u postgres psql -c "CREATE SCHEMA main AUTHORIZATION sentry;"
 ```
 
-#### Запускаем миграцию (создание схемы БД) и запускаем сервисы. Файл 8start_sentry.sh
+#### Запуск тестового LDAP или подключение к рабочему LDAP (Active Directory)
+Если вы хотите протестировать LDAP, то запускаем тестовый openldap в docker.
+sudo docker run -p 389:389 -p 636:636 --name test-ldap --detach gitea/test-openldap
+Добавляем тестовые или рабочие настройки LDAP в файл sentry.conf.py (пример ниже).
+
+```
+#############
+
+# LDAP auth #
+
+#############
+
+import ldap
+from django_auth_ldap.config import LDAPSearch, GroupOfUniqueNamesType
+
+AUTH_LDAP_SERVER_URI = 'ldap://192.168.88.244:389'
+#AUTH_LDAP_BIND_DN = 'admin'
+#AUTH_LDAP_BIND_PASSWORD = 'GoodNewsEveryone'
+
+AUTH_LDAP_BIND_DN = 'cn=admin,dc=planetexpress,dc=com'
+AUTH_LDAP_BIND_PASSWORD = 'GoodNewsEveryone'
+
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    'dc=planetexpress,dc=com',
+    ldap.SCOPE_SUBTREE,
+    '(uid=%(user)s)',
+)
+
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
+    '',
+    ldap.SCOPE_SUBTREE,
+    '(objectClass=groupOfUniqueNames)'
+)
+
+AUTH_LDAP_GROUP_TYPE = GroupOfUniqueNamesType()
+AUTH_LDAP_REQUIRE_GROUP = None
+AUTH_LDAP_DENY_GROUP = None
+
+AUTH_LDAP_USER_ATTR_MAP = {
+    'name': 'cn',
+    'email': 'mail'
+}
+
+AUTH_LDAP_FIND_GROUP_PERMS = False
+AUTH_LDAP_CACHE_GROUPS = True
+AUTH_LDAP_GROUP_CACHE_TIMEOUT = 3600
+
+AUTH_LDAP_DEFAULT_SENTRY_ORGANIZATION = u'Sentry'
+AUTH_LDAP_SENTRY_ORGANIZATION_ROLE_TYPE = 'member'
+AUTH_LDAP_SENTRY_ORGANIZATION_GLOBAL_ACCESS = True
+AUTH_LDAP_SENTRY_SUBSCRIBE_BY_DEFAULT = True
+
+SENTRY_MANAGED_USER_FIELDS = ('email', 'first_name', 'last_name', 'password', )
+
+AUTHENTICATION_BACKENDS = AUTHENTICATION_BACKENDS + (
+    'sentry_ldap_auth.backend.SentryLdapBackend',
+)
+```
+
+Убеждаемся в вебе под административной учётной записью по адресу, например http://ip-где-установлен-sentry:9000/manage/status/packages/, что новые пакеты с некоторыми зафиксированными версиями установлены.
+
+Присутствует в AUTHENTICATION_BACKENDS новая запись: sentry_ldap_auth.backend.SentryLdapBackend по адресу http://ip-где-установлен-sentry:9000/manage/status/environment/
+
+Пробуем ввести связку логин-пароль из базы LDAP, например professor professor.
+
+Убеждаемся, что уже пользователь в организация Sentry, и соотвтетсвенно смог залогиниться.
+
+![](https://habrastorage.org/webt/i1/jx/li/i1jxli9gj1goc6x3xql_sfxxm9c.png)
+
+#### Запускаем миграцию (создание схемы БД) и запускаем сервисы. Файл 9start_sentry.sh
 ```
 sudo systemctl start redis
 sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ upgrade
@@ -351,7 +429,7 @@ sudo systemctl start sentry-cron
 sudo systemctl start sentry-web
 ```
 
-#### Создаем внутреннего администратора Sentry
+#### Создаем внутреннего администратора Sentry (Если вы не создали админа при запуске 9start_sentry.sh)
 https://forum.sentry.io/t/noninteractive-first-time-setup-of-user-via-upgrade/164
 
 ```
@@ -378,14 +456,13 @@ cd sentry-rpm
 ./4urllib3.sh
 ./5other_dependencies.sh
 ./6sentry.sh
-Копируем rpm из rpmbuild/RPMS и корня sentry-rpm на целевой сервер. Создаем yum репо. Устанавливаем все собранные rpm пакеты.
 ./7sentry-ldap-auth.sh
+Копируем rpm из rpmbuild/RPMS и корня sentry-rpm на целевой сервер. Создаем yum репо. Устанавливаем все собранные rpm пакеты.
 ./8postgresql.sh
 Если вы хотите протестировать LDAP, то запускаем тестовый openldap в docker.
 sudo docker run -p 389:389 -p 636:636 --name test-ldap --detach gitea/test-openldap
-Добавляем тестовые или рабочие настройки LDAP в файл sentry.conf.py
+Добавляем тестовые или рабочие настройки LDAP в файл sentry.conf.py (пример ниже).
 ./9start_sentry.sh
-
 ```
 
 #### Создаем внутреннего администратора Sentry
@@ -459,104 +536,4 @@ https://t.me/sentry_ru
 
 #### В следующих сериях: 
 
-- Протестировать LDAP. Скрипт уже заготовил `9sentry-ldap-auth.sh`
 - Протестировать sentry версию 10.0.X после того как выкатят пару минорных релизов.
-
-
-
-
-LDAP:
-
-Собираем пакеты для LDAP в отдельном каталоге:
-
-```
-fpm -s python -t rpm pyasn1
-fpm -s python -t rpm pyasn1-modules
-fpm -s python -t rpm python-ldap
-fpm -s python -t rpm django-auth-ldap==1.2.17
-```
-
-
-# без выкачки новейшей версии, с учётом уже остановленного sentry
-```
-fpm --no-depends -s python -t rpm sentry-ldap-auth
-sudo rpm -Uvh *.rpm
-```
-
-Запускаем LDAP
-
-```
-docker run -p 389:389 -p 636:636 --name test-ldap --detach gitea/test-openldap
-```
-
-В конец конфига sentry /etc/sentry/sentry.conf.py добавляем, правя нужный адрес и параметры поиска
-(для docker'а с базой из planetexpress):
-
-```
-#############
-
-# LDAP auth #
-
-#############
-
-import ldap
-from django_auth_ldap.config import LDAPSearch, GroupOfUniqueNamesType
-
-AUTH_LDAP_SERVER_URI = 'ldap://192.168.88.244:389'
-#AUTH_LDAP_BIND_DN = 'admin'
-#AUTH_LDAP_BIND_PASSWORD = 'GoodNewsEveryone'
-
-AUTH_LDAP_BIND_DN = 'cn=admin,dc=planetexpress,dc=com'
-AUTH_LDAP_BIND_PASSWORD = 'GoodNewsEveryone'
-
-AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    'dc=planetexpress,dc=com',
-    ldap.SCOPE_SUBTREE,
-    '(uid=%(user)s)',
-)
-
-AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
-    '',
-    ldap.SCOPE_SUBTREE,
-    '(objectClass=groupOfUniqueNames)'
-)
-
-AUTH_LDAP_GROUP_TYPE = GroupOfUniqueNamesType()
-AUTH_LDAP_REQUIRE_GROUP = None
-AUTH_LDAP_DENY_GROUP = None
-
-AUTH_LDAP_USER_ATTR_MAP = {
-    'name': 'cn',
-    'email': 'mail'
-}
-
-AUTH_LDAP_FIND_GROUP_PERMS = False
-AUTH_LDAP_CACHE_GROUPS = True
-AUTH_LDAP_GROUP_CACHE_TIMEOUT = 3600
-
-AUTH_LDAP_DEFAULT_SENTRY_ORGANIZATION = u'Sentry'
-AUTH_LDAP_SENTRY_ORGANIZATION_ROLE_TYPE = 'member'
-AUTH_LDAP_SENTRY_ORGANIZATION_GLOBAL_ACCESS = True
-AUTH_LDAP_SENTRY_SUBSCRIBE_BY_DEFAULT = True
-
-SENTRY_MANAGED_USER_FIELDS = ('email', 'first_name', 'last_name', 'password', )
-
-AUTHENTICATION_BACKENDS = AUTHENTICATION_BACKENDS + (
-    'sentry_ldap_auth.backend.SentryLdapBackend',
-)
-```
-
-
-
-Сервисы sentry должны быть перечитаны/перезапущены.
-
-Убеждаемся в вебе под административной учётной записью по адресу, например http://192.168.88.242:9000/manage/status/packages/, что новые пакеты с некоторыми зафиксированными версиями установлены.
-
-Присутствует в AUTHENTICATION_BACKENDS новая запись: sentry_ldap_auth.backend.SentryLdapBackend по адресу http://192.168.88.242:9000/manage/status/environment/
-
-Пробуем ввести связку логин-пароль из базы LDAP, например professor professor.
-
-Убеждаемся, что уже пользователь в организация Sentry, и соотвтетсвенно смог залогиниться.
-
-Он не может менять свои параметры. указанные в конфиге выше. Хотя формально, сочетание полного имени меняться может..
-
