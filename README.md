@@ -379,8 +379,13 @@ cd sentry-rpm
 ./5other_dependencies.sh
 ./6sentry.sh
 Копируем rpm из rpmbuild/RPMS и корня sentry-rpm на целевой сервер. Создаем yum репо. Устанавливаем все собранные rpm пакеты.
-./7postgresql.sh
-./8start_sentry.sh
+./7sentry-ldap-auth.sh
+./8postgresql.sh
+Если вы хотите протестировать LDAP, то запускаем тестовый openldap в docker.
+docker run -p 389:389 -p 636:636 --name test-ldap --detach gitea/test-openldap
+Добавляем тестовые или рабочие настройки LDAP в файл sentry.conf.py
+./9start_sentry.sh
+
 ```
 
 #### Создаем внутреннего администратора Sentry
