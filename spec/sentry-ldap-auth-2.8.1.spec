@@ -26,7 +26,7 @@ require...
 Summary:        A Sentry extension to add an LDAP server as an authentication source
 
 Requires:       python2-django-auth-ldap = 1.2.17
-Requires:       python2-sentry >= 8.0.0
+Requires:       python-sentry >= 8.0.0
 %description -n python2-%{pypi_name}
  sentry-ldap-authA Django custom authentication backend for [Sentry]( This
 module extends the functionality of [django-auth-ldap]( with Sentry specific
