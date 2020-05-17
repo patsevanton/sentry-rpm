@@ -1,5 +1,8 @@
 #!/bin/bash
 
+-echo "Install epel-release"
+-sudo yum install -y epel-release
+
 echo "Install dependencies"
 sudo yum install -y cargo gcc gcc-c++ libffi-devel libjpeg-devel libxml2-devel \
 libxslt libxslt-devel make mc openssl-devel python-devel memcached \
