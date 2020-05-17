@@ -137,3 +137,9 @@ fpm -s python -t rpm uwsgi==2.0.18
 sudo yum install -y python-uwsgi-2.0.18-1.noarch.rpm
 fpm -s python -t rpm -n PyYAML pyyaml==3.11
 sudo yum install -y PyYAML-3.11-1.x86_64.rpm
+
+# for LDAP
+fpm -s python -t rpm pyasn1
+sudo yum install -y python-pyasn1-0.4.8-1.noarch.rpm
+fpm -s python -t rpm pyasn1-modules
+sudo yum install -y python-pyasn1-modules-0.2.8-1.noarch.rpm

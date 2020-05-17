@@ -1,13 +1,5 @@
 #!/bin/bash
 
-echo "Build pyasn1 to rpm"
-fpm -s python -t rpm pyasn1
-sudo yum install -y python-pyasn1-0.4.8-1.noarch.rpm
-
-echo "Build pyasn1-modules to rpm"
-fpm -s python -t rpm pyasn1-modules
-sudo yum install -y python-pyasn1-modules-0.2.8-1.noarch.rpm
-
 echo "Build django-auth-ldap to rpm"
 spectool -g -R spec/django-auth-ldap-1.2.17.spec
 sudo yum-builddep -y spec/django-auth-ldap-1.2.17.spec
