@@ -414,12 +414,6 @@ AUTHENTICATION_BACKENDS = AUTHENTICATION_BACKENDS + (
 
 Присутствует в AUTHENTICATION_BACKENDS новая запись: sentry_ldap_auth.backend.SentryLdapBackend по адресу http://ip-где-установлен-sentry:9000/manage/status/environment/
 
-Пробуем ввести связку логин-пароль из базы LDAP, например professor professor.
-
-Убеждаемся, что уже пользователь в организация Sentry, и соотвтетсвенно смог залогиниться.
-
-![](https://habrastorage.org/webt/i1/jx/li/i1jxli9gj1goc6x3xql_sfxxm9c.png)
-
 #### Запускаем миграцию (создание схемы БД) и запускаем сервисы. Файл 9start_sentry.sh
 ```
 sudo systemctl start redis
@@ -435,6 +429,14 @@ https://forum.sentry.io/t/noninteractive-first-time-setup-of-user-via-upgrade/16
 ```
 sudo -i -u sentry /usr/bin/sentry --config /etc/sentry/ createuser 
 ```
+
+#### Тестирование LDAP
+
+Пробуем ввести связку логин-пароль из базы LDAP, например professor professor.
+
+Убеждаемся, что уже пользователь в организация Sentry, и соотвтетсвенно смог залогиниться.
+
+![](https://habrastorage.org/webt/i1/jx/li/i1jxli9gj1goc6x3xql_sfxxm9c.png)
 
 ### Сборка sentry в rpm, установка, настройка для ленивых
 
