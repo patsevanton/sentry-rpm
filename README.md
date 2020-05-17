@@ -382,7 +382,7 @@ cd sentry-rpm
 ./7sentry-ldap-auth.sh
 ./8postgresql.sh
 Если вы хотите протестировать LDAP, то запускаем тестовый openldap в docker.
-docker run -p 389:389 -p 636:636 --name test-ldap --detach gitea/test-openldap
+sudo docker run -p 389:389 -p 636:636 --name test-ldap --detach gitea/test-openldap
 Добавляем тестовые или рабочие настройки LDAP в файл sentry.conf.py
 ./9start_sentry.sh
 
