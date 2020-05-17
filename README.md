@@ -369,7 +369,7 @@ sudo reboot
 
 #### Запускаем скрипты для сборки и установки sentry
 ```
-sudo yum install -y git
+sudo yum install -y epel-release git
 git clone https://github.com/patsevanton/sentry-rpm.git
 cd sentry-rpm
 ./1general_dependencies.sh
